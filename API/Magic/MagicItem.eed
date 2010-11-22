@@ -1,0 +1,17 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; MagicItem
+; virtual methods
+?MagicItemDlgMsgCallback@MagicItem@@UAE_NPAUHWND__@@HIJAAJ@Z    = _NOTINGAME,0x0056D8D0     ; MagicItemDlgMsgCallback
+?SetMagicItemInDialog@MagicItem@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x0056D920     ; SetMagicItemInDialog
+; methods
+??0MagicItem@@QAE@XZ                                = 0x00412AE0,0x00564BA2     ; MagicItem
+??1MagicItem@@QAE@XZ                                = 0x0041A5A0,0x0056DB40     ; ~MagicItem
+;}
+
+
+
+
+
+

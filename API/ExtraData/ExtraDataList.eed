@@ -1,0 +1,17 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; BaseExtraList
+??1BaseExtraList@@UAE@XZ                                = 0x00422F00,0x0045D100     ; ~BaseExtraList
+?AddExtra@BaseExtraList@@QAEXPAVBSExtraData@@@Z         = 0x0041E0A0,0x0045B0D0     ; AddExtra
+?RemoveExtra@BaseExtraList@@QAEXPAVBSExtraData@@_N@Z    = 0x00422E20,0x0045D110     ; RemoveExtra
+?RemoveExtra@BaseExtraList@@QAEXK@Z                     = 0x0041E160,0x0045B140     ; RemoveExtra
+?RemoveAllExtra@BaseExtraList@@QAEX_N@Z                 = 0x0041DFF0,0x0045AFD0     ; RemoveAllExtra
+?ExtraCount@BaseExtraList@@QAEKXZ                       = 0x0041E060,0x0045B040     ; ExtraCount
+?GetExtra@BaseExtraList@@QAEPAVBSExtraData@@K@Z         = 0x0041E210,0x0045B1B0     ; GetExtra
+?GetPrevExtraData@BaseExtraList@@QAEPAVBSExtraData@@K@Z = 0x0041E2D0,0x0045B230     ; GetPrevExtraData
+;}
+
+EXPORTS ;{ ; ExtraDataList
+??0ExtraDataList@@QAE@XZ        = 0x00422EE0,0x0045D190     ; ExtraDataList::ExtraDataList
+;}

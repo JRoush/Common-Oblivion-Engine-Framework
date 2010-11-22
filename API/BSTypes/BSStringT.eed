@@ -1,0 +1,12 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS
+; BSStringT - methods
+?Set@BSStringT@@QAE_NPBDF@Z     = 0x004028D0,0x004051E0     ; Set
+?Format@BSStringT@@QAAXPBDZZ    = 0x00402E30,0x004053F0     ; Format
+?Clear@BSStringT@@QAEXXZ        = 0x00402DA0,0x004053D0     ; Clear
+?Size@BSStringT@@QBEFXZ         = 0x00404FD0,0x0040BAD0     ; Size
+??YBSStringT@@QAEAAV0@PBD@Z     = 0x00412FA0,0x004130C0     ; operator +=
+??0BSStringT@@QAE@PBD@Z         = 0x00419B10,0x00497900     ; BSStringT(const char*)
+??0BSStringT@@QAE@ABV0@@Z       = 0x00402D70,0x00414C10     ; BSStringT(const BSStringT&)

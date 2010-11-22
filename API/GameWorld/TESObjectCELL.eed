@@ -1,0 +1,35 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObjectCELL
+; TESForm virtual methods
+??1TESObjectCELL@@UAE@XZ                                                    = 0x004D32C0,0x0053BFB0     ; ~TESObjectCELL
+?ClearAllComponentReferences@TESObjectCELL@@UAEXXZ                          = 0x004C9780,0x005321C0     ; ClearAllComponentReferences
+?LoadForm@TESObjectCELL@@UAE_NAAVTESFile@@@Z                                = 0x004CD600,0x005338E0     ; LoadForm
+?SaveFormRecord@TESObjectCELL@@UAE_NAAVTESFile@@@Z                          = 0x004D3460,0x0053C190     ; SaveFormRecord
+?SaveFormChunks@TESObjectCELL@@UAEXXZ                                       = 0x004CA3D0,0x00533830     ; SaveFormChunks
+?SaveForm@TESObjectCELL@@UAE_NAAVTESFile@@@Z                                = 0x004D3570,0x0053C2B0     ; SaveForm
+?LessThanGroup@TESObjectCELL@@UAE_NABVRecordInfo@@@Z                        = 0x004CDEC0,0x00538C60     ; LessThanGroup
+?LessThan@TESObjectCELL@@UAE_NAAVTESForm@@@Z                                = 0x004CDC90,0x00538A10     ; LessThan
+?Clone@TESObjectCELL@@UAEPAVTESForm@@_NPAV?$NiTMap@PAVTESForm@@PAV1@@@@Z    = 0x004D56A0,0x0053C8C0     ; Clone
+?ModifiedFormSize@TESObjectCELL@@UAEGK@Z                                    = 0x004D1EB0,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESObjectCELL@@UAEXK@Z                                    = 0x004D2020,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESObjectCELL@@UAEXKK@Z                                   = 0x004D2230,_NOTINCS__     ; LoadModifiedForm
+?LinkModifiedForm@TESObjectCELL@@UAEXKK@Z                                   = 0x004CCD60,_NOTINCS__     ; LinkModifiedForm
+?PreLoadModifiedForm@TESObjectCELL@@UAEXK@Z                                 = 0x004D2690,_NOTINCS__     ; PreLoadModifiedForm
+?LinkForm@TESObjectCELL@@UAEXXZ                                             = 0x004CD960,0x0053C320     ; LinkForm
+?SetFromActiveFile@TESObjectCELL@@UAEX_N@Z                                  = 0x004CCBF0,0x00532FE0     ; SetFromActiveFile
+?CopyFrom@TESObjectCELL@@UAEXAAVTESForm@@@Z                                 = 0x004CDFF0,0x00533C30     ; CopyFrom
+?CompareTo@TESObjectCELL@@UAE_NAAVTESForm@@@Z                               = 0x004CA430,0x00533D40     ; CompareTo
+?MatchGroupRecord@TESObjectCELL@@UAE_NABVRecordInfo@@_N1@Z                  = 0x004CE0A0,0x00538E00     ; MatchGroupRecord
+?CreateGroupRecord@TESObjectCELL@@UAEXAAVRecordInfo@@0@Z                    = 0x004CE1A0,0x00538F20     ; CreateGroupRecord
+?GetEditorID@TESObjectCELL@@UAEPBDXZ                                        = 0x004CCBC0,0x005362C0     ; GetEditorID
+?SetEditorID@TESObjectCELL@@UAE_NPBD@Z                                      = 0x004C9FC0,_NOTINCS__     ; SetEditorID
+?RemoveFormReference@TESObjectCELL@@UAEXAAVTESForm@@@Z                      = _NOTINGAME,0x00536960     ; RemoveFormReference
+?DialogMessageCallback@TESObjectCELL@@UAEXPAUHWND__@@IIJAAJ@Z               = _NOTINGAME,0x005377A0     ; DialogMessageCallback
+?SetInDialog@TESObjectCELL@@UAEXPAUHWND__@@@Z                               = _NOTINGAME,0x005334D0     ; SetInDialog
+?GetFromDialog@TESObjectCELL@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x0053B8A0     ; GetFromDialog
+?CleanupDialog@TESObjectCELL@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00533520     ; CleanupDialog
+; methods
+??0TESObjectCELL@@QAE@XZ        = 0x004D3210,0x0053E630     ; TESObjectCELL
+;}

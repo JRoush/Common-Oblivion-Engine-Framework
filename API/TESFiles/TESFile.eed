@@ -1,0 +1,59 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESFile
+;{ ; static data
+?formRecordBufferSize@TESFile@@2KA              = 0x00B33C18,0x00A0E21C     ; formRecordBufferSize
+?formRecordBuffer@TESFile@@2PAXA                = 0x00B33C14,0x00A0E218     ; formRecordBuffer
+;}
+;{ ; methods - master files
+?HaveMastersChanged@TESFile@@QAE_NXZ                    = 0x0044FDE0,0x00486330     ; HaveMastersChanged
+?GetMasterByIndex@TESFile@@QAEPAV1@K@Z                  = 0x0044FD60,0x00485A60     ; GetMasterByIndex
+?GetMasterCount@TESFile@@QAEKXZ                         = 0x0044FDD0,0x00485AA0     ; GetMasterCount
+?GetMasterIndex@TESFile@@QAEKXZ                         = _NOTINGAME,0x00485AB0     ; GetMasterIndex
+;}
+;{ ; methods - open/close/seek
+?Open@TESFile@@QAEKXZ                                   = 0x00451A60,0x004891F0     ; Open
+?Close@TESFile@@QAE_NXZ                                 = 0x004507D0,0x004877A0     ; Close
+?JumpToBeginningOfFile@TESFile@@QAEK_N@Z                = 0x004512A0,0x00488220     ; JumpToBeginningOfFile
+;}
+;{ ; methods - loading records
+?InitializeFormFromRecord@TESFile@@QAEXAAVTESForm@@@Z   = 0x00451210,0x00488180     ; InitializeFormFromRecord
+?GetNextRecord@TESFile@@QAE_N_N@Z                       = 0x004518B0,0x004890A0     ; GetNextRecord
+?GetRecordType@TESFile@@QAEEXZ                          = 0x004511C0,0x00488130     ; GetRecordType
+?JumpToBeginningOfRecord@TESFile@@QAEKXZ                = 0x00451160,0x004880E0     ; JumpToBeginningOfRecord
+?PushGroupInfo@TESFile@@QAEXAAVRecordInfo@@@Z           = 0x0044FF50,0x00486DA0     ; PushGroupInfo
+?PopGroupInfo@TESFile@@QAEXXZ                           = 0x0044FFA0,0x00486DF0     ; PopGroupInfo
+?GetDecompressedRecordData@TESFile@@QAEPAXXZ            = 0x00450550,0x00487780     ; GetDecompressedRecordData
+;}
+;{ ; methods - loading chunks
+?GetChunkData@TESFile@@QAE_NPAXK@Z                      = 0x00450C20,0x004879D0     ; GetChunkData
+?GetChunkData2Bytes@TESFile@@QAE_NAAG@Z                 = 0x004510F0,0x00487FD0     ; GetChunkData2Bytes
+?GetChunkData4Bytes@TESFile@@QAE_NAAK@Z                 = 0x004510E0,0x00487FC0     ; GetChunkData4Bytes
+?GetChunkType@TESFile@@QAEKXZ                           = 0x004510B0,0x00487F90     ; GetChunkType
+?GetNextChunk@TESFile@@QAE_NXZ                          = 0x0044FEA0,0x00486420     ; GetNextChunk
+;}
+;{ ; methods - writing
+?WriteData@TESFile@@QAEKPAXK@Z                          = 0x00450190,0x004865A0     ; WriteData
+?WriteFormRecord@TESFile@@QAEKAAVTESForm@@@Z            = 0x00450A10,0x00487DF0     ; WriteFormRecord
+?OpenGroupRecord@TESFile@@QAEXAAVRecordInfo@@@Z         = 0x004501F0,0x00487500     ; OpenGroupRecord
+?CloseGroupRecord@TESFile@@QAEXXZ                       = 0x00450250,0x00487580     ; CloseGroupRecord
+?UpdateOpenGroups@TESFile@@QAEXAAVTESForm@@@Z           = 0x004502C0,0x00487610     ; UpdateOpenGroups
+;}
+;{ ; methods - file properties
+?GetLastWriteTime@TESFile@@QAE_NPAU_SYSTEMTIME@@@Z      = 0x0044FA70,0x00485A30     ; GetLastWriteTime
+?GetFileIndex@TESFile@@QAEEXZ                           = 0x0044FB50,0x00485CD0     ; GetFileIndex
+?SetFileIndex@TESFile@@QAEXE@Z                          = 0x0044FB20,0x00485CA0     ; SetFileIndex
+?IsActiveFile@TESFile@@QAE_NXZ                          = 0x0044FAF0,0x00485BA0     ; IsActiveFile
+?SetIsActiveFile@TESFile@@QAEX_N@Z                      = 0x0044FB00,0x00485BB0     ; SetIsActiveFile
+?IsMaster@TESFile@@QAE_NXZ                              = 0x0044FAA0,0x00485B00     ; IsMaster
+?SetIsMaster@TESFile@@QAEX_N@Z                          = _NOTINGAME,0x00485B10     ; SetIsMaster
+?IsLoaded@TESFile@@QAE_NXZ                              = 0x0044FAC0,0x00485B60     ; IsLoaded
+?SetIsLoaded@TESFile@@QAEX_N@Z                          = 0x0044FAD0,0x00485B70     ; SetIsLoaded
+;}
+;{ ; methods - general
+?RecordTypeFromChunkType@TESFile@@SAEK@Z                = 0x0046AF70,0x00495A60     ; RecordTypeFromChunkType
+??0TESFile@@QAE@XZ                                      = 0x00451DA0,0x00489590     ; TESFile
+??1TESFile@@QAE@XZ                                      = 0x00450AE0,0x00487E60     ; ~TESFile
+;}
+;}

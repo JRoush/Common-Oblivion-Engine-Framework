@@ -1,0 +1,12 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; AVCollection
+; methods
+?LuckModifiedSkill@Mechanics@@SAMJJ@Z               = 0x00547B90,0x0057D240 ; LuckModifiedSkill
+?FatigueFactor@Mechanics@@SAMM@Z                    = 0x00547F00,0x0057D470 ; FatigueFactor
+?BaseMagickaCost@Mechanics@@SAMMKKK_N@Z             = 0x00548B50,0x0057D5C0 ; BaseMagickaCost
+?SkillModifiedMagickaCost@Mechanics@@SAMMKK@Z       = 0x00548C00,_NOTINCS__ ; SkillModifiedMagickaCost
+?MagickaMasteryLevel@Mechanics@@SAKM@Z              = 0x00548C50,0x0057D670 ; MagickaMasteryLevel
+?DetectionLevel@Mechanics@@SAJJJ_NMJJJJ00000000@Z   = 0x005463F0,_NOTINCS__ ; DetectionLevel
+;}

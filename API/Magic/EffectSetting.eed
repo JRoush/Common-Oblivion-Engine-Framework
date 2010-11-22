@@ -1,0 +1,47 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; EffectSettingCollection
+; static data
+?collection@EffectSettingCollection@@2V1@A      = 0x00B33508,0x00A13C90     ; collection
+; virtual methods
+??1EffectSettingCollection@@UAE@XZ              = 0x00416A20,0x0056ABA0     ; ~EffectSettingCollection
+; methods
+?RemoveAll@EffectSettingCollection@@QAEXXZ      = 0x00416760,0x0056A800     ; RemoveAll
+??0EffectSettingCollection@@QAE@XZ              = 0x00418DB0,0x0056C860     ; EffectSettingCollection
+; static methods
+?BuildFilteredList@EffectSettingCollection@@SAPAV?$BSSimpleList@PAVEffectSetting@@@@PAVEffectSetting@@_NK1@Z = 0x004170B0,0x0056AA30    ; BuildFilteredList
+?LookupByCode@EffectSettingCollection@@SAPAVEffectSetting@@K@Z              = 0x00416870,0x0056A880     ; LookupByCode
+?LookupByCodeString@EffectSettingCollection@@SAPAVEffectSetting@@PBD@Z      = 0x004168A0,0x0056A8B0     ; LookupByCodeString
+?Comparator@EffectSettingCollection@@SAHAAVEffectSetting@@0@Z               = 0x00417040,0x0056A900     ; Comparator
+?Add@EffectSettingCollection@@SAPAVEffectSetting@@KPBDKMKKKGZZ              = 0x00417220,0x0056AC40     ; Add
+?AddAll@EffectSettingCollection@@SAXXZ                                      = 0x004170B0,0x0056AED0     ; AddAll
+?Reset@EffectSettingCollection@@SAXXZ                                       = 0x00418E50,0x0056C900     ; Reset
+;}
+
+EXPORTS ;{ ; EffectSetting
+; static data
+?OverridableFlags@EffectSetting@@2PAKA                      = 0x00B034C4,0x009F95EC     ; OverridableFlags
+?OverridableFlagCount@EffectSetting@@2KA                    = 0x00B034DC,0x009F9604     ; OverridableFlagCount
+?DisplayedFlagDlgIDCs@EffectSetting@@2PAKA                  = _NOTINGAME,0x009F9598     ; DisplayedFlagDlgIDCs
+?DisplayedFlags@EffectSetting@@2PAUDisplayedFlagData@1@A    = 0x00B03418,0x009F94F0     ; DisplayedFlags
+?DisplayedFlagCount@EffectSetting@@2KA                      = 0x00B034C0,0x009F94EC     ; DisplayedFlagCount
+; virtual methods
+??1EffectSetting@@UAE@XZ                                        = 0x00415F10,0x0056A480     ; ~EffectSetting
+?LoadForm@EffectSetting@@UAE_NAAVTESFile@@@Z                    = 0x00416100,0x00569300     ; LoadForm
+?SaveFormChunks@EffectSetting@@UAEXXZ                           = 0x00415800,0x00568490     ; SaveFormChunks
+?LinkForm@EffectSetting@@UAEXXZ                                 = 0x00415960,0x00568610     ; LinkForm
+?CopyFrom@EffectSetting@@UAEXAAVTESForm@@@Z                     = 0x00416000,0x005690E0     ; CopyFrom
+?CompareTo@EffectSetting@@UAE_NAAVTESForm@@@Z                   = 0x00415BC0,0x00568A60     ; CompareTo
+?RemoveFormReference@EffectSetting@@UAEXAAVTESForm@@@Z          = _NOTINGAME,0x00568F40     ; RemoveFormReference
+?DialogMessageCallback@EffectSetting@@UAEXPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x00568C40     ; DialogMessageCallback
+?SetInDialog@EffectSetting@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00569B00     ; SetInDialog
+?GetFromDialog@EffectSetting@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00569580     ; GetFromDialog
+?CleanupDialog@EffectSetting@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00568C20     ; CleanupDialog
+; methods
+?Filter@EffectSetting@@QBE_NPAV1@_NK@Z          = 0x00416370,0x005699C0     ; Filter
+?SetCounterEffects@EffectSetting@@QAEXGPAK@Z    = 0x00415D40,0x00568D50     ; SetCounterEffects
+?GetProjectileType@EffectSetting@@QBEKXZ        = 0x00416410,0x00569A70     ; GetProjectileType
+?SetProjectileType@EffectSetting@@QAEXK@Z       = _NOTINGAME,0x00568E60     ; SetProjectileType
+??0EffectSetting@@QAE@XZ                        = 0x00416430,0x0056A5D0     ; EffectSetting
+;}

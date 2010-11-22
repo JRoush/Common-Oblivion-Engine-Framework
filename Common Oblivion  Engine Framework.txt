@@ -1,0 +1,99 @@
+The Common Oblivion Engine Framework (COEF? there are so many mods known only by acronyms already ...) is basically a 
+customized version of the 'common' project shipped with obse.  Key feature is that it provides an API to directly link
+to game code through a 'virtual' dll interface.
+
+The 'COEF' API must be in the global namespace to get the correct RTTI names for the classes.  Many of the classes are 
+already partially implemented by obse in the global namespace, so in general one *cannot* have OBSE 'game api' headers
+and COEF 'api' headers in the same compilation unit.
+
+Ideally, the COEF Utility code should eliminate the need for OBSE\GameAPI and OBSE\Common dependence.  In practice, this
+will require some questionable typedefs and mecros to 'wrap' the new code with the existing names and conventions.
+
+The COEF API must be manually patched into Oblivion.exe (TESConstructionSet.exe) by ExportInjector.  Due to the apparent
+behavior of LoadLibrary, ExportInjector must be fully loaded before COEF-based dlls can be loaded.  If obse can be 
+convinced to load it first, then no sweat.  If not, the plguin must take a 3-project approach: 1 loader to handle the obse
+interface, load ExportInjector if it's not already present, and load the two child dlls (game/CS).
+
+-   Common Oblivion Engine Framework (dependance on 'COEF' project):
+====================================================================
+Static library project to be included as a direct dependency *and* include path by a plugin
+    -   API (Source):
+        Exposes Oblivion/TESCS classes to the plugin
+        -   header files and .eed files for compile-time linkage
+        -   ExportInjector & custom prebuild step to parse eed -> def -> lib
+        -   subdlls linked to libs for appropriate module
+        -   every header must include MemoryHeap.h to ensure override of global new/delete
+    -   API (Runtime):
+        Exposes Oblivion/TESCS classes to the plugin
+        -   .eed files, Export Injector + ini file(s)
+        -   LoadLibrary(ExportInjector) from Loader dll
+    -   Standard Environment:
+        IDE configuration state
+        -   Macros: MFC, OBLIVION, OBLIVION_VERSION, CS_VERSION
+        -   Include Paths to COEF, OBSE
+        -   (optional) copy output to oblivion install folder
+     -  Standard 'Prefix':
+        Force include in all compilation units
+        -   Win32 version defines & Windows.h/AFX/MFC
+        -   C standard library headers - cstdlib, cstdio, cstring, winsock2(? compatibility with obse)
+        -   Disable warnings  
+        -   API Macros: IMPORT, LOCAL, NOUSE, etc.
+        -   Includes for 'common' utilities or their replacements (compatibility with obse)
+    -   Standard Utilities:
+        Common tasks with complex/difficult implementations
+        -   Patching game memory
+        -   Making function calls/jumps to memory
+        -   Patching/Copying vtbls
+        -   Patching/Copying RTTI data
+        -   Output logging (include wrappers for compatibility with obse logging)
+        -   Singleton (? compatibility with obse)
+        -   DynamicCreate (? compatibility with obse)    
+        -   Error (? compatibility with obse) 
+
+        
+-   OBSE Plugin API:
+====================
+Set of header files, and perhaps some compilations units (not ideal) to interface with obse
+    -   PluginAPI.h, CommandTable.h
+    -   Implementation for small helper code used by array interface (req. GameAPI.cpp, obse\Utilities.cpp)
+        Attempt to provide from Standard utilities for compatibility
+    -   Version header
+    -   Loader dll must export Query() & Load() symbols, and generally adhere to the plugin interface
+    
+    
+-   COEF API Conventions:
+=========================
+A class definition in the API must, at minimum, correctly produce the following **for both the game and CS**:
+    - Class name:  
+        Extract from RTTI info in possible.  An educated guess should be made even for non-polymorphic types
+    - Inheritance structure:
+        Extract from RTTI.  Base classes must also be defined in the API.
+    - Size:
+        Start by finding the constructor, and trace back to find code that allocates the object.  
+        Members should be laid out accordingly.  Their types & names do not need to be correct, but
+        their offset within the object should be noted in a trailing comment: "// GameOffset/EditorOffset".
+    - Virtual Function Table Size:
+        All *new* and *overriden* virtual methods should be laid out in the correct order.  Their offset in the vtbl should be 
+        clearly marked in a closed comment before the 'virtual' keyword: "/*GameOffset/EditorOffset*/ virtual  FuncName(...)"
+        Dummy functions (e.g. void UnkX(void);) may be used if necessary.
+        If a virtual method is not overriden from a parent class, it does not need to be included.
+    - Methods:
+        Only decoded methods should be included.  Wherever possible, methods should be given the correct signature 
+        (name, calling convention, return & arg types, modifiers) and IMPORTed.  
+        Exceptions are:
+        -   Methods that are heavily inlined (no stand-alone instance can be found) - INLINE     
+        Virtual methods that cannot be given proper signatures because they appear only as stubs should be INLINed with the appropriate stub.
+        Virtual methods that cannot be given proper signatures because they have not yet been decoded should be inlined with a stub & marked NOUSE.
+        NOUSE virtual methods have no effect so long as the game ctor & game vtbl are being used.  They will cause problems if the game ctor is
+        *not* used, or if the compiler optimizes a virtual call into a direct call.
+    - New/Delete overloads:
+        Classes must override thier new/delete operators with the FormHeap routines (the USEFORMHEAP macro).
+        If the class has only a single base class that already does this, then it need not repeat.
+        If a class has *multiple* base classes that do this, it will need to do it as well to avoid ambiguity.
+    - Static Members:
+        Only decoded static members with proper signature should be defined and IMPORTed.      
+    
+
+        
+        
+        

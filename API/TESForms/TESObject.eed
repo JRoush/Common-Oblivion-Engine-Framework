@@ -1,0 +1,26 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObject
+; virtual methods
+??1TESObject@@UAE@XZ    = 0x004B3010,0x00513D10     ; ~TESObject
+; methods
+??0TESObject@@QAE@XZ    = _NOTINGAME,0x00512230     ; TESObject
+;}
+
+EXPORTS ;{ ; TESCellUseList
+; methods
+?IncreaseUseCount@TESCellUseList@@QAEXPAVTESObjectCELL@@K@Z     = _NOTINGAME,0x00440C20     ; IncreaseUseCount
+?DecreaseUseCount@TESCellUseList@@QAEXPAVTESObjectCELL@@K@Z     = _NOTINGAME,0x00440C70     ; DecreaseUseCount
+?Clear@TESCellUseList@@QAEXXZ                                   = _NOTINGAME,0x00440CD0     ; Clear
+?CopyFrom@TESCellUseList@@QAEXABV1@@Z                           = _NOTINGAME,0x00440FF0     ; CopyFrom
+??0TESCellUseList@@QAE@XZ                                       = _NOTINGAME,0x00440BC0     ; TESCellUseList
+??1TESCellUseList@@QAE@XZ                                       = _NOTINGAME,0x00440FE0     ; ~TESCellUseList
+;}
+
+EXPORTS ;{ ; TESBoundObject
+; virtual methods
+??1TESBoundObject@@UAE@XZ    = 0x004B3010,0x00514040     ; ~TESBoundObject
+; methods
+??0TESBoundObject@@QAE@XZ    = 0x004B2FF0,0x00513FA0     ; TESBoundObject
+;}

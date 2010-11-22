@@ -1,0 +1,27 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; MagicCaster::CastingVFX
+??0CastingVFX@MagicCaster@@QAE@KPAVNiNode@@@Z   = 0x0069E250,_NOTINCS__     ; CastingVFX
+??1CastingVFX@MagicCaster@@QAE@XZ               = 0x0069E0B0,_NOTINCS__     ; ~CastingVFX
+;}
+
+EXPORTS ;{ ; MagicCaster
+; virtual methods
+?AddAbility@MagicCaster@@UAEXPAVMagicItemForm@@_N@Z                                                     = 0x0069BE00,_NOTINCS__     ; AddAbility
+?AddDisease@MagicCaster@@UAEXPAVMagicItemForm@@PAVMagicTarget@@_N@Z                                     = 0x0069BE40,_NOTINCS__     ; AddDisease
+?AddObjectEnchantment@MagicCaster@@UAEXPAVMagicItem@@PAVTESBoundObject@@_N@Z                            = 0x0069BE90,_NOTINCS__     ; AddObjectEnchantment
+?FindTouchTarget@MagicCaster@@UAEPAVMagicTarget@@XZ                                                     = 0x00699500,_NOTINCS__     ; FindTouchTarget
+?PlayTargetedCastingAnimation@MagicCaster@@UAEXXZ                                                       = 0x005EA2E0,_NOTINCS__     ; PlayTargetedCastingAnimation
+?PlayCastingAnimation@MagicCaster@@UAEXXZ                                                               = 0x0069C0C0,_NOTINCS__     ; PlayCastingAnimation
+?IsMagicItemUseable@MagicCaster@@UAE_NPAVMagicItem@@PAMPAK_N@Z                                          = 0x00699120,_NOTINCS__     ; IsMagicItemUseable
+?AddEffectToSelf@MagicCaster@@UAE_NPAVActiveEffect@@@Z                                                  = 0x006992A0,_NOTINCS__     ; AddEffectToSelf
+?GetCastingEffectiveness@MagicCaster@@UAEM_NM@Z                                                         = 0x005E5630,_NOTINCS__     ; GetCastingEffectiveness
+?CreateActiveEffect@MagicCaster@@UAEPAVActiveEffect@@PAVMagicItem@@PAVEffectItem@@PAVTESBoundObject@@@Z = 0x00699090,_NOTINCS__     ; CreateActiveEffect
+; methods
+?CastMagicItem@MagicCaster@@QAE_NPAVMagicItem@@PAVMagicTarget@@_N@Z = 0x00699190,_NOTINCS__     ; CastMagicItem
+?UseActiveMagicItem@MagicCaster@@QAEXPAVTESBoundObject@@@Z          = 0x0069BEC0,_NOTINCS__     ; UseActiveMagicItem
+?ApplyActiveMagicItem@MagicCaster@@QAEXMPAVTESBoundObject@@_N@Z     = 0x0069AF30,_NOTINCS__     ; ApplyActiveMagicItem
+??0MagicCaster@@QAE@XZ                                              = 0x00699140,_NOTINCS__     ; MagicCaster
+??1MagicCaster@@QAE@XZ                                              = 0x00699140,_NOTINCS__     ; ~MagicCaster
+;}

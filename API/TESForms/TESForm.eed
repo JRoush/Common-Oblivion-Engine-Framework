@@ -1,0 +1,90 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESForm
+;{ ; TESForm - static data
+?formTypeList@TESForm@@2PAUFormTypeInfo@1@A                                                     = 0x00B05E00,0x009EDE28     ; formTypeList
+?formIDMap@TESForm@@2V?$NiTPointerMap@KPAVTESForm@@@@A                                          = 0x00B0613C,0x009EE164     ; formIDMap
+?activeFileFormList@TESForm@@2V?$NiTLargeArray@PAVTESForm@@@@A                                  = 0x00B0614C,0x009EE174     ; activeFileFormList
+?editorIDMap@TESForm@@2V?$NiTStringMap@PAVTESForm@@@@A                                          = _NOTINGAME,0x009EE18C     ; editorIDMap
+?formReferenceMap@TESForm@@2V?$NiTPointerMap@PAVTESForm@@PAV?$BSSimpleList@PAVTESForm@@@@@@A    = _NOTINGAME,0x009EE1A0     ; formReferenceMap
+;} 
+;{ ; TESForm - BaseFormComponent virtual methods
+?InitializeComponent@TESForm@@UAEXXZ                        = 0x0060D0A0,0x006BABE0     ; InitializeComponent
+?ClearComponentReferences@TESForm@@UAEXXZ                   = 0x0060D0A0,0x00496400     ; ClearComponentReferences
+?CopyComponentFrom@TESForm@@UAEXABVBaseFormComponent@@@Z    = 0x0046B800,0x00498470     ; CopyComponentFrom
+?CompareComponentTo@TESForm@@UBE_NABVBaseFormComponent@@@Z  = 0x0046B870,0x00496130     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESForm@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x00495AB0     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESForm@@UAE_NPAUHWND__@@@Z            = _NOTINGAME,0x00495B50     ; IsComponentDlgValid
+?SetComponentInDlg@TESForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x00496CA0     ; SetComponentInDlg
+?GetComponentFromDlg@TESForm@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x004981D0     ; GetComponentFromDlg
+;}
+;{ ; TESForm - TESForm virtual methods
+??1TESForm@@UAE@XZ                                          = 0x0046C280,0x00497B40     ; ~TESForm
+?InitializeAllComponents@TESForm@@UAEXXZ                    = 0x0046B090,0x00494870     ; InitializeAllComponents
+?ClearAllComponentReferences@TESForm@@UAEXXZ                = 0x0046B170,0x004970C0     ; ClearAllComponentReferences
+?LoadForm@TESForm@@UAE_NAAVTESFile@@@Z                      = 0x006FDFF0,0x00449DE0     ; LoadForm
+?SaveFormRecord@TESForm@@UAE_NAAVTESFile@@@Z                = 0x0046B340,0x00494950     ; SaveFormRecord
+?SaveFormChunks@TESForm@@UAEXXZ                             = 0x0060D0A0,0x006BABE0     ; SaveFormChunks
+?SaveForm@TESForm@@UAE_NAAVTESFile@@@Z                      = 0x0046B4C0,0x00494AD0     ; SaveForm
+?LessThanGroup@TESForm@@UAE_NABVRecordInfo@@@Z              = 0x0046B510,0x00495F60     ; LessThanGroup
+?LessThan@TESForm@@UAE_NAAV1@@Z                             = 0x0046B500,0x00494B50     ; LessThan
+?Clone@TESForm@@UAEPAV1@_NPAV?$NiTMap@PAVTESForm@@PAV1@@@@Z = 0x0046C360,0x00497FF0     ; Clone
+?MarkAsModified@TESForm@@UAEXK@Z                            = 0x0046ABF0,0x005320F0     ; MarkAsModified
+?ClearModified@TESForm@@UAEXK@Z                             = 0x0046AC10,0x005320F0     ; ClearModified
+?ModifiedFormSize@TESForm@@UAEGK@Z                          = 0x0046AC50,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESForm@@UAEXK@Z                          = 0x0046B5E0,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESForm@@UAEXKK@Z                         = 0x0046B600,_NOTINCS__     ; LoadModifiedForm
+?LinkForm@TESForm@@UAEXXZ                                   = 0x0060D0A0,0x006BABE0     ; LinkForm
+?GetFormType@TESForm@@UAEEXZ                                = 0x00412970,0x00449E00     ; GetFormType
+?GetDebugDescription@TESForm@@UAEXAAVBSStringT@@@Z          = 0x0046C700,0x00498190     ; GetDebugDescription
+?IsQuestItem@TESForm@@UAE_NXZ                               = 0x004D7030,0x0053F0C0     ; IsQuestItem
+?SetDeleted@TESForm@@UAEX_N@Z                               = 0x0046A9E0,0x004987D0     ; SetDeleted
+?SetFromActiveFile@TESForm@@UAEX_N@Z                        = 0x0046C640,0x00497BE0     ; SetFromActiveFile
+?SetQuestItem@TESForm@@UAEX_N@Z                             = 0x0046AA80,0x00494BA0     ; SetQuestItem
+?CopyFrom@TESForm@@UAEXAAV1@@Z                              = 0x0046B7A0,0x00494D40     ; CopyFrom
+?CompareTo@TESForm@@UAE_NAAV1@@Z                            = 0x0046B7D0,0x00494D70     ; CompareTo
+?MatchGroupRecord@TESForm@@UAE_NABVRecordInfo@@_N1@Z        = 0x0046B910,0x00494F30     ; MatchGroupRecord
+?CreateGroupRecord@TESForm@@UAEXAAVRecordInfo@@0@Z          = 0x0046B950,0x00494F70     ; CreateGroupRecord
+?GetEditorID@TESForm@@UAEPBDXZ                              = 0x004129A0,0x00435BE0     ; GetEditorID
+?SetEditorID@TESForm@@UAE_NPBD@Z                            = 0x006FDFF0,_NOTINCS__     ; SetEditorID - this is regular method in CS
+?GetResourcePath@TESForm@@UAEXAAVBSStringT@@@Z              = _NOTINGAME,0x00497840     ; GetResourcePath
+?RemoveFormReference@TESForm@@UAEXAAV1@@Z                   = _NOTINGAME,0x00495260     ; RemoveFormReference
+?UpdateUsageInfo@TESForm@@UAE_NXZ                           = _NOTINGAME,0x00497400     ; UpdateUsageInfo
+?DialogMessageCallback@TESForm@@UAEXPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x00495B80     ; DialogMessageCallback
+?IsDialogValid@TESForm@@UAE_NPAUHWND__@@@Z                  = _NOTINGAME,0x00495CA0     ; IsDialogValid
+?SetInDialog@TESForm@@UAEXPAUHWND__@@@Z                     = _NOTINGAME,0x00495C20     ; SetInDialog
+?GetFromDialog@TESForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00495D20     ; GetFromDialog
+?CleanupDialog@TESForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00495DA0     ; CleanupDialog
+;}
+;{ ; TESForm - methods
+??0TESForm@@QAE@XZ                                                  = 0x0046C460,0x00498280     ; TESForm()
+?GetOverrideFile@TESForm@@QAEPAVTESFile@@H@Z                        = 0x0046B680,0x00495FE0     ; GetOverrideFile
+?InitializeFormRecord@TESForm@@QAEXXZ                               = 0x0046B990,0x00496240     ; InitializeFormRecord
+?PutFormRecordChunkData@TESForm@@SAXKPAXK@Z                         = 0x0046AE40,0x00494FE0     ; PutFormRecordChunkData
+?FinalizeFormRecord@TESForm@@QAEXXZ                                 = 0x0046B9F0,0x00494FC0     ; FinalizeFormRecord
+?SaveGenericComponents@TESForm@@QAEXPAXG@Z                          = 0x0046BBB0,0x00495540     ; SaveGenericComponents
+?LoadGenericComponents@TESForm@@QAEXAAVTESFile@@PAXG@Z              = 0x0046BDA0,0x00495730     ; LoadGenericComponents
+?ResolveFormID@TESForm@@SA_NAAKAAVTESFile@@@Z                       = 0x0046BB20,0x00495410     ; ResolveFormID
+?SetFormID@TESForm@@QAEXK_N@Z                                       = 0x0046C300,0x00497E50     ; SetFormID
+?ReserveNextUnusedFormID@TESForm@@SAKXZ                             = 0x00448D40,0x0047C580     ; ReserveNextUnusedFormID
+?LookupByFormID@TESForm@@SAPAV1@K@Z                                 = 0x0046B250,0x00495EF0     ; LookupByFormID
+?LookupByEditorID@TESForm@@SAPAV1@PBD@Z                             = _NOTINGAME,0x00495F20     ; LookupByEditorID
+?SetEditorID@TESForm@@QAE_NPBD@Z                                    = _NOTINGAME,0x00497670     ; SetEditorID - this is a virtual method in game
+?GetReferenceList@TESForm@@QAEPAV?$BSSimpleList@PAVTESForm@@@@_N@Z  = _NOTINGAME,0x00496380     ; GetReferenceList
+?GetReferenceCount@TESForm@@QAEKXZ                                  = _NOTINGAME,0x00496520     ; GetReferenceCount
+?AddReference@TESForm@@QAEXPAV1@@Z                                  = _NOTINGAME,0x00496430     ; AddReference
+?RemoveReference@TESForm@@QAEXPAV1@@Z                               = _NOTINGAME,0x00496470     ; RemoveReference
+?ClearReferenceList@TESForm@@QAEXXZ                                 = _NOTINGAME,0x00496400     ; ClearReferenceList
+?GetFormTypeName@TESForm@@SAPBDE@Z                                  = 0x0047E190,0x004AC1B0     ; GetFormTypeName
+?Create@TESForm@@SAPAV1@E@Z                                         = 0x00447DF0,0x004793F0     ; Create
+;}
+;} ; end of TESForm
+
+EXPORTS ;{ ; TESFormIDListView
+; virtual methods
+?SetupFormListColumns@TESFormIDListView@@UAEXPAUHWND__@@@Z  = _NOTINGAME,0x00449E60     ; SetupFormListColumns
+?PopulateFormList@TESFormIDListView@@UAEXPAUHWND__@@@Z      = _NOTINGAME,0x00449FB0     ; PopulateFormList
+; methods
+??0TESFormIDListView@@QAE@XZ    = _NOTINGAME,0x00449DC0     ; TESFormIDListView()
+;}

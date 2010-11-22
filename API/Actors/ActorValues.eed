@@ -1,0 +1,29 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; ActorValues
+; static data
+?skillMasteryNames@ActorValues@@2PAPAVGameSetting@@A        = 0x00B12B38,0x009EC0FC     ; skillMasteryNames
+?actorValueExtraNames@ActorValues@@2PAPBDA                  = 0x00B12908,0x009EBEA0     ; actorValueExtraNames
+?actorValueIconPaths@ActorValues@@2PAPAVGameSetting@@A      = 0x00B12880,0x009EBE18     ; actorValueIconPaths
+?actorValueDescriptions@ActorValues@@2PAPAVGameSetting@@A   = 0x00B127F8,0x009EBD90     ; actorValueDescriptions
+?actorValueNames@ActorValues@@2PAPAVGameSetting@@A          = 0x00B12758,0x009EBCF0     ; actorValueNames
+; methods
+?ActorValueName@ActorValues@@SAPBDK@Z           = 0x00565CC0,0x0044F570     ; ActorValueName
+?ActorValueDescription@ActorValues@@SAPBDK@Z    = 0x00565CF0,_NOTINCS__     ; ActorValueDescription
+?ActorValueIconPath@ActorValues@@SAPBDK@Z       = 0x00565D10,_NOTINCS__     ; ActorValueIconPath
+?SkillMasteryName@ActorValues@@SAPBDK@Z         = 0x0056A340,0x00455EC0     ; SkillMasteryName
+;}
+
+EXPORTS ;{ ; AVCollection
+; methods
+?GetAV@AVCollection@@QAEMK@Z            = 0x0065CB80,_NOTINCS__     ; GetAV
+?ModAV@AVCollection@@QAEXKM_N@Z         = 0x0065CA60,_NOTINCS__     ; ModAV
+?Clear@AVCollection@@QAEXXZ             = 0x0065CC90,_NOTINCS__     ; Clear
+?CopyFrom@AVCollection@@QAEXABV1@@Z     = 0x0065CD10,_NOTINCS__     ; CopyFrom
+?ModifierSaveSize@AVCollection@@QAEGXZ  = 0x0065C520,_NOTINCS__     ; ModifierSaveSize
+?SaveModifiers@AVCollection@@QAEXXZ     = 0x0065C270,_NOTINCS__     ; SaveModifiers
+?LoadModifiers@AVCollection@@QAEXXZ     = 0x0065CBB0,_NOTINCS__     ; LoadModifiers
+??0AVCollection@@QAE@XZ                 = 0x0065BE10,_NOTINCS__     ; AVCollection
+??1AVCollection@@QAE@XZ                 = 0x0065CCC0,_NOTINCS__     ; ~AVCollection
+;}

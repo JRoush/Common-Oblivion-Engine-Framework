@@ -1,0 +1,46 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESDataHandler
+; Static data
+?xMarkerHeading@TESDataHandler@@2PAVTESObjectSTAT@@A        = 0x00B35EB0,0x00A1347C     ; xMarkerHeading
+?xMarker@TESDataHandler@@2PAVTESObjectSTAT@@A               = 0x00B35EAC,0x00A13478     ; xMarker
+?welkyndStone@TESDataHandler@@2PAVTESObjectMISC@@A          = 0x00B35ED8,0x00A134A4     ; welkyndStone
+?varlaStone@TESDataHandler@@2PAVTESObjectMISC@@A            = 0x00B35EDC,0x00A134A8     ; varlaStone
+?vampireRace@TESDataHandler@@2PAVTESRace@@A                 = 0x00B36308,0x00A1099C     ; vampireRace
+?travelMarker@TESDataHandler@@2PAVTESObjectSTAT@@A          = 0x00B35EB4,0x00A13480     ; travelMarker
+?templeMarker@TESDataHandler@@2PAVTESObjectSTAT@@A          = 0x00B35EC0,0x00A1348C     ; templeMarker
+?stolenGoods@TESDataHandler@@2PAVTESObjectCONT@@A           = 0x00B33AAC,0x00A0E078     ; stolenGoods
+?skeletonKey@TESDataHandler@@2PAVTESObjectMISC@@A           = 0x00B35ECC,0x00A13498     ; skeletonKey
+?repairHammer@TESDataHandler@@2PAVTESObjectMISC@@A          = 0x00B35ED0,0x00A1349C     ; repairHammer
+?prisonMarker@TESDataHandler@@2PAVTESObjectDOOR@@A          = 0x00B35EBC,0x00A13488     ; prisonMarker
+?northMarker@TESDataHandler@@2PAVTESObjectSTAT@@A           = 0x00B35EB8,0x00A13484     ; northMarker
+?mapMarker@TESDataHandler@@2PAVTESObjectSTAT@@A             = 0x00B35EA8,0x00A13474     ; mapMarker
+?lootBag@TESDataHandler@@2PAVTESObjectCONT@@A               = 0x00B33AA8,0x00A0E074     ; lootBag
+?lockpick@TESDataHandler@@2PAVTESObjectMISC@@A              = 0x00B35EC8,0x00A13494     ; lockpick
+?jailShoes@TESDataHandler@@2PAVTESObjectCLOT@@A             = 0x00B33AB8,0x00A0E084     ; jailShoes
+?jailShirt@TESDataHandler@@2PAVTESObjectCLOT@@A             = 0x00B33AB0,0x00A0E07C     ; jailShirt
+?jailPants@TESDataHandler@@2PAVTESObjectCLOT@@A             = 0x00B33AB4,0x00A0E080     ; jailPants
+?horseMarker@TESDataHandler@@2PAVTESObjectSTAT@@A           = 0x00B35ED4,0x00A134A0     ; horseMarker
+?eyeReanimate@TESDataHandler@@2PAVTESEyes@@A                = 0x00B362BC,0x00A107E4     ; eyeReanimate
+?doorMarker@TESDataHandler@@2PAVTESObjectSTAT@@A            = 0x00B35EA4,0x00A13470     ; doorMarker
+?divineMarker@TESDataHandler@@2PAVTESObjectSTAT@@A          = 0x00B35EC4,0x00A13490     ; divineMarker
+?defaultWater@TESDataHandler@@2PAVTESWaterForm@@A           = 0x00B360AC,0x00A137CC     ; defaultWater
+?creatureFaction@TESDataHandler@@2PAVTESFaction@@A          = 0x00B36298,0x00A1072C     ; creatureFaction
+?blackSoulGem@TESDataHandler@@2PAVTESSoulGem@@A             = 0x00B35EE0,0x00A134AC     ; blackSoulGem
+?azuraStone@TESDataHandler@@2PAVTESSoulGem@@A               = 0x00B35EE4,0x00A134B0     ; azuraStone
+?playerRef@TESDataHandler@@2PAVTESObjectREFR@@A             = 0x00B333C4,0x00A0E088     ; playerRef
+?dataHandler@TESDataHandler@@2PAV1@A                        = 0x00B33A98,0x00A0E064     ; dataHandler
+; Methods
+?LoadFile@TESDataHandler@@QAE_NAAVTESFile@@_N@Z             = 0x0044F0C0,0x00484A60     ; LoadFile
+?LoadFormRecord@TESDataHandler@@QAE_NAAVTESFile@@_N@Z       = 0x0044DCF0,0x004833C0     ; LoadFormRecord
+?LoadForm@TESDataHandler@@SA_NAAVTESForm@@AAVTESFile@@@Z    = 0x00447050,0x004790C0     ; LoadForm
+?SaveFile@TESDataHandler@@QAE_NPBD_N@Z                      = _NOTINGAME,0x0047E9B0     ; SaveFile
+?SaveForm@TESDataHandler@@QAEXAAVTESForm@@_N@Z              = 0x004470B0,0x00479120     ; SaveForm
+?AddFormToHandler@TESDataHandler@@QAE_NPAVTESForm@@@Z       = 0x0044D950,0x004818F0     ; AddFormToHandler
+?Clear@TESDataHandler@@QAE_NXZ                              = 0x004492E0,0x0047AA60     ; Clear
+?CreateBuiltinObjects@TESDataHandler@@QAEXXZ                = 0x0044AC20,0x0047F520     ; CreateBuiltinObjects
+??0TESDataHandler@@QAE@XZ                                   = 0x00446D80,0x0047A5E0     ; TESDataHandler
+??1TESDataHandler@@QAE@XZ                                   = 0x004491D0,0x0047A960     ; ~TESDataHandler
+;}
+	  

@@ -1,0 +1,88 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; MagicItemObject
+; TESBoundObject virtual methods
+??1MagicItemObject@@UAE@XZ                                          = 0x004127E0,0x00564620     ; ~MagicItemObject
+?LoadForm@MagicItemObject@@UAE_NAAVTESFile@@@Z                      = 0x0041B5B0,0x0056E1B0     ; LoadForm
+?SaveFormChunks@MagicItemObject@@UAEXXZ                             = 0x0041B490,0x0056DFD0     ; SaveFormChunks
+?CopyFrom@MagicItemObject@@UAEXAAVTESForm@@@Z                       = 0x0041B560,0x0056E0A0     ; CopyFrom
+?CompareTo@MagicItemObject@@UAE_NAAVTESForm@@@Z                     = 0x0041B4F0,0x0056E030     ; CompareTo
+?DialogMessageCallback@MagicItemObject@@UAEXPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x0056E0F0     ; DialogMessageCallback
+?SetInDialog@MagicItemObject@@UAEXPAUHWND__@@@Z                     = _NOTINGAME,0x0056E140     ; SetInDialog
+?GetFromDialog@MagicItemObject@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0056E350     ; GetFromDialog
+; MagicItem virtual methods
+?MagicItemDlgMsgCallback@MagicItemObject@@UAE_NPAUHWND__@@HIJAAJ@Z  = _NOTINGAME,0x00564CC0     ; MagicItemDlgMsgCallback
+?SetMagicItemInDialog@MagicItemObject@@UAEXPAUHWND__@@@Z            = _NOTINGAME,0x00564CA0     ; SetMagicItemInDialog
+?GetMagicItemFromDlg@MagicItemObject@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x00564CB0     ; GetMagicItemFromDlg
+?MagicItemDlgCleanup@MagicItemObject@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x00564970     ; MagicItemDlgCleanup
+; methods
+??0MagicItemObject@@QAE@XZ      = 0x00412B50,0x00564C10     ; MagicItemObject
+;}
+
+EXPORTS ;{ ; IngredientItem
+; TESBoundObject virtual methods
+??1IngredientItem@@UAE@XZ                                       = 0x00419640,0x0056D6B0     ; ~IngredientItem
+?InitializeAllComponents@IngredientItem@@UAEXXZ                 = 0x004195F0,0x0056D480     ; InitializeAllComponents
+?ClearAllComponentReferences@IngredientItem@@UAEXXZ             = 0x00412860,0x0056D4A0     ; ClearAllComponentReferences
+?LinkForm@IngredientItem@@UAEXXZ                                = 0x004129E0,0x00564680     ; LinkForm
+?DialogMessageCallback@IngredientItem@@UAEXPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x00564980     ; DialogMessageCallback
+?SetInDialog@IngredientItem@@UAEXPAUHWND__@@@Z                  = _NOTINGAME,0x00564AA0     ; SetInDialog
+?GetFromDialog@IngredientItem@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x0056D5A0     ; GetFromDialog
+?IsObjectAutoCalc@IngredientItem@@UAE_NXZ                       = 0x00419720,0x0056D780     ; IsObjectAutoCalc
+?SetObjectAutoCalc@IngredientItem@@UAEX_N@Z                     = 0x004129C0,0x00564910     ; SetObjectAutoCalc
+; MagicItem virtual methods
+?IsMagicItemAutoCalc@IngredientItem@@UAE_NXZ                        = 0x004198C0,0x00564950     ; IsMagicItemAutoCalc
+?SetMagicItemAutoCalc@IngredientItem@@UAEX_N@Z                      = 0x00412AA0,0x0056D7C0     ; SetMagicItemAutoCalc
+?GetMagicType@IngredientItem@@UAEKXZ                                = 0x00419750,0x00564940     ; GetMagicType
+?MagicItemDlgMsgCallback@IngredientItem@@UAE_NPAUHWND__@@HIJAAJ@Z   = _NOTINGAME,0x00564B70     ; MagicItemDlgMsgCallback
+?SetMagicItemInDialog@IngredientItem@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x00564B60     ; SetMagicItemInDialog
+?GetMagicItemFromDlg@IngredientItem@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x0056D7B0     ; GetMagicItemFromDlg
+?ExtraDataChunkType@IngredientItem@@UAEKXZ                          = 0x00419730,0x0056D790     ; ExtraDataChunkType
+?ExtraDataPtr@IngredientItem@@UAEPAXXZ                              = 0x00419740,0x00564930     ; ExtraDataPtr
+?ExtraDataSize@IngredientItem@@UAEKXZ                               = 0x00419750,0x00564940     ; ExtraDataSize
+?CompareExtraData@IngredientItem@@UAE_NABVMagicItem@@@Z             = 0x00419840,0x0056D510     ; CompareExtraData
+?CopyExtraData@IngredientItem@@UAEXABVMagicItem@@@Z                 = 0x00419880,0x0056D560     ; CopyExtraData
+?SaveBases@IngredientItem@@UAEXXZ                                   = 0x00419600,0x0056D4C0     ; SaveBases
+?LoadBases@IngredientItem@@UAEXAAVTESFile@@K@Z                      = 0x00419760,0x005646A0     ; LoadBases
+?UpdateMagicItemInDialog@IngredientItem@@UAEXPAUHWND__@@@Z          = _NOTINGAME,0x0056D650     ; UpdateMagicItemInDialog
+; EffectItemList virtual methods
+?GetMagickaCost@IngredientItem@@UAEJPBVActor@@@Z    = _NOTINGAME,0x00564820     ; GetMagickaCost
+?GetMagickaCost@IngredientItem@@UAEMPBVActor@@@Z    = 0x00412A80,_NOTINCS__     ; GetMagickaCost
+?GetMaxEffectCount@IngredientItem@@UAEKXZ           = 0x0073DAA0,0x004BFC50     ; GetMaxEffectCount
+; methods
+??0IngredientItem@@QAE@XZ                           = 0x004198F0,0x0056D7F0     ; IngredientItem
+;}
+
+EXPORTS ;{ ; AlchemyItem
+; TESBoundObject virtual methods
+??1AlchemyItem@@UAE@XZ                                      = 0x00412880,0x00564840     ; ~AlchemyItem
+?InitializeAllComponents@AlchemyItem@@UAEXXZ                = 0x004195F0,0x0056D480     ; InitializeAllComponents
+?ClearAllComponentReferences@AlchemyItem@@UAEXXZ            = 0x00412860,0x0056D4A0     ; ClearAllComponentReferences
+?LinkForm@AlchemyItem@@UAEXXZ                               = 0x004129E0,0x00564680     ; LinkForm
+?DialogMessageCallback@AlchemyItem@@UAEXPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x00564980     ; DialogMessageCallback
+?SetInDialog@AlchemyItem@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00564AA0     ; SetInDialog
+?GetFromDialog@AlchemyItem@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x0056D5A0     ; GetFromDialog
+?IsObjectAutoCalc@AlchemyItem@@UAE_NXZ                      = 0x00419720,0x0056D780     ; IsObjectAutoCalc
+?SetObjectAutoCalc@AlchemyItem@@UAEX_N@Z                    = 0x004129C0,0x00564910     ; SetObjectAutoCalc
+; MagicItem virtual methods
+?IsMagicItemAutoCalc@AlchemyItem@@UAE_NXZ                       = 0x004198C0,0x00564950     ; IsMagicItemAutoCalc
+?SetMagicItemAutoCalc@AlchemyItem@@UAEX_N@Z                     = 0x00412AA0,0x0056D7C0     ; SetMagicItemAutoCalc
+?GetMagicType@AlchemyItem@@UAEKXZ                               = 0x004059C0,0x0067E0E0     ; GetMagicType
+?MagicItemDlgMsgCallback@AlchemyItem@@UAE_NPAUHWND__@@HIJAAJ@Z  = _NOTINGAME,0x00564B70     ; MagicItemDlgMsgCallback
+?SetMagicItemInDialog@AlchemyItem@@UAEXPAUHWND__@@@Z            = _NOTINGAME,0x00564B60     ; SetMagicItemInDialog
+?GetMagicItemFromDlg@AlchemyItem@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x0056D7B0     ; GetMagicItemFromDlg
+?ExtraDataChunkType@AlchemyItem@@UAEKXZ                         = 0x00419730,0x0056D790     ; ExtraDataChunkType
+?ExtraDataPtr@AlchemyItem@@UAEPAXXZ                             = 0x00419740,0x00564930     ; ExtraDataPtr
+?ExtraDataSize@AlchemyItem@@UAEKXZ                              = 0x00419750,0x00564940     ; ExtraDataSize
+?CompareExtraData@AlchemyItem@@UAE_NABVMagicItem@@@Z            = 0x00412A00,0x00564790     ; CompareExtraData
+?CopyExtraData@AlchemyItem@@UAEXABVMagicItem@@@Z                = 0x00412A40,0x005647E0     ; CopyExtraData
+?SaveBases@AlchemyItem@@UAEXXZ                                  = 0x00419600,0x0056D4C0     ; SaveBases
+?LoadBases@AlchemyItem@@UAEXAAVTESFile@@K@Z                     = 0x00419760,0x005646A0     ; LoadBases
+?UpdateMagicItemInDialog@AlchemyItem@@UAEXPAUHWND__@@@Z         = _NOTINGAME,0x0056D650     ; UpdateMagicItemInDialog
+; EffectItemList virtual methods
+?GetMagickaCost@AlchemyItem@@UAEJPBVActor@@@Z   = _NOTINGAME,0x00564820     ; GetMagickaCost
+?GetMagickaCost@AlchemyItem@@UAEMPBVActor@@@Z   = 0x00412A80,_NOTINCS__     ; GetMagickaCost
+; methods
+??0AlchemyItem@@QAE@XZ                          = 0x00412BE0,0x00564CD0     ; AlchemyItem
+;}

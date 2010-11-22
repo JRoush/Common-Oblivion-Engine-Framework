@@ -1,0 +1,22 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; MemoryHeap
+; Static data
+?FormHeap@MemoryHeap@@2V1@A             = 0x00B02020,0x00A09E90     ; FormHeap
+; Virtual Methods
+?AllocatePage@MemoryHeap@@UAEPAXK@Z     = 0x00401170,0x004012F0 	; AllocatePage
+?RawAlloc@MemoryHeap@@UAEPAXK@Z         = 0x00401480,0x00401310     ; RawAlloc
+?RawAlloc2@MemoryHeap@@UAEPAXK@Z        = 0x00401720,0x00401590     ; RawAlloc2
+?FreeMemory@MemoryHeap@@UAEXPAX@Z       = 0x00401190,0x00401320     ; FreeMemory
+?RawFree@MemoryHeap@@UAEXPAX@Z          = 0x00401490,0x00401340     ; RawFree
+?RawFree2@MemoryHeap@@UAEXPAX@Z         = 0x00401730,0x004015A0     ; RawFree2
+?RawSize@MemoryHeap@@UAEKPAX@Z          = 0x00401740,0x004015B0     ; RawSize
+; Methods
+?Allocate@MemoryHeap@@QAEPAXK_N@Z       = 0x00401AA0,0x00401A20     ; Allocate
+?Free@MemoryHeap@@QAEXPAX@Z             = 0x00401D40,0x00401CB0     ; Free
+?FormHeapAlloc@MemoryHeap@@SAPAXK@Z     = 0x00401F00,0x00401E80     ; FormHeapAlloc
+?FormHeapFree@MemoryHeap@@SAXPAX@Z      = 0x00401F20,0x00401EA0     ; FormHeapFree
+??0MemoryHeap@@QAE@XZ                   = _NOTINGAME,_NOTINCS__     ; MemoryHeap()
+??1MemoryHeap@@QAE@XZ                   = _NOTINGAME,_NOTINCS__     ; ~MemoryHeap
+;}

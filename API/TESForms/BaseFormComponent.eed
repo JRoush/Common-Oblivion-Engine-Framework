@@ -1,0 +1,198 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESFullName
+; TESFullName - Virtual Methods
+?InitializeComponent@TESFullName@@UAEXXZ                            = 0x005A6A20,0x00498BE0     ; InitializeComponent
+?CopyComponentFrom@TESFullName@@UAEXABVBaseFormComponent@@@Z        = 0x0046C840,0x00498CA0     ; CopyComponentFrom
+?CompareComponentTo@TESFullName@@UBE_NABVBaseFormComponent@@@Z      = 0x0046C880,0x00498970     ; CompareComponentTo
+?IsComponentDlgValid@TESFullName@@UAE_NPAUHWND__@@@Z                = _NOTINGAME,0x004988D0     ; IsComponentDlgValid
+?SetComponentInDlg@TESFullName@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00498BC0     ; SetComponentInDlg
+?GetComponentFromDlg@TESFullName@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00498CE0     ; GetComponentFromDlg
+; TESFullName - methods
+?Name@TESFullName@@QAE?AVBSStringT@@XZ              = 0x00413490,0x00414C40     ; Name
+?GetNameForForm@TESFullName@@SAPBDPBVTESForm@@@Z    = 0x00469CD0,0x00414130     ; GetNameForForm
+?SaveComponent@TESFullName@@QAEXXZ                  = 0x0046C730,0x00498900     ; SaveComponent
+?LoadComponent@TESFullName@@SAXAAV1@AAVTESFile@@@Z  = 0x0046C7A0,0x00498C00     ; LoadComponent
+;}
+
+EXPORTS ;{ ; TESDescription
+; Static Data
+?cachedDescriptionOwner@TESDescription@@2PAV1@A                     = 0x00B33C04,_NOTINCS__     ; cachedDescriptionOwner
+?cachedDescription@TESDescription@@2VBSStringT@@A                   = 0x00B33C08,_NOTINCS__     ; cachedDescription
+; Virtual Methods
+?InitializeComponent@TESDescription@@UAEXXZ                         = 0x0046A360,0x00498BE0     ; InitializeComponent
+?CopyComponentFrom@TESDescription@@UAEXABVBaseFormComponent@@@Z     = 0x0046A3B0,0x00493BC0     ; CopyComponentFrom
+?CompareComponentTo@TESDescription@@UBE_NABVBaseFormComponent@@@Z   = 0x0046A4E0,0x00493550     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESDescription@@UAE_NPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x00493FE0     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESDescription@@UAE_NPAUHWND__@@@Z             = _NOTINGAME,0x004933F0     ; IsComponentDlgValid
+?SetComponentInDlg@TESDescription@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x00493420     ; SetComponentInDlg
+?GetComponentFromDlg@TESDescription@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x00493C80     ; GetComponentFromDlg
+?GetDescription@TESDescription@@UAEPBDPAVTESForm@@K@Z               = 0x0046A710,0x00493680     ; GetDescription
+; methods
+?SaveComponent@TESDescription@@QAEXXZ                   = 0x0046A700,0x00493B40     ; SaveComponent
+?LoadComponent@TESDescription@@SAXAAV1@AAVTESFile@@@Z   = 0x0046A390,0x00493B50     ; LoadComponent
+??0TESDescription@@QAE@XZ                               = 0x0046A400,0x00493F80     ; TESDescription()
+;}
+
+EXPORTS ;{ ; TESTexture
+; Virtual Methods
+?InitializeComponent@TESTexture@@UAEXXZ                         = 0x005A6A20,0x004A3CC0     ; InitializeComponent
+?ClearComponentReferences@TESTexture@@UAEXXZ                    = 0x0060D0A0,0x004A3920     ; ClearComponentReferences
+?CopyComponentFrom@TESTexture@@UAEXABVBaseFormComponent@@@Z     = 0x00470170,0x004A3D80     ; CopyComponentFrom
+?CompareComponentTo@TESTexture@@UBE_NABVBaseFormComponent@@@Z   = 0x004701B0,0x004A39C0     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESTexture@@UAE_NPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x004A40A0     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESTexture@@UAE_NPAUHWND__@@@Z             = _NOTINGAME,0x004A3860     ; IsComponentDlgValid
+?SetComponentInDlg@TESTexture@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x004A3BE0     ; SetComponentInDlg
+?GetComponentFromDlg@TESTexture@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x004A38C0     ; GetComponentFromDlg
+?ComponentDlgCleanup@TESTexture@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x004A38E0     ; ComponentDlgCleanup
+?GetTexturePathFromDlg@TESTexture@@UAE_NPAUHWND__@@K@Z          = _NOTINGAME,0x004A3F60     ; GetTexturePathFromDlg
+?GetNormalMapPath@TESTexture@@UAEXAAVBSStringT@@@Z              = 0x004702B0,0x004A4080     ; GetNormalMapPath
+?BaseTexturePath@TESTexture@@UAEPBDXZ                           = 0x0046FF10,0x004A36E0     ; BaseTexturePath
+?NoTextureText@TESTexture@@UAEPBDXZ                             = _NOTINGAME,0x004A36F0     ; NoTextureText
+?SetTextureImageInDlg@TESTexture@@UAEXPAD@Z                     = _NOTINGAME,0x004A37F0     ; SetTextureImageInDlg
+; Methods
+?SaveComponent@TESTexture@@QAEXK@Z                  = 0x00470070,0x004A3950     ; SaveComponent
+?LoadComponent@TESTexture@@SAXAAV1@AAVTESFile@@@Z   = 0x004700E0,0x004A3CF0     ; LoadComponent
+??0TESTexture@@QAE@XZ                               = 0x0046FFD0,0x004A3FF0     ; TESTexture
+??1TESTexture@@QAE@XZ                               = 0x00470040,0x004A4050     ; ~TESTexture
+;}
+
+EXPORTS ;{ ; TESIcon
+; Virtual Methods
+?BaseTexturePath@TESIcon@@UAEPBDXZ              = 0x0046CAA0,0x00499C40     ; BaseTexturePath
+?NoTextureText@TESIcon@@UAEPBDXZ                = _NOTINGAME,0x00499C50     ; NoTextureText
+?SetTextureImageInDlg@TESIcon@@UAEXPAD@Z        = _NOTINGAME,0x00499C60     ; SetTextureImageInDlg
+;}
+
+EXPORTS ;{ ; TESModel
+; virtual methods
+?InitializeComponent@TESModel@@UAEXXZ                           = 0x0046D4A0,0x0049C860     ; InitializeComponent
+?ClearComponentReferences@TESModel@@UAEXXZ                      = 0x0046D4D0,0x0049C890     ; ClearComponentReferences
+?CopyComponentFrom@TESModel@@UAEXABVBaseFormComponent@@@Z       = 0x0046D570,0x0049BBD0     ; CopyComponentFrom
+?CompareComponentTo@TESModel@@UBE_NABVBaseFormComponent@@@Z     = 0x0046D980,0x0049BF90     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESModel@@UAE_NPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x0049BD50     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESModel@@UAE_NPAUHWND__@@@Z               = _NOTINGAME,0x0049BEB0     ; IsComponentDlgValid
+?SetComponentInDlg@TESModel@@UAEXPAUHWND__@@@Z                  = _NOTINGAME,0x0049C230     ; SetComponentInDlg
+?GetComponentFromDlg@TESModel@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x0049BEF0     ; GetComponentFromDlg
+??1TESModel@@UAE@XZ                                             = 0x0046D850,0x0049CF40     ; ~TESModel
+?ModelPath@TESModel@@UAEPBDXZ                                   = 0x00412AB0,0x004624C0     ; ModelPath
+?GetModelPathFromDlg@TESModel@@UAE_NPAUHWND__@@K@Z              = _NOTINGAME,0x0049BCD0     ; GetModelPathFromDlg
+?SetModelPath@TESModel@@UAEXPBD@Z                               = 0x0046E080,0x0049C8A0     ; SetModelPath
+?UpdateModelBound@TESModel@@UAEXPAVNiNode@@PAVTESForm@@M@Z      = _NOTINGAME,0x0049C290     ; UpdateModelBound
+; methods
+?SaveComponent@TESModel@@QAEXKKK@Z              = 0x0046D8B0,0x0049C960     ; SaveComponent
+?LoadComponent@TESModel@@SAXAAV1@AAVTESFile@@@Z = 0x0046DB00,0x0049D0D0     ; LoadComponent
+??0TESModel@@QAE@XZ                             = 0x0046D7E0,0x0049D040     ; TESModel
+;}
+
+EXPORTS ;{ ; TESScriptableForm
+; virtual methods
+?InitializeComponent@TESScriptableForm@@UAEXXZ                          = 0x0046EF50,0x004A14E0     ; InitializeComponent
+?CopyComponentFrom@TESScriptableForm@@UAEXABVBaseFormComponent@@@Z      = 0x0046EFB0,0x004A1520     ; CopyComponentFrom
+?CompareComponentTo@TESScriptableForm@@UBE_NABVBaseFormComponent@@@Z    = 0x0046EFE0,0x004A1590     ; CompareComponentTo
+?RemoveComponentFormRef@TESScriptableForm@@UAEXAAVTESForm@@@Z           = _NOTINGAME,0x0049EDD0     ; RemoveComponentFormRef
+?ComponentDlgMsgCallback@TESScriptableForm@@UAE_NPAUHWND__@@IIJAAJ@Z    = _NOTINGAME,0x004A1690     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESScriptableForm@@UAE_NPAUHWND__@@@Z              = _NOTINGAME,0x004A16E0     ; IsComponentDlgValid
+?SetComponentInDlg@TESScriptableForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x004A1740     ; SetComponentInDlg
+?GetComponentFromDlg@TESScriptableForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x004A1800     ; GetComponentFromDlg
+; methoda
+?SaveComponent@TESScriptableForm@@QAEXXZ                = 0x0046EF80,0x004A14F0     ; SaveComponent
+?LinkComponent@TESScriptableForm@@QAEXAAVTESForm@@@Z    = 0x0046F020,0x004A1830     ; LinkComponent
+??0TESScriptableForm@@QAE@XZ                            = 0x0046EF60,0x004A1820     ; TESScriptableForm
+;}
+
+EXPORTS ;{ ; TESUsesForm
+; virtual methods
+?InitializeComponent@TESUsesForm@@UAEXXZ                            = 0x00470320,0x00491860     ; InitializeComponent
+?CopyComponentFrom@TESUsesForm@@UAEXABVBaseFormComponent@@@Z        = 0x00470340,0x004A42E0     ; CopyComponentFrom
+?CompareComponentTo@TESUsesForm@@UBE_NABVBaseFormComponent@@@Z      = 0x00470370,0x004A4310     ; CompareComponentTo
+?IsComponentDlgValid@TESUsesForm@@UAE_NPAUHWND__@@@Z                = _NOTINGAME,0x004A4380     ; IsComponentDlgValid
+?SetComponentInDlg@TESUsesForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x004A43B0     ; SetComponentInDlg
+?GetComponentFromDlg@TESUsesForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x004A4400     ; GetComponentFromDlg
+; methods
+??0TESUsesForm@@QAE@XZ                                              = 0x00470330,0x004A4420     ; TESUsesForm
+;}
+
+EXPORTS ;{ ; TESValueForm
+; virtual methods
+?InitializeComponent@TESValueForm@@UAEXXZ                       = 0x0046C9C0,0x0049FAF0     ; InitializeComponent
+?CopyComponentFrom@TESValueForm@@UAEXABVBaseFormComponent@@@Z   = 0x00470480,0x004A46C0     ; CopyComponentFrom
+?CompareComponentTo@TESValueForm@@UBE_NABVBaseFormComponent@@@Z = 0x004704E0,0x004A4560     ; CompareComponentTo
+?IsComponentDlgValid@TESValueForm@@UAE_NPAUHWND__@@@Z           = _NOTINGAME,0x004A4600     ; IsComponentDlgValid
+?SetComponentInDlg@TESValueForm@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x004A4630     ; SetComponentInDlg
+?GetComponentFromDlg@TESValueForm@@UAEXPAUHWND__@@@Z            = _NOTINGAME,0x004A4680     ; GetComponentFromDlg
+?ModifiedComponentSize@TESValueForm@@UAEGK@Z                    = 0x00470400,_NOTINCS__     ; ModifiedComponentSize
+?SaveModifiedComponent@TESValueForm@@UAEXK@Z                    = 0x00470420,_NOTINCS__     ; SaveModifiedComponent
+?LoadModifiedComponent@TESValueForm@@UAEXKK@Z                   = 0x00470440,_NOTINCS__     ; LoadModifiedComponent
+; methods
+??0TESValueForm@@QAE@XZ                                         = 0x00470470,0x004A46B0     ; TESValueForm
+;}
+
+EXPORTS ;{ ; TESHealthForm
+; virtual methods
+?InitializeComponent@TESHealthForm@@UAEXXZ                          = 0x0046C9C0,0x0049FAF0     ; InitializeComponent
+?CopyComponentFrom@TESHealthForm@@UAEXABVBaseFormComponent@@@Z      = 0x0046CA60,0x00499990     ; CopyComponentFrom
+?CompareComponentTo@TESHealthForm@@UBE_NABVBaseFormComponent@@@Z    = 0x0046C9D0,0x004999D0     ; CompareComponentTo
+?IsComponentDlgValid@TESHealthForm@@UAE_NPAUHWND__@@@Z              = _NOTINGAME,0x00499A60     ; IsComponentDlgValid
+?SetComponentInDlg@TESHealthForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00499C00     ; SetComponentInDlg
+?GetComponentFromDlg@TESHealthForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x00499AB0     ; GetComponentFromDlg
+?Health@TESHealthForm@@UAEKXZ                                       = 0x004B2460,0x0047A4E0     ; Health
+; methods
+?GetHealthForForm@TESHealthForm@@SAKPBVTESForm@@@Z                  = 0x0046CA20,0x00499A20     ; GetHealthForForm
+??0TESHealthForm@@QAE@XZ                                            = 0x0046CA50,0x00499AD0     ; TESHealthForm
+;}
+
+EXPORTS ;{ ; TESWeightForm
+; virtual methods
+?InitializeComponent@TESWeightForm@@UAEXXZ                          = 0x00470590,0x004A4830     ; InitializeComponent
+?CopyComponentFrom@TESWeightForm@@UAEXABVBaseFormComponent@@@Z      = 0x004705B0,0x004A4840     ; CopyComponentFrom
+?CompareComponentTo@TESWeightForm@@UBE_NABVBaseFormComponent@@@Z    = 0x004705E0,0x004A4870     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESWeightForm@@UAE_NPAUHWND__@@IIJAAJ@Z    = _NOTINGAME,0x004A4950     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESWeightForm@@UAE_NPAUHWND__@@@Z              = _NOTINGAME,0x004A4990     ; IsComponentDlgValid
+?SetComponentInDlg@TESWeightForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x004A49C0     ; SetComponentInDlg
+?GetComponentFromDlg@TESWeightForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x004A4A10     ; GetComponentFromDlg
+; methods
+??0TESWeightForm@@QAE@XZ                                            = 0x004705A0,0x004A4A30     ; TESWeightForm
+;}
+
+EXPORTS ;{ ; TESQualityForm
+; virtual methods
+?InitializeComponent@TESQualityForm@@UAEXXZ                         = 0x00470590,0x004A4830     ; InitializeComponent
+?CopyComponentFrom@TESQualityForm@@UAEXABVBaseFormComponent@@@Z     = 0x0046E310,0x0049F7A0     ; CopyComponentFrom
+?CompareComponentTo@TESQualityForm@@UBE_NABVBaseFormComponent@@@Z   = 0x0046E370,0x0049F800     ; CompareComponentTo
+?IsComponentDlgValid@TESQualityForm@@UAE_NPAUHWND__@@@Z             = _NOTINGAME,0x0049F8E0     ; IsComponentDlgValid
+?SetComponentInDlg@TESQualityForm@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x0049F910     ; SetComponentInDlg
+?GetComponentFromDlg@TESQualityForm@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x0049F990     ; GetComponentFromDlg
+; methods
+??0TESQualityForm@@QAE@XZ                                           = 0x0046E300,0x0049F9C0     ; TESQualityForm
+;}
+
+EXPORTS ;{ ; TESAttackDamageForm
+; virtual methods
+?InitializeComponent@TESAttackDamageForm@@UAEXXZ                        = 0x004689B0,0x0048F110     ; InitializeComponent
+?CopyComponentFrom@TESAttackDamageForm@@UAEXABVBaseFormComponent@@@Z    = 0x00468A70,0x0048F290     ; CopyComponentFrom
+?CompareComponentTo@TESAttackDamageForm@@UBE_NABVBaseFormComponent@@@Z  = 0x004689C0,0x0048F120     ; CompareComponentTo
+?IsComponentDlgValid@TESAttackDamageForm@@UAE_NPAUHWND__@@@Z            = _NOTINGAME,0x0048F1C0     ; IsComponentDlgValid
+?SetComponentInDlg@TESAttackDamageForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x0048F1F0     ; SetComponentInDlg
+?GetComponentFromDlg@TESAttackDamageForm@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x0048F250     ; GetComponentFromDlg
+?Damage@TESAttackDamageForm@@UAEGXZ                                     = 0x00468A40,0x0048F1A0     ; Damage
+; methods
+??0TESAttackDamageForm@@QAE@XZ                                          = 0x00468A60,0x0048F280     ; TESAttackDamageForm
+;}
+
+EXPORTS ;{ ; TESAttributes
+; virtual methods
+?InitializeComponent@TESAttributes@@UAEXXZ                       = 0x00468AC0,0x0048F400     ; InitializeComponent
+?CopyComponentFrom@TESAttributes@@UAEXABVBaseFormComponent@@@Z   = 0x00468BD0,0x0048F630     ; CopyComponentFrom
+?CompareComponentTo@TESAttributes@@UBE_NABVBaseFormComponent@@@Z = 0x00468C20,0x0048F680     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESAttributes@@UAE_NPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x0048F4A0     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESAttributes@@UAE_NPAUHWND__@@@Z           = _NOTINGAME,0x0048F530     ; IsComponentDlgValid
+?SetComponentInDlg@TESAttributes@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x0048FDB0     ; SetComponentInDlg
+?GetComponentFromDlg@TESAttributes@@UAEXPAUHWND__@@@Z            = _NOTINGAME,0x0048F580     ; GetComponentFromDlg
+?ModifiedComponentSize@TESAttributes@@UAEGK@Z                    = 0x00468B40,_NOTINCS__     ; ModifiedComponentSize
+?SaveModifiedComponent@TESAttributes@@UAEXK@Z                    = 0x00468B60,_NOTINCS__     ; SaveModifiedComponent
+?LoadModifiedComponent@TESAttributes@@UAEXKK@Z                   = 0x00468B80,_NOTINCS__     ; LoadModifiedComponent
+; methods
+??0TESAttributes@@QAE@XZ                                         = 0x00468BB0,0x0048F620     ; TESAttributes
+;}

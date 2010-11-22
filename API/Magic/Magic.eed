@@ -1,0 +1,31 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; Magic
+; static data
+?projectileTypeNames@Magic@@2PAPAVGameSetting@@A    = 0x00B037F0,0x009F97F0     ; ProjectileTypeNames
+?rangeNames@Magic@@2PAPAVGameSetting@@A             = 0x00B037E4,0x009F97E4     ; RangeNames
+?castTypeNames@Magic@@2PAPAVGameSetting@@A          = 0x00B037D4,0x009F97D4     ; CastTypeNames
+?magicTypeNames@Magic@@2PAPAVGameSetting@@A         = 0x00B037AC,0x009F97AC     ; MagicTypeNames
+?schoolNames@Magic@@2PAPAVGameSetting@@A            = 0x00B03794,0x009F9794     ; SchoolNames
+?lifeDetectedShader@Magic@@2PAVTESEffectShader@@A   = 0x00B335B8,0x00A13E68     ; lifeDetectedShader
+?reflectShader@Magic@@2PAVTESEffectShader@@A        = 0x00B335B0,0x00A13E60     ; reflectShader - Note that Reflect & Absorb names are switched in CS
+?absorbShader@Magic@@2PAVTESEffectShader@@A         = 0x00B335B4,0x00A13E64     ; absorbShader - Note that Reflect & Absorb names are switched in CS
+?marksmanParalyzeSpell@Magic@@2PAVSpellItem@@A      = 0x00B335AC,0x00A13E5C     ; marksmanParalyzeSpell
+?defaultPlayerSpell@Magic@@2PAVSpellItem@@A         = 0x00B335A8,0x00A13E58     ; defaultPlayerSpell
+; static methods
+?GetSkillAVForSchool@Magic@@SAKK@Z                      = 0x0041B770,_NOTINCS__     ; GetSkillAVForSchool
+?GetSchoolForSkillAV@Magic@@SAKK@Z                      = 0x0041B7C0,_NOTINCS__     ; GetSchoolForSkillAV
+?GetSchoolCastFailureSound@Magic@@SAPAVTESSound@@K@Z    = 0x0041B820,_NOTINCS__     ; GetSchoolCastFailureSound
+?GetSchoolName@Magic@@SAPBDK@Z                          = _NOTINGAME,0x004138F0     ; GetSchoolName
+?GetMagicTypeName@Magic@@SAPBDK@Z                       = 0x0041B9E0,0x00413910     ; GetMagicTypeName
+?GetCastTypeName@Magic@@SAPBDK@Z                        = _NOTINGAME,0x00413930     ; GetCastTypeName
+?GetRangeName@Magic@@SAPBDK@Z                           = 0x00412E00,0x00441A80     ; GetRangeName
+?GetProjectileDistance@Magic@@SAXKAAM0@Z                = 0x0041BA70,_NOTINCS__     ; GetProjectileDistance
+;}
+
+
+
+
+
+

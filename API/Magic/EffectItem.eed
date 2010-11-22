@@ -1,0 +1,91 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; EffectItem
+; comparison
+?CompareTo@EffectItem@@QBE_NABV1@@Z     = 0x00414190,0x00566150     ; CompareTo
+?CopyFrom@EffectItem@@QAEXABV1@@Z       = 0x00413FC0,0x005666E0     ; CopyFrom
+?Match@EffectItem@@QAE_NABV1@@Z         = 0x00412EF0,_NOTINCS__     ; Match
+; serialization
+?Load@EffectItem@@QAE_NAAVTESFile@@PBD@Z            = 0x00413130,0x00565A10     ; Load
+?Save@EffectItem@@QAEXXZ                            = 0x00413070,0x00565050     ; Save
+; main member access
+?GetMagnitude@EffectItem@@QBEJXZ                            = 0x00413320,0x00565110     ; GetMagnitude
+?SetMagnitude@EffectItem@@QAE_NJ@Z                          = 0x00413340,0x00565130     ; SetMagnitude
+?GetArea@EffectItem@@QBEJXZ                                 = 0x00413370,0x00565160     ; GetArea
+?SetArea@EffectItem@@QAE_NJ@Z                               = 0x00413390,0x00565180     ; SetArea
+?GetDuration@EffectItem@@QBEJXZ                             = 0x004133C0,0x005651C0     ; GetDuration
+?SetDuration@EffectItem@@QAE_NJ@Z                           = 0x004133E0,0x005651E0     ; SetDuration
+?SetRange@EffectItem@@QAE_NK@Z                              = 0x00413410,0x00565210     ; SetRange         
+?SetEffectSetting@EffectItem@@QAEXABVEffectSetting@@@Z      = 0x00413710,0x00566050     ; SetEffectSetting
+; secondary properties
+?MagickaCost@EffectItem@@QAEMXZ                                 = 0x00413810,0x00565730     ; MagickaCost
+?MagickaCostForCaster@EffectItem@@QAEMPAVActor@@@Z              = 0x00413890,_NOTINCS__     ; MagickaCostForCaster
+?GetSchool@EffectItem@@QBEKXZ                                   = 0x00412F20,0x00564E80     ; GetSchool
+?GetScript@EffectItem@@QBEPAVScript@@XZ                         = 0x00412CC0,0x00564E20     ; GetScript
+?IsHostile@EffectItem@@QBE_NXZ                                  = 0x00413470,0x00565280     ; IsHostile
+?GetSummonedForm@EffectItem@@QBEPAVTESForm@@XZ                  = 0x00418F30,0x0056C920     ; GetSummonedForm
+?GetEffectName@EffectItem@@QBE?AVBSStringT@@XZ                  = 0x004139F0,0x00565D00     ; GetEffectName
+?GetDisplayText@EffectItem@@QBE?AVBSStringT@@KM_N00@Z           = 0x00413BE0,_NOTINCS__     ; GetDisplayText
+?GetDisplayText@EffectItem@@QBE?AVBSStringT@@ABVMagicItem@@M@Z  = 0x004145D0,_NOTINCS__     ; GetDisplayText
+?GetAVQualifiedName@EffectItem@@QBEXPAD@Z                       = 0x00413A90,_NOTINCS__     ; GetAVQualifiedName
+; dialog methods
+?BuildActorValueList@EffectItem@@QAEXPAUHWND__@@@Z          = _NOTINGAME,0x00565440      ; BuildActorValueList
+?BuildEffectList@EffectItem@@QAEXPAUHWND__@@@Z              = _NOTINGAME,0x005652A0      ; BuildEffectList
+?BuildRangeList@EffectItem@@QAEXPAUHWND__@@@Z               = _NOTINGAME,0x00565380      ; BuildRangeList
+?BuildSchoolList@EffectItem@@QAEXPAUHWND__@@@Z              = _NOTINGAME,0x005654E0      ; BuildSchoolList
+?BuildScriptList@EffectItem@@QAEXPAUHWND__@@@Z              = _NOTINGAME,0x005654A0      ; BuildScriptList
+?InitializeDialog@EffectItem@@QAEXPAUHWND__@@@Z             = _NOTINGAME,0x005664C0      ; InitializeDialog
+?SetInDialog@EffectItem@@QAEXPAUHWND__@@@Z                  = _NOTINGAME,0x00565DA0      ; SetInDialog
+?GetFromDialog@EffectItem@@QAEXPAUHWND__@@@Z                = _NOTINGAME,0x005657E0      ; GetFromDialog
+?HandleDialogEvent@EffectItem@@QAE_NPAUHWND__@@HIJAAJ@Z     = _NOTINGAME,0x00566340      ; HandleDialogEvent
+?DialogWndProc@EffectItem@@SA_NPAUHWND__@@HIJ@Z             = _NOTINGAME,0x00566820      ; DialogWndProc
+; construction, destruction
+?Initialize@EffectItem@@QAEXABVEffectSetting@@@Z    = 0x00414790,0x00566A10     ; Initialize
+??0EffectItem@@QAE@ABVEffectSetting@@@Z             = 0x004149D0,0x00566BC0     ; EffectItem
+??0EffectItem@@QAE@ABV0@@Z                          = 0x004149A0,0x00566B80     ; EffectItem
+??1EffectItem@@QAE@XZ                               = 0x00413BB0,0x00566690     ; ~EffectItem
+;}  
+  
+EXPORTS ;{ ; EffectItemList
+; virtual methods
+?GetMagickaCost@EffectItemList@@UAEMPBVActor@@@Z    = 0x004151C0,_NOTINCS__     ; GetMagickaCost
+?GetMagickaCost@EffectItemList@@UAEJPBVActor@@@Z    = _NOTINGAME,0x00567140     ; GetMagickaCost
+?GetMaxEffectCount@EffectItemList@@UAEKXZ           = 0x006F7070,0x0071A880     ; GetMaxEffectCount
+?GetMasteryLevel@EffectItemList@@UAEKXZ             = 0x00924E30,0x007BCCE0     ; GetMasteryLevel
+; methods - aggregate properties
+?HasEffect@EffectItemList@@QAE_NKK@Z                        = 0x00414F00,0x00566FF0     ; HasEffect
+?HasEffectWithFlag@EffectItemList@@QAE_NK@Z                 = 0x00415130,0x00567080     ; HasEffectWithFlag
+?HasHostileEffect@EffectItemList@@QAE_NXZ                   = 0x004149F0,0x00566BE0     ; HasHostileEffect
+?HasAllHostileEffects@EffectItemList@@QAE_NXZ               = 0x00414EB0,0x00566F90     ; HasAllHostileEffects
+?GetStrongestItem@EffectItemList@@QAEPAVEffectItem@@K_N@Z   = 0x004152C0,0x005671B0     ; GetStrongestItem
+?HasAreaEffect@EffectItemList@@QAE_NXZ                      = 0x004150D0,_NOTINCS__     ; HasAreaEffect
+?HasEffectCode@EffectItemList@@QAA_NKZZ                     = 0x00414C00,_NOTINCS__     ; HasEffectCode
+?HasIgnored@EffectItemList@@QAE_NXZ                         = 0x00415180,_NOTINCS__     ; HasIgnored
+?HasScriptEffect@EffectItemList@@QAE_NPAVScript@@@Z         = 0x00414F80,_NOTINCS__     ; HasScriptEffect
+?HasSelfEffect@EffectItemList@@QAE_NXZ                      = 0x00415080,_NOTINCS__     ; HasSelfEffect
+?HasTouchEffect@EffectItemList@@QAE_NXZ                     = 0x00415030,_NOTINCS__     ; HasTouchEffect
+?HasTargetEffect@EffectItemList@@QAE_NXZ                    = 0x00414FE0,_NOTINCS__     ; HasTargetEffect
+?GetSchoolAV@EffectItemList@@QAEKXZ                         = 0x00415360,_NOTINCS__     ; GetSchoolAV
+?SkillRequiredText@EffectItemList@@QAE?AVBSStringT@@XZ      = 0x00415390,_NOTINCS__     ; SkillRequiredText
+?MagicSchoolText@EffectItemList@@QAE?AVBSStringT@@XZ        = 0x004156B0,_NOTINCS__     ; MagicSchoolText
+; methods - dialog
+?EffectListDlgMsgCallback@EffectItemList@@QAE_NPAUHWND__@@HIJAAJ@Z  = _NOTINGAME,0x00567CF0     ; EffectListDlgMsgCallback
+?PopulateDialogEffectList@EffectItemList@@QAEXPAUHWND__@@@Z         = _NOTINGAME,0x00567260     ; PopulateDialogEffectList
+?InitializeDialogEffectList@EffectItemList@@SAXPAUHWND__@@@Z        = _NOTINGAME,0x00566BF0     ; InitializeDialogEffectList
+?ValidateEffectForDialog@EffectItemList@@QAE_NAAVEffectItem@@@Z     = _NOTINGAME,0x00567300     ; ValidateEffectForDialog
+?ValidateEffectListForDialog@EffectItemList@@QAEXPAUHWND__@@@Z      = _NOTINGAME,0x00568330     ; ValidateEffectListForDialog
+?GetEffectDisplayInfo@EffectItemList@@SAXPAX@Z                      = _NOTINGAME,0x00567670     ; GetEffectDisplayInfo
+?EffectItemComparator@EffectItem@@SAHABV1@0H@Z                      = _NOTINGAME,0x005678B0     ; EffectItemComparator
+; methods - other
+?Remove@EffectItemList@@QAEXPBVEffectItem@@@Z               = 0x00414BC0,0x00566F50     ; Remove
+?Add@EffectItemList@@QAEXPAVEffectItem@@@Z                  = 0x00414B90,0x00566F20     ; Add
+?Clear@EffectItemList@@QAEXXZ                               = 0x00414C70,0x005670F0     ; Clear
+?GetItemByIndex@EffectItemList@@QAEPAVEffectItem@@J@Z       = 0x00414B10,0x00566EA0     ; GetItemByIndex
+?GetIndexOfItem@EffectItemList@@QAEEPAVEffectItem@@@Z       = 0x00414D50,_NOTINCS__     ; GetIndexOfItem
+?CompareEffectsTo@EffectItemList@@QAE_NABV1@@Z              = 0x00414A70,0x00566E00     ; CompareEffectsTo
+?CopyEffectsFrom@EffectItemList@@QAEXABV1@@Z                = 0x00414DC0,0x005673D0     ; CopyEffectsFrom
+?SaveEffects@EffectItemList@@QAEXXZ                         = 0x00414A20,0x00566DA0     ; SaveEffects
+?LoadEffects@EffectItemList@@QAEXAAVTESFile@@PBD@Z          = 0x004154B0,0x00567470     ; LoadEffects
+??0EffectItemList@@QAE@XZ                                   = 0x00414A00,0x00566D70     ; EffectItemList
+;}

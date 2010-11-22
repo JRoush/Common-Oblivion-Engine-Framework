@@ -1,0 +1,19 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; MagicTarget
+; virtual methods
+?AttemptAddEffect@MagicTarget@@UAE_NPAVMagicCaster@@PAVMagicItem@@PAVActiveEffect@@_N@Z = 0x006A2CF0,_NOTINCS__     ; AttemptAddEffect
+?ResistanceFactor@MagicTarget@@UAEMPAVMagicCaster@@PAVMagicItem@@PAVActiveEffect@@@Z    = 0x006A1DD0,_NOTINCS__     ; ResistanceFactor
+; methods
+?AddEffect@MagicTarget@@QAE_NPAVMagicCaster@@PAVMagicItem@@PAVActiveEffect@@@Z          = 0x006A27F0,_NOTINCS__     ; AddEffect
+?ProcessEffects@MagicTarget@@QAEXM@Z                                                    = 0x006A2280,_NOTINCS__     ; ProcessEffects
+?HasEffect@MagicTarget@@QAE_NK@Z                                                        = 0x006A1EA0,_NOTINCS__     ; HasEffect
+?HasMagicItemEffect@MagicTarget@@QAE_NPAVMagicItem@@@Z                                  = 0x006A1DF0,_NOTINCS__     ; HasMagicItemEffect
+?RemoveEffects@MagicTarget@@QAEXPAVMagicItem@@PAVMagicCaster@@PAVActiveEffect@@@Z       = 0x006A1F70,_NOTINCS__     ; RemoveEffects
+?RemoveBoundObjectEffects@MagicTarget@@QAEXPAVTESBoundObject@@_N@Z                      = 0x006A2110,_NOTINCS__     ; RemoveBoundObjectEffects
+?RemoveAllNonpersistentEffects@MagicTarget@@QAEX_N@Z                                    = 0x006A2190,_NOTINCS__     ; RemoveAllNonpersistentEffects
+?ActiveEffectCompareFunc@MagicTarget@@SAHABVActiveEffect@@0@Z                           = 0x006A25E0,_NOTINCS__     ; ActiveEffectCompareFunc
+??0MagicTarget@@QAE@XZ                                                                  = 0x006A1D50,_NOTINCS__     ; MagicTarget
+??1MagicTarget@@QAE@XZ                                                                  = 0x006A1D60,_NOTINCS__     ; ~MagicTarget
+;}

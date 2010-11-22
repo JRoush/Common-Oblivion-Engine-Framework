@@ -1,0 +1,9 @@
+*** Custom keywords - makes the source much easier to read by defining common macros as custom keywords
+*** TO USE: Delete these three lines and move this file to the same directory as 'devenv.exe' in your Visual Studio installation.
+*** Restart Visual Studio, open Tools -> Options -> Environment -> Fonts and Colors -> Display Items -> User Keywords, and customize color.
+IMPORTCLASS
+IMPORT
+_NOUSE 
+_LOCAL
+INLINE
+MEMBER 

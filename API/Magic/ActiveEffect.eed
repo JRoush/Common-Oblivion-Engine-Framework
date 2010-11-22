@@ -1,0 +1,31 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; ActiveEffect
+; static data
+?creatorFuncMap@ActiveEffect@@2V?$NiTMap@KP6APAVActiveEffect@@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z@@A    = 0x00B15A0C,_NOTINCS__     ; creatorFuncMap
+; virtual methods
+??1ActiveEffect@@UAE@XZ                                 = 0x0068D970,_NOTINCS__     ; ~ActiveEffect
+?Clone@ActiveEffect@@UBEPAV1@XZ                         = 0x0068D820,_NOTINCS__     ; Clone
+?EffectSaveSize@ActiveEffect@@UAEGPAVTESObjectREFR@@@Z  = 0x0068DA40,_NOTINCS__     ; EffectSaveSize
+?SaveEffect@ActiveEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068DAD0,_NOTINCS__     ; SaveEffect
+?LoadEffect@ActiveEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068E3A0,_NOTINCS__     ; LoadEffect
+?LinkEffect@ActiveEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068DC90,_NOTINCS__     ; LinkEffect
+?PostLinkEffect@ActiveEffect@@UAEXPAVTESObjectREFR@@@Z  = 0x0068E600,_NOTINCS__     ; PostLinkEffect
+?RemoveCaster@ActiveEffect@@UAE_NPAVMagicCaster@@@Z     = 0x0068D900,_NOTINCS__     ; RemoveCaster
+?CopyTo@ActiveEffect@@UAEXABV1@@Z                       = 0x0068D8A0,_NOTINCS__     ; CopyTo
+; methods
+?ApplyScalingFactor@ActiveEffect@@QAEXM@Z                                                               = 0x0068E170,_NOTINCS__     ; ApplyScalingFactor
+?Remove@ActiveEffect@@QAEX_N@Z                                                                          = 0x0068EA10,_NOTINCS__     ; Remove
+?ProcessEffect@ActiveEffect@@QAEXM@Z                                                                    = 0x0068E670,_NOTINCS__     ; ProcessEffect
+?Create@ActiveEffect@@SAPAV1@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@PAVTESBoundObject@@@Z         = 0x0068EA50,_NOTINCS__     ; Create
+?Save@ActiveEffect@@SAXAAV1@PAVTESObjectREFR@@@Z                                                        = 0x0068DD30,_NOTINCS__     ; Save
+?Load@ActiveEffect@@SAPAV1@PAVTESObjectREFR@@@Z                                                         = 0x0068EDA0,_NOTINCS__     ; Load
+?ActiveEffectListSaveSize@ActiveEffect@@SAGPAVActiveEffectList@@PAVTESObjectREFR@@@Z                    = 0x0068DDC0,_NOTINCS__     ; ActiveEffectListSaveSize
+?SaveActiveEffectList@ActiveEffect@@SAXPAVActiveEffectList@@PAVTESObjectREFR@@@Z                        = 0x0068DEB0,_NOTINCS__     ; SaveActiveEffectList
+?LoadActiveEffectList@ActiveEffect@@SAXPAVActiveEffectList@@PAVTESObjectREFR@@@Z                        = 0x0068EE90,_NOTINCS__     ; LoadActiveEffectList
+?LinkActiveEffectList@ActiveEffect@@SAXPAV?$BSSimpleList@PAVActiveEffect@@@@PAVTESObjectREFR@@@Z        = 0x0068E030,_NOTINCS__     ; LinkActiveEffectList
+?PostLinkActiveEffectList@ActiveEffect@@SAXPAV?$BSSimpleList@PAVActiveEffect@@@@PAVTESObjectREFR@@@Z    = 0x0068E060,_NOTINCS__     ; PostLinkActiveEffectList
+?PreLoadActiveEffectList@ActiveEffect@@SAXPAV?$BSSimpleList@PAVActiveEffect@@@@PAVTESObjectREFR@@@Z     = 0x0068E0B0,_NOTINCS__     ; PreLoadActiveEffectList
+??0ActiveEffect@@QAE@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z                                    = 0x0068D7A0,_NOTINCS__     ; ActiveEffect
+;}

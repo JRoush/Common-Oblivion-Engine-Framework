@@ -1,0 +1,7 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; BSExtraData
+??1BSExtraData@@UAE@XZ                      = 0x0041D7E0,0x00440230     ; ~BSExtraData
+?CompareExtraTo@BSExtraData@@UAE_NABV1@@Z   = 0x0041DF70,0x0045ADD0     ; CompareTo
+;}

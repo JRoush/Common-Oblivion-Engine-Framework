@@ -1,0 +1,29 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; Setting
+?SetStringValue@Setting@@QAEXPBD@Z      = 0x004A7980,0x004C6780     ; SetStringValue
+?GetTypeFromName@Setting@@SAKPBD@Z      = 0x004A78D0,0x004C66D0     ; GetTypeFromName
+;}
+
+EXPORTS ;{ ; GameSetting
+; virtual methods
+??1GameSetting@@UAE@XZ                          = _NOTINGAME,0x0044F850     ; ~GameSetting
+?LoadForm@GameSetting@@UAE_NAAVTESFile@@@Z      = _NOTINGAME,0x004FA190     ; LoadForm
+?SaveFormChunks@GameSetting@@UAEXXZ             = _NOTINGAME,0x004FA110     ; SaveFormChunks
+?CopyFrom@GameSetting@@UAEXAAVTESForm@@@Z       = _NOTINGAME,0x004FA290     ; CopyFrom
+?CompareTo@GameSetting@@UAE_NAAVTESForm@@@Z     = _NOTINGAME,0x004FA3F0     ; CompareTo
+?SetInDialog@GameSetting@@UAEXPAUHWND__@@@Z     = _NOTINGAME,0x004FA4A0     ; SetInDialog
+?GetFromDialog@GameSetting@@UAEXPAUHWND__@@@Z   = _NOTINGAME,0x004FA660     ; GetFromDialog
+?CleanupDialog@GameSetting@@UAEXPAUHWND__@@@Z   = _NOTINGAME,0x004FA720     ; CleanupDialog
+; methods
+??0GameSetting@@QAE@PBD_N@Z     = 0x00419A70,0x0044F790     ; GameSetting
+??0GameSetting@@QAE@PBDD@Z      = 0x00419A70,0x0044F790     ; GameSetting
+??0GameSetting@@QAE@PBDE@Z      = 0x00419A70,0x0044F790     ; GameSetting
+??0GameSetting@@QAE@PBDJ@Z      = 0x00419A70,0x0044F790     ; GameSetting
+??0GameSetting@@QAE@PBDK@Z      = 0x00419A70,0x0044F790     ; GameSetting
+??0GameSetting@@QAE@PBDM@Z      = 0x00419A70,0x0044F790     ; GameSetting
+??0GameSetting@@QAE@PBD0@Z      = 0x00419A70,0x0044F790     ; GameSetting
+??1GameSetting@@QAE@XZ          = 0x004055E0,_NOTINCS__     ; ~GameSetting
+;}
+

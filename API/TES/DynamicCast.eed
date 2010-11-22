@@ -1,0 +1,6 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS
+; DynamicCast
+?OblivionDynamicCast@@YAPAXPAXKABVtype_info@@1_N@Z  = 0x009832E6,0x0088DC0C     ; OblivionDynamicCast

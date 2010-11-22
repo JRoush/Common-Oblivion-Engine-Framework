@@ -1,0 +1,54 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObjectREFR
+; TESChildCell virtual methods
+?GetChildCell@TESObjectREFR@@UAEPAVTESObjectCELL@@XZ    = 0x004DDCB0,0x00544400     ; GetChildCell
+; TESForm virtual methods
+??1TESObjectREFR@@UAE@XZ                                                    = 0x004E2920,0x005484C0     ; ~TESObjectREFR
+?InitializeAllComponents@TESObjectREFR@@UAEXXZ                              = 0x004D6BF0,0x0053EE10     ; InitializeAllComponents
+?ClearAllComponentReferences@TESObjectREFR@@UAEXXZ                          = 0x004D9B50,0x00544C70     ; ClearAllComponentReferences
+?LoadForm@TESObjectREFR@@UAE_NAAVTESFile@@@Z                                = 0x004D9D00,0x00541A30     ; LoadForm
+?SaveFormChunks@TESObjectREFR@@UAEXXZ                                       = 0x004D9C30,0x00541950     ; SaveFormChunks
+?LessThanGroup@TESObjectREFR@@UAE_NABVRecordInfo@@@Z                        = 0x004DFE70,0x00545750     ; LessThanGroup
+?LessThan@TESObjectREFR@@UAE_NAAVTESForm@@@Z                                = 0x004DFD10,0x005455F0     ; LessThan
+?Clone@TESObjectREFR@@UAEPAVTESForm@@_NPAV?$NiTMap@PAVTESForm@@PAV1@@@@Z    = 0x004DA0A0,0x00541DC0     ; Clone
+?ModifiedFormSize@TESObjectREFR@@UAEGK@Z                                    = 0x004E2BF0,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESObjectREFR@@UAEXK@Z                                    = 0x004E2D60,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESObjectREFR@@UAEXKK@Z                                   = 0x004E00F0,_NOTINCS__     ; LoadModifiedForm
+?LinkModifiedForm@TESObjectREFR@@UAEXKK@Z                                   = 0x004DA2D0,_NOTINCS__     ; LinkModifiedForm
+?PostLinkModifiedForm@TESObjectREFR@@UAEXKK@Z                               = 0x004DA3E0,_NOTINCS__     ; PostLinkModifiedForm
+?PreLoadModifiedForm@TESObjectREFR@@UAEXK@Z                                 = 0x004E0580,_NOTINCS__     ; PreLoadModifiedForm
+?LinkForm@TESObjectREFR@@UAEXXZ                                             = 0x004DF820,0x00548710     ; LinkForm
+?GetFormType@TESObjectREFR@@UAEEXZ                                          = 0x004D6EA0,0x0053EFC0     ; GetFormType
+?GetDebugDescription@TESObjectREFR@@UAEXAAVBSStringT@@@Z                    = 0x004DF6A0,0x00548590     ; GetDebugDescription
+?IsQuestItem@TESObjectREFR@@UAE_NXZ                                         = 0x004D9B10,0x00541900     ; IsQuestItem
+?SetDeleted@TESObjectREFR@@UAEX_N@Z                                         = 0x004D65D0,0x005421C0     ; SetDeleted
+?SetFromActiveFile@TESObjectREFR@@UAEX_N@Z                                  = 0x004D6DB0,0x0053EE90     ; SetFromActiveFile
+?CopyFrom@TESObjectREFR@@UAEXAAVTESForm@@@Z                                 = 0x004DF1A0,0x00545000     ; CopyFrom
+?CompareTo@TESObjectREFR@@UAE_NAAVTESForm@@@Z                               = 0x004D6C40,0x00541F90     ; CompareTo
+?MatchGroupRecord@TESObjectREFR@@UAE_NABVRecordInfo@@_N1@Z                  = 0x004DFF40,0x00545820     ; MatchGroupRecord
+?CreateGroupRecord@TESObjectREFR@@UAEXAAVRecordInfo@@0@Z                    = 0x004E0000,0x00545970     ; CreateGroupRecord
+?GetEditorID@TESObjectREFR@@UAEPBDXZ                                        = 0x004D6DF0,0x005420A0     ; GetEditorID
+?RemoveFormReference@TESObjectREFR@@UAEXAAVTESForm@@@Z                      = _NOTINGAME,0x00543070     ; RemoveFormReference
+?UpdateUsageInfo@TESObjectREFR@@UAE_NXZ                                     = _NOTINGAME,0x00540010     ; UpdateUsageInfo
+?DialogMessageCallback@TESObjectREFR@@UAEXPAUHWND__@@IIJAAJ@Z               = _NOTINGAME,0x0054BB80     ; DialogMessageCallback
+?SetInDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                               = _NOTINGAME,0x00549590     ; SetInDialog
+?GetFromDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00540280     ; GetFromDialog
+?CleanupDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00549AC0     ; CleanupDialog
+; TESObjectREFR virtual methods
+?GetScale@TESObjectREFR@@UAEMXZ                         = 0x004D7260,0x0053F180     ; GetScale
+?GetInitialRotation@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8210,0x00540190     ; GetInitialRotation
+?GetInitialPosition@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8230,0x005401B0     ; GetInitialPosition
+?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ    = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
+?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ    = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
+?GenerateNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ         = 0x004E4080,0x0054AF30     ; GenerateNiNode
+?Set3D@TESObjectREFR@@UAEXPAVNiNode@@@Z                 = 0x004E0F80,0x0054B5B0     ; Set3D
+?GetNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ              = 0x00422DE0,0x00542950     ; GetNiNode
+?GetBaseForm@TESObjectREFR@@UAEPAVTESForm@@XZ           = 0x004D9B40,0x00541930     ; GetBaseForm
+?GetPosition@TESObjectREFR@@UAEAAVVector3@@XZ           = 0x004C8D00,0x00541940     ; GetPosition
+?ChangeCell@TESObjectREFR@@UAEXPAVTESObjectCELL@@@Z     = 0x004D8AA0,0x00541680     ; ChangeCell
+?IsDead@TESObjectREFR@@UAE_NXZ                          = 0x004D7DD0,0x00543010     ; IsDead
+; methods
+??0TESObjectREFR@@QAE@XZ    = 0x004D9A70,0x00541870     ; TESObjectREFR
+;}
