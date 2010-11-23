@@ -53,7 +53,7 @@ void OutputLog::AttachTarget(OutputTarget& target)
         _targets.push_back(&target); 
     } 
 }
-void OutputLog::DetachOutput(OutputTarget& target)
+void OutputLog::DetachTarget(OutputTarget& target)
 {
     TargetList::iterator it = std::find(_targets.begin(),_targets.end(),&target);
     if (it != _targets.end()) 

@@ -2,42 +2,45 @@
     OutputLog - flexible debug logging class
     Requires a TR1 compatibile C++ compiler (for <regex>)
 
-    OutputLog is basically a more sophisticated printf() function.  It has multiple channels 
-    ("Error", "Warning", "Message", etc.) which can be bound to one or more std::ostreams, together
-    or independently.  Output is passed using the Print or PrintF ('Print Formatted') member functions.
+    OutputLog is basically a more sophisticated printf() function.  It supports multiple "channels" 
+    ("Error", "Warning", "Message", etc.) and multiple 'targets' (files, std::ostreams, etc).  
+    
+    Output is passed using the Print or PrintF ('Print Formatted') member functions.  Each call must specify
+    the target channel(s), a string specifying the "source" (usually the local function or file name), and 
+    the actual (formatted) output string.  The result is further formatted by any output targets it is passed to.
+   
+    Targets can be added and removed with AttachTarget() and RemoveTarget().  Included are some useful 
+    target classes:
+        FunctionTarget: output to a pointer-to-function with signature 'void (const char* text)'
+        OStreamTarget: output to a std::ostream
+        FileTarget: (plaintext) output to a file
+        HTMLTarget: html-formatted output to a file
+    Custom target classes may be derived from the base target class ('OutputTarget') or any of the included target
+    classes.  This allows output to be directed anywhere, in any format required.
+    
+    All of the included targets can be filtered by channel and source using a list of 'rules'.  Each rule 
+    overrides those before it, so they should get more specific as they are added.  For example, to restrict 
+    output to errors from sources starting with "foo", but not including "bar":
 
-    Output must specify the target channel(s), a string specifying the "source" (e.g. calling file
-    or function name or project) and the actual output.  The result is formatted based on the current
-    style and fed into the bound ostreams.  OutputLog is polymorphic; a derived class can be used to
-    customize the formatting.  Included are TextLog, for plain text output, and HTMLLog, for html 
-    formatted output.
-
-    Output can be filtered by channel and source using a list of 'rules'.  Each rule overrides those before
-    it, so they should get more specific as they are added.  For example, to restrict output to errors
-    from sources starting with "foo", but not including "bar":
-
+        // add target to output log
+        someOutputLog.AttachTarget(someTarget);
         // Rule #1, Block all output:
-        AddRule(kRuleState_Block, kChannel__ALL, ".*");      
+        someTarget.AddRule(kRuleState_Block, kChannel__ALL, ".*");      
         // Rule #2, Allow errors from source starting with 'foo':
-        AddRule(kRuleState_Print, kChannel_FatalError|kChannel_Error, "foo.*");
-        // Rule #3, (Re)Block anything containing the word 'bar':
-        AddRule(kRuleState_Block, kChannel__ALL, ".*bar.*");
+        someTarget.AddRule(kRuleState_Print, kChannel_FatalError|kChannel_Error, "foo.*");
+        // Rule #3, Block (again) anything containing the word 'bar':
+        someTarget.AddRule(kRuleState_Block, kChannel__ALL, ".*bar.*");
 
     The third parameter to the rule is an ECMA regular expression to be matched against source strings.
 
-    For best results, it is a good idea to store the return value of Print (a bitmask of channels printed to) 
-    in a static "guard" variable, and skip that print statement in the future if the variable is 0.  This 
-    eliminates future overhead from the Print function (which is significant), and also any overhead from 
-    evaluating the arguments.  With this approach it is possible to leave active debugging statements in 
-    released code with minimal cost.  This means, though, that the rule list should only be modified once 
-    when the code is first loaded.
-
+    Print() and PrintF() return zero if the specified message + source were not printed to any targets on
+    any channels.  For efficiency reasons, it is a good idea to store this value in a static "guard" variable, 
+    and skip that print statement in the future if the variable is 0.  This eliminates future overhead from 
+    the Print function (which is significant), and also any overhead from evaluating the arguments.  With this 
+    approach it is possible to leave active debugging statements in released code with minimal performance loss.  
+    The tradeoff is that the rule list can only be modified once, before any calls to Print() or PrintF() are made.
     A set of convenience macros is defined to implement this "guard" variable approach.  See their definition
     for details.
-
-    Also included is a small "Logfile" class, to simplify writing all output to a single file rather than a
-    general std::ostream.
-
 */
 #pragma once
 
@@ -95,7 +98,7 @@ public:
 
     // manage output targets
     virtual void    AttachTarget(OutputTarget& target); 
-    virtual void    DetachOutput(OutputTarget& target);
+    virtual void    DetachTarget(OutputTarget& target);
 
     // output functions
     virtual int     Print(int channel, const char* source, const char* text); // returns channel(s) successfully printed on
