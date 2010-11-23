@@ -1,0 +1,18 @@
+# ignore files created automatically by Visual Studio, except COEF.vcproj
+*.ncb
+*.suo
+*.sln
+*.vcproj*
+Debug/
+Release/
+!COEF.vcproj
+
+# ignore side projects that don't belong in the public repo
+/testing.cpp
+/DecoratedNameExtractor*
+/ExportInjector/
+/UndecorateName/
+/RSH Gamebryo SDK/
+
+#ignore files marked as TODO, which need further cleaning before being added to public repo
+*.TODO
