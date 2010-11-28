@@ -31,7 +31,7 @@ class   MagicItem;          // Magic/MagicItem.h
 class   EffectItem;         // Magic/EffectItem.h
 class   ActiveEffect;
 
-class ActiveEffect
+class IMPORTCLASS ActiveEffect
 {// size 38
 /*
     Partial:

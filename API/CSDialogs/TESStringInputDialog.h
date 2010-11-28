@@ -7,7 +7,7 @@
 
 #ifndef OBLIVION
 
-class TESStringInputDialog
+class IMPORTCLASS TESStringInputDialog
 {
 public:
     

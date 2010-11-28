@@ -13,7 +13,7 @@
 class   BSFile;  
 class   TESForm;    // TESForms/TESForm.h
 
-class ChunkInfo
+class IMPORTCLASS ChunkInfo
 {// size 08/08 (NOTE: 06 for non-record chunks on disk, see below)
 /*
     A "chunk" is the basic unit of the TES4 mod file. A chunk is headed by a type code and size field, followed by binary data
@@ -25,7 +25,7 @@ public:
     // ... data ...
 };
 
-class RecordInfo : public ChunkInfo
+class IMPORTCLASS RecordInfo : public ChunkInfo
 {// size 14/14
 /*
     Records are chunks whose data consists entirely of subchunks.  They have additional identifying information in the header
@@ -55,7 +55,7 @@ public:
     MEMBER /*10*/ TrackingData  trackingData; // used for internal revision control
 };
 
-class TESFile
+class IMPORTCLASS TESFile
 {// size 420
 public:
 
@@ -80,7 +80,7 @@ public:
     };    
 
     // file header info
-    struct FileHeaderInfo
+    struct IMPORTCLASS FileHeaderInfo
     {
         MEMBER /*00*/ float         fileVersion;
         MEMBER /*04*/ UInt32        numRecords; // number of record blocks in file
@@ -88,7 +88,7 @@ public:
     };
 
     // Data for Master files - compared against size in findData of masters to check if they have changed since last edit
-    struct MasterFileData
+    struct IMPORTCLASS MasterFileData
     {
         MEMBER /*00*/ DWORD nFileSizeHigh;
         MEMBER /*04*/ DWORD nFileSizeLow;
@@ -96,7 +96,7 @@ public:
     typedef BSSimpleList<MasterFileData*> MasterDataList;
     typedef BSSimpleList<const char*> MasterNameList;
 
-    class GroupInfo : public RecordInfo
+    class IMPORTCLASS GroupInfo : public RecordInfo
     {// size 18/18
         //     /*00*/ RecordInfo    // for group records, the size includes the 14 bytes of the header
 	    MEMBER /*14*/ UInt32        recordOffset;   // used internally to track header offsets of all open groups

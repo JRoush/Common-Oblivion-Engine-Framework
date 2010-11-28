@@ -9,7 +9,7 @@
 #include "API/TES/MemoryHeap.h"
 #include "API/TESForms/TESForm.h"   // TESFormIDListView
 
-class Setting
+class IMPORTCLASS Setting
 {// size 08/08
 /*
     Partial:
@@ -72,7 +72,7 @@ public:
 
 #ifdef OBLIVION
 
-class GameSetting : public Setting
+class IMPORTCLASS GameSetting : public Setting
 {// size 08/2C
 public:
 
@@ -92,7 +92,7 @@ public:
 
 #else
 
-class GameSetting : public TESFormIDListView, public Setting
+class IMPORTCLASS GameSetting : public TESFormIDListView, public Setting
 {// size 08/2C
 /*
     Todo:

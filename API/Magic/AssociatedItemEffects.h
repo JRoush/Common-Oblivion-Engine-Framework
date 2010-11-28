@@ -16,7 +16,7 @@ class   TESForm;
 class   Actor;
 class   Vector3;    // NiVector3?  currently defined in Utilities/ITypes.h
 
-class AssociatedItemEffect : public ActiveEffect
+class IMPORTCLASS AssociatedItemEffect : public ActiveEffect
 {// size 3C
 public:
  
@@ -38,7 +38,7 @@ public:
     IMPORT AssociatedItemEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class SummonCreatureEffect : public AssociatedItemEffect
+class IMPORTCLASS SummonCreatureEffect : public AssociatedItemEffect
 {// size 64
 public:
 
@@ -73,7 +73,7 @@ public:
     IMPORT SummonCreatureEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class BoundItemEffect : public AssociatedItemEffect
+class IMPORTCLASS BoundItemEffect : public AssociatedItemEffect
 {// size 8C
 public:
 

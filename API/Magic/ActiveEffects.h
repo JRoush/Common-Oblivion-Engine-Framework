@@ -31,7 +31,7 @@ class   ScriptEventList;
 class   Vector3;        // NiVector3?  currently defined in Utilities/ITypes.h
 class   NiRefObject;
 
-class ScriptEffect : public ActiveEffect
+class IMPORTCLASS ScriptEffect : public ActiveEffect
 {// size 40
 public:
 	
@@ -58,7 +58,7 @@ public:
     IMPORT ScriptEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class SunDamageEffect : public ActiveEffect
+class IMPORTCLASS SunDamageEffect : public ActiveEffect
 {// size 38
 public:
 
@@ -89,7 +89,7 @@ public:
     IMPORT static SunDamageEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class DemoralizeEffect : public ActiveEffect
+class IMPORTCLASS DemoralizeEffect : public ActiveEffect
 {// size 3C
 public:
 
@@ -116,7 +116,7 @@ public:
     IMPORT static DemoralizeEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class CommandEffect : public ActiveEffect
+class IMPORTCLASS CommandEffect : public ActiveEffect
 {// size 38
 public:
 	
@@ -135,7 +135,7 @@ public:
     IMPORT CommandEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class CommandCreatureEffect : public CommandEffect
+class IMPORTCLASS CommandCreatureEffect : public CommandEffect
 {// size 38
 public:
 	
@@ -153,7 +153,7 @@ public:
     IMPORT static CommandCreatureEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class CommandHumanoidEffect : public CommandEffect
+class IMPORTCLASS CommandHumanoidEffect : public CommandEffect
 {// size 38
 public:
 		
@@ -171,7 +171,7 @@ public:
     IMPORT static CommandHumanoidEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class ReanimateEffect : public ActiveEffect
+class IMPORTCLASS ReanimateEffect : public ActiveEffect
 {// size 60
 public:
 
@@ -211,7 +211,7 @@ public:
     IMPORT static ReanimateEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class TurnUndeadEffect : public ActiveEffect
+class IMPORTCLASS TurnUndeadEffect : public ActiveEffect
 {// size 3C
 public:
 
@@ -238,7 +238,7 @@ public:
     IMPORT static TurnUndeadEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class VampirismEffect : public ActiveEffect
+class IMPORTCLASS VampirismEffect : public ActiveEffect
 {// size 38
 public:
 
@@ -261,7 +261,7 @@ public:
     IMPORT static VampirismEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class LightEffect : public ActiveEffect
+class IMPORTCLASS LightEffect : public ActiveEffect
 {// size 3C
 public:
 
@@ -287,7 +287,7 @@ public:
     IMPORT static LightEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class DispelEffect : public ActiveEffect
+class IMPORTCLASS DispelEffect : public ActiveEffect
 {// size 38
 public:	
 
@@ -307,7 +307,7 @@ public:
     IMPORT static DispelEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class CureEffect : public ActiveEffect
+class IMPORTCLASS CureEffect : public ActiveEffect
 {// size 40
 public:
 
@@ -328,7 +328,7 @@ public:
     IMPORT CureEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem, UInt32 mgefCode); // for CUPA
 };
 
-class DisintegrateArmorEffect : public ActiveEffect
+class IMPORTCLASS DisintegrateArmorEffect : public ActiveEffect
 {// size 3C
 public:
 
@@ -353,7 +353,7 @@ public:
     IMPORT static DisintegrateArmorEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class DisintegrateWeaponEffect : public ActiveEffect
+class IMPORTCLASS DisintegrateWeaponEffect : public ActiveEffect
 {// size 38
 public:
     
@@ -372,7 +372,7 @@ public:
     IMPORT static DisintegrateWeaponEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class LockEffect : public ActiveEffect
+class IMPORTCLASS LockEffect : public ActiveEffect
 {// size 38
 public:
 
@@ -391,7 +391,7 @@ public:
     IMPORT static LockEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class OpenEffect : public ActiveEffect
+class IMPORTCLASS OpenEffect : public ActiveEffect
 {// size 38
 public:
 	
@@ -410,7 +410,7 @@ public:
     IMPORT static OpenEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class SoulTrapEffect : public ActiveEffect
+class IMPORTCLASS SoulTrapEffect : public ActiveEffect
 {// size 38
 public:
 	

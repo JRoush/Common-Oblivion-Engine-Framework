@@ -73,7 +73,7 @@ class   MagicItemForm;      // Magic/MagicItemForm.h
 class   EffectItem;         // Magic/EffectItem.h
 class   ActiveEffect;       // Magic/ActiveEffect.h
 
-class MagicCaster
+class IMPORTCLASS MagicCaster
 {// size 0C
 public:
 

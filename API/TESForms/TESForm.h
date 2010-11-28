@@ -358,7 +358,7 @@ public:
 };
 #endif
 
-class TESMemContextForm 
+class IMPORTCLASS TESMemContextForm 
 {// size 00/00
 /*
     Todo:

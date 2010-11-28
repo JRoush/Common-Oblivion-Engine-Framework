@@ -16,7 +16,7 @@ class   TESPathGrid;
 class   TESWorldSpace;
 class   NiNode;
 
-class TESObjectCELL : public TESForm, public TESMemContextForm, public TESFullName
+class IMPORTCLASS TESObjectCELL : public TESForm, public TESMemContextForm, public TESFullName
 {// size 58/5C
 /*
     Partial:
@@ -134,7 +134,7 @@ public:
     IMPORT TESObjectCELL();
 };
 
-class TESChildCell
+class IMPORTCLASS TESChildCell
 {// size 04/04
 /*
     Todo:

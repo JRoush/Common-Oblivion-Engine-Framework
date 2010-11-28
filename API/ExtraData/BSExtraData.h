@@ -7,7 +7,7 @@
 // base classes
 #include "API/TES/MemoryHeap.h"
 
-class BSExtraData
+class IMPORTCLASS BSExtraData
 {// size 0C/0C
 public:
 

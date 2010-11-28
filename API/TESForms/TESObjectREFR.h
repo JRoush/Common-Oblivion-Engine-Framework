@@ -17,7 +17,7 @@ class   ActorAnimData;  // TODO: need to decode ActorAnimData
 class   MagicCaster;    // Magic/MagicCaster.h
 class   MagicTarget;    // Magic/MagicTarget.h
 
-class TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
+class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
 {// size 58/60
 /*
     Partial:

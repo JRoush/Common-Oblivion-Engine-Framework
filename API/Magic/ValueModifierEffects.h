@@ -61,7 +61,7 @@ class   Actor;
 class   NiRefObject;
 class   TESObjectREFR;
 
-class ValueModifierEffect : public ActiveEffect
+class IMPORTCLASS ValueModifierEffect : public ActiveEffect
 {// size 3C
 public:
 
@@ -92,7 +92,7 @@ public:
     IMPORT ValueModifierEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class AbsorbEffect : public ValueModifierEffect
+class IMPORTCLASS AbsorbEffect : public ValueModifierEffect
 {// size 4C
 public:
 
@@ -119,7 +119,7 @@ public:
     IMPORT AbsorbEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class ParalysisEffect : public ValueModifierEffect
+class IMPORTCLASS ParalysisEffect : public ValueModifierEffect
 {// size 3C
 public:
 
@@ -143,7 +143,7 @@ public:
 
 };
 
-class ShieldEffect : public ValueModifierEffect
+class IMPORTCLASS ShieldEffect : public ValueModifierEffect
 {// size 40
 public:
 	
@@ -167,7 +167,7 @@ public:
     IMPORT ShieldEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class CalmEffect : public ValueModifierEffect
+class IMPORTCLASS CalmEffect : public ValueModifierEffect
 {// size 3C
 public:
 
@@ -189,7 +189,7 @@ public:
     IMPORT static CalmEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class FrenzyEffect : public ValueModifierEffect
+class IMPORTCLASS FrenzyEffect : public ValueModifierEffect
 {// size 40
 public:
 	
@@ -216,7 +216,7 @@ public:
     IMPORT static FrenzyEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class ChameleonEffect : public ValueModifierEffect
+class IMPORTCLASS ChameleonEffect : public ValueModifierEffect
 {// size 3C
 public:
 
@@ -240,7 +240,7 @@ public:
     IMPORT static ChameleonEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class InvisibilityEffect : public ValueModifierEffect
+class IMPORTCLASS InvisibilityEffect : public ValueModifierEffect
 {// size 3C
 public:
 
@@ -265,7 +265,7 @@ public:
 
 };
 
-class DetectLifeEffect : public ValueModifierEffect
+class IMPORTCLASS DetectLifeEffect : public ValueModifierEffect
 {// size 3C
 public:
 
@@ -286,7 +286,7 @@ public:
     IMPORT static DetectLifeEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class NightEyeEffect : public ValueModifierEffect
+class IMPORTCLASS NightEyeEffect : public ValueModifierEffect
 {// size 3C
 public:
 
@@ -311,7 +311,7 @@ public:
 
 };
 
-class DarknessEffect : public ValueModifierEffect
+class IMPORTCLASS DarknessEffect : public ValueModifierEffect
 {// size 3C
 public:
 	
@@ -334,7 +334,7 @@ public:
     IMPORT static DarknessEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
 
-class TelekinesisEffect : public ValueModifierEffect
+class IMPORTCLASS TelekinesisEffect : public ValueModifierEffect
 {// size 50
 public:
 

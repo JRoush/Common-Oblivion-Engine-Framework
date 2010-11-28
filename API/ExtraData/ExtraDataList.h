@@ -11,7 +11,7 @@
 // argument classes
 class   BSExtraData;    // ExtraData/BSExtraData.h
 
-class BaseExtraList
+class IMPORTCLASS BaseExtraList
 {// size 14/14
 public:
 
@@ -42,7 +42,7 @@ protected:
     _NOUSE BaseExtraList() {} // BaseExtraList has no constructor, it is not intended to be instatiated directly
 };
 
-class ExtraDataList : public BaseExtraList
+class IMPORTCLASS ExtraDataList : public BaseExtraList
 {// size 14/14
 /*
     Todo:
