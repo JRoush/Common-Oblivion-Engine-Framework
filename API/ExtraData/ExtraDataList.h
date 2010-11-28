@@ -1,7 +1,7 @@
 /*
     ExtraData is Bethesda's tool for attaching arbitrary information to other classes.
-    BaseExtraList seems to be the generic extra data manager.
-    ExtraDataList seems to be targeted specifically to Oblivion (?)
+    BaseExtraList seems to be the generic extra data manager, and is used for DialogExtraData
+    ExtraDataList seems to be targeted specifically to forms (?)
 */
 #pragma once
 

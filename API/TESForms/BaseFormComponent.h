@@ -61,6 +61,11 @@ class IMPORTCLASS TESFullName : public BaseFormComponent
 {// size 0C/0C
 public:	
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_FullName    = 0x424, // EDIT
+    };
+
 	// members
     //     /*00/00*/ void**             vtbl;
     MEMBER /*04/04*/ BSStringT          name;
@@ -91,6 +96,11 @@ class IMPORTCLASS TESDescription : public BaseFormComponent
 {// size 08/10
 public:
 
+    enum DialogControlIDs // default control IDs
+    {             	
+        IDC_Description         = 0x472, // EDIT
+    };    
+
     // static cache for loaded description (game only)
     #ifdef OBLIVION
     IMPORT static TESDescription*     cachedDescriptionOwner; 
@@ -103,7 +113,7 @@ public:
     MEMBER /*04/--*/ UInt32	            descDiskOffset; // 
     #else
     MEMBER /*--/04*/ BSStringT          description; // 
-    MEMBER /*--/0C*/ UInt32             descDialogItem; // DlgItm ID for description control
+    MEMBER /*--/0C*/ UInt32             descDialogItem; // Dialog Control ID for description control
     #endif	
 
     // virtual method overrides
@@ -137,14 +147,20 @@ class IMPORTCLASS TESTexture : public BaseFormComponent
     -   members
 */
 public:
+    
+    enum DialogControlIDs // default control IDs
+    {             	
+        IDC_TexturePath         = 0x414, // BUTTON
+        IDC_TextureImage        = 0x422, // BUTTON
+    };        
 
     // members
     //     /*00/00*/ void**             vtbl;
 	MEMBER /*04/04*/ BSStringT          texturePath; // 
     #ifndef OBLIVION
     MEMBER /*--/0C*/ UInt32		        unkTexture0C; // cached image?
-    MEMBER /*--/10*/ UInt32		        texturePathDlgItem; // DlgItm ID for texture path control
-    MEMBER /*--/14*/ UInt32             textureImageDlgItem; // DlgItm ID for texture image control
+    MEMBER /*--/10*/ UInt32		        texturePathDlgItem; // Dialog Control ID for texture path control
+    MEMBER /*--/14*/ UInt32             textureImageDlgItem; // Dialog Control ID for texture image control
     #endif
 
     // virtual method overrides
@@ -212,6 +228,11 @@ class IMPORTCLASS TESModel : public BaseFormComponent
 */
 public:
 
+    enum DialogControlIDs // default control IDs
+    {             	
+        IDC_ModelPath       = 0x413, // BUTTON
+    };  
+
     // members
     //     /*00/00*/ void**                 vtbl;
     MEMBER /*04/04*/ BSStringT	            modelPath; // 
@@ -222,7 +243,7 @@ public:
 	MEMBER /*14/--*/ void*                  unkModel14; // Object released by destructor, ClearComponentReferences()
     #else
     MEMBER /*--/10*/ NiTList<FULL_HASH*>    unkModel10; // 
-    MEMBER /*--/20*/ UInt32                 modelPathDlgItem; // 
+    MEMBER /*--/20*/ UInt32                 modelPathDlgItem; // Dialog Control ID for model path
     #endif
 
     // virtual method overrides
@@ -267,6 +288,12 @@ class IMPORTCLASS TESScriptableForm : public BaseFormComponent
 */
 public:
 
+    enum DialogControlIDs // default control IDs
+    {             	
+        IDC_Script          = 0x4CA, // COMBOBOX
+        IDC_EditScript      = 0x426, // BUTTON
+    };
+
     // members
     //     /*00/00*/ void**             vtbl;
 	MEMBER /*04/04*/ Script*            script; // script formid stored here during loading
@@ -304,6 +331,11 @@ public:
 class IMPORTCLASS TESUsesForm : public BaseFormComponent
 {// size 08/08
 public:
+   
+    enum DialogControlIDs // default control IDs
+    {   
+        IDC_Uses    = 0x434, // EDIT
+    };
 
     // members
     //     /*00/00*/ void**         vtbl;
@@ -338,6 +370,11 @@ public:
 		kModified_Value     = 0x00000008,
 	};
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_Value   = 0x405, // EDIT
+    };
+
     // members
     //     /*00/00*/ void**         vtbl;
 	MEMBER /*04/04*/ SInt32	        goldValue;
@@ -371,6 +408,11 @@ class IMPORTCLASS TESHealthForm : public BaseFormComponent
 {// size 08/08
 public:
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_Health  = 0x400, // EDIT
+    };
+
     // members
     //     /*00/00*/ void**         vtbl;
 	MEMBER /*04/04*/ UInt32         health; // 
@@ -402,6 +444,11 @@ class IMPORTCLASS TESWeightForm : public BaseFormComponent
 {// size 08/08
 public:
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_Weight  = 0x5C6, // EDIT
+    };
+
     // members
     //     /*00/00*/ void**         vtbl;
 	MEMBER /*04/04*/ float	        weight; // 
@@ -430,6 +477,11 @@ class IMPORTCLASS TESQualityForm : public BaseFormComponent
 {// size 08/08
 public:
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_Quality = 0x42B, // EDIT
+    };
+
     // members
     //     /*00/00*/ void**         vtbl;
 	MEMBER /*04/04*/ float	        quality; // 
@@ -456,6 +508,11 @@ public:
 class IMPORTCLASS TESAttackDamageForm : public BaseFormComponent
 {// size 08/08
 public:
+
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_AttackDamage    = 0x3F7, // EDIT
+    };
 
     // members
     //     /*00/00*/ void**         vtbl;
@@ -490,6 +547,18 @@ public:
 	{
 		kModified_Attributes    = 0x00000008,
 	};
+
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_Strength        = 0x640, // EDIT
+        IDC_Intelligence    = 0x641, // EDIT
+        IDC_Willpower       = 0x642, // EDIT
+        IDC_Agility         = 0x643, // EDIT
+        IDC_Speed           = 0x644, // EDIT
+        IDC_Endurance       = 0x645, // EDIT
+        IDC_Personality     = 0x646, // EDIT
+        IDC_Luck            = 0x647, // EDIT
+    };
 
     enum Attributes
     {

@@ -135,6 +135,12 @@ public:
         kFormFlags_IgnoresFriendlyHits  = /*14*/ 0x00100000,
 	};
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_EditorID    = 0x404, // EDIT
+        IDC_QuestItem   = 0x693, // BUTTON
+    };
+
     enum ModifiedFlags
 	{
 		kModified_FormFlags = 0x00000001,
@@ -330,6 +336,11 @@ class IMPORTCLASS TESFormIDListView : public TESForm
 */  
 public:
 
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_FormList    = 0x810, // SysListView32
+    };
+
     // no additional members
 
     // TESForm virtual methods
@@ -338,9 +349,9 @@ public:
     // additional virtual methods
     IMPORT /*---/124*/ virtual void         SetupFormListColumns(HWND listView); // sets up columns (name, size, caption, etc)
     IMPORT /*---/128*/ virtual void         PopulateFormList(HWND listView); // adds forms to list
-    _NOUSE /*---/12C*/ virtual void         UnkFIDLV12C(HWND listView) {}
+    _NOUSE /*---/12C*/ virtual void         UnkFIDLV12C(HWND listView) {} // populate, sort, & select in list
     _NOUSE /*---/130*/ virtual void         GetColumnEntryData(void* arg0) {} // arg0 is a struct of col data
-    _NOUSE /*---/134*/ virtual UInt32       UnkFIDLV134(UInt32 arg0, UInt32 arg1) {return 0;}
+    _NOUSE /*---/134*/ virtual SInt32       UnkFIDLV134(const TESForm& compareTo, UInt32 columnIndex) {return 0;} // compare (for sorting list)
 
     // constructor
     IMPORT TESFormIDListView();

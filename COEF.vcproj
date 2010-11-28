@@ -283,6 +283,22 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\Magic\ActiveEffects.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Magic\ActiveEffects.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Magic\AssociatedItemEffects.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Magic\AssociatedItemEffects.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\Magic\EffectItem.eed"
 					>
 				</File>
@@ -344,6 +360,14 @@
 				</File>
 				<File
 					RelativePath=".\API\Magic\MagicTarget.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Magic\ValueModifierEffects.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Magic\ValueModifierEffects.h"
 					>
 				</File>
 			</Filter>
@@ -412,6 +436,18 @@
 				</File>
 				<File
 					RelativePath=".\API\TESFiles\TESFile.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="CSDialogs"
+				>
+				<File
+					RelativePath=".\API\CSDialogs\TESDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\CSDialogs\TESStringInputDialog.h"
 					>
 				</File>
 			</Filter>

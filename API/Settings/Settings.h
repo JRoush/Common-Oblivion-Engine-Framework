@@ -94,6 +94,10 @@ public:
 
 class GameSetting : public TESFormIDListView, public Setting
 {// size 08/2C
+/*
+    Todo:
+    -   CS dialog template & control ID constants
+*/
 public:
     
     // members

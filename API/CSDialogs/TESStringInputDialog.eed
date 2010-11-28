@@ -1,0 +1,6 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESStringInputDialog
+?DialogProc@TESStringInputDialog@@SGHPAUHWND__@@IIJ@Z       = _NOTINGAME,0x00441D90     ; DialogProc
+;}

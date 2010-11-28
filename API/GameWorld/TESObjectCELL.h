@@ -21,6 +21,8 @@ class TESObjectCELL : public TESForm, public TESMemContextForm, public TESFullNa
 /*
     Partial:
     -   flag members
+    Todo:
+    -   CS dialog template & control ID constants
     Notes:
     -   Overrides for undecoded virtual functions (be sure to update these if the base definition changes)
 */

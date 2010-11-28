@@ -13,6 +13,13 @@ Release/
 /ExportInjector/
 /UndecorateName/
 /RSH Gamebryo SDK/
+/ResourceReader/
 
-#ignore files marked as TODO, which need further cleaning before being added to public repo
+# ignore files marked as TODO, which need further cleaning before being added to public repo
 *.TODO
+
+# ignore files containing intermediate documentation (excel spreadsheets, resource dumps, etc)
+*.xls
+*.rc
+CS_IDA_RTTI_dump.txt
+Game_IDA_RTTI_dump.txt

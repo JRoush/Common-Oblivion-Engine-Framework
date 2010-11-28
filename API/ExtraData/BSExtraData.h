@@ -135,7 +135,7 @@ public:
 
     // members
     //     /*00/00*/ void**         vtbl          
-	MEMBER /*04/04*/ UInt8          extraType;   // set by consrtuctor for each derived class
+	MEMBER /*04/04*/ UInt8          extraType;   // set by constructor for each derived class
 	MEMBER /*05/05*/ UInt8		    extraPad05[3];
 	MEMBER /*08/08*/ BSExtraData*   extraNext;
 	

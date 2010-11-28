@@ -23,6 +23,33 @@ class IMPORTCLASS EffectItem
 {// size 24/34
 public:
 
+    enum DialogControlIDs
+    {
+        IDC_Effect                      = 0x819, // COMBOBOX
+        IDC_ActorValue                  = 0x816, // COMBOBOX
+        IDC_Range                       = 0x818, // COMBOBOX
+        IDC_Area                        = 0x81A, // EDIT
+        IDC_Duration                    = 0x5F4, // EDIT
+        IDC_Magnitude                   = 0x81B, // EDIT
+        IDC_EffectCost                  = 0x81D, // STATIC
+        IDC_ActorValueLabel             = 0x815, // STATIC
+        IDC_ScriptEffectInfoFrame       = 0x822, // BUTTON
+        IDC_ScriptLabel                 = 0x81F, // STATIC
+        IDC_Script                      = 0x4CA, // COMBOBOX
+        IDC_EditScript                  = 0x426, // BUTTON
+        IDC_NameLabel                   = 0x820, // STATIC
+        IDC_Name                        = 0x817, // EDIT
+        IDC_SchoolLabel                 = 0x821, // STATIC
+        IDC_School                      = 0x441, // COMBOBOX
+        IDC_MagicItemCost               = 0x81E, // STATIC
+        IDC_EffectBaseCost              = 0x81C, // STATIC
+        IDC_MagicItemMasteryLabel       = 0x826, // STATIC
+        IDC_MagicItemMastery            = 0x823, // STATIC
+        IDC_VFX                         = 0x824, // COMBOBOX
+        IDC_Hostility                   = 0x3EE, // BUTTON
+    };
+    static const UInt32     IDD_EffectItem = 0x10B; // Dialog Tempate ID
+
 	class ScriptEffectInfo
 	{// size 18/18
     public:
@@ -134,6 +161,11 @@ public:
 class IMPORTCLASS EffectItemList : public BSSimpleList<EffectItem*>
 {// size 10/DC
 public:
+
+    enum DialogControlIDs // default control IDs
+    {
+        IDC_EffectList      = 0x815, // SysListView32
+    };
 
     // members
     //     /*00/00*/ void**             vtbl;	
