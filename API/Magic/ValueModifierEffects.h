@@ -67,7 +67,7 @@ public:
 
     // members
     //     /*00*/ ActiveEffect
-    MEMBER /*38*/ UInt32	    avCode; // av to modify
+    MEMBER /*38*/ UInt32        avCode; // av to modify
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -98,10 +98,10 @@ public:
 
     // members
     //     /*00*/ ValueModifierEffect
-    MEMBER /*3C*/ NiRefObject*	unkAbsb3C;  // NiNode*?
-	MEMBER /*40*/ NiRefObject*	unkAbsb40;  // NiNode*?
-	MEMBER /*44*/ NiRefObject*	unkAbsb44;  // NiNode*?
-	MEMBER /*48*/ NiRefObject*	unkAbsb48;  // NiNode*?
+    MEMBER /*3C*/ NiRefObject*    unkAbsb3C;  // NiNode*?
+    MEMBER /*40*/ NiRefObject*    unkAbsb40;  // NiNode*?
+    MEMBER /*44*/ NiRefObject*    unkAbsb44;  // NiNode*?
+    MEMBER /*48*/ NiRefObject*    unkAbsb48;  // NiNode*?
 
     // ValueModifierEffect virtual methods   
     IMPORT /*000*/ virtual                  ~AbsorbEffect();
@@ -146,10 +146,10 @@ public:
 class IMPORTCLASS ShieldEffect : public ValueModifierEffect
 {// size 40
 public:
-	
+    
     // members
     //     /*00*/ ValueModifierEffect   // avCode: for SHLD = DefendBonus, for FRSH = ResistFrost, for FISH = ResistFire, for LISH = ResistShock
-    MEMBER /*3C*/ UInt32	            secondAVCode; // for SHLD = kActorVal__MAX, for FRSH, FISH & LISH = DefendBonus
+    MEMBER /*3C*/ UInt32                secondAVCode; // for SHLD = kActorVal__MAX, for FRSH, FISH & LISH = DefendBonus
 
     // ValueModifierEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -192,11 +192,11 @@ public:
 class IMPORTCLASS FrenzyEffect : public ValueModifierEffect
 {// size 40
 public:
-	
+    
     // members
     //     /*00*/ ValueModifierEffect
-    MEMBER /*3C*/ UInt8	                unkFrnz3C;
-	MEMBER /*3D*/ UInt8	                padFrnz3D[3];
+    MEMBER /*3C*/ UInt8                    unkFrnz3C;
+    MEMBER /*3D*/ UInt8                    padFrnz3D[3];
 
     // ValueModifierEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -314,7 +314,7 @@ public:
 class IMPORTCLASS DarknessEffect : public ValueModifierEffect
 {// size 3C
 public:
-	
+    
     // no additional members
 
     // ValueModifierEffect virtual methods   
@@ -341,12 +341,12 @@ public:
     // members
     //     /*00*/ ValueModifierEffect
     MEMBER /*3C*/ NiRefObject*          unkTele3C; // NiNode* ?
-	MEMBER /*40*/ float                 unkTele40;
-	MEMBER /*44*/ float                 unkTele44;
-	MEMBER /*48*/ TESObjectREFR*        targetObject;
-	MEMBER /*4C*/ UInt8                 unkTele4C;
-	MEMBER /*4D*/ UInt8                 unkTele4D;
-	MEMBER /*4E*/ UInt8                 padTele4E[2];
+    MEMBER /*40*/ float                 unkTele40;
+    MEMBER /*44*/ float                 unkTele44;
+    MEMBER /*48*/ TESObjectREFR*        targetObject;
+    MEMBER /*4C*/ UInt8                 unkTele4C;
+    MEMBER /*4D*/ UInt8                 unkTele4D;
+    MEMBER /*4E*/ UInt8                 padTele4E[2];
 
     // ValueModifierEffect virtual methods   
     IMPORT /*000*/ virtual                  ~TelekinesisEffect();

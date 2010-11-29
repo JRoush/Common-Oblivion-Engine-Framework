@@ -5,7 +5,7 @@ EXPORTS ;{ ; MemoryHeap
 ; Static data
 ?FormHeap@MemoryHeap@@2V1@A             = 0x00B02020,0x00A09E90     ; FormHeap
 ; Virtual Methods
-?AllocatePage@MemoryHeap@@UAEPAXK@Z     = 0x00401170,0x004012F0 	; AllocatePage
+?AllocatePage@MemoryHeap@@UAEPAXK@Z     = 0x00401170,0x004012F0     ; AllocatePage
 ?RawAlloc@MemoryHeap@@UAEPAXK@Z         = 0x00401480,0x00401310     ; RawAlloc
 ?RawAlloc2@MemoryHeap@@UAEPAXK@Z        = 0x00401720,0x00401590     ; RawAlloc2
 ?FreeMemory@MemoryHeap@@UAEXPAX@Z       = 0x00401190,0x00401320     ; FreeMemory

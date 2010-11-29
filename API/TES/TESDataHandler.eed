@@ -43,4 +43,4 @@ EXPORTS ;{ ; TESDataHandler
 ??0TESDataHandler@@QAE@XZ                                   = 0x00446D80,0x0047A5E0     ; TESDataHandler
 ??1TESDataHandler@@QAE@XZ                                   = 0x004491D0,0x0047A960     ; ~TESDataHandler
 ;}
-	  
+      

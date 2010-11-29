@@ -29,10 +29,10 @@ public:
     INLINE /*01C/040*/ virtual bool         ScriptAlwaysApplies() {return false;}
     INLINE /*020/044*/ virtual bool         NoAbsorbReflect() {return false;}
     #ifndef OBLIVION
-    IMPORT /*---/048*/ virtual bool	        MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/048*/ virtual bool         MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/04C*/ virtual void         SetMagicItemInDialog(HWND dialog);
-    INLINE /*---/050*/ virtual void	        GetMagicItemFromDlg(HWND dialog) {}
-    INLINE /*---/054*/ virtual void	        MagicItemDlgCleanup(HWND dialog) {}
+    INLINE /*---/050*/ virtual void         GetMagicItemFromDlg(HWND dialog) {}
+    INLINE /*---/054*/ virtual void         MagicItemDlgCleanup(HWND dialog) {}
     #endif
     IMPORT /*024/058*/ virtual UInt32       ExtraDataChunkType() = 0; // chunk type for serializing extra data
                                             // 'extra' data are the members of a derived class that don't belong to other base classes
@@ -43,7 +43,7 @@ public:
     INLINE /*038/06C*/ virtual void         SaveBases() {} // calls Save() routines for other base classes
     INLINE /*03C/070*/ virtual void         LoadBases(TESFile& file, UInt32 chunkType) {} // calls Load() routines for other base classes 
     #ifndef OBLIVION
-    INLINE /*---/074*/ virtual void	        UpdateMagicItemInDialog(HWND dialog) {} // update derived stats - autocalc cost, hostility, etc.
+    INLINE /*---/074*/ virtual void         UpdateMagicItemInDialog(HWND dialog) {} // update derived stats - autocalc cost, hostility, etc.
     #endif
 
     // methods   

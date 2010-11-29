@@ -135,14 +135,14 @@ public:
 
     // members
     //     /*00/00*/ void**         vtbl          
-	MEMBER /*04/04*/ UInt8          extraType;   // set by constructor for each derived class
-	MEMBER /*05/05*/ UInt8		    extraPad05[3];
-	MEMBER /*08/08*/ BSExtraData*   extraNext;
-	
+    MEMBER /*04/04*/ UInt8          extraType;   // set by constructor for each derived class
+    MEMBER /*05/05*/ UInt8          extraPad05[3];
+    MEMBER /*08/08*/ BSExtraData*   extraNext;
+    
     // virtual methods:
     IMPORT /*00/00*/ virtual            ~BSExtraData(); //
                                         // The vtbl entry is actually the compiler-generated 'vector deleting destructor', which calls this method
-	IMPORT /*04/04*/ virtual bool	    CompareExtraTo(const BSExtraData& compareTo); // returns true if not equal
+    IMPORT /*04/04*/ virtual bool       CompareExtraTo(const BSExtraData& compareTo); // returns true if not equal
 
     // use FormHeap for class new & delete
     USEFORMHEAP

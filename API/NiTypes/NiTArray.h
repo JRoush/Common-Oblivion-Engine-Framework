@@ -1,4 +1,4 @@
-/*	   
+/*       
     NiTArray & NiTLargeArray: dynamically sizeable sparse arrays
     Often (always?) used for pointers, see notes on usage below
 

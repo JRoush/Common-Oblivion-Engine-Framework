@@ -28,7 +28,7 @@ public:
     typedef BSSimpleList<EffectSetting*> FilteredEffectList;
 
     // virtual method overrides             
-    IMPORT /*000/000*/ virtual 	        ~EffectSettingCollection(); 
+    IMPORT /*000/000*/ virtual             ~EffectSettingCollection(); 
 
     // methods
     IMPORT void                         RemoveAll(); // destroy & remove all stored effect settings
@@ -112,109 +112,109 @@ public:
     enum EffectSettingFlags
     {   //                                      # Can be overriden in a vanilla mod file (other overrides are discarded by EffectSetting.Load())
         //                                        + Displayed in CS with a checkbox                                       
-        kMgefFlag_Hostile		        = /* 00   + */ 0x00000001,
-		kMgefFlag_Recovers		        = /* 01   + */ 0x00000002, // used for some effect types - changes are reversed when removed
-		kMgefFlag_Detrimental		    = /* 02   + */ 0x00000004, // used for ValueModifier effects - AV is decreased rather than increased
-		kMgefFlag_MagnitudeIsPercent    = /* 03   + */ 0x00000008, // for display purposes only
-		kMgefFlag_OnSelf		        = /* 04   + */ 0x00000010,
-		kMgefFlag_OnTouch	            = /* 05   + */ 0x00000020,
-		kMgefFlag_OnTarget	            = /* 06   + */ 0x00000040,
-		kMgefFlag_NoDuration            = /* 07   + */ 0x00000080,
-		kMgefFlag_NoMagnitude		    = /* 08   + */ 0x00000100,
-		kMgefFlag_NoArea			    = /* 09   + */ 0x00000200,
-		kMgefFlag_FXPersists		    = /* 0A # + */ 0x00000400, // Effect (Hit) shader persists until effect expires (vs. playing only once)
-		kMgefFlag_Spells	            = /* 0B # + */ 0x00000800, // ignored in CS, filters for spellmaking menu in game
-		kMgefFlag_Enchantments		    = /* 0C # + */ 0x00001000, // ignored in CS, filters for enchanting menu in game
-		kMgefFlag_NoAlchemy		        = /* 0D # + */ 0x00002000, // ignored in CS, no effect in game
-		kMgefFlag_UnknownF			    = /* 0E     */ 0x00004000, // no effects have this flag set, checks the missing checkbox (nDlgItem = 0x666)
-		kMgefFlag_NoRecast			    = /* 0F   + */ 0x00008000, // no effects have this flag set, not sure quite what it does
-		kMgefFlag_UseWeapon			    = /* 10   + */ 0x00010000, // MgefParam is formID of summoned weapon
-		kMgefFlag_UseArmor			    = /* 11   + */ 0x00020000, // MgefParam is formID of summoned armor
-		kMgefFlag_UseActor		        = /* 12   + */ 0x00040000, // MgefParam is formID of summoned actor
-		kMgefFlag_UseSkill			    = /* 13   + */ 0x00080000, // uses skill avCode stored on effect items
-		kMgefFlag_UseAttribute		    = /* 14   + */ 0x00100000, // uses attribute avCode stored on effect items
-		kMgefFlag_PCHasEffect			= /* 15     */ 0x00200000, // Whether no not the player 'knows' the effect, e.g. useable in spellmaking
+        kMgefFlag_Hostile               = /* 00   + */ 0x00000001,
+        kMgefFlag_Recovers              = /* 01   + */ 0x00000002, // used for some effect types - changes are reversed when removed
+        kMgefFlag_Detrimental           = /* 02   + */ 0x00000004, // used for ValueModifier effects - AV is decreased rather than increased
+        kMgefFlag_MagnitudeIsPercent    = /* 03   + */ 0x00000008, // for display purposes only
+        kMgefFlag_OnSelf                = /* 04   + */ 0x00000010,
+        kMgefFlag_OnTouch               = /* 05   + */ 0x00000020,
+        kMgefFlag_OnTarget              = /* 06   + */ 0x00000040,
+        kMgefFlag_NoDuration            = /* 07   + */ 0x00000080,
+        kMgefFlag_NoMagnitude           = /* 08   + */ 0x00000100,
+        kMgefFlag_NoArea                = /* 09   + */ 0x00000200,
+        kMgefFlag_FXPersists            = /* 0A # + */ 0x00000400, // Effect (Hit) shader persists until effect expires (vs. playing only once)
+        kMgefFlag_Spells                = /* 0B # + */ 0x00000800, // ignored in CS, filters for spellmaking menu in game
+        kMgefFlag_Enchantments          = /* 0C # + */ 0x00001000, // ignored in CS, filters for enchanting menu in game
+        kMgefFlag_NoAlchemy             = /* 0D # + */ 0x00002000, // ignored in CS, no effect in game
+        kMgefFlag_UnknownF              = /* 0E     */ 0x00004000, // no effects have this flag set, checks the missing checkbox (nDlgItem = 0x666)
+        kMgefFlag_NoRecast              = /* 0F   + */ 0x00008000, // no effects have this flag set, not sure quite what it does
+        kMgefFlag_UseWeapon             = /* 10   + */ 0x00010000, // MgefParam is formID of summoned weapon
+        kMgefFlag_UseArmor              = /* 11   + */ 0x00020000, // MgefParam is formID of summoned armor
+        kMgefFlag_UseActor              = /* 12   + */ 0x00040000, // MgefParam is formID of summoned actor
+        kMgefFlag_UseSkill              = /* 13   + */ 0x00080000, // uses skill avCode stored on effect items
+        kMgefFlag_UseAttribute          = /* 14   + */ 0x00100000, // uses attribute avCode stored on effect items
+        kMgefFlag_PCHasEffect           = /* 15     */ 0x00200000, // Whether no not the player 'knows' the effect, e.g. useable in spellmaking
                                                                     // Can technically be overriden, but is immediately forced to zero during the
                                                                     // EffectSetting.Load() routine. Set for any spell, or only one pc can cast?
                                                                     // List of effects player knows is apparently stored as mgefCodes in savegame
-		kMgefFlag_Disabled			    = /* 16 #   */ 0x00400000, // No default effects have this.  many (all?) of the methods in EffectItemList 
+        kMgefFlag_Disabled              = /* 16 #   */ 0x00400000, // No default effects have this.  many (all?) of the methods in EffectItemList 
                                                                     // that loop over the effect items ignore effects with this flag.
                                                                     // Spells with an effect with this flag are apparently uncastable.
-		kMgefFlag_UnknownO			    = /* 17 #   */ 0x00800000, // POSN,DISE - these effects have *only* this bit set, perhaps a flag for 'meta' effects?
+        kMgefFlag_UnknownO              = /* 17 #   */ 0x00800000, // POSN,DISE - these effects have *only* this bit set, perhaps a flag for 'meta' effects?
                                                                     // exempts effect from valid range check during creation
                                                                     // makes effect unavailable in spellmaking alter
-		kMgefFlag_UseActorValue         = /* 18 #   */ 0x01000000, // MgefParam field is avCode for target value
+        kMgefFlag_UseActorValue         = /* 18 #   */ 0x01000000, // MgefParam field is avCode for target value
                                                                     // Once set (by default or by a previously loaded mod file), it *cannot* be unset in
                                                                     // EffectSetting.Load(), and the 'Data' field cannot be overriden either.
-		kMgefFlag_ProjectileTypeLow     = /* 19 #   */ 0x02000000, // 2-bit field for projectile type: {00 = Ball, 01 = Spray, 10 = Bolt, 11 = Fog}
-		kMgefFlag_ProjectileTypeHigh    = /* 1A #   */ 0x04000000, //  These are set with a pull-down list rather than a checkbox
-		kMgefFlag_NoHitVisualFX		    = /* 1B # + */ 0x08000000, // No Hit shader or Hit model VFX are played on target.  Doesn't affect sounds.
-		kMgefFlag_PersistOnDeath	    = /* 1C     */ 0x10000000, // Effect is not automatically removed when its target dies
-		kMgefFlag_ExplodesWithForce	    = /* 1D     */ 0x20000000, // causes explosion that can move loose objects (e.g. ragdolls)
-		kMgefFlag_MagnitudeIsLevel	    = /* 1E     */ 0x40000000, // for display purposes only
-		kMgefFlag_MagnitudeIsFeet	    = /* 1F     */ 0x80000000, // for display purposes only
-	};
+        kMgefFlag_ProjectileTypeLow     = /* 19 #   */ 0x02000000, // 2-bit field for projectile type: {00 = Ball, 01 = Spray, 10 = Bolt, 11 = Fog}
+        kMgefFlag_ProjectileTypeHigh    = /* 1A #   */ 0x04000000, //  These are set with a pull-down list rather than a checkbox
+        kMgefFlag_NoHitVisualFX         = /* 1B # + */ 0x08000000, // No Hit shader or Hit model VFX are played on target.  Doesn't affect sounds.
+        kMgefFlag_PersistOnDeath        = /* 1C     */ 0x10000000, // Effect is not automatically removed when its target dies
+        kMgefFlag_ExplodesWithForce     = /* 1D     */ 0x20000000, // causes explosion that can move loose objects (e.g. ragdolls)
+        kMgefFlag_MagnitudeIsLevel      = /* 1E     */ 0x40000000, // for display purposes only
+        kMgefFlag_MagnitudeIsFeet       = /* 1F     */ 0x80000000, // for display purposes only
+    };
 
-    // global list of diplayed flags
+    // global list of flags with corresponding checkboxes in CS dialog
     IMPORT static UInt32                DisplayedFlagCount;
     struct DisplayedFlagData
     {// size 08
-        UInt32  mgefFlag;       // 00 flag value (single bit)
-        bool    overridable;    // 04 can be overriden by a file during loading (checkbox enabled)
-        UInt8   pad[3];         // 05
+        MEMBER /*00*/ UInt32    mgefFlag;       // flag value
+        MEMBER /*04*/ bool      overridable;    // can be overriden by a file during loading (checkbox enabled)
+        MEMBER /*05*/ UInt8     pad[3];
     };    
-    IMPORT static DisplayedFlagData     DisplayedFlags[];   // flags that have corresponding checkboxes in CS 
+    IMPORT static DisplayedFlagData     DisplayedFlags[];
     #ifndef OBLIVION
-    IMPORT static UInt32                DisplayedFlagDlgIDCs[]; // dialog control IDs for displayed flags
+    IMPORT static UInt32                DisplayedFlagDlgIDCs[]; // dialog control IDs for flag checkboxes (see enumeration above)
     #endif
     
     // global list of hidden but overridable flags
     IMPORT static UInt32                OverridableFlagCount;
-    IMPORT static UInt32                OverridableFlags[]; // flags that can be overriden by a file during loading, but are not shown in CS
+    IMPORT static UInt32                OverridableFlags[];
 
     // typedef for filtering callback.  function returns true if effect passes, given the filter param
     typedef bool (*FilterFunc)(const EffectSetting& effect, void* filterParam);
 
-	// members
+    // members
     //     /*00/00*/ TESForm           
     //     /*18/24*/ TESModel
-	//     /*30/48*/ TESDescription
-	//     /*38/58*/ TESFullName 
-	//     /*44/64*/ TESIcon    
-	MEMBER /*50/7C*/ FilterFunc			filterFunc; // not saved. called if present on a template effect during Filter(), 
+    //     /*30/48*/ TESDescription
+    //     /*38/58*/ TESFullName 
+    //     /*44/64*/ TESIcon    
+    MEMBER /*50/7C*/ FilterFunc            filterFunc; // not saved. called if present on a template effect during Filter(), 
                                         // using target effect & filterParam as args.
     MEMBER /*54/80*/ void*              filterParam; // not saved. passed to filterFunc if it's called during Filter()
-	MEMBER /*58/84*/ UInt32				mgefFlags;
-	MEMBER /*5C/88*/ float				baseCost;
-	MEMBER /*60/8C*/ UInt32			    mgefParam;
-	MEMBER /*64/90*/ UInt32				school;
-	MEMBER /*68/94*/ UInt32				resistAV; // an actor value i.e. kActorVal_ResistFire
-	MEMBER /*6C/98*/ UInt16				numCounters; // count of counter effects, is size of counterArray
-	MEMBER /*6E/9A*/ UInt16				padMgef06E;
-	MEMBER /*70/9C*/ TESObjectLIGH*		light;
-	MEMBER /*74/A0*/ float				projSpeed;
-	MEMBER /*78/A4*/ TESEffectShader*	effectShader;
-	MEMBER /*7C/A8*/ TESEffectShader*	enchantShader;
-	MEMBER /*80/AC*/ TESSound*			castingSound;
-	MEMBER /*84/B0*/ TESSound*			boltSound;
-	MEMBER /*88/B4*/ TESSound*			hitSound;
-	MEMBER /*8C/B8*/ TESSound*			areaSound;
-	MEMBER /*90/BC*/ float				enchantFactor;
-	MEMBER /*94/C0*/ float				barterFactor;
-	MEMBER /*98/C4*/ UInt32				mgefCode; // in CS, editor ID is initialized to this re-interpreted as a 4-character string
-	MEMBER /*9C/C8*/ UInt32*			counterArray; // counters stored as dynamic array[numCounters] of effect codes
+    MEMBER /*58/84*/ UInt32                mgefFlags;
+    MEMBER /*5C/88*/ float                baseCost;
+    MEMBER /*60/8C*/ UInt32                mgefParam;
+    MEMBER /*64/90*/ UInt32                school;
+    MEMBER /*68/94*/ UInt32                resistAV; // an actor value i.e. kActorVal_ResistFire
+    MEMBER /*6C/98*/ UInt16                numCounters; // count of counter effects, is size of counterArray
+    MEMBER /*6E/9A*/ UInt16                padMgef06E;
+    MEMBER /*70/9C*/ TESObjectLIGH*        light;
+    MEMBER /*74/A0*/ float                projSpeed;
+    MEMBER /*78/A4*/ TESEffectShader*    effectShader;
+    MEMBER /*7C/A8*/ TESEffectShader*    enchantShader;
+    MEMBER /*80/AC*/ TESSound*            castingSound;
+    MEMBER /*84/B0*/ TESSound*            boltSound;
+    MEMBER /*88/B4*/ TESSound*            hitSound;
+    MEMBER /*8C/B8*/ TESSound*            areaSound;
+    MEMBER /*90/BC*/ float                enchantFactor;
+    MEMBER /*94/C0*/ float                barterFactor;
+    MEMBER /*98/C4*/ UInt32                mgefCode; // in CS, editor ID is initialized to this re-interpreted as a 4-character string
+    MEMBER /*9C/C8*/ UInt32*            counterArray; // counters stored as dynamic array[numCounters] of effect codes
     #ifdef OBLIVION
-    MEMBER /*A0/--*/ SInt32			    unkMgefA0; // not saved.  something to do with queued loading for the effect's model.
+    MEMBER /*A0/--*/ SInt32                unkMgefA0; // not saved.  something to do with queued loading for the effect's model.
     MEMBER /*A4/--*/ SInt32             unkMgefA4; // not saved.  
     #endif
 
     // virtual methods - TESFormIDListView
-    IMPORT /*010/034*/ virtual 	            ~EffectSetting();
-    IMPORT /*01C/040*/ virtual bool	        LoadForm(TESFile& file); 
-    IMPORT /*024/048*/ virtual void	        SaveFormChunks();
-    IMPORT /*06C/070*/ virtual void	        LinkForm();
-    IMPORT /*0B4/0B8*/ virtual void	        CopyFrom(TESForm& form); 
-	IMPORT /*0B8/0BC*/ virtual bool	        CompareTo(TESForm& compareTo);
+    IMPORT /*010/034*/ virtual                 ~EffectSetting();
+    IMPORT /*01C/040*/ virtual bool            LoadForm(TESFile& file); 
+    IMPORT /*024/048*/ virtual void            SaveFormChunks();
+    IMPORT /*06C/070*/ virtual void            LinkForm();
+    IMPORT /*0B4/0B8*/ virtual void            CopyFrom(TESForm& form); 
+    IMPORT /*0B8/0BC*/ virtual bool            CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
     IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form); //
     _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;}

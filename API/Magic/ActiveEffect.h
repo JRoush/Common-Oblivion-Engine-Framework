@@ -59,50 +59,50 @@ public:
 
     // members
     //     /*00*/ void**            vtbl;
-	MEMBER /*04*/ float			    timeElapsed;
-	MEMBER /*08*/ MagicItem*		magicItem;
-	MEMBER /*0C*/ EffectItem*	    effectItem;
-	MEMBER /*10*/ bool			    applied; // set after application
-	MEMBER /*11*/ bool			    terminated; // set when effect is to be removed
-	MEMBER /*12*/ bool			    removed; // set after removal
-	MEMBER /*13*/ UInt8			    pad13; // copied & saved, but not initialized
-	MEMBER /*14*/ UInt32			aeFlags; // frequently set to 0xE (no hit VFX) for effects that aren't dominant on their magic item
-	MEMBER /*18*/ float			    magnitude;
-	MEMBER /*1C*/ float			    duration; // 0.0 for persistent effects (abilities, diseases, apparel enchantments)
-	MEMBER /*20*/ MagicTarget*	    target; // parent magic target
-	MEMBER /*24*/ MagicCaster*	    caster; // source caster
-	MEMBER /*28*/ UInt32			magicType; //  from Magic::MagicTypes
-	MEMBER /*2C*/ void*			    unk2C; // not saved or copied, but cleaned up after removal.
+    MEMBER /*04*/ float             timeElapsed;
+    MEMBER /*08*/ MagicItem*        magicItem;
+    MEMBER /*0C*/ EffectItem*       effectItem;
+    MEMBER /*10*/ bool              applied; // set after application
+    MEMBER /*11*/ bool              terminated; // set when effect is to be removed
+    MEMBER /*12*/ bool              removed; // set after removal
+    MEMBER /*13*/ UInt8             pad13; // copied & saved, but not initialized
+    MEMBER /*14*/ UInt32            aeFlags; // frequently set to 0xE (no hit VFX) for effects that aren't dominant on their magic item
+    MEMBER /*18*/ float             magnitude;
+    MEMBER /*1C*/ float             duration; // 0.0 for persistent effects (abilities, diseases, apparel enchantments)
+    MEMBER /*20*/ MagicTarget*      target; // parent magic target
+    MEMBER /*24*/ MagicCaster*      caster; // source caster
+    MEMBER /*28*/ UInt32            magicType; //  from Magic::MagicTypes
+    MEMBER /*2C*/ void*             unk2C; // not saved or copied, but cleaned up after removal.
                                     // pointer to something with member functions but no vtbl.  something to do with AFX - queued sounds, perhaps?
-	MEMBER /*30*/ TESBoundObject*   boundObject; // parent object, for enchantments
-	MEMBER /*34*/ HitEffectList*    hitEffects; // saved but not copied.  non-null for light, detectlife, shield, and possibly others
+    MEMBER /*30*/ TESBoundObject*   boundObject; // parent object, for enchantments
+    MEMBER /*34*/ HitEffectList*    hitEffects; // saved but not copied.  non-null for light, detectlife, shield, and possibly others
 
     // virtual methods    
-	IMPORT /*000*/ virtual                  ~ActiveEffect();
+    IMPORT /*000*/ virtual                  ~ActiveEffect();
                                             // The vtbl entry is acutally the compiler-generated 'vector deleting destructor', which calls this method
-	IMPORT /*004*/ virtual ActiveEffect*	Clone() const; // allocate new AE of the same type & copy member values to it
-    INLINE /*008*/ virtual void			    UpdateEffect(float timeElapsed) {} // update effect, called every frame
-	IMPORT /*00C*/ virtual UInt16			EffectSaveSize(TESObjectREFR* parent); // size of type-specific members when serialized
-	IMPORT /*010*/ virtual void			    SaveEffect(TESObjectREFR* parent); // helper function, saves type-specific members
-	IMPORT /*014*/ virtual void			    LoadEffect(TESObjectREFR* parent); // helper function, loads type-specific members
-	IMPORT /*018*/ virtual void			    LinkEffect(TESObjectREFR* parent); // resolve formids into pointers & call Link on child objects
-    IMPORT /*01C*/ virtual void			    PostLinkEffect(TESObjectREFR* parent); // recreate any derived data that wasn't saved
+    IMPORT /*004*/ virtual ActiveEffect*    Clone() const; // allocate new AE of the same type & copy member values to it
+    INLINE /*008*/ virtual void             UpdateEffect(float timeElapsed) {} // update effect, called every frame
+    IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent); // size of type-specific members when serialized
+    IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent); // helper function, saves type-specific members
+    IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent); // helper function, loads type-specific members
+    IMPORT /*018*/ virtual void             LinkEffect(TESObjectREFR* parent); // resolve formids into pointers & call Link on child objects
+    IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent); // recreate any derived data that wasn't saved
                                             // (e.g. shaders & VFX)
-    INLINE /*020*/ virtual void			    PreLoadEffect(TESObjectREFR* parent) {} // resets data in preparation for loading
+    INLINE /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent) {} // resets data in preparation for loading
                                             // nontrivial for Invis, Chameleon, Light, Dark, NightEye, Paralyze, Reanim, SEFF
-	IMPORT /*024*/ virtual bool			    RemoveCaster(MagicCaster* removedCaster); // clears caster member it matches argument.                                             
-											// for Calm, Demoralize, Rally, Frenzy, SummonCr, TurnUndead, Command, Reanimate, Telek, 
+    IMPORT /*024*/ virtual bool             RemoveCaster(MagicCaster* removedCaster); // clears caster member it matches argument.                                             
+                                            // for Calm, Demoralize, Rally, Frenzy, SummonCr, TurnUndead, Command, Reanimate, Telek, 
                                             // SoulTrap, and Absorb this dispels the effect entirely.  Probably called if caster dies.
                                             // returns true if caster removed.
-    INLINE /*028*/ virtual bool			    DoesHealthDamage() const {return false;} // returns true if effect damages (not drains) health
-							                // actually checks ambient light level (?) for sun damage.  called before fast-traveling
-	IMPORT /*02C*/ virtual void			    CopyTo(const ActiveEffect& copyTo); // copy members
-    INLINE /*030*/ virtual bool			    UnkAE30(UInt32 arg) {return true;} // return true by every single derived AE class
+    INLINE /*028*/ virtual bool             DoesHealthDamage() const {return false;} // returns true if effect damages (not drains) health
+                                            // actually checks ambient light level (?) for sun damage.  called before fast-traveling
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo); // copy members
+    INLINE /*030*/ virtual bool             UnkAE30(UInt32 arg) {return true;} // return true by every single derived AE class
                                             // perhaps a CompareTo() function?  If so, then apparently no two active effects are ever equivalent
                                             // after some testing, I (JRoush) am not sure this method is actually used by the game
-    INLINE /*034*/ virtual bool			    IsMagicTargetValid(MagicTarget* newTarget) {return true;} // effect is not applied if false
-    INLINE /*038*/ virtual void			    ApplyEffect() {} // apply/initialize effect on target
-    INLINE /*03C*/ virtual void			    RemoveEffect() {} // remove/cleanup effect from target
+    INLINE /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget) {return true;} // effect is not applied if false
+    INLINE /*038*/ virtual void             ApplyEffect() {} // apply/initialize effect on target
+    INLINE /*03C*/ virtual void             RemoveEffect() {} // remove/cleanup effect from target
 
     // methods   
     IMPORT void                     ApplyScalingFactor(float factor); // scales magnitude/duration by factor.  used to apply resistances, effectiveness, etc.                   

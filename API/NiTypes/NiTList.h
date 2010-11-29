@@ -1,4 +1,4 @@
-/*	   
+/*       
     NiTList class hierarchy: templated doubly-linked list, used mainly for pointers & 32-bit data types
 
     [ NOTICE: This is a templated class ]

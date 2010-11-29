@@ -18,31 +18,31 @@ class IMPORTCLASS Setting
 public:
 
     enum SettingTypes {
-		kSetting_Bool           = 0x0,  // 'b' size 1
-		kSetting_Char           = 0x1,  // 'c' size 1
-		kSetting_UnsignedChar   = 0x2,  // 'h' size 1
-		kSetting_SignedInt      = 0x3,  // 'i' size 4
-		kSetting_UnsignedInt    = 0x4,  // 'u' size 4
-		kSetting_Float          = 0x5,  // 'f' size 4
-		kSetting_String         = 0x6,  // 'S'/'s' size indet. See note below^^
-		kSetting_r              = 0x7,  // 'r' size 4
-		kSetting_a              = 0x8,  // 'a' size 4
-		kSetting__MAX           = 0x9
-	};
+        kSetting_Bool           = 0x0,  // 'b' size 1
+        kSetting_Char           = 0x1,  // 'c' size 1
+        kSetting_UnsignedChar   = 0x2,  // 'h' size 1
+        kSetting_SignedInt      = 0x3,  // 'i' size 4
+        kSetting_UnsignedInt    = 0x4,  // 'u' size 4
+        kSetting_Float          = 0x5,  // 'f' size 4
+        kSetting_String         = 0x6,  // 'S'/'s' size indet. See note below^^
+        kSetting_r              = 0x7,  // 'r' size 4
+        kSetting_a              = 0x8,  // 'a' size 4
+        kSetting__MAX           = 0x9
+    };
 
     // union for various value types
     union SettingValue
-	{
-		bool        b;
+    {
+        bool        b;
         char        c;
         UInt8       h;
         SInt32      i;
-		UInt32	    u;
-		float	    f;
-		const char* s;
-        UInt32	    r;
-        UInt32	    a;
-	};
+        UInt32        u;
+        float        f;
+        const char* s;
+        UInt32        r;
+        UInt32        a;
+    };
 
     // members
     MEMBER /*00/00*/ SettingValue       value;
@@ -105,11 +105,11 @@ public:
     //     /*--/24*/ Setting    
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual 	            ~GameSetting(); // remove from global gmst table
-    IMPORT /*01C/040*/ virtual bool	        LoadForm(TESFile& file);
-    IMPORT /*024/048*/ virtual void	        SaveFormChunks();
-    IMPORT /*0B4/0B8*/ virtual void	        CopyFrom(TESForm& form);
-	IMPORT /*0B8/0BC*/ virtual bool	        CompareTo(TESForm& compareTo);
+    IMPORT /*010/034*/ virtual                 ~GameSetting(); // remove from global gmst table
+    IMPORT /*01C/040*/ virtual bool            LoadForm(TESFile& file);
+    IMPORT /*024/048*/ virtual void            SaveFormChunks();
+    IMPORT /*0B4/0B8*/ virtual void            CopyFrom(TESForm& form);
+    IMPORT /*0B8/0BC*/ virtual bool            CompareTo(TESForm& compareTo);
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);
     IMPORT /*---/11C*/ virtual void         CleanupDialog(HWND dialog);

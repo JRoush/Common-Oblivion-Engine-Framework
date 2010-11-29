@@ -15,11 +15,11 @@
 class IMPORTCLASS BSStringT
 {// size 08/08
 protected:
-	
+    
     // members
-	char*   m_data;         // 00
-	SInt16	m_dataLen;      // 04
-	SInt16	m_bufLen;       // 06
+    char*   m_data;         // 00
+    SInt16    m_dataLen;      // 04
+    SInt16    m_bufLen;       // 06
 
 public:
     // methods

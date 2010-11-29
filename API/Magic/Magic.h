@@ -23,13 +23,13 @@ public:
     enum Schools
     {
         kSchool_Alteration      = 0x0,
-		kSchool_Conjuration     = 0x1,
-		kSchool_Destruction     = 0x2,
-		kSchool_Illusion        = 0x3,
-		kSchool_Mysticism       = 0x4,
-		kSchool_Restoration     = 0x5,
+        kSchool_Conjuration     = 0x1,
+        kSchool_Destruction     = 0x2,
+        kSchool_Illusion        = 0x3,
+        kSchool_Mysticism       = 0x4,
+        kSchool_Restoration     = 0x5,
         kSchool__MAX            = 0x6,  // used as an 'Invalid' or 'None' value
-	};   
+    };   
     IMPORT static GameSetting*      schoolNames[kSchool__MAX]; // 'sMagicSchool***'
                                     // there are also 3 built-in sounds - CastFailure, EnchantHit (?), 
                                     // and EnchantDraw (?), for each of the 6 schools
@@ -45,17 +45,17 @@ public:
     // magic types - these correspond to (perhaps are precisely) the type codes of magic items
     enum MagicTypes
     {
-		kMagicType_Spell           = 0x0,
-		kMagicType_Disease         = 0x1,
-		kMagicType_Power           = 0x2,
-		kMagicType_LesserPower     = 0x3,
-		kMagicType_Ability         = 0x4,
+        kMagicType_Spell           = 0x0,
+        kMagicType_Disease         = 0x1,
+        kMagicType_Power           = 0x2,
+        kMagicType_LesserPower     = 0x3,
+        kMagicType_Ability         = 0x4,
         kMagicType_Poison          = 0x5,   // Apparently dropped for potions w/ all hostile effects, but still included in a lot of code
         kMagicType_Enchantment     = 0x6,
         kMagicType_AlchemyItem     = 0x7,
         kMagicType_Ingredient      = 0x8,
         kMagicType__MAX            = 0x9
-	};
+    };
     IMPORT static GameSetting*      magicTypeNames[kMagicType__MAX]; // 'sMagicType***'
     IMPORT static const char*       GetMagicTypeName(UInt32 magicType); // fetched from gmsts
                                     // heavily inlined
@@ -78,11 +78,11 @@ public:
     // effect ranges
     enum RangeTypes
     {
-		kRange_Self             = 0x0,
-		kRange_Touch            = 0x1,
-		kRange_Target           = 0x2,
+        kRange_Self             = 0x0,
+        kRange_Touch            = 0x1,
+        kRange_Target           = 0x2,
         kRange__MAX             = 0x3  // used in some places as an 'any' or 'all' value
-	};
+    };
     IMPORT static GameSetting*      rangeNames[kRange__MAX]; // 'sMagicRange***'
     IMPORT static const char*       GetRangeName(UInt32 range); // fetched from gmsts
                                     // heavily inlined

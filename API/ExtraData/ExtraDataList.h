@@ -17,12 +17,12 @@ public:
 
     // members
     //     /*00/00*/ void**         vtbl          
-	MEMBER /*04/04*/ BSExtraData*   extraList; // LL of extra data nodes
-	MEMBER /*08/08*/ UInt8		    extraTypes[0x0C];	// if a bit is set, then the extralist should contain that extradata
-									// bits are numbered starting from the lsb
+    MEMBER /*04/04*/ BSExtraData*   extraList; // LL of extra data nodes
+    MEMBER /*08/08*/ UInt8            extraTypes[0x0C];    // if a bit is set, then the extralist should contain that extradata
+                                    // bits are numbered starting from the lsb
 
     // virtual methods
-	IMPORT /*00/00*/ virtual        ~BaseExtraList(); // The vtbl entry is actually the compiler-generated
+    IMPORT /*00/00*/ virtual        ~BaseExtraList(); // The vtbl entry is actually the compiler-generated
                                     // 'vector deleting destructor', which calls this method
 
     // methods
@@ -30,7 +30,7 @@ public:
     IMPORT void             RemoveExtra(BSExtraData* data, bool destroy); // removes from list & updates type bitfield, optionally destroys node
     IMPORT void             RemoveExtra(UInt32 extraType); // removes & destroys all extra data of the specified type
     IMPORT void             RemoveAllExtra(bool destroy); // clears extraList* and bitfield, optionally destroys all the extra nodes
-	IMPORT UInt32           ExtraCount();
+    IMPORT UInt32           ExtraCount();
     IMPORT BSExtraData*     GetExtra(UInt32 extraType);
     IMPORT BSExtraData*     GetPrevExtraData(UInt32 extraType); // returns extra node *before* the node of the specified type
 

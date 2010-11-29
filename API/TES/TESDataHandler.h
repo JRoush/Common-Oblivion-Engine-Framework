@@ -65,20 +65,20 @@ class TESFileManager
 // (as seen in editor by obse team) Not sure if this is a distinct named object, or just a logical grouping of members
 public:
     // members
-	MEMBER /*000*/ BSSimpleList<void*>	    unk00; // general garbage list for unsupported form types?
-	MEMBER /*008*/ UInt32				    nextFormID; // next available formID?
-	MEMBER /*00C*/ TESFile*		            activeFile;
+    MEMBER /*000*/ BSSimpleList<void*>        unk00; // general garbage list for unsupported form types?
+    MEMBER /*008*/ UInt32                    nextFormID; // next available formID?
+    MEMBER /*00C*/ TESFile*                    activeFile;
     MEMBER /*010*/ BSSimpleList<TESFile*>   fileList; // all files in Oblivion\Data\ directory
-    MEMBER /*018*/ UInt32					fileCount; // loaded files
+    MEMBER /*018*/ UInt32                    fileCount; // loaded files
     MEMBER /*01C*/ TESFile*                 filesByID[0xFF]; // loaded files
-    MEMBER /*418*/ UInt8					unk418; // if true, prevents check for changes to masters during load
-    MEMBER /*419*/ UInt8					unk419; // set if there is an active file??
-    MEMBER /*41A*/ UInt8					unk41A; 
-    MEMBER /*41B*/ UInt8					unk41B;
-    MEMBER /*41C*/ UInt8					unk41C; // set when data handler cleared
-    MEMBER /*41D*/ UInt8					unk41D; // set after fileList is initialized?
-    MEMBER /*41E*/ UInt8					unk41E; // set after data handler is constructed
-    MEMBER /*41F*/ UInt8					unk41F; // set after files in LO have been opened, cleared after files have been loaded
+    MEMBER /*418*/ UInt8                    unk418; // if true, prevents check for changes to masters during load
+    MEMBER /*419*/ UInt8                    unk419; // set if there is an active file??
+    MEMBER /*41A*/ UInt8                    unk41A; 
+    MEMBER /*41B*/ UInt8                    unk41B;
+    MEMBER /*41C*/ UInt8                    unk41C; // set when data handler cleared
+    MEMBER /*41D*/ UInt8                    unk41D; // set after fileList is initialized?
+    MEMBER /*41E*/ UInt8                    unk41E; // set after data handler is constructed
+    MEMBER /*41F*/ UInt8                    unk41F; // set after files in LO have been opened, cleared after files have been loaded
 };
 
 class IMPORTCLASS TESDataHandler
@@ -91,35 +91,35 @@ public:
 
     // members
     MEMBER /*000/0000*/ TESObjectListHead*                  objects;
-    MEMBER /*004/0004*/ BSSimpleList<TESPackage*>	        packages;
-	MEMBER /*00C/000C*/ BSSimpleList<TESWorldSpace*>	    worldSpaces;
-	MEMBER /*014/0014*/ BSSimpleList<TESClimate*>		    climates;
-	MEMBER /*01C/001C*/ BSSimpleList<TESWeather*>		    weathers;
-	MEMBER /*024/0024*/ BSSimpleList<EnchantmentItem*>	    enchantmentItems;
-	MEMBER /*02C/002C*/ BSSimpleList<SpellItem*>		    spellItems;
-	MEMBER /*034/0034*/ BSSimpleList<TESHair*>			    hairs;
-	MEMBER /*03C/003C*/ BSSimpleList<TESEyes*>			    eyes;
-	MEMBER /*044/0044*/ BSSimpleList<TESRace*>			    races;
-	MEMBER /*04C/004C*/ BSSimpleList<TESLandTexture*>	    landTextures;
-	MEMBER /*054/0054*/ BSSimpleList<TESClass*>			    classes;
-	MEMBER /*05C/005C*/ BSSimpleList<TESFaction*>		    factions;
-	MEMBER /*064/0064*/ BSSimpleList<Script*>			    scripts;
-	MEMBER /*06C/006C*/ BSSimpleList<TESSound*>			    sounds;
-	MEMBER /*074/0074*/ BSSimpleList<TESGlobal*>		    globals;
-	MEMBER /*07C/007C*/ BSSimpleList<TESTopic*>			    topics;
-	MEMBER /*084/0084*/ BSSimpleList<TESQuest*>			    quests;
-	MEMBER /*08C/008C*/ BSSimpleList<BirthSign*>		    birthsigns;
-	MEMBER /*094/0094*/ BSSimpleList<TESCombatStyle*>	    combatStyles;
-	MEMBER /*09C/009C*/ BSSimpleList<TESLoadScreen*>	    loadScreens;
-	MEMBER /*0A4/00A4*/ BSSimpleList<TESWaterForm*>		    waterForms;
-	MEMBER /*0AC/00AC*/ BSSimpleList<TESEffectShader*>	    effectShaders;
-	MEMBER /*0B4/00B4*/ BSSimpleList<TESObjectANIO*>	    objectAnios;
+    MEMBER /*004/0004*/ BSSimpleList<TESPackage*>            packages;
+    MEMBER /*00C/000C*/ BSSimpleList<TESWorldSpace*>        worldSpaces;
+    MEMBER /*014/0014*/ BSSimpleList<TESClimate*>            climates;
+    MEMBER /*01C/001C*/ BSSimpleList<TESWeather*>            weathers;
+    MEMBER /*024/0024*/ BSSimpleList<EnchantmentItem*>        enchantmentItems;
+    MEMBER /*02C/002C*/ BSSimpleList<SpellItem*>            spellItems;
+    MEMBER /*034/0034*/ BSSimpleList<TESHair*>                hairs;
+    MEMBER /*03C/003C*/ BSSimpleList<TESEyes*>                eyes;
+    MEMBER /*044/0044*/ BSSimpleList<TESRace*>                races;
+    MEMBER /*04C/004C*/ BSSimpleList<TESLandTexture*>        landTextures;
+    MEMBER /*054/0054*/ BSSimpleList<TESClass*>                classes;
+    MEMBER /*05C/005C*/ BSSimpleList<TESFaction*>            factions;
+    MEMBER /*064/0064*/ BSSimpleList<Script*>                scripts;
+    MEMBER /*06C/006C*/ BSSimpleList<TESSound*>                sounds;
+    MEMBER /*074/0074*/ BSSimpleList<TESGlobal*>            globals;
+    MEMBER /*07C/007C*/ BSSimpleList<TESTopic*>                topics;
+    MEMBER /*084/0084*/ BSSimpleList<TESQuest*>                quests;
+    MEMBER /*08C/008C*/ BSSimpleList<BirthSign*>            birthsigns;
+    MEMBER /*094/0094*/ BSSimpleList<TESCombatStyle*>        combatStyles;
+    MEMBER /*09C/009C*/ BSSimpleList<TESLoadScreen*>        loadScreens;
+    MEMBER /*0A4/00A4*/ BSSimpleList<TESWaterForm*>            waterForms;
+    MEMBER /*0AC/00AC*/ BSSimpleList<TESEffectShader*>        effectShaders;
+    MEMBER /*0B4/00B4*/ BSSimpleList<TESObjectANIO*>        objectAnios;
     MEMBER /*0BC/00BC*/ TESRegionList*                      regionList;
-    MEMBER /*0C0/00C0*/ NiTLargeArray<TESObjectCELL*>	    cellArray;
-    MEMBER /*0D8/00D8*/ TESSkill				            skills[0x15];
-    MEMBER /*8B8/0DF8*/ TESFileManager					    fileManager;
+    MEMBER /*0C0/00C0*/ NiTLargeArray<TESObjectCELL*>        cellArray;
+    MEMBER /*0D8/00D8*/ TESSkill                            skills[0x15];
+    MEMBER /*8B8/0DF8*/ TESFileManager                        fileManager;
     MEMBER /*CD8/1218*/ TESRegionDataManager*               regionDataManager;
-    MEMBER /*CDC/121C*/ void*					            unkCDC; // pointer to same object type as an ExtraContainerChanges +0xC
+    MEMBER /*CDC/121C*/ void*                                unkCDC; // pointer to same object type as an ExtraContainerChanges +0xC
 
     // methods - serilaization
     IMPORT bool         LoadFile(TESFile& file, bool arg1); // Deserializes file, loading all records with LoadFormRecord()

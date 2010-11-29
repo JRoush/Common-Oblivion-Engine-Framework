@@ -50,32 +50,32 @@ public:
     };
     static const UInt32     IDD_EffectItem = 0x10B; // Dialog Tempate ID
 
-	class ScriptEffectInfo
-	{// size 18/18
+    class ScriptEffectInfo
+    {// size 18/18
     public:
-	    // members
+        // members
         MEMBER /*00/00*/ UInt32         scriptFormID;
-	    MEMBER /*04/04*/ UInt32         school;
-	    MEMBER /*08/08*/ BSStringT      name;
-	    MEMBER /*10/10*/ UInt32         fxMgefCode; // effect setting from which FX are taken
-	    MEMBER /*14/14*/ bool           hostile;
+        MEMBER /*04/04*/ UInt32         school;
+        MEMBER /*08/08*/ BSStringT      name;
+        MEMBER /*10/10*/ UInt32         fxMgefCode; // effect setting from which FX are taken
+        MEMBER /*14/14*/ bool           hostile;
         MEMBER /*15/15*/ UInt8          pad15[3];
         // use FormHeap for class new & delete
         USEFORMHEAP
-	};
+    };
 
     // members
     // NOTE: setting these directly can break invariants assumed by game code (that 'effect' is a valid pointer, etc.)
     // wherever possible, use the Get/Set methods instead
-	MEMBER /*00/00*/ UInt32	            mgefCode;
-	MEMBER /*04/04*/ SInt32	            magnitude;
-	MEMBER /*08/08*/ SInt32	            area;
-	MEMBER /*0C/0C*/ SInt32	            duration;
-	MEMBER /*10/10*/ UInt32	            range;
-	MEMBER /*14/14*/ UInt32	            actorValue;  // this can be set directly, as no methods exist to do so
-	MEMBER /*18/18*/ ScriptEffectInfo*  scriptInfo; // set to a new ScriptEffectInfo if SEFF, null otherwise
-	MEMBER /*1C/1C*/ EffectSetting*     effect; // quite a bit of game code will CTD if this is null
-	MEMBER /*20/20*/ float	            cost;
+    MEMBER /*00/00*/ UInt32                mgefCode;
+    MEMBER /*04/04*/ SInt32                magnitude;
+    MEMBER /*08/08*/ SInt32                area;
+    MEMBER /*0C/0C*/ SInt32                duration;
+    MEMBER /*10/10*/ UInt32                range;
+    MEMBER /*14/14*/ UInt32                actorValue;  // this can be set directly, as no methods exist to do so
+    MEMBER /*18/18*/ ScriptEffectInfo*  scriptInfo; // set to a new ScriptEffectInfo if SEFF, null otherwise
+    MEMBER /*1C/1C*/ EffectSetting*     effect; // quite a bit of game code will CTD if this is null
+    MEMBER /*20/20*/ float                cost;
     #ifndef OBLIVION
     // These fields are initialized before or just after an EffectItem is edited in the Efit dialog
     MEMBER /*24/24*/ EffectSetting*     filterMgef; // filter effect from source magic item
@@ -168,7 +168,7 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**             vtbl;	
+    //     /*00/00*/ void**             vtbl;    
     //     /*04/04*/ Node<EffectItem*>  firstEffect;
     MEMBER /*0C/0C*/ UInt32             hostileCount; // includes 'ignored' effects, so technically broken, but no vanilla effects are ignored
     #ifndef OBLIVION

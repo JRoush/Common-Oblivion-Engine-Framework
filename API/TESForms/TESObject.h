@@ -20,10 +20,10 @@ class IMPORTCLASS TESObjectListHead
 */
 public:
     // members
-    MEMBER /*00*/ UInt32		objectCount;
+    MEMBER /*00*/ UInt32        objectCount;
     MEMBER /*04*/ TESObject*    first;
     MEMBER /*08*/ TESObject*    last;
-    MEMBER /*0C*/ UInt32		unkC;
+    MEMBER /*0C*/ UInt32        unkC;
 };
 
 class IMPORTCLASS TESObject : public TESForm
@@ -46,24 +46,24 @@ public:
     MEMBER /*20/30*/    TESObject*          next;   
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual 	            ~TESObject();
-    _NOUSE /*0A8/0AC*/ virtual bool	        UnkForm0A8() {return false;} //
+    IMPORT /*010/034*/ virtual                 ~TESObject();
+    _NOUSE /*0A8/0AC*/ virtual bool            UnkForm0A8() {return false;} //
 
     // additional virtual methods
-	_NOUSE /*0DC/124*/ virtual UInt32       UnkObj0DC() {return 0;}
-	_NOUSE /*0E0/128*/ virtual bool         UnkObj0E0() {return false;}
-	INLINE /*0E4/12C*/ virtual bool         IsObjectAutoCalc() {return false;} // magicka, cost, attribute autocalcs
-	INLINE /*0E8/130*/ virtual void	        SetObjectAutoCalc(bool autoCalc) {} // magicka, cost, attribute autocalcs
-	_NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(UInt32 arg0, UInt32 arg1) {return 0;}
-	_NOUSE /*0F0/138*/ virtual void	        UnkObj0F0(UInt32 arg0) {}
-	_NOUSE /*0F4/13C*/ virtual bool	        UnkObj0F4() {return false;}
-	_NOUSE /*0F8/140*/ virtual void	        UnkObj0F8() {}
-	_NOUSE /*0FC/144*/ virtual bool	        UnkObj0FC() {return false;}
-	_NOUSE /*100/148*/ virtual bool	        UnkObj100(UInt32 arg0) {return false;}
-	_NOUSE /*104/14C*/ virtual void	        UnkObj104(UInt32 arg0) {}
-	_NOUSE /*108/150*/ virtual UInt32	    UnkObj108() {return 0;}
-	_NOUSE /*10C/154*/ virtual UInt32	    UnkObj10C() {return 0;}
-	_NOUSE /*110/158*/ virtual void	        UnkObj110(UInt32 arg0) {}
+    _NOUSE /*0DC/124*/ virtual UInt32       UnkObj0DC() {return 0;}
+    _NOUSE /*0E0/128*/ virtual bool         UnkObj0E0() {return false;}
+    INLINE /*0E4/12C*/ virtual bool         IsObjectAutoCalc() {return false;} // magicka, cost, attribute autocalcs
+    INLINE /*0E8/130*/ virtual void            SetObjectAutoCalc(bool autoCalc) {} // magicka, cost, attribute autocalcs
+    _NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(UInt32 arg0, UInt32 arg1) {return 0;}
+    _NOUSE /*0F0/138*/ virtual void            UnkObj0F0(UInt32 arg0) {}
+    _NOUSE /*0F4/13C*/ virtual bool            UnkObj0F4() {return false;}
+    _NOUSE /*0F8/140*/ virtual void            UnkObj0F8() {}
+    _NOUSE /*0FC/144*/ virtual bool            UnkObj0FC() {return false;}
+    _NOUSE /*100/148*/ virtual bool            UnkObj100(UInt32 arg0) {return false;}
+    _NOUSE /*104/14C*/ virtual void            UnkObj104(UInt32 arg0) {}
+    _NOUSE /*108/150*/ virtual UInt32        UnkObj108() {return 0;}
+    _NOUSE /*10C/154*/ virtual UInt32        UnkObj10C() {return 0;}
+    _NOUSE /*110/158*/ virtual void            UnkObj110(UInt32 arg0) {}
 
     // constructor
     _NOUSE TESObject() {}   // inlined by game, differs between game & CS
@@ -119,26 +119,26 @@ public:
     #endif
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual 	            ~TESBoundObject();
-    _NOUSE /*0A4/0A8*/ virtual bool	        UnkForm0A4() {return true;} // 
+    IMPORT /*010/034*/ virtual                 ~TESBoundObject();
+    _NOUSE /*0A4/0A8*/ virtual bool            UnkForm0A4() {return true;} // 
     #ifdef OBLIVION
-    _NOUSE /*0CC/---*/ virtual bool	        UnkForm0CC(TESObjectREFR* arg0, TESObjectREFR* arg1, UInt32 arg2, UInt32 arg3, UInt32 arg4) {return false;}
+    _NOUSE /*0CC/---*/ virtual bool            UnkForm0CC(TESObjectREFR* arg0, TESObjectREFR* arg1, UInt32 arg2, UInt32 arg3, UInt32 arg4) {return false;}
     #else
     _NOUSE /*0B0/0B4*/ virtual UInt32       UnkForm0B0() {return 0;} // 
     #endif
 
     // TESObject virtual methods
     _NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(UInt32 arg0, UInt32 arg1) {return 0;}
-    _NOUSE /*0FC/144*/ virtual bool	        UnkObj0FC() {return false;}
+    _NOUSE /*0FC/144*/ virtual bool            UnkObj0FC() {return false;}
     #ifndef OBLIVION
-    _NOUSE /*108/150*/ virtual UInt32	    UnkObj108() {return 0;}
-	_NOUSE /*10C/154*/ virtual UInt32	    UnkObj10C() {return 0;}
+    _NOUSE /*108/150*/ virtual UInt32        UnkObj108() {return 0;}
+    _NOUSE /*10C/154*/ virtual UInt32        UnkObj10C() {return 0;}
     #endif
 
     // additional virtual methods
-    _NOUSE /*114/15C*/ virtual UInt32	    UnkBoundObj114(UInt32 arg0, UInt32 arg1) {return 0;}
-    _NOUSE /*118/160*/ virtual bool	        UnkBoundObj118(UInt32 arg0) {return false;}
-    _NOUSE /*11C/164*/ virtual void	        UnkBoundObj11C(UInt32 arg0, UInt32 arg1, UInt32 arg2, UInt32 arg3,
+    _NOUSE /*114/15C*/ virtual UInt32        UnkBoundObj114(UInt32 arg0, UInt32 arg1) {return 0;}
+    _NOUSE /*118/160*/ virtual bool            UnkBoundObj118(UInt32 arg0) {return false;}
+    _NOUSE /*11C/164*/ virtual void            UnkBoundObj11C(UInt32 arg0, UInt32 arg1, UInt32 arg2, UInt32 arg3,
                                                             UInt32 arg4, UInt32 arg5, UInt32 arg6, UInt32 arg7) {}
 
     // constructor
@@ -148,8 +148,8 @@ public:
 //class TESBoundAnimObject : public TESBoundObject
 //{// size 24/58
 //public:
-//	TESBoundAnimObject();
-//	~TESBoundAnimObject();
+//    TESBoundAnimObject();
+//    ~TESBoundAnimObject();
 //
-//	// no additional members or virtual methods
+//    // no additional members or virtual methods
 //};

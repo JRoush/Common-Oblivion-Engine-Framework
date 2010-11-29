@@ -34,23 +34,23 @@ class   NiRefObject;
 class IMPORTCLASS ScriptEffect : public ActiveEffect
 {// size 40
 public:
-	
+    
     // members
     //     /*00*/ ActiveEffect
-	MEMBER /*38*/ Script*           script;
-	MEMBER /*3C*/ ScriptEventList*	eventList;
+    MEMBER /*38*/ Script*           script;
+    MEMBER /*3C*/ ScriptEventList*    eventList;
 
     // ActiveEffect virtual methods    
-	IMPORT /*000*/ virtual                  ~ScriptEffect();
-	IMPORT /*004*/ virtual ActiveEffect*	Clone() const;
-    IMPORT /*008*/ virtual void			    UpdateEffect(float timeElapsed);
-	IMPORT /*00C*/ virtual UInt16			EffectSaveSize(TESObjectREFR* parent);
-	IMPORT /*010*/ virtual void			    SaveEffect(TESObjectREFR* parent);
-	IMPORT /*014*/ virtual void			    LoadEffect(TESObjectREFR* parent);
-    IMPORT /*020*/ virtual void			    PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void			    CopyTo(const ActiveEffect& copyTo) ;    
-    IMPORT /*038*/ virtual void			    ApplyEffect() ;
-    IMPORT /*03C*/ virtual void			    RemoveEffect() ;
+    IMPORT /*000*/ virtual                  ~ScriptEffect();
+    IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
+    IMPORT /*008*/ virtual void                UpdateEffect(float timeElapsed);
+    IMPORT /*00C*/ virtual UInt16            EffectSaveSize(TESObjectREFR* parent);
+    IMPORT /*010*/ virtual void                SaveEffect(TESObjectREFR* parent);
+    IMPORT /*014*/ virtual void                LoadEffect(TESObjectREFR* parent);
+    IMPORT /*020*/ virtual void                PreLoadEffect(TESObjectREFR* parent);
+    IMPORT /*02C*/ virtual void                CopyTo(const ActiveEffect& copyTo) ;    
+    IMPORT /*038*/ virtual void                ApplyEffect() ;
+    IMPORT /*03C*/ virtual void                RemoveEffect() ;
 
     // no additional virtual methods
 
@@ -62,24 +62,24 @@ class IMPORTCLASS SunDamageEffect : public ActiveEffect
 {// size 38
 public:
 
-	// members
+    // members
     //     /*00*/ ActiveEffect
-	MEMBER /*38*/ float	        unkSunDmg38;
-	MEMBER /*3C*/ UInt8	        unkSunDmg3C;
-	MEMBER /*3D*/ UInt8	        unkSunDmg3D;
-	MEMBER /*3E*/ UInt8	        padSunDmg3E[2];
+    MEMBER /*38*/ float            unkSunDmg38;
+    MEMBER /*3C*/ UInt8            unkSunDmg3C;
+    MEMBER /*3D*/ UInt8            unkSunDmg3D;
+    MEMBER /*3E*/ UInt8            padSunDmg3E[2];
 
     // ActiveEffect virtual methods 
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
-    IMPORT /*008*/ virtual void			    UpdateEffect(float timeElapsed); 
+    IMPORT /*008*/ virtual void                UpdateEffect(float timeElapsed); 
     IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent);
-    IMPORT /*010*/ virtual void			    SaveEffect(TESObjectREFR* parent);
-    IMPORT /*014*/ virtual void			    LoadEffect(TESObjectREFR* parent);
-    IMPORT /*01C*/ virtual void			    PostLinkEffect(TESObjectREFR* parent);
-    IMPORT /*028*/ virtual bool			    DoesHealthDamage() const ;
+    IMPORT /*010*/ virtual void                SaveEffect(TESObjectREFR* parent);
+    IMPORT /*014*/ virtual void                LoadEffect(TESObjectREFR* parent);
+    IMPORT /*01C*/ virtual void                PostLinkEffect(TESObjectREFR* parent);
+    IMPORT /*028*/ virtual bool                DoesHealthDamage() const ;
     IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
-    IMPORT /*034*/ virtual bool			    IsMagicTargetValid(MagicTarget* newTarget);
-    IMPORT /*03C*/ virtual void			    RemoveEffect();
+    IMPORT /*034*/ virtual bool                IsMagicTargetValid(MagicTarget* newTarget);
+    IMPORT /*03C*/ virtual void                RemoveEffect();
 
     // no additional virtual methods
 
@@ -93,20 +93,20 @@ class IMPORTCLASS DemoralizeEffect : public ActiveEffect
 {// size 3C
 public:
 
-	// members
+    // members
     //     /*00*/ ActiveEffect
-    MEMBER /*38*/ UInt8	unkDemo38;
-	MEMBER /*39*/ UInt8	padDemo39[3];
+    MEMBER /*38*/ UInt8    unkDemo38;
+    MEMBER /*39*/ UInt8    padDemo39[3];
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
     IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent);
     IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent);
-    IMPORT /*014*/ virtual void			    LoadEffect(TESObjectREFR* parent);
-    IMPORT /*024*/ virtual bool			    RemoveCaster(MagicCaster* removedCaster);
-    IMPORT /*034*/ virtual bool			    IsMagicTargetValid(MagicTarget* newTarget);
-    IMPORT /*038*/ virtual void			    ApplyEffect();
-    IMPORT /*03C*/ virtual void			    RemoveEffect();
+    IMPORT /*014*/ virtual void                LoadEffect(TESObjectREFR* parent);
+    IMPORT /*024*/ virtual bool                RemoveCaster(MagicCaster* removedCaster);
+    IMPORT /*034*/ virtual bool                IsMagicTargetValid(MagicTarget* newTarget);
+    IMPORT /*038*/ virtual void                ApplyEffect();
+    IMPORT /*03C*/ virtual void                RemoveEffect();
 
     // no additional virtual methods
 
@@ -119,15 +119,15 @@ public:
 class IMPORTCLASS CommandEffect : public ActiveEffect
 {// size 38
 public:
-	
+    
     // no additional members
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
-    IMPORT /*024*/ virtual bool			    RemoveCaster(MagicCaster* removedCaster);
-    IMPORT /*038*/ virtual void			    ApplyEffect();
-    IMPORT /*03C*/ virtual void			    RemoveEffect();
+    IMPORT /*024*/ virtual bool                RemoveCaster(MagicCaster* removedCaster);
+    IMPORT /*038*/ virtual void                ApplyEffect();
+    IMPORT /*03C*/ virtual void                RemoveEffect();
 
     // no additional virtual methods
 
@@ -138,7 +138,7 @@ public:
 class IMPORTCLASS CommandCreatureEffect : public CommandEffect
 {// size 38
 public:
-	
+    
     // no additional members 
 
     // CommandEffect virtual methods   
@@ -156,7 +156,7 @@ public:
 class IMPORTCLASS CommandHumanoidEffect : public CommandEffect
 {// size 38
 public:
-		
+        
     // no additional members 
 
     // CommandEffect virtual methods   
@@ -175,21 +175,21 @@ class IMPORTCLASS ReanimateEffect : public ActiveEffect
 {// size 60
 public:
 
-	struct UnkReanimStruct50
-	{// size 10
-		UInt32	unk0;	// 00
-		UInt32	unk4;	// 04
-		UInt32	unk8;	// 08
-		UInt32	unkC;	// 0C
-	};
+    struct UnkReanimStruct50
+    {// size 10
+        UInt32    unk0;    // 00
+        UInt32    unk4;    // 04
+        UInt32    unk8;    // 08
+        UInt32    unkC;    // 0C
+    };
 
-	// members
+    // members
     //     /*00*/ ActiveEffect
-    MEMBER /*38*/ UInt32	        unkRean38;
-	MEMBER /*3C*/ UInt32	        unkRean3C;
-	MEMBER /*40*/ float	            unkRean40;
-	MEMBER /*44*/ Vector3	        unkRean44;
-	MEMBER /*50*/ UnkReanimStruct50	unkRean50;
+    MEMBER /*38*/ UInt32            unkRean38;
+    MEMBER /*3C*/ UInt32            unkRean3C;
+    MEMBER /*40*/ float                unkRean40;
+    MEMBER /*44*/ Vector3            unkRean44;
+    MEMBER /*50*/ UnkReanimStruct50    unkRean50;
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -215,10 +215,10 @@ class IMPORTCLASS TurnUndeadEffect : public ActiveEffect
 {// size 3C
 public:
 
-	// members
+    // members
     //     /*00*/ ActiveEffect
-    MEMBER /*38*/ UInt8	        unkTurn38;
-	MEMBER /*39*/ UInt8	        padTurn39[3];
+    MEMBER /*38*/ UInt8            unkTurn38;
+    MEMBER /*39*/ UInt8            padTurn39[3];
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -289,7 +289,7 @@ public:
 
 class IMPORTCLASS DispelEffect : public ActiveEffect
 {// size 38
-public:	
+public:    
 
     // no additional members
 
@@ -314,7 +314,7 @@ public:
     // members
     //     /*00*/ ActiveEffect
     MEMBER /*38*/ UInt32        magicTypeToCure; // see Magic::MagicTypes
-	MEMBER /*3C*/ UInt32        effectCodeToCure; //for CUPA = 'PARA', for CUDA & CUPO = 0xFFFFFFFF
+    MEMBER /*3C*/ UInt32        effectCodeToCure; //for CUPA = 'PARA', for CUDA & CUPO = 0xFFFFFFFF
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -332,7 +332,7 @@ class IMPORTCLASS DisintegrateArmorEffect : public ActiveEffect
 {// size 3C
 public:
 
-	// members
+    // members
     //     /*00*/ ActiveEffect
     MEMBER /*38*/ UInt32        unkDisArm38;
 
@@ -357,7 +357,7 @@ class IMPORTCLASS DisintegrateWeaponEffect : public ActiveEffect
 {// size 38
 public:
     
-	// no additional members
+    // no additional members
 
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
@@ -394,7 +394,7 @@ public:
 class IMPORTCLASS OpenEffect : public ActiveEffect
 {// size 38
 public:
-	
+    
     // no additional members
 
     // ActiveEffect virtual methods   
@@ -413,7 +413,7 @@ public:
 class IMPORTCLASS SoulTrapEffect : public ActiveEffect
 {// size 38
 public:
-	
+    
     // no additional members
 
     // ActiveEffect virtual methods   

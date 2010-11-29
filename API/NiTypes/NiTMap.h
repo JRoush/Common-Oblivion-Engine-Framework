@@ -1,4 +1,4 @@
-/*	   
+/*       
     NiTMap class hierarchy: hashtable-based associative containers   
 
     [ NOTICE: This is a templated class ]

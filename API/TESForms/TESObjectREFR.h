@@ -111,69 +111,69 @@ public:
     static const UInt32     IDD_TESObjectREFR_EnableParentTab       = 0xCB0;
     static const UInt32     IDD_TESObjectREFR_LeveledCreatureTab    = 0xCBB;
     
-	enum ModifiedFlags
-	{// some of these may be specific to derived classes, and should be moved there
-		kModified_ParentCell            = /*02*/ 0x00000004, 
+    enum ModifiedFlags
+    {// some of these may be specific to derived classes, and should be moved there
+        kModified_ParentCell            = /*02*/ 0x00000004, 
         kModified_HavokMove             = /*03*/ 0x00000008, // CHANGE_REFR_HAVOK_MOVE
-		kModified_Scale                 = /*04*/ 0x00000010, // CHANGE_REFR_SCALE        
-		kModified_ExtraOwner            = /*07*/ 0x00000080, // CHANGE_OBJECT_EXTRA_OWNER
-		kModified_MapMarkerFlags        = /*0A*/ 0x00000400, // CHANGE_MAPMARKER_EXTRA_FLAGS
-		kModified_HadHavokMoveFlag      = /*0B*/ 0x00000800, // CHANGEFLAG_REFR_HAD_HAVOK_MOVE_FLAG - ?
-		kModified_IsEmpty               = /*10*/ 0x00010000, // CHANGE_OBJECT_EMPTY - no data? (only if not Actor?)		
-		kModified_DoorOpenDefaultState  = /*12*/ 0x00040000, // CHANGE_DOOR_OPEN_DEFAULT_STATE
-		kModified_DoorOpenState         = /*13*/ 0x00080000, // CHANGE_DOOR_OPEN_STATE		
-		kModified_DoorExtraTeleport     = /*14*/ 0x00100000, // CHANGE_DOOR_EXTRA_TELEPORT
-		kModified_Animation             = /*19*/ 0x02000000, // CHANGE_REFR_ANIMATION - (only if not Actor?)
-		kModified_Inventory             = /*1B*/ 0x08000000, // CHANGE_REFR_INVENTORY - see 0048BA40
-	};
+        kModified_Scale                 = /*04*/ 0x00000010, // CHANGE_REFR_SCALE        
+        kModified_ExtraOwner            = /*07*/ 0x00000080, // CHANGE_OBJECT_EXTRA_OWNER
+        kModified_MapMarkerFlags        = /*0A*/ 0x00000400, // CHANGE_MAPMARKER_EXTRA_FLAGS
+        kModified_HadHavokMoveFlag      = /*0B*/ 0x00000800, // CHANGEFLAG_REFR_HAD_HAVOK_MOVE_FLAG - ?
+        kModified_IsEmpty               = /*10*/ 0x00010000, // CHANGE_OBJECT_EMPTY - no data? (only if not Actor?)        
+        kModified_DoorOpenDefaultState  = /*12*/ 0x00040000, // CHANGE_DOOR_OPEN_DEFAULT_STATE
+        kModified_DoorOpenState         = /*13*/ 0x00080000, // CHANGE_DOOR_OPEN_STATE        
+        kModified_DoorExtraTeleport     = /*14*/ 0x00100000, // CHANGE_DOOR_EXTRA_TELEPORT
+        kModified_Animation             = /*19*/ 0x02000000, // CHANGE_REFR_ANIMATION - (only if not Actor?)
+        kModified_Inventory             = /*1B*/ 0x08000000, // CHANGE_REFR_INVENTORY - see 0048BA40
+    };
 
     // members
     //     /*00/00*/ TESForm          
     //     /*18/24*/ TESChildCell
     //     /*1C/28*/ TESMemContextForm - empty, no members
-	MEMBER /*1C/28*/ TESForm*           baseForm;
-	MEMBER /*20/2C*/ Vector3            rotation;
-	MEMBER /*2C/38*/ Vector3            position;
-	MEMBER /*38/44*/ float              scale;
+    MEMBER /*1C/28*/ TESForm*           baseForm;
+    MEMBER /*20/2C*/ Vector3            rotation;
+    MEMBER /*2C/38*/ Vector3            position;
+    MEMBER /*38/44*/ float              scale;
     #ifdef OBLIVION
-	MEMBER /*3C/--*/ NiNode*            niNode;
+    MEMBER /*3C/--*/ NiNode*            niNode;
     #endif
-	MEMBER /*40/48*/ TESObjectCELL*     parentCell;
-	MEMBER /*44/4C*/ ExtraDataList	    extraData;
+    MEMBER /*40/48*/ TESObjectCELL*     parentCell;
+    MEMBER /*44/4C*/ ExtraDataList      extraData;
 
     // TESChildCell virtual methods
-    IMPORT /*000/000*/ virtual TESObjectCELL*	GetChildCell();
+    IMPORT /*000/000*/ virtual TESObjectCELL*    GetChildCell();
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual 	                ~TESObjectREFR();
-	IMPORT /*014/038*/ virtual void	            InitializeAllComponents();
-	IMPORT /*018/03C*/ virtual void	            ClearAllComponentReferences();
-	IMPORT /*01C/040*/ virtual bool	            LoadForm(TESFile& file);
-    IMPORT /*024/048*/ virtual void	            SaveFormChunks();
-    IMPORT /*030/054*/ virtual bool	            LessThanGroup(const RecordInfo& groupRecord);
-	IMPORT /*034/058*/ virtual bool	            LessThan(TESForm& form);
+    IMPORT /*010/034*/ virtual                  ~TESObjectREFR();
+    IMPORT /*014/038*/ virtual void             InitializeAllComponents();
+    IMPORT /*018/03C*/ virtual void             ClearAllComponentReferences();
+    IMPORT /*01C/040*/ virtual bool             LoadForm(TESFile& file);
+    IMPORT /*024/048*/ virtual void             SaveFormChunks();
+    IMPORT /*030/054*/ virtual bool             LessThanGroup(const RecordInfo& groupRecord);
+    IMPORT /*034/058*/ virtual bool             LessThan(TESForm& form);
     IMPORT /*038/05C*/ virtual TESForm*         Clone(bool autoEditorID, NiTMap<TESForm*,TESForm*>* cloneMap);
-    _NOUSE /*03C/060*/ virtual void	            UnkForm03C(UInt32 arg0);
+    _NOUSE /*03C/060*/ virtual void             UnkForm03C(UInt32 arg0);
     #ifdef OBLIVION
-    IMPORT /*04C/---*/ virtual UInt16	        ModifiedFormSize(UInt32 modifiedMask);
-    IMPORT /*050/---*/ virtual void	            SaveModifiedForm(UInt32 modifiedMask);
-    IMPORT /*054/---*/ virtual void	            LoadModifiedForm(UInt32 modifiedMask, UInt32 unkFlags);
-    IMPORT /*058/---*/ virtual void	            LinkModifiedForm(UInt32 modifiedMask, UInt32 arg1);
-    IMPORT /*05C/---*/ virtual void	            PostLinkModifiedForm(UInt32 modifiedMask, UInt32 arg1);
-    IMPORT /*060/---*/ virtual void	            PreLoadModifiedForm(UInt32 modifiedMask);
+    IMPORT /*04C/---*/ virtual UInt16           ModifiedFormSize(UInt32 modifiedMask);
+    IMPORT /*050/---*/ virtual void             SaveModifiedForm(UInt32 modifiedMask);
+    IMPORT /*054/---*/ virtual void             LoadModifiedForm(UInt32 modifiedMask, UInt32 unkFlags);
+    IMPORT /*058/---*/ virtual void             LinkModifiedForm(UInt32 modifiedMask, UInt32 arg1);
+    IMPORT /*05C/---*/ virtual void             PostLinkModifiedForm(UInt32 modifiedMask, UInt32 arg1);
+    IMPORT /*060/---*/ virtual void             PreLoadModifiedForm(UInt32 modifiedMask);
     #endif
-    IMPORT /*06C/070*/ virtual void	            LinkForm();
-	IMPORT /*070/074*/ virtual UInt8	        GetFormType();
-	IMPORT /*074/078*/ virtual void	            GetDebugDescription(BSStringT& output);
-	IMPORT /*078/07C*/ virtual bool	            IsQuestItem();
-    _NOUSE /*088/08C*/ virtual bool	            UnkForm088();
-    IMPORT /*08C/090*/ virtual void	            SetDeleted(bool deleted);
-    IMPORT /*090/094*/ virtual void	            SetFromActiveFile(bool fromActiveFile);
-    INLINE /*094/098*/ virtual void	            SetQuestItem(bool questItem) {return;} // does nothing for TESObjectREFR
-    IMPORT /*0B4/0B8*/ virtual void	            CopyFrom(TESForm& form);
-	IMPORT /*0B8/0BC*/ virtual bool	            CompareTo(TESForm& compareTo);
-	IMPORT /*0BC/0C0*/ virtual bool	            MatchGroupRecord(const RecordInfo& groupRecord, bool matchAllLevels, bool arg2);
-    IMPORT /*0C0/0C4*/ virtual void	            CreateGroupRecord(RecordInfo& newGroupRecord, RecordInfo& currentGroupRecord);
+    IMPORT /*06C/070*/ virtual void             LinkForm();
+    IMPORT /*070/074*/ virtual UInt8            GetFormType();
+    IMPORT /*074/078*/ virtual void             GetDebugDescription(BSStringT& output);
+    IMPORT /*078/07C*/ virtual bool             IsQuestItem();
+    _NOUSE /*088/08C*/ virtual bool             UnkForm088();
+    IMPORT /*08C/090*/ virtual void             SetDeleted(bool deleted);
+    IMPORT /*090/094*/ virtual void             SetFromActiveFile(bool fromActiveFile);
+    INLINE /*094/098*/ virtual void             SetQuestItem(bool questItem) {return;} // does nothing for TESObjectREFR
+    IMPORT /*0B4/0B8*/ virtual void             CopyFrom(TESForm& form);
+    IMPORT /*0B8/0BC*/ virtual bool             CompareTo(TESForm& compareTo);
+    IMPORT /*0BC/0C0*/ virtual bool             MatchGroupRecord(const RecordInfo& groupRecord, bool matchAllLevels, bool arg2);
+    IMPORT /*0C0/0C4*/ virtual void             CreateGroupRecord(RecordInfo& newGroupRecord, RecordInfo& currentGroupRecord);
     IMPORT /*0D4/0C8*/ virtual const char*      GetEditorID();
     #ifndef OBLIVION
     _NOUSE /*---/0D4*/ virtual bool             UnkForm0D4();
