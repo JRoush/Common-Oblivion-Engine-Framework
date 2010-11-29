@@ -3,9 +3,11 @@
 *.suo
 *.sln
 *.vcproj*
+*.lib
 Debug/
 Release/
 !COEF.vcproj
+!ExportInjector.lib
 
 # ignore side projects that don't belong in the public repo
 /testing.cpp
