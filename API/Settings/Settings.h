@@ -37,16 +37,16 @@ public:
         char        c;
         UInt8       h;
         SInt32      i;
-        UInt32        u;
-        float        f;
+        UInt32      u;
+        float       f;
         const char* s;
-        UInt32        r;
-        UInt32        a;
+        UInt32      r;
+        UInt32      a;
     };
 
     // members
-    MEMBER /*00/00*/ SettingValue       value;
-    MEMBER /*04/04*/ const char*        name;   // must begin with one of the type characters
+    MEMBER /*00/00*/ SettingValue   value;
+    MEMBER /*04/04*/ const char*    name;   // must begin with one of the type characters
 
     // methods
     IMPORT void             SetStringValue(const char* newValue); // only for string settings.  See note below^^        
@@ -105,11 +105,11 @@ public:
     //     /*--/24*/ Setting    
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual                 ~GameSetting(); // remove from global gmst table
-    IMPORT /*01C/040*/ virtual bool            LoadForm(TESFile& file);
-    IMPORT /*024/048*/ virtual void            SaveFormChunks();
-    IMPORT /*0B4/0B8*/ virtual void            CopyFrom(TESForm& form);
-    IMPORT /*0B8/0BC*/ virtual bool            CompareTo(TESForm& compareTo);
+    IMPORT /*010/034*/ virtual              ~GameSetting(); // remove from global gmst table
+    IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file);
+    IMPORT /*024/048*/ virtual void         SaveFormChunks();
+    IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form);
+    IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);
     IMPORT /*---/11C*/ virtual void         CleanupDialog(HWND dialog);

@@ -104,47 +104,47 @@ public:
     typedef BSSimpleList<GroupInfo*> GroupList;
 
     // members
-    MEMBER /*000*/ UInt32                errorState;
-    MEMBER /*004*/ UInt32                unkFile004;
-    MEMBER /*008*/ UInt32                unkFile008;
-    MEMBER /*00C*/ BSFile*                unkFile00C; // temp file for backups?
+    MEMBER /*000*/ UInt32               errorState;
+    MEMBER /*004*/ UInt32               unkFile004;
+    MEMBER /*008*/ UInt32               unkFile008;
+    MEMBER /*00C*/ BSFile*              unkFile00C; // temp file for backups?
     MEMBER /*010*/ BSFile*              bsFile; // used for actual read from / write to disk operations
-    MEMBER /*014*/ UInt32                unkFile014;
-    MEMBER /*018*/ UInt32                unkFile018;
-    MEMBER /*01C*/ char                    fileName[kMAX_PATH]; 
-    MEMBER /*120*/ char                    filePath[kMAX_PATH]; // relative to "Oblivion\"
+    MEMBER /*014*/ UInt32               unkFile014;
+    MEMBER /*018*/ UInt32               unkFile018;
+    MEMBER /*01C*/ char                 fileName[kMAX_PATH]; 
+    MEMBER /*120*/ char                 filePath[kMAX_PATH]; // relative to "Oblivion\"
     MEMBER /*224*/ void*                unkFile224; // simple object, no destructor
-    MEMBER /*228*/ UInt32                unkFile228; // init to 0x2800
-    MEMBER /*22C*/ UInt32                unkFile22C;
-    MEMBER /*230*/ UInt32                unkFile230;
-    MEMBER /*234*/ UInt32                unkFile234;
-    MEMBER /*238*/ UInt32                unkFile238;
-    MEMBER /*23C*/ RecordInfo            currentRecord;
+    MEMBER /*228*/ UInt32               unkFile228; // init to 0x2800
+    MEMBER /*22C*/ UInt32               unkFile22C;
+    MEMBER /*230*/ UInt32               unkFile230;
+    MEMBER /*234*/ UInt32               unkFile234;
+    MEMBER /*238*/ UInt32               unkFile238;
+    MEMBER /*23C*/ RecordInfo           currentRecord;
     MEMBER /*250*/ ChunkInfo            currentChunk;
-    MEMBER /*258*/ UInt32                fileSize; // same as FileSizeLow in find data
-    MEMBER /*25C*/ UInt32                currentRecordOffset; // offset of current record in file
-    MEMBER /*260*/ UInt32                currentChunkOffset; // offset of current chunk in record
-    MEMBER /*264*/ UInt32                fetchedChunkDataSize; // number of bytes read in last GetChunkData() call
+    MEMBER /*258*/ UInt32               fileSize; // same as FileSizeLow in find data
+    MEMBER /*25C*/ UInt32               currentRecordOffset; // offset of current record in file
+    MEMBER /*260*/ UInt32               currentChunkOffset; // offset of current chunk in record
+    MEMBER /*264*/ UInt32               fetchedChunkDataSize; // number of bytes read in last GetChunkData() call
     MEMBER /*268*/ GroupInfo            unkFile268; // used when saving empty form records, e.g. for deleted forms
-    MEMBER /*280*/ UInt32                unkFile280; // used when saving empty form records, e.g. for deleted forms
+    MEMBER /*280*/ UInt32               unkFile280; // used when saving empty form records, e.g. for deleted forms
     MEMBER /*284*/ GroupList            openGroups; // stack of open group records, from lowest level to highest
     MEMBER /*28C*/ bool                 headerRead; // set after header has been successfully parsed
     MEMBER /*28D*/ UInt8                padFile28D[3];
-    MEMBER /*290*/ WIN32_FIND_DATA        findData;
+    MEMBER /*290*/ WIN32_FIND_DATA      findData;
     MEMBER /*3D0*/ FileHeaderInfo       fileHeader;
-    MEMBER /*3DC*/ UInt32                fileFlags;
+    MEMBER /*3DC*/ UInt32               fileFlags;
     MEMBER /*3E0*/ MasterNameList       masterNames;
     MEMBER /*3E8*/ MasterDataList       masterData;
-    MEMBER /*3F0*/ UInt32                masterCount;
+    MEMBER /*3F0*/ UInt32               masterCount;
     MEMBER /*3F4*/ TESFile**            masterFiles; // pointer to TESFile*[parentCount] of currently loaded masters
-    MEMBER /*3F8*/ UInt32                unkFile3F8;
-    MEMBER /*3FC*/ UInt32                unkFile3FC;
+    MEMBER /*3F8*/ UInt32               unkFile3F8;
+    MEMBER /*3FC*/ UInt32               unkFile3FC;
     MEMBER /*400*/ UInt8                fileIndex; // index of this file in load order (or 0xFF if not loaded) 
     MEMBER /*401*/ UInt8                padFile401[3];
     MEMBER /*404*/ BSStringT            authorName;
     MEMBER /*40C*/ BSStringT            description;
     MEMBER /*414*/ void*                currentRecordDCBuffer; // buffer for decompressed record data
-    MEMBER /*418*/ UInt32                currentRecordDCLength; // length of decompressed record data
+    MEMBER /*418*/ UInt32               currentRecordDCLength; // length of decompressed record data
     MEMBER /*41C*/ TESFile*             unkFile41C; // file this object was cloned from. used for local copies of network files?
 
     // methods - master files

@@ -63,15 +63,15 @@ public:
     //     /*00/00*/ TESForm           
     //     /*18/24*/ TESFullName
     //     /*24/30*/ TESMemContextForm - empty, no members
-    MEMBER /*24/30*/ UInt8                cellFlags24;
-    MEMBER /*25/31*/ UInt8                cellFlags25;
-    MEMBER /*26/32*/ UInt8                cellFlags26;
-    MEMBER /*27/33*/ UInt8                pad27;
-    MEMBER /*28/34*/ ExtraDataList        extraData; // includes ExtraEditorID in game
+    MEMBER /*24/30*/ UInt8              cellFlags24;
+    MEMBER /*25/31*/ UInt8              cellFlags25;
+    MEMBER /*26/32*/ UInt8              cellFlags26;
+    MEMBER /*27/33*/ UInt8              pad27;
+    MEMBER /*28/34*/ ExtraDataList      extraData; // includes ExtraEditorID in game
     MEMBER /*3C/48*/ CellCoordinates*   coords;
     MEMBER /*40/4C*/ TESObjectLAND*     land;
     MEMBER /*44/50*/ TESPathGrid*       pathGrid;
-    MEMBER /*48/54*/ ObjectREFRList        objectList;
+    MEMBER /*48/54*/ ObjectREFRList     objectList;
     #ifdef OBLIVION
     MEMBER /*50/--*/ TESWorldSpace*     worldSpace; // how is this tracked in the CS?
     MEMBER /*54/--*/ NiNode*            niNode; // smart pointer, increments/decrements ref count for node
@@ -80,36 +80,36 @@ public:
     // no TESFullName virtual method overrides
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual                 ~TESObjectCELL();
-    IMPORT /*018/03C*/ virtual void            ClearAllComponentReferences();
-    IMPORT /*01C/040*/ virtual bool            LoadForm(TESFile& file);
-    IMPORT /*020/044*/ virtual bool            SaveFormRecord(TESFile& file);
-    IMPORT /*024/048*/ virtual void            SaveFormChunks();
-    IMPORT /*02C/050*/ virtual bool            SaveForm(TESFile& file);
-    IMPORT /*030/054*/ virtual bool            LessThanGroup(const RecordInfo& groupRecord);
-    IMPORT /*034/058*/ virtual bool            LessThan(TESForm& form);
+    IMPORT /*010/034*/ virtual              ~TESObjectCELL();
+    IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences();
+    IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file);
+    IMPORT /*020/044*/ virtual bool         SaveFormRecord(TESFile& file);
+    IMPORT /*024/048*/ virtual void         SaveFormChunks();
+    IMPORT /*02C/050*/ virtual bool         SaveForm(TESFile& file);
+    IMPORT /*030/054*/ virtual bool         LessThanGroup(const RecordInfo& groupRecord);
+    IMPORT /*034/058*/ virtual bool         LessThan(TESForm& form);
     IMPORT /*038/05C*/ virtual TESForm*     Clone(bool autoEditorID, NiTMap<TESForm*,TESForm*>* cloneMap);
     #ifdef OBLIVION
     IMPORT /*04C/---*/ virtual UInt16        ModifiedFormSize(UInt32 modifiedMask);
-    IMPORT /*050/---*/ virtual void            SaveModifiedForm(UInt32 modifiedMask);
-    IMPORT /*054/---*/ virtual void            LoadModifiedForm(UInt32 modifiedMask, UInt32 unkFlags);
-    INLINE /*058/---*/ virtual void            LinkModifiedForm(UInt32 modifiedMask, UInt32 arg1);
-    INLINE /*060/---*/ virtual void            PreLoadModifiedForm(UInt32 modifiedMask);
-    _NOUSE /*068/---*/ virtual bool            UnkForm068(UInt32 arg0);
+    IMPORT /*050/---*/ virtual void         SaveModifiedForm(UInt32 modifiedMask);
+    IMPORT /*054/---*/ virtual void         LoadModifiedForm(UInt32 modifiedMask, UInt32 unkFlags);
+    INLINE /*058/---*/ virtual void         LinkModifiedForm(UInt32 modifiedMask, UInt32 arg1);
+    INLINE /*060/---*/ virtual void         PreLoadModifiedForm(UInt32 modifiedMask);
+    _NOUSE /*068/---*/ virtual bool         UnkForm068(UInt32 arg0);
     #endif
-    IMPORT /*06C/070*/ virtual void            LinkForm();
-    IMPORT /*090/094*/ virtual void            SetFromActiveFile(bool fromActiveFile);
-    IMPORT /*0B4/0B8*/ virtual void            CopyFrom(TESForm& form);
-    IMPORT /*0B8/0BC*/ virtual bool            CompareTo(TESForm& compareTo);
-    IMPORT /*0BC/0C0*/ virtual bool            MatchGroupRecord(const RecordInfo& groupRecord, bool matchAllLevels, bool arg2);
-    IMPORT /*0C0/0C4*/ virtual void            CreateGroupRecord(RecordInfo& newGroupRecord, RecordInfo& currentGroupRecord);
+    IMPORT /*06C/070*/ virtual void         LinkForm();
+    IMPORT /*090/094*/ virtual void         SetFromActiveFile(bool fromActiveFile);
+    IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form);
+    IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
+    IMPORT /*0BC/0C0*/ virtual bool         MatchGroupRecord(const RecordInfo& groupRecord, bool matchAllLevels, bool arg2);
+    IMPORT /*0C0/0C4*/ virtual void         CreateGroupRecord(RecordInfo& newGroupRecord, RecordInfo& currentGroupRecord);
     #ifdef OBLIVION
-    _NOUSE /*0C4/---*/ virtual bool            UnkForm0C4();
-    _NOUSE /*0C8/---*/ virtual bool            UnkForm0C8(UInt32 arg0);
+    _NOUSE /*0C4/---*/ virtual bool         UnkForm0C4();
+    _NOUSE /*0C8/---*/ virtual bool         UnkForm0C8(UInt32 arg0);
     #endif
     IMPORT /*0D4/0C8*/ virtual const char*  GetEditorID();
     #ifdef OBLIVION
-    IMPORT /*0D8/---*/ virtual bool            SetEditorID(const char* newEditorID);
+    IMPORT /*0D8/---*/ virtual bool         SetEditorID(const char* newEditorID);
     #else
     _NOUSE /*---/0CC*/ virtual bool         UnkForm0CC();
     _NOUSE /*---/0D0*/ virtual bool         UnkForm0D0(UInt32 arg0);
@@ -145,7 +145,7 @@ public:
     // no members, other than vtbl
 
     // virtual methods
-    IMPORT /*00/00*/ virtual TESObjectCELL*        GetChildCell() = 0;
+    IMPORT /*00/00*/ virtual TESObjectCELL* GetChildCell() = 0;
 
     // no constructor, destructor
 };

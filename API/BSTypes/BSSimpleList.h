@@ -40,8 +40,8 @@ public:
     {
     public:
         // Node members
-        TVAL        data;   // 00
-        Node*       next;   // 04
+        MEMBER /*00*/ TVAL      data;
+        MEMBER /*04*/ Node*     next;
         // constructor
         INLINE Node(TVAL newData) : data(newData), next(0) {}
         // use FormHeap for class new & delete

@@ -67,15 +67,15 @@ public:
     // members
     // NOTE: setting these directly can break invariants assumed by game code (that 'effect' is a valid pointer, etc.)
     // wherever possible, use the Get/Set methods instead
-    MEMBER /*00/00*/ UInt32                mgefCode;
-    MEMBER /*04/04*/ SInt32                magnitude;
-    MEMBER /*08/08*/ SInt32                area;
-    MEMBER /*0C/0C*/ SInt32                duration;
-    MEMBER /*10/10*/ UInt32                range;
-    MEMBER /*14/14*/ UInt32                actorValue;  // this can be set directly, as no methods exist to do so
+    MEMBER /*00/00*/ UInt32             mgefCode;
+    MEMBER /*04/04*/ SInt32             magnitude;
+    MEMBER /*08/08*/ SInt32             area;
+    MEMBER /*0C/0C*/ SInt32             duration;
+    MEMBER /*10/10*/ UInt32             range;
+    MEMBER /*14/14*/ UInt32             actorValue;  // this can be set directly, as no methods exist to do so
     MEMBER /*18/18*/ ScriptEffectInfo*  scriptInfo; // set to a new ScriptEffectInfo if SEFF, null otherwise
     MEMBER /*1C/1C*/ EffectSetting*     effect; // quite a bit of game code will CTD if this is null
-    MEMBER /*20/20*/ float                cost;
+    MEMBER /*20/20*/ float              cost;
     #ifndef OBLIVION
     // These fields are initialized before or just after an EffectItem is edited in the Efit dialog
     MEMBER /*24/24*/ EffectSetting*     filterMgef; // filter effect from source magic item

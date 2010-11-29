@@ -43,14 +43,14 @@ public:
     // ActiveEffect virtual methods    
     IMPORT /*000*/ virtual                  ~ScriptEffect();
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
-    IMPORT /*008*/ virtual void                UpdateEffect(float timeElapsed);
-    IMPORT /*00C*/ virtual UInt16            EffectSaveSize(TESObjectREFR* parent);
-    IMPORT /*010*/ virtual void                SaveEffect(TESObjectREFR* parent);
-    IMPORT /*014*/ virtual void                LoadEffect(TESObjectREFR* parent);
-    IMPORT /*020*/ virtual void                PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void                CopyTo(const ActiveEffect& copyTo) ;    
-    IMPORT /*038*/ virtual void                ApplyEffect() ;
-    IMPORT /*03C*/ virtual void                RemoveEffect() ;
+    IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed);
+    IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent);
+    IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent);
+    IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent);
+    IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) ;    
+    IMPORT /*038*/ virtual void             ApplyEffect() ;
+    IMPORT /*03C*/ virtual void             RemoveEffect() ;
 
     // no additional virtual methods
 
@@ -71,15 +71,15 @@ public:
 
     // ActiveEffect virtual methods 
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
-    IMPORT /*008*/ virtual void                UpdateEffect(float timeElapsed); 
+    IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent);
-    IMPORT /*010*/ virtual void                SaveEffect(TESObjectREFR* parent);
-    IMPORT /*014*/ virtual void                LoadEffect(TESObjectREFR* parent);
-    IMPORT /*01C*/ virtual void                PostLinkEffect(TESObjectREFR* parent);
-    IMPORT /*028*/ virtual bool                DoesHealthDamage() const ;
+    IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent);
+    IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent);
+    IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
+    IMPORT /*028*/ virtual bool             DoesHealthDamage() const ;
     IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
-    IMPORT /*034*/ virtual bool                IsMagicTargetValid(MagicTarget* newTarget);
-    IMPORT /*03C*/ virtual void                RemoveEffect();
+    IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
+    IMPORT /*03C*/ virtual void             RemoveEffect();
 
     // no additional virtual methods
 
@@ -102,11 +102,11 @@ public:
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
     IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent);
     IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent);
-    IMPORT /*014*/ virtual void                LoadEffect(TESObjectREFR* parent);
-    IMPORT /*024*/ virtual bool                RemoveCaster(MagicCaster* removedCaster);
-    IMPORT /*034*/ virtual bool                IsMagicTargetValid(MagicTarget* newTarget);
-    IMPORT /*038*/ virtual void                ApplyEffect();
-    IMPORT /*03C*/ virtual void                RemoveEffect();
+    IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent);
+    IMPORT /*024*/ virtual bool             RemoveCaster(MagicCaster* removedCaster);
+    IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
+    IMPORT /*038*/ virtual void             ApplyEffect();
+    IMPORT /*03C*/ virtual void             RemoveEffect();
 
     // no additional virtual methods
 
@@ -125,9 +125,9 @@ public:
     // ActiveEffect virtual methods   
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
-    IMPORT /*024*/ virtual bool                RemoveCaster(MagicCaster* removedCaster);
-    IMPORT /*038*/ virtual void                ApplyEffect();
-    IMPORT /*03C*/ virtual void                RemoveEffect();
+    IMPORT /*024*/ virtual bool             RemoveCaster(MagicCaster* removedCaster);
+    IMPORT /*038*/ virtual void             ApplyEffect();
+    IMPORT /*03C*/ virtual void             RemoveEffect();
 
     // no additional virtual methods
 

@@ -32,10 +32,10 @@ public:
     // virtual methods:
     IMPORT /*000/000*/ virtual void         InitializeComponent() = 0 {} // 
                                             // Initializes member values of the component, called by constructor (always a stub for TESForms)
-    INLINE /*004/004*/ virtual void            ClearComponentReferences() {} // 
+    INLINE /*004/004*/ virtual void         ClearComponentReferences() {} // 
                                             // e.g. Useage stats for TESForm, name hash list (?) for TESModel, etc.
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source) = 0;
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const = 0; // 
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source) = 0;
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const = 0; // 
                                             // return false if equivalent
 
     #ifndef OBLIVION
@@ -67,13 +67,13 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**             vtbl;
-    MEMBER /*04/04*/ BSStringT          name;
+    //     /*00/00*/ void**         vtbl;
+    MEMBER /*04/04*/ BSStringT      name;
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const;
     #ifndef OBLIVION
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);       
@@ -103,23 +103,23 @@ public:
 
     // static cache for loaded description (game only)
     #ifdef OBLIVION
-    IMPORT static TESDescription*     cachedDescriptionOwner; 
-    IMPORT static BSStringT           cachedDescription; 
+    IMPORT static TESDescription*   cachedDescriptionOwner; 
+    IMPORT static BSStringT         cachedDescription; 
     #endif
 
     // members
-    //     /*00/00*/ void**             vtbl;
+    //     /*00/00*/ void**         vtbl;
     #ifdef OBLIVION
-    MEMBER /*04/--*/ UInt32                descDiskOffset; // 
+    MEMBER /*04/--*/ UInt32         descDiskOffset; // 
     #else
-    MEMBER /*--/04*/ BSStringT          description; // 
-    MEMBER /*--/0C*/ UInt32             descDialogItem; // Dialog Control ID for description control
+    MEMBER /*--/04*/ BSStringT      description; // 
+    MEMBER /*--/0C*/ UInt32         descDialogItem; // Dialog Control ID for description control
     #endif    
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
@@ -155,19 +155,19 @@ public:
     };        
 
     // members
-    //     /*00/00*/ void**             vtbl;
-    MEMBER /*04/04*/ BSStringT          texturePath; // 
+    //     /*00/00*/ void**         vtbl;
+    MEMBER /*04/04*/ BSStringT      texturePath; // 
     #ifndef OBLIVION
-    MEMBER /*--/0C*/ UInt32                unkTexture0C; // cached image?
-    MEMBER /*--/10*/ UInt32                texturePathDlgItem; // Dialog Control ID for texture path control
-    MEMBER /*--/14*/ UInt32             textureImageDlgItem; // Dialog Control ID for texture image control
+    MEMBER /*--/0C*/ UInt32         unkTexture0C; // cached image?
+    MEMBER /*--/10*/ UInt32         texturePathDlgItem; // Dialog Control ID for texture path control
+    MEMBER /*--/14*/ UInt32         textureImageDlgItem; // Dialog Control ID for texture image control
     #endif
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*004/004*/ virtual void            ClearComponentReferences();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*004/004*/ virtual void         ClearComponentReferences();
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
@@ -235,10 +235,10 @@ public:
 
     // members
     //     /*00/00*/ void**                 vtbl;
-    MEMBER /*04/04*/ BSStringT                modelPath; // 
-    MEMBER /*0C/0C*/ float                    modelBound; // 
+    MEMBER /*04/04*/ BSStringT              modelPath; // 
+    MEMBER /*0C/0C*/ float                  modelBound; // 
     #ifdef OBLIVION
-    MEMBER /*10/--*/ UInt8                    unkModel10; // 
+    MEMBER /*10/--*/ UInt8                  unkModel10; // 
     MEMBER /*11/--*/ UInt8                  unkModel11[3]; // 
     MEMBER /*14/--*/ void*                  unkModel14; // Object released by destructor, ClearComponentReferences()
     #else
@@ -248,9 +248,9 @@ public:
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*004/004*/ virtual void            ClearComponentReferences();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*004/004*/ virtual void         ClearComponentReferences();
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
@@ -259,9 +259,9 @@ public:
     #endif
 
     // additional virtual methods 
-    IMPORT /*010/034*/ virtual                 ~TESModel();    // 
+    IMPORT /*010/034*/ virtual              ~TESModel();    // 
                                             // The vtbl entry is acutally the compiler-generated 'vector deleting destructor', which calls this method
-    IMPORT /*014/038*/ virtual const char*    ModelPath();
+    IMPORT /*014/038*/ virtual const char*  ModelPath();
     #ifndef OBLIVION
     IMPORT /*---/03C*/ virtual bool         GetModelPathFromDlg(HWND dialog, UInt32 pathDialogItem);   //
                                             // Sets the Model path to the text of the specified control    
@@ -295,15 +295,15 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**             vtbl;
-    MEMBER /*04/04*/ Script*            script; // script formid stored here during loading
-    MEMBER /*08/08*/ bool                scriptLinked; // set once formid has been resolved into a Script*
-    MEMBER /*09/09*/ UInt8                scriptPad09[3]; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ Script*    script; // script formid stored here during loading
+    MEMBER /*08/08*/ bool       scriptLinked; // set once formid has been resolved into a Script*
+    MEMBER /*09/09*/ UInt8      scriptPad09[3]; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     _NOUSE /*---/010*/ virtual void         UnkBFC010(void* arg0) {}                           
     IMPORT /*---/014*/ virtual void         RemoveComponentFormRef(TESForm& referencedForm);
@@ -338,14 +338,14 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ UInt8          uses; // 
-    MEMBER /*05/05*/ UInt8          usesPad05[3]; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ UInt8      uses; // 
+    MEMBER /*05/05*/ UInt8      usesPad05[3]; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);     
@@ -376,13 +376,13 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ SInt32            goldValue;
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ SInt32     goldValue;
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);     
@@ -392,8 +392,8 @@ public:
     // additional virtual methods
     #ifdef OBLIVION
     IMPORT /*010/---*/ virtual UInt16        ModifiedComponentSize(UInt32 modifiedMask);
-    IMPORT /*014/---*/ virtual void            SaveModifiedComponent(UInt32 modifiedMask);
-    IMPORT /*018/---*/ virtual void            LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
+    IMPORT /*014/---*/ virtual void         SaveModifiedComponent(UInt32 modifiedMask);
+    IMPORT /*018/---*/ virtual void         LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
     #endif
 
     // Ordinary Save/Load is done through TESForm::SaveGenericComponents() & TESForm::LoadGenericComponents()
@@ -414,13 +414,13 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ UInt32         health; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ UInt32     health; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);     
@@ -450,13 +450,13 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ float            weight; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ float      weight; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);   
@@ -483,13 +483,13 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ float            quality; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ float      quality; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);     
@@ -515,14 +515,14 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ UInt16            damage; // 
-    MEMBER /*06/06*/ UInt16         damagePad06; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ UInt16     damage; // 
+    MEMBER /*06/06*/ UInt16     damagePad06; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);     
@@ -574,13 +574,13 @@ public:
     };
 
     // members
-    //     /*00/00*/ void**         vtbl;
-    MEMBER /*04/04*/ UInt8          attributes[8]; // 
+    //     /*00/00*/ void**     vtbl;
+    MEMBER /*04/04*/ UInt8      attributes[8]; // 
 
     // virtual method overrides
     IMPORT /*000/000*/ virtual void         InitializeComponent();
-    IMPORT /*008/008*/ virtual void            CopyComponentFrom(const BaseFormComponent& source);
-    IMPORT /*00C/00C*/ virtual bool            CompareComponentTo(const BaseFormComponent& compareTo) const ;
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
     INLINE /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result) {return false;} //
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
@@ -591,8 +591,8 @@ public:
     // additional virtual methods
     #ifdef OBLIVION
     IMPORT /*010/---*/ virtual UInt16        ModifiedComponentSize(UInt32 modifiedMask);
-    IMPORT /*014/---*/ virtual void            SaveModifiedComponent(UInt32 modifiedMask);
-    IMPORT /*018/---*/ virtual void            LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
+    IMPORT /*014/---*/ virtual void         SaveModifiedComponent(UInt32 modifiedMask);
+    IMPORT /*018/---*/ virtual void         LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
     #endif
 
     // Ordinary Save/Load is done through TESForm::SaveGenericComponents() & TESForm::LoadGenericComponents()
@@ -617,9 +617,9 @@ public:
 
     // members
     //void**                vtbl            // 00
-    UInt8                    containerType;    // 04
-    UInt8                    typePad[3];        // 05
-    SLLNode<ContentData*>    contents;        // 08
+    UInt8                   containerType;    // 04
+    UInt8                   typePad[3];        // 05
+    SLLNode<ContentData*>   contents;        // 08
 
     // no additional virtual methods
 };
