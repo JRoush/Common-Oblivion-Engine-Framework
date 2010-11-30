@@ -78,6 +78,7 @@ EXPORTS ;{ ; TESForm
 ?ClearReferenceList@TESForm@@QAEXXZ                                 = _NOTINGAME,0x00496400     ; ClearReferenceList
 ?GetFormTypeName@TESForm@@SAPBDE@Z                                  = 0x0047E190,0x004AC1B0     ; GetFormTypeName
 ?Create@TESForm@@SAPAV1@E@Z                                         = 0x00447DF0,0x004793F0     ; Create
+?MakeTemporary@TESForm@@QAEXXZ                                      = 0x0046B590,0x004972A0     ; MakeTemporary
 ;}
 ;} ; end of TESForm
 

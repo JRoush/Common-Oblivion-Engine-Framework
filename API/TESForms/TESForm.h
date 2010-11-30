@@ -106,7 +106,7 @@ public:
         kFormType_CombatStyle,
         kFormType_LoadScreen,
         kFormType_LeveledSpell  = 0x40,
-        kFormType_ANIO,
+        kFormType_AnimObject,
         kFormType_WaterForm,
         kFormType_EffectShader,
         kFormType_TOFT          = 0x44,
@@ -304,6 +304,7 @@ public:
     // methods -misc
     IMPORT static const char*   GetFormTypeName(UInt8 formType);
     IMPORT static TESForm*      Create(UInt8 formType); // form 'Factory' - creates a new form by type, for supported types
+    IMPORT void                 MakeTemporary(); // removes from formID map, editorID map, active file list, etc. and sets temporary flag
 
     // constructor  
     IMPORT TESForm();
