@@ -55,6 +55,7 @@
 
 // base classes
 #include "API/Magic/ActiveEffect.h"
+#ifdef OBLIVION // game only
 
 // argument classes
 class   Actor;
@@ -369,3 +370,5 @@ public:
     IMPORT static TelekinesisEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 
 };
+
+#endif

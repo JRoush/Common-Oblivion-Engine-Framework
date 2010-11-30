@@ -21,6 +21,7 @@
         -   SoulTrapEffect
 */
 #pragma once
+#ifdef OBLIVION // game only
 
 // base classes
 #include "API/Magic/ActiveEffect.h"
@@ -431,3 +432,5 @@ public:
         : ActiveEffect(caster,magicItem,effectItem) {}
     IMPORT static SoulTrapEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
+
+#endif

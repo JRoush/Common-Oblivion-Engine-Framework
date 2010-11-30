@@ -7,6 +7,7 @@
             -   BoundItemEffect
 */
 #pragma once
+#ifdef OBLIVION // game only
 
 // base classes
 #include "API/Magic/ActiveEffect.h"
@@ -121,3 +122,5 @@ public:
     // constructor - no creator function
     IMPORT BoundItemEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem);
 };
+
+#endif
