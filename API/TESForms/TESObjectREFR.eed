@@ -32,7 +32,7 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetEditorID@TESObjectREFR@@UAEPBDXZ                                        = 0x004D6DF0,0x005420A0     ; GetEditorID
 ?RemoveFormReference@TESObjectREFR@@UAEXAAVTESForm@@@Z                      = _NOTINGAME,0x00543070     ; RemoveFormReference
 ?UpdateUsageInfo@TESObjectREFR@@UAE_NXZ                                     = _NOTINGAME,0x00540010     ; UpdateUsageInfo
-?DialogMessageCallback@TESObjectREFR@@UAEXPAUHWND__@@IIJAAJ@Z               = _NOTINGAME,0x0054BB80     ; DialogMessageCallback
+?DialogMessageCallback@TESObjectREFR@@UAE_NPAUHWND__@@IIJAAJ@Z              = _NOTINGAME,0x0054BB80     ; DialogMessageCallback
 ?SetInDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                               = _NOTINGAME,0x00549590     ; SetInDialog
 ?GetFromDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00540280     ; GetFromDialog
 ?CleanupDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00549AC0     ; CleanupDialog

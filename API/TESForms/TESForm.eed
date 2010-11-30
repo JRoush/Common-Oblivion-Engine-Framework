@@ -51,7 +51,7 @@ EXPORTS ;{ ; TESForm
 ?GetResourcePath@TESForm@@UAEXAAVBSStringT@@@Z              = _NOTINGAME,0x00497840     ; GetResourcePath
 ?RemoveFormReference@TESForm@@UAEXAAV1@@Z                   = _NOTINGAME,0x00495260     ; RemoveFormReference
 ?UpdateUsageInfo@TESForm@@UAE_NXZ                           = _NOTINGAME,0x00497400     ; UpdateUsageInfo
-?DialogMessageCallback@TESForm@@UAEXPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x00495B80     ; DialogMessageCallback
+?DialogMessageCallback@TESForm@@UAE_NPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x00495B80     ; DialogMessageCallback
 ?IsDialogValid@TESForm@@UAE_NPAUHWND__@@@Z                  = _NOTINGAME,0x00495CA0     ; IsDialogValid
 ?SetInDialog@TESForm@@UAEXPAUHWND__@@@Z                     = _NOTINGAME,0x00495C20     ; SetInDialog
 ?GetFromDialog@TESForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00495D20     ; GetFromDialog

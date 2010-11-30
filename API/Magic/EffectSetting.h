@@ -218,7 +218,7 @@ public:
     #ifndef OBLIVION
     IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form); //
     _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;}
-    IMPORT /*---/10C*/ virtual void         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); 
+    IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); 
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);
     IMPORT /*---/11C*/ virtual void         CleanupDialog(HWND dialog);

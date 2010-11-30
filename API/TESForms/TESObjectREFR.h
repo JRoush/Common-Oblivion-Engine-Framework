@@ -183,7 +183,7 @@ public:
     _NOUSE /*---/0FC*/ virtual void             UnkForm0FC(UInt32 arg0, BSStringT& output);
     _NOUSE /*---/100*/ virtual bool             UnkForm100(UInt32 arg0);
     IMPORT /*---/104*/ virtual bool             UpdateUsageInfo();
-    IMPORT /*---/10C*/ virtual void             DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/10C*/ virtual bool             DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/114*/ virtual void             SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void             GetFromDialog(HWND dialog);
     IMPORT /*---/11C*/ virtual void             CleanupDialog(HWND dialog);

@@ -266,7 +266,7 @@ public:
     _NOUSE /*---/100*/ virtual bool         UnkForm100(UInt32 arg0) {return false;} // checkout form for current user? (might not be used by public CS)
     IMPORT /*---/104*/ virtual bool         UpdateUsageInfo(); // update trackingData and (?) fileList
     _NOUSE /*---/108*/ virtual bool         UnkForm108(UInt32 arg0) {return false;} // undo checkout?
-    IMPORT /*---/10C*/ virtual void         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/110*/ virtual bool         IsDialogValid(HWND dialog); // Checks for necessary controls by id, returns true if found
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog); // Set dialog control values to reflect members
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog); // Get member values from dialog controls

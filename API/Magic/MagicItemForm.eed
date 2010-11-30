@@ -8,7 +8,7 @@ EXPORTS ;{ ; MagicItemForm
 ?SaveFormChunks@MagicItemForm@@UAEXXZ                           = 0x0041B1B0,0x0056DBD0     ; SaveFormChunks
 ?CopyFrom@MagicItemForm@@UAEXAAVTESForm@@@Z                     = 0x0041B280,0x0056DCA0     ; CopyFrom
 ?CompareTo@MagicItemForm@@UAE_NAAVTESForm@@@Z                   = 0x0041B210,0x0056DC30     ; CompareTo
-?DialogMessageCallback@MagicItemForm@@UAEXPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x0056DCF0     ; DialogMessageCallback
+?DialogMessageCallback@MagicItemForm@@UAE_NPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x0056DCF0     ; DialogMessageCallback
 ?SetInDialog@MagicItemForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0056DD40     ; SetInDialog
 ?GetFromDialog@MagicItemForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x0056DF40     ; GetFromDialog
 ; MagicItem virtual methods
@@ -25,7 +25,7 @@ EXPORTS ;{ ; EnchantmentItem
 ??1EnchantmentItem@@UAE@XZ                                      = 0x00418F50,0x0056CE00     ; ~EnchantmentItem
 ?InitializeAllComponents@EnchantmentItem@@UAEXXZ                = 0x00418EF0,0x0056C9A0     ; InitializeAllComponents
 ?ClearAllComponentReferences@EnchantmentItem@@UAEXXZ            = 0x00418F10,0x0056C9D0     ; ClearAllComponentReferences
-?DialogMessageCallback@EnchantmentItem@@UAEXPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x0056D080     ; DialogMessageCallback
+?DialogMessageCallback@EnchantmentItem@@UAE_NPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x0056D080     ; DialogMessageCallback
 ?SetInDialog@EnchantmentItem@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x0056D1F0     ; SetInDialog
 ?GetFromDialog@EnchantmentItem@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x0056CCC0     ; GetFromDialog
 ; MagicItem virtual methods
@@ -54,7 +54,7 @@ EXPORTS ;{ ; SpellItem
 ?InitializeAllComponents@SpellItem@@UAEXXZ                  = 0x0041D1B0,0x0056F2A0     ; InitializeAllComponents
 ?ClearAllComponentReferences@SpellItem@@UAEXXZ              = 0x00418F10,0x0056C9D0     ; ClearAllComponentReferences
 ?GetResourcePath@SpellItem@@UAEXAAVBSStringT@@@Z            = _NOTINGAME,0x0056FCC0     ; GetResourcePath
-?DialogMessageCallback@SpellItem@@UAEXPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x0056F8C0     ; DialogMessageCallback
+?DialogMessageCallback@SpellItem@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x0056F8C0     ; DialogMessageCallback
 ?SetInDialog@SpellItem@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0056FA40     ; SetInDialog
 ?GetFromDialog@SpellItem@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x0056F4D0     ; GetFromDialog
 ; MagicItem virtual methods

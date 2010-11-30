@@ -8,7 +8,7 @@ EXPORTS ;{ ; MagicItemObject
 ?SaveFormChunks@MagicItemObject@@UAEXXZ                             = 0x0041B490,0x0056DFD0     ; SaveFormChunks
 ?CopyFrom@MagicItemObject@@UAEXAAVTESForm@@@Z                       = 0x0041B560,0x0056E0A0     ; CopyFrom
 ?CompareTo@MagicItemObject@@UAE_NAAVTESForm@@@Z                     = 0x0041B4F0,0x0056E030     ; CompareTo
-?DialogMessageCallback@MagicItemObject@@UAEXPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x0056E0F0     ; DialogMessageCallback
+?DialogMessageCallback@MagicItemObject@@UAE_NPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x0056E0F0     ; DialogMessageCallback
 ?SetInDialog@MagicItemObject@@UAEXPAUHWND__@@@Z                     = _NOTINGAME,0x0056E140     ; SetInDialog
 ?GetFromDialog@MagicItemObject@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0056E350     ; GetFromDialog
 ; MagicItem virtual methods
@@ -26,7 +26,7 @@ EXPORTS ;{ ; IngredientItem
 ?InitializeAllComponents@IngredientItem@@UAEXXZ                 = 0x004195F0,0x0056D480     ; InitializeAllComponents
 ?ClearAllComponentReferences@IngredientItem@@UAEXXZ             = 0x00412860,0x0056D4A0     ; ClearAllComponentReferences
 ?LinkForm@IngredientItem@@UAEXXZ                                = 0x004129E0,0x00564680     ; LinkForm
-?DialogMessageCallback@IngredientItem@@UAEXPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x00564980     ; DialogMessageCallback
+?DialogMessageCallback@IngredientItem@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x00564980     ; DialogMessageCallback
 ?SetInDialog@IngredientItem@@UAEXPAUHWND__@@@Z                  = _NOTINGAME,0x00564AA0     ; SetInDialog
 ?GetFromDialog@IngredientItem@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x0056D5A0     ; GetFromDialog
 ?IsObjectAutoCalc@IngredientItem@@UAE_NXZ                       = 0x00419720,0x0056D780     ; IsObjectAutoCalc
@@ -60,7 +60,7 @@ EXPORTS ;{ ; AlchemyItem
 ?InitializeAllComponents@AlchemyItem@@UAEXXZ                = 0x004195F0,0x0056D480     ; InitializeAllComponents
 ?ClearAllComponentReferences@AlchemyItem@@UAEXXZ            = 0x00412860,0x0056D4A0     ; ClearAllComponentReferences
 ?LinkForm@AlchemyItem@@UAEXXZ                               = 0x004129E0,0x00564680     ; LinkForm
-?DialogMessageCallback@AlchemyItem@@UAEXPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x00564980     ; DialogMessageCallback
+?DialogMessageCallback@AlchemyItem@@UAE_NPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x00564980     ; DialogMessageCallback
 ?SetInDialog@AlchemyItem@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00564AA0     ; SetInDialog
 ?GetFromDialog@AlchemyItem@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x0056D5A0     ; GetFromDialog
 ?IsObjectAutoCalc@AlchemyItem@@UAE_NXZ                      = 0x00419720,0x0056D780     ; IsObjectAutoCalc
