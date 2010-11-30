@@ -443,6 +443,10 @@
 				Name="CSDialogs"
 				>
 				<File
+					RelativePath=".\API\CSDialogs\DialogExtraData.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\CSDialogs\TESDialog.h"
 					>
 				</File>

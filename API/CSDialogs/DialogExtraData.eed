@@ -1,0 +1,20 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; DialogExtraParam
+??0DialogExtraParam@@QAE@XZ     = _NOTINGAME,0x004400C0     ; DialogExtraParam
+;}
+
+EXPORTS ;{ ; DialogExtraLocalCopy
+??1DialogExtraLocalCopy@@UAE@XZ = _NOTINGAME,0x00440100     ; ~DialogExtraLocalCopy
+??0DialogExtraLocalCopy@@QAE@XZ = _NOTINGAME,0x004400E0     ; DialogExtraLocalCopy
+;}
+
+EXPORTS ;{ ; DialogExtraPopupMenu
+??1DialogExtraPopupMenu@@UAE@XZ = _NOTINGAME,0x00440310     ; ~DialogExtraPopupMenu
+??0DialogExtraPopupMenu@@QAE@XZ = _NOTINGAME,0x004402F0     ; DialogExtraPopupMenu
+;}
+
+EXPORTS ;{ ; DialogExtraWorkingData
+??0DialogExtraWorkingData@@QAE@XZ   = _NOTINGAME,0x004401F0     ; DialogExtraWorkingData
+;}

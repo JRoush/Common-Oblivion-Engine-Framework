@@ -18,12 +18,12 @@ public:
     // members
     //     /*00/00*/ void**         vtbl          
     MEMBER /*04/04*/ BSExtraData*   extraList; // LL of extra data nodes
-    MEMBER /*08/08*/ UInt8            extraTypes[0x0C];    // if a bit is set, then the extralist should contain that extradata
+    MEMBER /*08/08*/ UInt8          extraTypes[0x0C];    // if a bit is set, then the extralist should contain that extradata
                                     // bits are numbered starting from the lsb
 
     // virtual methods
-    IMPORT /*00/00*/ virtual        ~BaseExtraList(); // The vtbl entry is actually the compiler-generated
-                                    // 'vector deleting destructor', which calls this method
+    IMPORT /*00/00*/ virtual        ~BaseExtraList(); // destroys all data in list.  The vtbl entry is actually the
+                                    // compiler-generated 'vector deleting destructor', which calls this method
 
     // methods
     IMPORT void             AddExtra(BSExtraData* data); // inserts in list and updates type bitfield
@@ -34,12 +34,11 @@ public:
     IMPORT BSExtraData*     GetExtra(UInt32 extraType);
     IMPORT BSExtraData*     GetPrevExtraData(UInt32 extraType); // returns extra node *before* the node of the specified type
 
+    // constructor
+    INLINE BaseExtraList() : extraList(0) {memset(extraTypes,0,sizeof(extraTypes));} // importable in CS but completely inlined by game
+
     // use FormHeap for class new & delete
     USEFORMHEAP
-
-protected:
-    // constructor
-    _NOUSE BaseExtraList() {} // BaseExtraList has no constructor, it is not intended to be instatiated directly
 };
 
 class IMPORTCLASS ExtraDataList : public BaseExtraList
