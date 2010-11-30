@@ -7,16 +7,16 @@
 #pragma warning(disable: 4221)
 #include <cmath>
 
-typedef unsigned char        UInt8;        //!< An unsigned 8-bit integer value
-typedef unsigned short        UInt16;        //!< An unsigned 16-bit integer value
-typedef unsigned long        UInt32;        //!< An unsigned 32-bit integer value
-typedef unsigned long long    UInt64;        //!< An unsigned 64-bit integer value
-typedef signed char            SInt8;        //!< A signed 8-bit integer value
-typedef signed short        SInt16;        //!< A signed 16-bit integer value
-typedef signed long            SInt32;        //!< A signed 32-bit integer value
-typedef signed long long    SInt64;        //!< A signed 64-bit integer value
-typedef float                Float32;    //!< A 32-bit floating point value
-typedef double                Float64;    //!< A 64-bit floating point value
+typedef unsigned char           UInt8;        //!< An unsigned 8-bit integer value
+typedef unsigned short          UInt16;        //!< An unsigned 16-bit integer value
+typedef unsigned long           UInt32;        //!< An unsigned 32-bit integer value
+typedef unsigned long long      UInt64;        //!< An unsigned 64-bit integer value
+typedef signed char             SInt8;        //!< A signed 8-bit integer value
+typedef signed short            SInt16;        //!< A signed 16-bit integer value
+typedef signed long             SInt32;        //!< A signed 32-bit integer value
+typedef signed long long        SInt64;        //!< A signed 64-bit integer value
+typedef float                   Float32;    //!< A 32-bit floating point value
+typedef double                  Float64;    //!< A 64-bit floating point value
 
 inline UInt32 Extend16(UInt32 in)
 {
@@ -89,20 +89,20 @@ inline bool IsLittleEndian(void)
     return !IsBigEndian();
 }
 
-#define CHAR_CODE(a, b, c, d)    (((a & 0xFF) << 0) | ((b & 0xFF) << 8) | ((c & 0xFF) << 16) | ((d & 0xFF) << 24))
-#define MACRO_SWAP16(a)            ((((a) & 0x00FF) << 8) | (((a) & 0xFF00) >> 8))
-#define MACRO_SWAP32(a)            ((((a) & 0x000000FF) << 24) | (((a) & 0x0000FF00) << 8) | (((a) & 0x00FF0000) >> 8) | (((a) & 0xFF000000) >> 24))
+#define CHAR_CODE(a, b, c, d)   (((a & 0xFF) << 0) | ((b & 0xFF) << 8) | ((c & 0xFF) << 16) | ((d & 0xFF) << 24))
+#define MACRO_SWAP16(a)         ((((a) & 0x00FF) << 8) | (((a) & 0xFF00) >> 8))
+#define MACRO_SWAP32(a)         ((((a) & 0x000000FF) << 24) | (((a) & 0x0000FF00) << 8) | (((a) & 0x00FF0000) >> 8) | (((a) & 0xFF000000) >> 24))
 
-#define VERSION_CODE(primary, secondary, sub)    (((primary & 0xFFF) << 20) | ((secondary & 0xFFF) << 8) | ((sub & 0xFF) << 0))
+#define VERSION_CODE(primary, secondary, sub)   (((primary & 0xFFF) << 20) | ((secondary & 0xFFF) << 8) | ((sub & 0xFF) << 0))
 #define VERSION_CODE_PRIMARY(in)                ((in >> 20) & 0xFFF)
-#define VERSION_CODE_SECONDARY(in)                ((in >> 8) & 0xFFF)
+#define VERSION_CODE_SECONDARY(in)              ((in >> 8) & 0xFFF)
 #define VERSION_CODE_SUB(in)                    ((in >> 0) & 0xFF)
 
-#define MAKE_COLOR(a, r, g, b)    (((a & 0xFF) << 24) | ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF) << 0))
-#define COLOR_ALPHA(in)            ((in >> 24) & 0xFF)
-#define COLOR_RED(in)            ((in >> 16) & 0xFF)
-#define COLOR_GREEN(in)            ((in >> 8) & 0xFF)
-#define COLOR_BLUE(in)            ((in >> 0) & 0xFF)
+#define MAKE_COLOR(a, r, g, b)  (((a & 0xFF) << 24) | ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF) << 0))
+#define COLOR_ALPHA(in)         ((in >> 24) & 0xFF)
+#define COLOR_RED(in)           ((in >> 16) & 0xFF)
+#define COLOR_GREEN(in)         ((in >> 8) & 0xFF)
+#define COLOR_BLUE(in)          ((in >> 0) & 0xFF)
 
 /**
  *    A 64-bit variable combiner
@@ -132,35 +132,35 @@ template <typename T>
 class Bitfield
 {
     public:
-                Bitfield()                    { field = 0; }
-                ~Bitfield()                    { }
+                Bitfield()                  { field = 0; }
+                ~Bitfield()                 { }
         
-        void    Clear(void)                    { field = 0; }                        //!< Clears all bits
-        void    RawSet(UInt32 data)            { field = data; }                    //!< Modifies all bits
+        void    Clear(void)                 { field = 0; }                      //!< Clears all bits
+        void    RawSet(UInt32 data)         { field = data; }                   //!< Modifies all bits
         
-        void    Set(UInt32 data)            { field |= data; }                    //!< Sets individual bits
-        void    Clear(UInt32 data)            { field &= ~data; }                    //!< Clears individual bits
-        void    UnSet(UInt32 data)            { Clear(data); }                    //!< Clears individual bits
-        void    Mask(UInt32 data)            { field &= data; }                    //!< Masks individual bits
-        void    Toggle(UInt32 data)            { field ^= data; }                    //!< Toggles individual bits
+        void    Set(UInt32 data)            { field |= data; }                  //!< Sets individual bits
+        void    Clear(UInt32 data)          { field &= ~data; }                 //!< Clears individual bits
+        void    UnSet(UInt32 data)          { Clear(data); }                    //!< Clears individual bits
+        void    Mask(UInt32 data)           { field &= data; }                  //!< Masks individual bits
+        void    Toggle(UInt32 data)         { field ^= data; }                  //!< Toggles individual bits
         
-        T        Get(void) const                { return field; }                    //!< Gets all bits
-        T        Get(UInt32 data) const        { return field & data; }            //!< Gets individual bits
-        T        Extract(UInt32 bit) const    { return (field >> bit) & 1; }        //!< Extracts a bit
-        T        ExtractField(UInt32 shift, UInt32 length)                    //!< Extracts a series of bits
+        T        Get(void) const            { return field; }                   //!< Gets all bits
+        T        Get(UInt32 data) const     { return field & data; }            //!< Gets individual bits
+        T        Extract(UInt32 bit) const  { return (field >> bit) & 1; }      //!< Extracts a bit
+        T        ExtractField(UInt32 shift, UInt32 length)                      //!< Extracts a series of bits
                                             { return (field >> shift) & (0xFFFFFFFF >> (32 - length)); }
         
-        bool    IsSet(UInt32 data) const    { return ((field & data) == data) ? true : false; }    //!< Are all these bits set?
-        bool    IsUnSet(UInt32 data) const    { return (field & data) ? false : true; }            //!< Are all these bits clear?
-        bool    IsClear(UInt32 data) const    { return IsUnSet(data); }                            //!< Are all these bits clear?
+        bool    IsSet(UInt32 data) const    { return ((field & data) == data) ? true : false; } //!< Are all these bits set?
+        bool    IsUnSet(UInt32 data) const  { return (field & data) ? false : true; }           //!< Are all these bits clear?
+        bool    IsClear(UInt32 data) const  { return IsUnSet(data); }                           //!< Are all these bits clear?
     
     private:
         T        field;    //!< bitfield data
 };
 
-typedef Bitfield <UInt8>    Bitfield8;        //!< An 8-bit bitfield
-typedef Bitfield <UInt16>    Bitfield16;        //!< A 16-bit bitfield
-typedef Bitfield <UInt32>    Bitfield32;        //!< A 32-bit bitfield
+typedef Bitfield <UInt8>    Bitfield8;      //!< An 8-bit bitfield
+typedef Bitfield <UInt16>   Bitfield16;     //!< A 16-bit bitfield
+typedef Bitfield <UInt32>   Bitfield32;     //!< A 32-bit bitfield
 
 /**
  *    A bitstring

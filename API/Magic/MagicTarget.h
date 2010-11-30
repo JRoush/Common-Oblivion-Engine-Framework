@@ -34,14 +34,14 @@ public:
     // members
     //     /*00*/ void**        vtbl;
     MEMBER /*04*/ UInt8         unkMagtgt04;
-    MEMBER /*05*/ UInt8            padMagtgt05[3];
+    MEMBER /*05*/ UInt8         padMagtgt05[3];
 
     // virtual methods
     IMPORT /*00*/ virtual bool              AttemptAddEffect(MagicCaster* caster, MagicItem* magicItem, ActiveEffect* activeEffect, bool arg3); //
                                             // run failure (absorb, etc.) checks, call AddEffect(), handle hostility AI.  returns true if added.  
                                             // arg3 controls whether arrow enchantments trigger a MagicHit event on actors                                       
     INLINE /*04*/ virtual TESObjectREFR*    GetParentREFR() {return 0;} // get parent reference object
-    INLINE /*08*/ virtual ActiveEffectList*    GetActiveEffectList() {return 0;} 
+    INLINE /*08*/ virtual ActiveEffectList* GetActiveEffectList() {return 0;} 
     INLINE /*0C*/ virtual bool              IsActor() {return false;}
     INLINE /*10*/ virtual void              PostAddEffect(ActiveEffect* activeEffect) {} // called after addition to AE list, but before application
                                             // play extra shaders (elemental shield, pain FX), update cached elemental shield mask for target
@@ -91,8 +91,8 @@ public:
     ~NonActorMagicTarget();
 
     // base
-    MagicTarget        magicTarget;    // 00C
-    TESObjectREFR*  parentREFR;        // 014 passed to c'tor, is the "nonactor" refr
+    MagicTarget     magicTarget;    // 00C
+    TESObjectREFR*  parentREFR;     // 014 passed to c'tor, is the "nonactor" refr
     BSSimpleList<ActiveEffect*> effects;
 };
 */

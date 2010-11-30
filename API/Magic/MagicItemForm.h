@@ -23,12 +23,12 @@ public:
     //     /*024/030*/ MagicItem.EffectItemList
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual                 ~MagicItemForm();
-    IMPORT /*01C/040*/ virtual bool            LoadForm(TESFile& file);
-    IMPORT /*024/048*/ virtual void            SaveFormChunks(); 
-    _NOUSE /*0AC/0B0*/ virtual bool            UnkForm0AC() {return true;}
-    IMPORT /*0B4/0B8*/ virtual void            CopyFrom(TESForm& form);
-    IMPORT /*0B8/0BC*/ virtual bool            CompareTo(TESForm& compareTo);
+    IMPORT /*010/034*/ virtual              ~MagicItemForm();
+    IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file);
+    IMPORT /*024/048*/ virtual void         SaveFormChunks(); 
+    _NOUSE /*0AC/0B0*/ virtual bool         UnkForm0AC() {return true;}
+    IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form);
+    IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
     _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;}
     _NOUSE /*---/0FC*/ virtual void         UnkForm0FC(UInt32 arg0, BSStringT& output) {}
@@ -39,10 +39,10 @@ public:
 
     // MagicItem virtual methods
     #ifndef OBLIVION
-    IMPORT /*---/048*/ virtual bool            MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/048*/ virtual bool         MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/04C*/ virtual void         SetMagicItemInDialog(HWND dialog);
-    IMPORT /*---/050*/ virtual void            GetMagicItemFromDlg(HWND dialog);
-    IMPORT /*---/054*/ virtual void            MagicItemDlgCleanup(HWND dialog);
+    IMPORT /*---/050*/ virtual void         GetMagicItemFromDlg(HWND dialog);
+    IMPORT /*---/054*/ virtual void         MagicItemDlgCleanup(HWND dialog);
     #endif
 
     // no additional virtual methods
@@ -84,9 +84,9 @@ public:
     MEMBER /*041/119*/ UInt8            enchPad041[3]; // saved & loaded, but not initialized
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual                 ~EnchantmentItem();
-    IMPORT /*014/038*/ virtual void            InitializeAllComponents();
-    IMPORT /*018/03C*/ virtual void            ClearAllComponentReferences();
+    IMPORT /*010/034*/ virtual              ~EnchantmentItem();
+    IMPORT /*014/038*/ virtual void         InitializeAllComponents();
+    IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences();
     #ifndef OBLIVION
     IMPORT /*---/10C*/ virtual void         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
@@ -98,9 +98,9 @@ public:
     IMPORT /*014/038*/ virtual void         SetMagicItemAutoCalc(bool autoCalc);
     IMPORT /*018/03C*/ virtual UInt32       GetMagicType();
     #ifndef OBLIVION
-    IMPORT /*---/048*/ virtual bool            MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/048*/ virtual bool         MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/04C*/ virtual void         SetMagicItemInDialog(HWND dialog);
-    IMPORT /*---/050*/ virtual void            GetMagicItemFromDlg(HWND dialog);
+    IMPORT /*---/050*/ virtual void         GetMagicItemFromDlg(HWND dialog);
     #endif
     IMPORT /*024/058*/ virtual UInt32       ExtraDataChunkType();
     IMPORT /*028/05C*/ virtual void*        ExtraDataPtr();
@@ -108,7 +108,7 @@ public:
     IMPORT /*030/064*/ virtual bool         CompareExtraData(const MagicItem& compareTo);
     IMPORT /*034/068*/ virtual void         CopyExtraData(const MagicItem& copyFrom);
      #ifndef OBLIVION
-    IMPORT /*---/074*/ virtual void            UpdateMagicItemInDialog(HWND dialog);
+    IMPORT /*---/074*/ virtual void         UpdateMagicItemInDialog(HWND dialog);
     #endif
 
     // EffectItemList virtual methods
@@ -166,9 +166,9 @@ public:
     MEMBER /*041/119*/ UInt8            spellPad041[3]; // saved & loaded, but not initialized
 
     // TESForm virtual methods
-    IMPORT /*010/034*/ virtual                 ~SpellItem();
-    IMPORT /*014/038*/ virtual void            InitializeAllComponents();
-    IMPORT /*018/03C*/ virtual void            ClearAllComponentReferences();
+    IMPORT /*010/034*/ virtual              ~SpellItem();
+    IMPORT /*014/038*/ virtual void         InitializeAllComponents();
+    IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences();
     #ifndef OBLIVION
     IMPORT /*---/0DC*/ virtual void         GetResourcePath(BSStringT& path);
     IMPORT /*---/10C*/ virtual void         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
@@ -183,9 +183,9 @@ public:
     IMPORT /*01C/040*/ virtual bool         ScriptAlwaysApplies();
     IMPORT /*020/044*/ virtual bool         NoAbsorbReflect();
     #ifndef OBLIVION
-    IMPORT /*---/048*/ virtual bool            MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/048*/ virtual bool         MagicItemDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/04C*/ virtual void         SetMagicItemInDialog(HWND dialog);
-    IMPORT /*---/050*/ virtual void            GetMagicItemFromDlg(HWND dialog);
+    IMPORT /*---/050*/ virtual void         GetMagicItemFromDlg(HWND dialog);
     #endif
     IMPORT /*024/058*/ virtual UInt32       ExtraDataChunkType();
     IMPORT /*028/05C*/ virtual void*        ExtraDataPtr();
@@ -193,7 +193,7 @@ public:
     IMPORT /*030/064*/ virtual bool         CompareExtraData(const MagicItem& compareTo);
     IMPORT /*034/068*/ virtual void         CopyExtraData(const MagicItem& copyFrom);
      #ifndef OBLIVION
-    IMPORT /*---/074*/ virtual void            UpdateMagicItemInDialog(HWND dialog);
+    IMPORT /*---/074*/ virtual void         UpdateMagicItemInDialog(HWND dialog);
     #endif
 
     // EffectItemList virtual methods

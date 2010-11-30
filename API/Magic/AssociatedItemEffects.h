@@ -46,7 +46,7 @@ public:
     //     /*00*/ AssociatedItemEffect
     MEMBER /*3C*/ Actor*                summonedActor;
     MEMBER /*40*/ UInt8                 unkSumn40;
-    MEMBER /*41*/ UInt8                    padSumn41[3];
+    MEMBER /*41*/ UInt8                 padSumn41[3];
     MEMBER /*44*/ float                 unkSumn44;
     MEMBER /*48*/ Vector3               position;
     MEMBER /*54*/ Vector3               rotation;

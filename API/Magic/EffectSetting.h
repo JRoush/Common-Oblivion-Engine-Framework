@@ -181,40 +181,40 @@ public:
     //     /*30/48*/ TESDescription
     //     /*38/58*/ TESFullName 
     //     /*44/64*/ TESIcon    
-    MEMBER /*50/7C*/ FilterFunc            filterFunc; // not saved. called if present on a template effect during Filter(), 
+    MEMBER /*50/7C*/ FilterFunc         filterFunc; // not saved. called if present on a template effect during Filter(), 
                                         // using target effect & filterParam as args.
     MEMBER /*54/80*/ void*              filterParam; // not saved. passed to filterFunc if it's called during Filter()
-    MEMBER /*58/84*/ UInt32                mgefFlags;
-    MEMBER /*5C/88*/ float                baseCost;
-    MEMBER /*60/8C*/ UInt32                mgefParam;
-    MEMBER /*64/90*/ UInt32                school;
-    MEMBER /*68/94*/ UInt32                resistAV; // an actor value i.e. kActorVal_ResistFire
-    MEMBER /*6C/98*/ UInt16                numCounters; // count of counter effects, is size of counterArray
-    MEMBER /*6E/9A*/ UInt16                padMgef06E;
-    MEMBER /*70/9C*/ TESObjectLIGH*        light;
-    MEMBER /*74/A0*/ float                projSpeed;
-    MEMBER /*78/A4*/ TESEffectShader*    effectShader;
-    MEMBER /*7C/A8*/ TESEffectShader*    enchantShader;
-    MEMBER /*80/AC*/ TESSound*            castingSound;
-    MEMBER /*84/B0*/ TESSound*            boltSound;
-    MEMBER /*88/B4*/ TESSound*            hitSound;
-    MEMBER /*8C/B8*/ TESSound*            areaSound;
-    MEMBER /*90/BC*/ float                enchantFactor;
-    MEMBER /*94/C0*/ float                barterFactor;
-    MEMBER /*98/C4*/ UInt32                mgefCode; // in CS, editor ID is initialized to this re-interpreted as a 4-character string
+    MEMBER /*58/84*/ UInt32             mgefFlags;
+    MEMBER /*5C/88*/ float              baseCost;
+    MEMBER /*60/8C*/ UInt32             mgefParam;
+    MEMBER /*64/90*/ UInt32             school;
+    MEMBER /*68/94*/ UInt32             resistAV; // an actor value i.e. kActorVal_ResistFire
+    MEMBER /*6C/98*/ UInt16             numCounters; // count of counter effects, is size of counterArray
+    MEMBER /*6E/9A*/ UInt16             padMgef06E;
+    MEMBER /*70/9C*/ TESObjectLIGH*     light;
+    MEMBER /*74/A0*/ float              projSpeed;
+    MEMBER /*78/A4*/ TESEffectShader*   effectShader;
+    MEMBER /*7C/A8*/ TESEffectShader*   enchantShader;
+    MEMBER /*80/AC*/ TESSound*          castingSound;
+    MEMBER /*84/B0*/ TESSound*          boltSound;
+    MEMBER /*88/B4*/ TESSound*          hitSound;
+    MEMBER /*8C/B8*/ TESSound*          areaSound;
+    MEMBER /*90/BC*/ float              enchantFactor;
+    MEMBER /*94/C0*/ float              barterFactor;
+    MEMBER /*98/C4*/ UInt32             mgefCode; // in CS, editor ID is initialized to this re-interpreted as a 4-character string
     MEMBER /*9C/C8*/ UInt32*            counterArray; // counters stored as dynamic array[numCounters] of effect codes
     #ifdef OBLIVION
-    MEMBER /*A0/--*/ SInt32                unkMgefA0; // not saved.  something to do with queued loading for the effect's model.
+    MEMBER /*A0/--*/ SInt32             unkMgefA0; // not saved.  something to do with queued loading for the effect's model.
     MEMBER /*A4/--*/ SInt32             unkMgefA4; // not saved.  
     #endif
 
     // virtual methods - TESFormIDListView
-    IMPORT /*010/034*/ virtual                 ~EffectSetting();
-    IMPORT /*01C/040*/ virtual bool            LoadForm(TESFile& file); 
-    IMPORT /*024/048*/ virtual void            SaveFormChunks();
-    IMPORT /*06C/070*/ virtual void            LinkForm();
-    IMPORT /*0B4/0B8*/ virtual void            CopyFrom(TESForm& form); 
-    IMPORT /*0B8/0BC*/ virtual bool            CompareTo(TESForm& compareTo);
+    IMPORT /*010/034*/ virtual              ~EffectSetting();
+    IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file); 
+    IMPORT /*024/048*/ virtual void         SaveFormChunks();
+    IMPORT /*06C/070*/ virtual void         LinkForm();
+    IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form); 
+    IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
     IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form); //
     _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;}

@@ -131,35 +131,35 @@ public:
     MEMBER /*08*/ UInt32            castingState;
 
     // virtual methods  
-    IMPORT /*00*/ virtual void                AddAbility(MagicItemForm* ability, bool noHitVFX = false); // used to apply abilities.  
-    IMPORT /*04*/ virtual void                AddDisease(MagicItemForm* disease, MagicTarget* target, bool noHitVFX = false);
+    IMPORT /*00*/ virtual void              AddAbility(MagicItemForm* ability, bool noHitVFX = false); // used to apply abilities.  
+    IMPORT /*04*/ virtual void              AddDisease(MagicItemForm* disease, MagicTarget* target, bool noHitVFX = false);
                                             // used to apply diseases.  target must be valid but is otherwise ignored; disease is applied to caster
                                             // noHitVFX disables the Hit shdaer and Hit components of the nif model
-    IMPORT /*08*/ virtual void                AddObjectEnchantment(MagicItem* magicItem, TESBoundObject* sourceObj, bool noHitVFX = false); // 
+    IMPORT /*08*/ virtual void              AddObjectEnchantment(MagicItem* magicItem, TESBoundObject* sourceObj, bool noHitVFX = false); // 
                                             // used to apply Apparel-type enchantments
                                             // noHitVFX disables the Hit shdaer and Hit components of the nif model
     IMPORT /*0C*/ virtual MagicTarget*      FindTouchTarget(); // used to select a nearby target for touch effects during casting,
                                             // only used if no ActiveTarget has been set
-    IMPORT /*10*/ virtual void                PlayTargetedCastingAnimation(); // starts the casting animation.  Called only for OnTarget spells.
+    IMPORT /*10*/ virtual void              PlayTargetedCastingAnimation(); // starts the casting animation.  Called only for OnTarget spells.
                                             // Stub, simply calls PlayCastingAnimation().
     IMPORT /*14*/ virtual void                PlayCastingAnimation(); // starts the spellcasting animation.  Use SetActiveMagicItem() before calling.
-    INLINE /*18*/ virtual void                ApplyMagicItemCost(MagicItem* magicItem, bool applyStatChanges = true) {} //
+    INLINE /*18*/ virtual void              ApplyMagicItemCost(MagicItem* magicItem, bool applyStatChanges = true) {} //
                                             // applies power cooldowns, combat controller misc
                                             // if applyStatChanges is true, apply magicka + fatigue + experience changes                                           
-    IMPORT /*1C*/ virtual bool                IsMagicItemUseable(MagicItem* magicItem, float* wortcraftSkill = 0, UInt32* failureCode = 0, bool useBaseMagicka = false); // 
+    IMPORT /*1C*/ virtual bool              IsMagicItemUseable(MagicItem* magicItem, float* wortcraftSkill = 0, UInt32* failureCode = 0, bool useBaseMagicka = false); // 
                                             // returns true if item is currently useable.  effective wortcraft skill is calculated for ingredients
                                             // failure code provides reason if unuseable.  base magicka may be used instead of current magicka.
     INLINE /*20*/ virtual TESObjectREFR*    GetParentREFR() {return 0;}
-    INLINE /*24*/ virtual NiNode*            GetMagicNode() {return 0;} // looks up "magicNode" node in caster's NiNode
-    IMPORT /*28*/ virtual bool                AddEffectToSelf(ActiveEffect* actvEff); // used internally for *all* OnSelf effects, once they are created.
+    INLINE /*24*/ virtual NiNode*           GetMagicNode() {return 0;} // looks up "magicNode" node in caster's NiNode
+    IMPORT /*28*/ virtual bool              AddEffectToSelf(ActiveEffect* actvEff); // used internally for *all* OnSelf effects, once they are created.
                                             // caster must also be a magic target
-    IMPORT /*2C*/ virtual float                GetCastingEffectiveness(bool ignoreFatigue = false, float currentFatigue = 0.0); // 
+    IMPORT /*2C*/ virtual float             GetCastingEffectiveness(bool ignoreFatigue = false, float currentFatigue = 0.0); // 
                                             // if currentFatigue <= 0, current fatigue of caster is used.  
                                             // fatigue can be ignored (only worn armor contributes)
     INLINE /*30*/ virtual MagicItem*        GetActiveMagicItem() {return 0;} // magic item for current casting action
-    INLINE /*34*/ virtual void                SetActiveMagicItem(MagicItem* item) {}
+    INLINE /*34*/ virtual void              SetActiveMagicItem(MagicItem* item) {}
     INLINE /*38*/ virtual MagicTarget*      GetCastingTarget() {return 0;} // target for current casting action - often null for self & target spells
-    INLINE /*3C*/ virtual void                SetCastingTarget(MagicTarget* magicTarget) {}
+    INLINE /*3C*/ virtual void              SetCastingTarget(MagicTarget* magicTarget) {}
     IMPORT /*40*/ virtual ActiveEffect*     CreateActiveEffect(MagicItem* magicItem, EffectItem* effectItem, TESBoundObject* sourceObj);  
 
     // methods
@@ -174,7 +174,7 @@ public:
                                 // noHitVFX disables the Hit shdaer and Hit components of the nif model                                     
 
     // constructor, destructor
-    IMPORT     MagicCaster();
+    IMPORT MagicCaster();
     IMPORT ~MagicCaster();
 
     // use FormHeap for class new & delete
@@ -191,7 +191,7 @@ public:
     //base class
     MagicCaster magicCaster;    //00C
 
-    MagicItem*        activeMagicItem;    //018
+    MagicItem*      activeMagicItem;    //018
     MagicTarget*    castingTarget;      //01C
     TESObjectREFR*  caster;                //020
 };

@@ -17,9 +17,9 @@ class IMPORTCLASS BSStringT
 protected:
     
     // members
-    char*   m_data;         // 00
-    SInt16    m_dataLen;      // 04
-    SInt16    m_bufLen;       // 06
+    MEMBER /*00*/ char*       m_data;
+    MEMBER /*04*/ SInt16      m_dataLen; 
+    MEMBER /*06*/ SInt16      m_bufLen;
 
 public:
     // methods
