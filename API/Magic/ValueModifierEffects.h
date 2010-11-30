@@ -17,42 +17,6 @@
 */
 #pragma once
 
-// TEMPLATE:
-
- //   // no additional members
-
- //   // members
- //   //     /*00*/ ValueModifierEffect
- //   MEMBER /*3C*/ 
-
- //   // ValueModifierEffect virtual methods   
- //   IMPORT /*000*/ virtual                  ~ValueModifierEffect() DNAME()
- //   IMPORT /*004*/ virtual ActiveEffect*    Clone() const DNAME(0)
- //   IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed) DNAME() 
- //   IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent) DNAME(0)
- //   IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent) DNAME()
- //   IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent) DNAME()
- //   IMPORT /*018*/ virtual void             LinkEffect(TESObjectREFR* parent) DNAME()
- //   IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent) DNAME()
- //   IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent) DNAME()
- //   IMPORT /*024*/ virtual bool             RemoveCaster(MagicCaster* removedCaster) DNAME(0)
- //   IMPORT /*028*/ virtual bool             DoesHealthDamage() const  DNAME(0)
- //   IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) DNAME()
- //   IMPORT /*030*/ virtual bool             UnkAE30(UInt32 arg) DNAME(0)
- //   IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget) DNAME(0)
- //   IMPORT /*038*/ virtual void             ApplyEffect() DNAME()
- //   IMPORT /*03C*/ virtual void             RemoveEffect() DNAME()
-
- //   // no additional virtual methods
-
- //   // constructor - no creator function
- //   IMPORT ValueModifierEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem) : ValueModifierEffect(caster,magicItem,effectItem) DNAME()
-
- //   // constructor & creator function
- //   INLINE ValueModifierEffect(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem) // completely inlined by game
- //          : ValueModifierEffect(caster,magicItem,effectItem) {}
- //   IMPORT static ValueModifierEffect* Make(MagicCaster* caster, MagicItem* magicItem, EffectItem* effectItem) DNAME(0)
-
 // base classes
 #include "API/Magic/ActiveEffect.h"
 #ifdef OBLIVION // game only
