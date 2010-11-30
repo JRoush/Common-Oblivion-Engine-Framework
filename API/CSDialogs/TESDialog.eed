@@ -1,0 +1,34 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESDialog
+;{ ; static data
+?openDialogs@TESDialog@@2V?$BSSimpleList@PAUHWND__@@@@A         = _NOTINGAME,0x00A0B55C     ; openDialogs
+;}
+;{ ; TESForm editing
+?FormEditDlgProc@TESDialog@@SGHPAUHWND__@@IIJ@Z                 = _NOTINGAME,0x00447580     ; FormEditDlgProc
+?GetFormEditDlgTemplateID@TESDialog@@SAKE@Z                     = _NOTINGAME,0x00442050     ; GetFormEditDlgTemplateID
+?GetFormEditHandle@TESDialog@@SAPAUHWND__@@PAVTESForm@@@Z       = _NOTINGAME,0x004469D0     ; GetFormEditHandle
+?CallFormEditDlgMsgCallback@TESDialog@@SA_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x00442BD0     ; CallFormEditDlgMsgCallback
+?CallFormEditCleanupDlg@TESDialog@@SAXPAUHWND__@@@Z             = _NOTINGAME,0x00442C10     ; CallFormEditCleanupDlg
+?GetFormEditParam@TESDialog@@SAPAVTESForm@@PAUHWND__@@@Z        = _NOTINGAME,0x004429D0     ; GetFormEditParam
+?GetFormEditLocalCopy@TESDialog@@SAPAVTESForm@@PAUHWND__@@@Z    = _NOTINGAME,0x004429B0     ; GetFormEditLocalCopy
+;}
+;{ ; Dialog extra data
+?CreateDialogExtraList@TESDialog@@SAPAVBaseExtraList@@PAUHWND__@@@Z = _NOTINGAME,0x004428C0     ; CreateDialogExtraList
+?DestroyDialogExtraList@TESDialog@@SAXPAUHWND__@@@Z                 = _NOTINGAME,0x00442950     ; DestroyDialogExtraList
+?GetDialogExtraList@TESDialog@@SAPAVBaseExtraList@@PAUHWND__@@@Z    = _NOTINGAME,0x00442980     ; GetDialogExtraList
+?GetDialogExtraData@TESDialog@@SAPAVBSExtraData@@PAUHWND__@@K@Z     = _NOTINGAME,0x00442990     ; GetDialogExtraData
+;}
+;{ ; Popup menus
+?LoadPopupMenu@TESDialog@@SAPAUHMENU__@@PAUHWND__@@H@Z                          = _NOTINGAME,0x004461F0     ; LoadPopupMenu
+?GetDialogExtraPopupMenu@TESDialog@@SAPAVDialogExtraPopupMenu@@PAUHWND__@@H@Z   = _NOTINGAME,0x00442A70     ; GetDialogExtraPopupMenu
+;}
+;{ ; File selection
+?ShowFileSelect@TESDialog@@SA_NPAUHWND__@@PBD111P6GI0IIJ@Z_N3PADK@Z     = _NOTINGAME,0x00446A30     ; ShowFileSelect
+?ShowNIFFileSelect@TESDialog@@SA_NPAUHWND__@@PBDPADK@Z                  = _NOTINGAME,0x00446C60     ; ShowNIFFileSelect
+?ShowDDSFileSelect@TESDialog@@SA_NPAUHWND__@@PBD1PADK@Z                 = _NOTINGAME,0x00446CA0     ; ShowDDSFileSelect
+?ShowTXTFileSelect@TESDialog@@SA_NPAUHWND__@@PBD1_NPADK@Z               = _NOTINGAME,0x00446CF0     ; ShowTXTFileSelect
+?ShowPluginFileSave@TESDialog@@SA_NPAUHWND__@@PBD_NPADK@Z               = _NOTINGAME,0x00446D40     ; ShowPluginFileSave
+;}
+;}
