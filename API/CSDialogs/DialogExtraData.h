@@ -9,7 +9,7 @@
 
 // base classes
 #include "API/ExtraData/BSExtraData.h"
-#include "API/CSDialogs/TESDialog.h" // TESDialog::FormEditParam
+#include "API/CSDialogs/TESDialog.h" // TESDialog::FormEditParam, TESDialog::Subwindow
 
 // argument classes
 class   TESForm;
@@ -100,6 +100,27 @@ public:
 
     // constructor
     IMPORT DialogExtraWorkingData();
+};
+
+class IMPORTCLASS DialogExtraSubwindow : public BSExtraData
+{// size 0x14
+/*
+    Stores information on a subwindow/child window of the dialog
+*/
+public:
+
+    // members
+    //     /*00*/ BSExtraData          
+    MEMBER /*0C*/ TESDialog::Subwindow* subwindow;
+    MEMBER /*10*/ INT                   dialogTemplateID; // dialog template ID of subwindow
+
+     // virtual methods:
+    INLINE /*00/00*/ virtual        ~DialogExtraSubwindow(); // destroys subwindow object
+
+    // no additional virtual methods
+
+    // constructor
+    IMPORT DialogExtraSubwindow();
 };
 
 #endif

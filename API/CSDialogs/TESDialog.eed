@@ -1,11 +1,18 @@
 NAME Oblivion.exe, TESConstructionSet.exe
 BASE = 0x400000, 0x400000
 
-EXPORTS ;{ ; TESDialog
-;{ ; static data
-?openDialogs@TESDialog@@2V?$BSSimpleList@PAUHWND__@@@@A         = _NOTINGAME,0x00A0B55C     ; openDialogs
+EXPORTS ;{ ; TESDialog::Subwindow
+?EnableControls@Subwindow@TESDialog@@QAEX_N@Z   = _NOTINGAME,0x00404B30     ; EnableControls
+??0Subwindow@TESDialog@@QAE@XZ                  = _NOTINGAME,0x00404AB0     ; Subwindow
+??1Subwindow@TESDialog@@QAE@XZ                  = _NOTINGAME,0x00404AD0     ; ~Subwindow
 ;}
-;{ ; TESForm editing
+
+EXPORTS ;{ ; TESDialog
+; static data
+?openDialogs@TESDialog@@2V?$BSSimpleList@PAUHWND__@@@@A     = _NOTINGAME,0x00A0B55C     ; openDialogs
+?csInstance@TESDialog@@2PAUHINSTANCE__@@A                   = _NOTINGAME,0x00A0AF1C     ; csInstance
+?csHandle@TESDialog@@2PAUHWND__@@A                          = _NOTINGAME,0x00A0AF20     ; csHandle
+; TESForm editing
 ?FormEditDlgProc@TESDialog@@SGHPAUHWND__@@IIJ@Z                 = _NOTINGAME,0x00447580     ; FormEditDlgProc
 ?GetFormEditDlgTemplateID@TESDialog@@SAKE@Z                     = _NOTINGAME,0x00442050     ; GetFormEditDlgTemplateID
 ?GetFormEditHandle@TESDialog@@SAPAUHWND__@@PAVTESForm@@@Z       = _NOTINGAME,0x004469D0     ; GetFormEditHandle
@@ -13,22 +20,91 @@ EXPORTS ;{ ; TESDialog
 ?CallFormEditCleanupDlg@TESDialog@@SAXPAUHWND__@@@Z             = _NOTINGAME,0x00442C10     ; CallFormEditCleanupDlg
 ?GetFormEditParam@TESDialog@@SAPAVTESForm@@PAUHWND__@@@Z        = _NOTINGAME,0x004429D0     ; GetFormEditParam
 ?GetFormEditLocalCopy@TESDialog@@SAPAVTESForm@@PAUHWND__@@@Z    = _NOTINGAME,0x004429B0     ; GetFormEditLocalCopy
-;}
-;{ ; Dialog extra data
+; Dialog extra data
 ?CreateDialogExtraList@TESDialog@@SAPAVBaseExtraList@@PAUHWND__@@@Z = _NOTINGAME,0x004428C0     ; CreateDialogExtraList
 ?DestroyDialogExtraList@TESDialog@@SAXPAUHWND__@@@Z                 = _NOTINGAME,0x00442950     ; DestroyDialogExtraList
 ?GetDialogExtraList@TESDialog@@SAPAVBaseExtraList@@PAUHWND__@@@Z    = _NOTINGAME,0x00442980     ; GetDialogExtraList
 ?GetDialogExtraData@TESDialog@@SAPAVBSExtraData@@PAUHWND__@@K@Z     = _NOTINGAME,0x00442990     ; GetDialogExtraData
-;}
-;{ ; Popup menus
+; Popup menus
 ?LoadPopupMenu@TESDialog@@SAPAUHMENU__@@PAUHWND__@@H@Z                          = _NOTINGAME,0x004461F0     ; LoadPopupMenu
 ?GetDialogExtraPopupMenu@TESDialog@@SAPAVDialogExtraPopupMenu@@PAUHWND__@@H@Z   = _NOTINGAME,0x00442A70     ; GetDialogExtraPopupMenu
-;}
-;{ ; File selection
+; Subwindows
+?AddDialogExtraSubwindow@TESDialog@@SAPAVDialogExtraSubwindow@@PAUHWND__@@HPAVSubwindow@1@@Z    = _NOTINGAME,0x00446120     ; AddDialogExtraSubwindow
+?GetDialogExtraSubwindow@TESDialog@@SAPAVDialogExtraSubwindow@@PAUHWND__@@H@Z                   = _NOTINGAME,0x00442A30     ; GetDialogExtraSubwindow
+?BuildSubwindow@TESDialog@@SA_NHPAVSubwindow@1@@Z                                               = _NOTINGAME,0x00404EC0     ; BuildSubwindow
+; File selection
 ?ShowFileSelect@TESDialog@@SA_NPAUHWND__@@PBD111P6GI0IIJ@Z_N3PADK@Z     = _NOTINGAME,0x00446A30     ; ShowFileSelect
 ?ShowNIFFileSelect@TESDialog@@SA_NPAUHWND__@@PBDPADK@Z                  = _NOTINGAME,0x00446C60     ; ShowNIFFileSelect
 ?ShowDDSFileSelect@TESDialog@@SA_NPAUHWND__@@PBD1PADK@Z                 = _NOTINGAME,0x00446CA0     ; ShowDDSFileSelect
 ?ShowTXTFileSelect@TESDialog@@SA_NPAUHWND__@@PBD1_NPADK@Z               = _NOTINGAME,0x00446CF0     ; ShowTXTFileSelect
 ?ShowPluginFileSave@TESDialog@@SA_NPAUHWND__@@PBD_NPADK@Z               = _NOTINGAME,0x00446D40     ; ShowPluginFileSave
+; float parsing
+?SetDlgItemTextFloat@TESDialog@@SA_NPAUHWND__@@HMH@Z        = _NOTINGAME,0x00403FB0     ; SetDlgItemTextFloat
+?GetDlgItemTextFloat@TESDialog@@SAMPAUHWND__@@H@Z           = _NOTINGAME,0x00403F50     ; GetDlgItemTextFloat
 ;}
+
+EXPORTS ;{ ; TESComboBox
+; manipulation methods
+?AddItem@TESComboBox@@SAXPAUHWND__@@PBDPAX_N@Z      = _NOTINGAME,0x00403540     ; AddItem
+?GetItemData@TESComboBox@@SAPAXPAUHWND__@@H@Z       = _NOTINGAME,0x00403660     ; GetItemData
+?GetCurSelData@TESComboBox@@SAPAXPAUHWND__@@@Z      = _NOTINGAME,0x00403690     ; GetCurSelData
+?LookupByData@TESComboBox@@SAHPAUHWND__@@PAX@Z      = _NOTINGAME,0x00403600     ; LookupByData
+?SetCurSel@TESComboBox@@SAXPAUHWND__@@H@Z           = _NOTINGAME,0x004036C0     ; SetCurSel
+?SetCurSelByData@TESComboBox@@SAXPAUHWND__@@PAX@Z   = _NOTINGAME,0x004036E0     ; SetCurSelByData
+; populating methods
+?PopulateWithActorValues@TESComboBox@@SAXPAUHWND__@@_N1@Z               = _NOTINGAME,0x00442430     ; PopulateWithActorValues
+?PopulateWithAttributes@TESComboBox@@SAXPAUHWND__@@_N@Z                 = _NOTINGAME,0x00442780     ; PopulateWithAttributes
+?PopulateWithSkills@TESComboBox@@SAXPAUHWND__@@_N@Z                     = _NOTINGAME,0x004426B0     ; PopulateWithSkills
+?PopulateWithSpecializations@TESComboBox@@SAXPAUHWND__@@_N@Z            = _NOTINGAME,0x00442720     ; PopulateWithSpecializations
+?PopulateWithAxes@TESComboBox@@SAXPAUHWND__@@@Z                         = _NOTINGAME,0x004423A0     ; PopulateWithAxes
+?PopulateWithGenders@TESComboBox@@SAXPAUHWND__@@@Z                      = _NOTINGAME,0x004423F0     ; PopulateWithGenders
+?PopulateWithCrimes@TESComboBox@@SAXPAUHWND__@@@Z                       = _NOTINGAME,0x004424A0     ; PopulateWithCrimes
+?PopulateWithObjectWindowFormTypes@TESComboBox@@SAXPAUHWND__@@_N@Z      = _NOTINGAME,0x004427F0     ; PopulateWithObjectWindowFormTypes
+?PopulateWithForms@TESComboBox@@SAXPAUHWND__@@E_N1@Z                    = _NOTINGAME,0x004456F0     ; PopulateWithForms
+?PopulateWithObjects@TESComboBox@@SAXPAUHWND__@@_NK@Z                   = _NOTINGAME,0x00445570     ; PopulateWithObjects
+?PopulateWithInventoryItems@TESComboBox@@SAXPAUHWND__@@_N@Z             = _NOTINGAME,0x00445630     ; PopulateWithInventoryItems
+?PopulateWithActors@TESComboBox@@SAXPAUHWND__@@_N@Z                     = _NOTINGAME,0x004454A0     ; PopulateWithActors
+?PopulateWithAnimGroups@TESComboBox@@SAXPAUHWND__@@_N1@Z                = _NOTINGAME,0x00442860     ; PopulateWithAnimGroups
+?PopulateWithCells@TESComboBox@@SAXPAUHWND__@@_N1@Z                     = _NOTINGAME,0x00444C90     ; PopulateWithCells
+?PopulateWithQuestStages@TESComboBox@@SAXPAUHWND__@@PAVTESQuest@@@Z     = _NOTINGAME,0x00445AC0     ; PopulateWithQuestStages
+?PopulateWithRaces@TESComboBox@@SAXPAUHWND__@@_N@Z                      = _NOTINGAME,0x00445240     ; PopulateWithRaces
+?PopulateWithScripts@TESComboBox@@SAXPAUHWND__@@_N11@Z                  = _NOTINGAME,0x00445150     ; PopulateWithScripts
+?PopulateWithScriptVariables@TESComboBox@@SAXPAUHWND__@@PAVScript@@@Z   = _NOTINGAME,0x00445B90     ; PopulateWithScriptVariables
+?PopulateWithEnchantments@TESComboBox@@SAXPAUHWND__@@_NKPAVTESForm@@@Z  = _NOTINGAME,0x004452F0     ; PopulateWithEnchantments
+?PopulateWithSpells@TESComboBox@@SAXPAUHWND__@@_N1@Z                    = _NOTINGAME,0x004453E0     ; PopulateWithSpells
+?PopulateWithCellChildRefs@TESComboBox@@SAXPAUHWND__@@PAVTESObjectCELL@@P6A_NPAVTESObjectREFR@@2@Z2_N4@Z    = _NOTINGAME,0x00444E10     ; PopulateWithCellChildRefs
+;}
+
+EXPORTS ;{ ; TESListBox
+; manipulation methods
+?AddItem@TESListBox@@SAXPAUHWND__@@PBDPAX@Z         = _NOTINGAME,0x00403710     ; AddItem
+?GetItemData@TESListBox@@SAPAXPAUHWND__@@H@Z        = _NOTINGAME,0x004037B0     ; GetItemData
+?GetCurSelData@TESListBox@@SAPAXPAUHWND__@@@Z       = _NOTINGAME,0x004037E0     ; GetCurSelData
+?LookupByData@TESListBox@@SAHPAUHWND__@@PAX@Z       = _NOTINGAME,0x00403750     ; LookupByData
+; populating methods
+?PopulateWithFormList@TESListBox@@SAXPAUHWND__@@PAV?$BSSimpleList@PAVTESForm@@@@@Z   = _NOTINGAME,0x00445F20     ; PopulateWithFormList
+;}
+
+EXPORTS ;{ ; TESListView
+; manipulation methods
+?InsertColumn@TESListView@@SAHPAUHWND__@@HPBDHK@Z   = _NOTINGAME,0x00403810     ; InsertColumn
+?GetColumnCount@TESListView@@SAHPAUHWND__@@@Z       = _NOTINGAME,0x00403CC0     ; GetColumnCount
+?InsertItem@TESListView@@SAHPAUHWND__@@PAX_NH@Z     = _NOTINGAME,0x004038F0     ; InsertItem
+?InsertItem@TESListView@@SAHPAUHWND__@@PBDHHPAX@Z   = _NOTINGAME,0x00403860     ; InsertItem
+?GetItemData@TESListView@@SAPAXPAUHWND__@@H@Z       = _NOTINGAME,0x00403A30     ; GetItemData
+?GetCurSelData@TESListView@@SAPAXPAUHWND__@@@Z      = _NOTINGAME,0x00403C40     ; GetCurSelData
+?GetCurSel@TESListView@@SAHPAUHWND__@@@Z            = _NOTINGAME,0x00403C20     ; GetCurSel
+?LookupByData@TESListView@@SAHPAUHWND__@@PAX@Z      = _NOTINGAME,0x004039E0     ; LookupByData
+?ForceSelectItem@TESListView@@SAXPAUHWND__@@H@Z     = _NOTINGAME,0x00403B10     ; ForceSelectItem
+?ScrollToItem@TESListView@@SAXPAUHWND__@@H@Z        = _NOTINGAME,0x00403BA0     ; ScrollToItem
+?SetItemData@TESListView@@SA_NPAUHWND__@@HPAX@Z     = _NOTINGAME,0x00403AA0     ; SetItemData
+?SetItemText@TESListView@@SA_NPAUHWND__@@PBDHH@Z    = _NOTINGAME,0x00403970     ; SetItemText
+; populating methods
+?PopulateWithForms@TESListView@@SAXPAUHWND__@@E@Z                       = _NOTINGAME,0x00445C20     ; PopulateWithForms
+?PopulateWithCells@TESListView@@SAXPAVTESWorldSpace@@PAUHWND__@@_N@Z    = _NOTINGAME,0x00442500     ; PopulateWithCells
+;}
+
+EXPORTS ;{ ; TESTabControl
+?InsertItem@TESTabControl@@SAHPAUHWND__@@HPBDPAX@Z  = _NOTINGAME,0x00403E70     ; InsertItem
+?GetItemData@TESTabControl@@SAPAXPAUHWND__@@H@Z     = _NOTINGAME,0x00403EF0     ; GetItemData
 ;}

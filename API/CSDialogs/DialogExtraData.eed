@@ -18,3 +18,8 @@ EXPORTS ;{ ; DialogExtraPopupMenu
 EXPORTS ;{ ; DialogExtraWorkingData
 ??0DialogExtraWorkingData@@QAE@XZ   = _NOTINGAME,0x004401F0     ; DialogExtraWorkingData
 ;}
+
+EXPORTS ;{ ; DialogExtraSubwindow
+??1DialogExtraSubwindow@@UAE@XZ     = _NOTINGAME,0x00440500     ; ~DialogExtraSubwindow
+??0DialogExtraSubwindow@@QAE@XZ     = _NOTINGAME,0x004401B0     ; DialogExtraSubwindow
+;}

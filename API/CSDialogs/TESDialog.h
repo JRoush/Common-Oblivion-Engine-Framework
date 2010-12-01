@@ -8,26 +8,60 @@
     See CSDialogs/DialogExtraData.h for definitions.
 
     There seems to be a strong distinction between dialogs that edit forms and those that edit simpler component objects or 
-    provide services like import/export or text searching.  Form-editing dialogs have their own 
+    provide services like import/export or text searching.  Some members are only for dialogs that edit forms, and some are
+    only for dialogs that edit forms accessible in the Objects Window.
 */
 #pragma once
 
 #ifndef OBLIVION
 
 // base classes
+#include "API/TES/MemoryHeap.h"
 #include "API/BSTypes/BSSimpleList.h"
+#include <Commctrl.h> // control message constants, macros for ListView & TabControl
+#include <Windowsx.h> // macros for ComboBox & ListBox
 
 // argument classes
 class   TESForm;        // TESForms/TESForm.h
 class   BSExtraData;    // ExtraData/BSExtraData.h
 class   BaseExtraList;  // ExtraData/ExtraDataList.h
 class   DialogExtraPopupMenu;   // CSDialogs/DialogExtraData.h
+class   DialogExtraSubwindow;   // CSDialogs/DialogExtraData.h
+class   TESObjectCELL;  // GameWorld/TESObjectCELL.h
+class   TESObjectREFR;  // TESForms/TESObjectREFR.h
+class   TESQuest;
+class   Script;
+class   TESWorldSpace;
 
 class TESDialog
 {
 public:
 
-    // FormEditParam - passed as initParam to CreateDialogParam() (i.e. lParam on WM_INITDIALOG message) for form-editing dialogs
+    class IMPORTCLASS Subwindow
+    {// size 20
+    public:
+
+        // members
+        MEMBER /*00*/ BSSimpleList<HWND>    controls;
+        MEMBER /*08*/ HWND                  hDialog; // handle of parent dialog window
+        MEMBER /*0C*/ HINSTANCE             hInstance; // module instance of dialog template
+        MEMBER /*10*/ POINT                 position; // position of subwindow withing parent dialog
+        MEMBER /*18*/ HWND                  hContainer; // handle of container control (e.g. Tab Control)
+        MEMBER /*1C*/ HWND                  hSubwindow; // handle of subwindow, if created
+
+        // methods 
+        IMPORT void         EnableControls(bool enabled); // enables/disables controls & invalidates parent rect
+
+        // constructor, destructor
+        IMPORT Subwindow();
+        IMPORT ~Subwindow(); // destroys subwindow & controls, clears control list
+
+        // use FormHeap for class new & delete
+        USEFORMHEAP
+    };
+
+    // FormEditParam - for form-editing dialogs.
+    // passed as initParam to CreateDialogParam() (i.e. lParam on WM_INITDIALOG message) for form-editing dialogs
     struct FormEditParam
     {// size 0C
         MEMBER /*00*/ UInt8     formType; // see TESForm::FormTypes
@@ -35,13 +69,13 @@ public:
         MEMBER /*04*/ TESForm*  form; // form object to be edited by the dialog
     };
 
-    // methods - Form-editing dialogs, for forms accessed through the Object Window.  
+    // methods - for Form-editing dialogs, only forms accessed through the Object Window.  
     // Forms accessed through the main menus are derived from TESFormIDListView, and use that dialog proc instead.
     IMPORT static INT_PTR CALLBACK      FormEditDlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam); // 
     IMPORT static UInt32                GetFormEditDlgTemplateID(UInt8 formType); // returns dialog template ID (e.g. IDD_SpellItem) by form type    
     IMPORT static HWND                  GetFormEditHandle(TESForm* form); // returns handle to dialog for editing form, if any are open
 
-    // methods - Form-editing dialogs (all)
+    // methods - for all Form-editing dialogs (all)
     IMPORT static bool                  CallFormEditDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); // 
                                         // fetches local form copy & invokes it's TESForm::DialogMessageCallback() method
     IMPORT static void                  CallFormEditCleanupDlg(HWND dialog); // destroys DialogExtraNotifyInfo, if any.
@@ -62,6 +96,14 @@ public:
                                         // returns null if template is already associated with this dialog, handle of first submenu otherwise
     IMPORT static DialogExtraPopupMenu* GetDialogExtraPopupMenu(HWND dialog, INT menuTemplateID); // retrieve associated popup menu data
 
+    // methods - subwindows
+    IMPORT static DialogExtraSubwindow* AddDialogExtraSubwindow(HWND dialog, INT subwindowTemplateID, Subwindow* subwindow);
+    IMPORT static DialogExtraSubwindow* GetDialogExtraSubwindow(HWND dialog, INT subwindowTemplateID);
+    IMPORT static bool                  BuildSubwindow(INT subwindowTemplateID, Subwindow* subwindow); //
+                                        // creates a temporary instance of template, moves all controls to container window 
+                                        // and populates control list, then destroys temporary instance.
+                                        // Subwindow dialog, instance, container, and position must be properly initialized
+
     // methods - file selection 
     IMPORT static bool                  ShowFileSelect(HWND parent, const char* relativePath, const char* filter, 
                                             const char* title, const char* defaultExtension, LPOFNHOOKPROC proc, 
@@ -77,9 +119,127 @@ public:
     IMPORT static bool                  ShowPluginFileSave(HWND parent, const char* relativePath, bool esmVsEsp, 
                                             char* filenameBuffer, UInt32 bufferSize); // for selecting ESM/ESP files
 
+    // methods - parsing floats to/from edit controls
+    IMPORT static bool                  SetDlgItemTextFloat(HWND dialog, INT dlgItemID, float value, int decimalPlaces = 2);
+    IMPORT static float                 GetDlgItemTextFloat(HWND dialog, INT dlgItemID);
+
     // static data 
     IMPORT static BSSimpleList<HWND>    openDialogs; // LL of handles for open multiple-instance dialogs, 
                                         // used to ensure same object isn't edited in more than one window
+    IMPORT static HWND                  csHandle; // handle of main CS container window
+    IMPORT static HINSTANCE             csInstance; // handle of main CS module instance
+};
+
+class TESComboBox
+{
+public:
+
+    // manipulation methods
+    // *^ = may be a MS control macro rather than an inlined function
+    INLINE static void                  Clear(HWND hCtrl) {ComboBox_ResetContent(hCtrl);} // *^
+    IMPORT static void                  AddItem(HWND hCtrl, const char* text, void* data, bool resizeDroppedWidth = true);
+    IMPORT static void*                 GetItemData(HWND hCtrl, INT index);
+    IMPORT static void*                 GetCurSelData(HWND hCtrl);
+    IMPORT static INT                   LookupByData(HWND hCtrl, void* data);
+    IMPORT static void                  SetCurSel(HWND hCtrl, INT index);
+    IMPORT static void                  SetCurSelByData(HWND hCtrl, void* data); // defaults to first item if data isn't found
+
+    // populating methods - actor values
+    IMPORT static void                  PopulateWithActorValues(HWND hCtrl, bool clear, bool noneEntry);
+    IMPORT static void                  PopulateWithAttributes(HWND hCtrl, bool noneEntry);  
+    IMPORT static void                  PopulateWithSkills(HWND hCtrl, bool noneEntry);  
+    IMPORT static void                  PopulateWithSpecializations(HWND hCtrl, bool noneEntry);
+
+    // populating methods - static constants
+    IMPORT static void                  PopulateWithAxes(HWND hCtrl);  
+    IMPORT static void                  PopulateWithGenders(HWND hCtrl); 
+    IMPORT static void                  PopulateWithCrimes(HWND hCtrl);  
+    IMPORT static void                  PopulateWithAnimGroups(HWND hCtrl, bool clear, bool noneEntry);
+    IMPORT static void                  PopulateWithObjectWindowFormTypes(HWND hCtrl, bool noneEntry);  
+    
+    typedef bool (*RefFilterFunc)(TESObjectREFR* ref, TESObjectREFR* filterParam); // TODO - belongs with DialogExtraRefSelectControl 
+
+    // populating methods - forms
+    IMPORT static void                  PopulateWithForms(HWND hCtrl, UInt8 formType, bool clear, bool noneEntry);  //
+                                        // by far the most commonly used method; the rest are for special cases
+    IMPORT static void                  PopulateWithObjects(HWND hCtrl, bool noneEntry, UInt32 formType); // pass formType == 0 for all objects
+    IMPORT static void                  PopulateWithInventoryItems(HWND hCtrl, bool noneEntry);  
+    IMPORT static void                  PopulateWithActors(HWND hCtrl, bool noneEntry);     
+    IMPORT static void                  PopulateWithCells(HWND hCtrl, bool noneEntry, bool requireEditorID);  //
+                                        // exterior cells do not have editorIDs by default (they can be assigned one)
+    IMPORT static void                  PopulateWithCellChildRefs(HWND hCtrl, TESObjectCELL* cell, RefFilterFunc filterFunc, 
+                                            TESObjectREFR* filterParam, bool noneEntry, bool clear);    
+    IMPORT static void                  PopulateWithQuestStages(HWND hCtrl, TESQuest* quest);  
+    IMPORT static void                  PopulateWithRaces(HWND hCtrl, bool noneEntry);  
+    IMPORT static void                  PopulateWithScripts(HWND hCtrl, bool noneEntry, bool onlyQuest, bool onlyEffect); // 
+                                        // if both onlyQuest & onlyEffect are false, then only object scripts are added
+    IMPORT static void                  PopulateWithScriptVariables(HWND hCtrl, Script* script);  
+    IMPORT static void                  PopulateWithEnchantments(HWND hCtrl, bool noneEntry, UInt32 castingType, TESForm* enchantedForm); // 
+                                        // casting type matches enchantment types, see Magic::CastingTypes.  pass kCastingType__MAX == 4 for all types
+                                        // enchantments are filtered based on compatibility with enchantedForm, which is not optional
+    IMPORT static void                  PopulateWithSpells(HWND hCtrl, bool clear, bool noneEntry);  
+};
+
+class TESListBox
+{
+public:
+
+    // manipulation 
+    // *^ = may be a MS control macro rather than an inlined function
+    INLINE static void                  Clear(HWND hCtrl) {ListBox_ResetContent(hCtrl);} // *^
+    IMPORT static void                  AddItem(HWND hCtrl, const char* text, void* data);
+    IMPORT static void*                 GetItemData(HWND hCtrl, INT index);
+    IMPORT static void*                 GetCurSelData(HWND hCtrl);
+    IMPORT static INT                   LookupByData(HWND hCtrl, void* data);
+    INLINE static void                  SetCurSel(HWND hCtrl, INT index) {ListBox_SetCurSel(hCtrl,index);} // *^
+    INLINE static void                  SetCurSelByData(HWND hCtrl, void* data) {SendMessage(hCtrl,LB_SETCURSEL,LookupByData(hCtrl,data),0);} // *^
+
+    // populating methods
+    IMPORT static void                  PopulateWithFormList(HWND hCtrl, BSSimpleList<TESForm*>* formList); //
+                                        // includes editorid, formid, and active/deleted flags
+};
+
+class TESListView
+{
+public:
+
+    // manipulation 
+    // *^ = may be a MS control macro rather than an inlined function
+    INLINE static void                  AllowRowSelection(HWND hCtrl) {int mask = LVS_EX_GRIDLINES|LVS_EX_FULLROWSELECT; // *^
+                                                                        ListView_SetExtendedListViewStyleEx(hCtrl,mask,mask);} 
+    INLINE static void                  ClearColumns(HWND hCtrl) {ClearItems(hCtrl); while (ListView_DeleteColumn(hCtrl,0)) {}} // *^
+    IMPORT static INT                   InsertColumn(HWND hCtrl, INT index, const char* label, INT width, UInt32 fmt = LVCFMT_LEFT);
+    IMPORT static INT                   GetColumnCount(HWND hCtrl);    
+    INLINE static void                  ClearItems(HWND hCtrl) {ListView_DeleteAllItems(hCtrl);} // *^
+    IMPORT static INT                   InsertItem(HWND hCtrl, void* data, bool imgCallback = false, INT index = -1);
+    IMPORT static INT                   InsertItem(HWND hCtrl, const char* text, INT index, INT imgIndex, void* data);    
+    IMPORT static void*                 GetItemData(HWND hCtrl, INT index);
+    IMPORT static void*                 GetCurSelData(HWND hCtrl); // data of first selected item
+    IMPORT static INT                   GetCurSel(HWND hCtrl); // index of first selected item
+    IMPORT static INT                   LookupByData(HWND hCtrl, void* data);
+    IMPORT static void                  ForceSelectItem(HWND hCtrl, INT index);
+    IMPORT static void                  ScrollToItem(HWND hCtrl, INT index);
+    IMPORT static bool                  SetItemData(HWND hCtrl, INT index, void* data);
+    IMPORT static bool                  SetItemText(HWND hCtrl, const char* text, INT index, INT colIndex);
+
+    // populating methods
+    IMPORT static void                  PopulateWithForms(HWND hCtrl, UInt8 formType); //
+                                        // actually has a third parameter, always 0, that is completely unused
+    IMPORT static void                  PopulateWithCells(TESWorldSpace* worldSpace, HWND hCtrl, bool clear); // if no worldspace is provided
+                                        // cells from without a worldspace (i.e. interior cells) are added  
+};
+
+class TESTabControl
+{
+public:
+
+    // manipulation 
+    // *^ = may be a MS control macro rather than an inlined function
+    IMPORT static INT                   InsertItem(HWND hCtrl, INT index, const char* label, void* data);
+    IMPORT static void*                 GetItemData(HWND hCtrl, INT index);
+    INLINE static void*                 GetCurSelData(HWND hCtrl) {return GetItemData(hCtrl,GetCurSel(hCtrl));}  // *^
+    INLINE static INT                   GetCurSel(HWND hCtrl) {return TabCtrl_GetCurSel(hCtrl);} // *^
+               
 };
 
 #endif
