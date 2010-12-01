@@ -21,6 +21,7 @@ EXPORTS ;{ ; EffectSettingCollection
 
 EXPORTS ;{ ; EffectSetting
 ; static data
+?dialogHandle@EffectSetting@@2PAUHWND__@@A                  = _NOTINGAME,0x00A0B014     ; dialogHandle
 ?OverridableFlags@EffectSetting@@2PAKA                      = 0x00B034C4,0x009F95EC     ; OverridableFlags
 ?OverridableFlagCount@EffectSetting@@2KA                    = 0x00B034DC,0x009F9604     ; OverridableFlagCount
 ?DisplayedFlagDlgIDCs@EffectSetting@@2PAKA                  = _NOTINGAME,0x009F9598     ; DisplayedFlagDlgIDCs

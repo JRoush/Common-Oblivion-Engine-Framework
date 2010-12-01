@@ -66,6 +66,7 @@ class IMPORTCLASS EffectSetting : public TESFormIDListView, public TESModel, pub
 */
 public:
 
+    #ifndef OBLIVION
     enum DialogControlIDs // in addition to IDs defined in base classes and by windows
     {
         IDC_Flag_Spellmaking            = 0x3EE, // BUTTON
@@ -108,6 +109,8 @@ public:
         IDC_EnchantShader               = 0x877, // COMBOBOX
     };
     static const UInt32     IDD_EffectSettings = 0x0A3; // Dialog Tempate ID
+    IMPORT static HWND      dialogHandle; // used to track single instance of editing dialog
+    #endif
 
     enum EffectSettingFlags
     {   //                                      # Can be overriden in a vanilla mod file (other overrides are discarded by EffectSetting.Load())
