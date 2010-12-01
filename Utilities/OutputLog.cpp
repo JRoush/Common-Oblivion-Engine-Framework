@@ -154,7 +154,7 @@ int RuleBasedTarget::WriteableChannels(const char* source)
     for (RuleList::iterator it = _outputRules.begin(); it != _outputRules.end(); it++) 
     {
         std::tr1::regex* reg = (std::tr1::regex*)(**it)._filter;
-        if (!reg || std::tr1::regex_match(source,end,*reg))
+        if (!reg || std::tr1::regex_search(source,end,*reg))
         {   
             // source matches rule filter
             if ((**it)._state == kRuleState_Block) result &= ~((**it)._channel);  // clear bits for rule channels
@@ -197,7 +197,9 @@ RuleBasedTarget::Rule::Rule(int state, int channel, const char* filter)
     {
         try 
         {
-            _filter = new std::tr1::regex(filter,std::tr1::regex_constants::ECMAScript);
+            using namespace std::tr1::regex_constants;
+            syntax_option_type flags = ECMAScript | icase | nosubs | optimize;
+            _filter = new std::tr1::regex(filter,flags);
         }
         catch (...)
         {
