@@ -118,6 +118,9 @@ public:
                                             bool fileMustExist, char* filenameBuffer, UInt32 bufferSize); // for selecting tab-delimited text files
     IMPORT static bool                  ShowPluginFileSave(HWND parent, const char* relativePath, bool esmVsEsp, 
                                             char* filenameBuffer, UInt32 bufferSize); // for selecting ESM/ESP files
+    IMPORT static bool                  ShowSoundFileSelect(HWND parent, const char* relativePath,
+                                            char* filenameBuffer, UInt32 bufferSize); // for selecting sound files
+                                        // this function does not call ShowFileSelect(), it uses a different interface
 
     // methods - parsing floats to/from edit controls
     IMPORT static bool                  SetDlgItemTextFloat(HWND dialog, INT dlgItemID, float value, int decimalPlaces = 2);

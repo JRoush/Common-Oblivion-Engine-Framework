@@ -38,6 +38,7 @@ EXPORTS ;{ ; TESDialog
 ?ShowDDSFileSelect@TESDialog@@SA_NPAUHWND__@@PBD1PADK@Z                 = _NOTINGAME,0x00446CA0     ; ShowDDSFileSelect
 ?ShowTXTFileSelect@TESDialog@@SA_NPAUHWND__@@PBD1_NPADK@Z               = _NOTINGAME,0x00446CF0     ; ShowTXTFileSelect
 ?ShowPluginFileSave@TESDialog@@SA_NPAUHWND__@@PBD_NPADK@Z               = _NOTINGAME,0x00446D40     ; ShowPluginFileSave
+?ShowSoundFileSelect@TESDialog@@SA_NPAUHWND__@@PBDPADK@Z                = _NOTINGAME,0x004431A0     ; ShowSoundFileSelect
 ; float parsing
 ?SetDlgItemTextFloat@TESDialog@@SA_NPAUHWND__@@HMH@Z        = _NOTINGAME,0x00403FB0     ; SetDlgItemTextFloat
 ?GetDlgItemTextFloat@TESDialog@@SAMPAUHWND__@@H@Z           = _NOTINGAME,0x00403F50     ; GetDlgItemTextFloat
