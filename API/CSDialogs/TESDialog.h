@@ -98,7 +98,7 @@ public:
 
     // methods - subwindows
     IMPORT static DialogExtraSubwindow* AddDialogExtraSubwindow(HWND dialog, INT subwindowTemplateID, Subwindow* subwindow);
-    IMPORT static DialogExtraSubwindow* GetDialogExtraSubwindow(HWND dialog, INT subwindowTemplateID);
+    IMPORT static Subwindow*            GetSubwindow(HWND dialog, INT subwindowTemplateID);
     IMPORT static bool                  BuildSubwindow(INT subwindowTemplateID, Subwindow* subwindow); //
                                         // creates a temporary instance of template, moves all controls to container window 
                                         // and populates control list, then destroys temporary instance.

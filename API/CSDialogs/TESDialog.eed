@@ -30,7 +30,7 @@ EXPORTS ;{ ; TESDialog
 ?GetDialogExtraPopupMenu@TESDialog@@SAPAVDialogExtraPopupMenu@@PAUHWND__@@H@Z   = _NOTINGAME,0x00442A70     ; GetDialogExtraPopupMenu
 ; Subwindows
 ?AddDialogExtraSubwindow@TESDialog@@SAPAVDialogExtraSubwindow@@PAUHWND__@@HPAVSubwindow@1@@Z    = _NOTINGAME,0x00446120     ; AddDialogExtraSubwindow
-?GetDialogExtraSubwindow@TESDialog@@SAPAVDialogExtraSubwindow@@PAUHWND__@@H@Z                   = _NOTINGAME,0x00442A30     ; GetDialogExtraSubwindow
+?GetSubwindow@TESDialog@@SAPAVSubwindow@1@PAUHWND__@@H@Z                                        = _NOTINGAME,0x00442A30     ; GetSubwindow
 ?BuildSubwindow@TESDialog@@SA_NHPAVSubwindow@1@@Z                                               = _NOTINGAME,0x00404EC0     ; BuildSubwindow
 ; File selection
 ?ShowFileSelect@TESDialog@@SA_NPAUHWND__@@PBD111P6GI0IIJ@Z_N3PADK@Z     = _NOTINGAME,0x00446A30     ; ShowFileSelect
