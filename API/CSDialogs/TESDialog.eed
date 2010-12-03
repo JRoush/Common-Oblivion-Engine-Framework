@@ -3,8 +3,9 @@ BASE = 0x400000, 0x400000
 
 EXPORTS ;{ ; TESDialog::Subwindow
 ?EnableControls@Subwindow@TESDialog@@QAEX_N@Z   = _NOTINGAME,0x00404B30     ; EnableControls
+?ClearControls@Subwindow@TESDialog@@QAEXXZ      = _NOTINGAME,0x00404AD0     ; ClearControls
 ??0Subwindow@TESDialog@@QAE@XZ                  = _NOTINGAME,0x00404AB0     ; Subwindow
-??1Subwindow@TESDialog@@QAE@XZ                  = _NOTINGAME,0x00404AD0     ; ~Subwindow
+??1Subwindow@TESDialog@@QAE@XZ                  = _NOTINGAME,0x00405340     ; ~Subwindow
 ;}
 
 EXPORTS ;{ ; TESDialog

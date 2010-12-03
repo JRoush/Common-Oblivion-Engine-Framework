@@ -51,6 +51,7 @@ public:
 
         // methods 
         IMPORT void         EnableControls(bool enabled); // enables/disables controls & invalidates parent rect
+        IMPORT void         ClearControls(); // destroys all controls for the subwindow
 
         // constructor, destructor
         IMPORT Subwindow();

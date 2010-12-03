@@ -26,7 +26,7 @@ struct TrackingData
     UInt8   unkTrackingData00;
     UInt8   unkTrackingData01;
     UInt8   unkTrackingData02;  // 02 specific to form
-    UInt8   creatorUserID;      // 03 userID of Bethesdah designer who created form
+    UInt8   checkOutBy;         // 03 userID of user who has this form checked out
 };
 
 class IMPORTCLASS TESForm : public BaseFormComponent
@@ -350,9 +350,23 @@ public:
     // additional virtual methods
     IMPORT /*---/124*/ virtual void         SetupFormListColumns(HWND listView); // sets up columns (name, size, caption, etc)
     IMPORT /*---/128*/ virtual void         PopulateFormList(HWND listView); // adds forms to list
-    _NOUSE /*---/12C*/ virtual void         UnkFIDLV12C(HWND listView) {} // populate, sort, & select in list
-    _NOUSE /*---/130*/ virtual void         GetColumnEntryData(void* arg0) {} // arg0 is a struct of col data
-    _NOUSE /*---/134*/ virtual SInt32       UnkFIDLV134(const TESForm& compareTo, UInt32 columnIndex) {return 0;} // compare (for sorting list)
+    IMPORT /*---/12C*/ virtual void         RefreshFormList(HWND listView); // repopulate and resort list, then scroll down to previous position
+                                            // best used when no items are selected
+    IMPORT /*---/130*/ virtual void         GetFormListDispInfo(void* displayInfo); // get text to display in list view
+                                            // argument is a NMLVDISPINFO*, defined in <Commctrl.h>
+    IMPORT /*---/134*/ virtual int          CompareInFormList(const TESForm& compareTo, int compareBy); //
+                                            // callback for sorting form list.  returns -1 (A<B), 0 (A==B), +1 (A>B). 
+                                            // column index in the listview is |compareBy| - 1
+                                            // the current compareBy value is stored in the window 'UserData' for the ListView control
+
+    // methods
+    IMPORT static INT_PTR CALLBACK      DlgProc(HWND hwndDlg, UINT uMsg, WPARAM wParam, LPARAM lParam); //
+                                        // There is a bug(?) that causes this method to prematurely discard certain WM_COMMAND messages recieved
+                                        // while processing a popup menu selection.  This can cause problems, as processing the menu selection
+                                        // might require sending command messages to dialog controls.
+    IMPORT static int                   FormListComparator(const TESFormIDListView& formA, const TESFormIDListView& formB, int compareBy); //
+                                        // calls formA.CompareInFormList(formB), and reverses result if compareBy is negative
+                                        // column index in the listview is |compareBy| - 1, compareBy is negative for reversed ordering
 
     // constructor
     IMPORT TESFormIDListView();

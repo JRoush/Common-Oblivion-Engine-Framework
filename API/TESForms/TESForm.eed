@@ -86,6 +86,12 @@ EXPORTS ;{ ; TESFormIDListView
 ; virtual methods
 ?SetupFormListColumns@TESFormIDListView@@UAEXPAUHWND__@@@Z  = _NOTINGAME,0x00449E60     ; SetupFormListColumns
 ?PopulateFormList@TESFormIDListView@@UAEXPAUHWND__@@@Z      = _NOTINGAME,0x00449FB0     ; PopulateFormList
+?RefreshFormList@TESFormIDListView@@UAEXPAUHWND__@@@Z       = _NOTINGAME,0x00449FD0     ; RefreshFormList
+?GetFormListDispInfo@TESFormIDListView@@UAEXPAX@Z           = _NOTINGAME,0x0044A050     ; GetFormListDispInfo
+?CompareInFormList@TESFormIDListView@@UAEHABVTESForm@@H@Z   = _NOTINGAME,0x0044A100     ; CompareInFormList
+; methods
+?DlgProc@TESFormIDListView@@SGHPAUHWND__@@IIJ@Z         = _NOTINGAME,0x00448820     ; DlgProc
+?FormListComparator@TESFormIDListView@@SAHABV1@0H@Z     = _NOTINGAME,0x00442EB0     ; FormListComparator
 ; methods
 ??0TESFormIDListView@@QAE@XZ    = _NOTINGAME,0x00449DC0     ; TESFormIDListView()
 ;}
