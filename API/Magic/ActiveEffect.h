@@ -96,7 +96,7 @@ public:
                                             // returns true if caster removed.
     INLINE /*028*/ virtual bool             DoesHealthDamage() const {return false;} // returns true if effect damages (not drains) health
                                             // actually checks ambient light level (?) for sun damage.  called before fast-traveling
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo); // copy members
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const; // copy members
     INLINE /*030*/ virtual bool             UnkAE30(UInt32 arg) {return true;} // return true by every single derived AE class
                                             // perhaps a CompareTo() function?  If so, then apparently no two active effects are ever equivalent
                                             // after some testing, I (JRoush) am not sure this method is actually used by the game

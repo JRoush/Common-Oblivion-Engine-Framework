@@ -7,7 +7,7 @@ EXPORTS ;{ ; AssociatedItemEffect
 ?SaveEffect@AssociatedItemEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068F3C0,_NOTINCS__     ; SaveEffect
 ?LoadEffect@AssociatedItemEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068F250,_NOTINCS__     ; LoadEffect
 ?LinkEffect@AssociatedItemEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068F280,_NOTINCS__     ; LinkEffect
-?CopyTo@AssociatedItemEffect@@UAEXABVActiveEffect@@@Z           = 0x0068F1F0,_NOTINCS__     ; CopyTo
+?CopyTo@AssociatedItemEffect@@UBEXABVActiveEffect@@@Z           = 0x0068F1F0,_NOTINCS__     ; CopyTo
 ??0AssociatedItemEffect@@QAE@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z    = 0x0068F2B0,_NOTINCS__     ; AssociatedItemEffect
 ;}
 

@@ -39,7 +39,7 @@ public:
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*028*/ virtual bool             DoesHealthDamage() const ;
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
@@ -74,7 +74,7 @@ public:
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*024*/ virtual bool             RemoveCaster(MagicCaster* removedCaster);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
 
@@ -95,7 +95,7 @@ public:
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
 
@@ -122,7 +122,7 @@ public:
     IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent);
     IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent);
     IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
 
@@ -192,7 +192,7 @@ public:
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
@@ -216,7 +216,7 @@ public:
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
@@ -262,7 +262,7 @@ public:
     IMPORT /*008*/ virtual void             UpdateEffect(float timeElapsed); 
     IMPORT /*018*/ virtual void             LinkEffect(TESObjectREFR* parent);
     IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
@@ -286,7 +286,7 @@ public:
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const;
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*034*/ virtual bool             IsMagicTargetValid(MagicTarget* newTarget);
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
@@ -323,7 +323,7 @@ public:
     IMPORT /*01C*/ virtual void             PostLinkEffect(TESObjectREFR* parent);
     IMPORT /*020*/ virtual void             PreLoadEffect(TESObjectREFR* parent);
     IMPORT /*024*/ virtual bool             RemoveCaster(MagicCaster* removedCaster);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
     IMPORT /*038*/ virtual void             ApplyEffect();
     IMPORT /*03C*/ virtual void             RemoveEffect();
 
