@@ -9,7 +9,7 @@ EXPORTS ;{ ; ScriptEffect
 ?SaveEffect@ScriptEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x006A4700,_NOTINCS__     ; SaveEffect
 ?LoadEffect@ScriptEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x006A4780,_NOTINCS__     ; LoadEffect
 ?PreLoadEffect@ScriptEffect@@UAEXPAVTESObjectREFR@@@Z   = 0x006A4560,_NOTINCS__     ; PreLoadEffect
-?CopyTo@ScriptEffect@@UAEXABVActiveEffect@@@Z           = 0x006A4520,_NOTINCS__     ; CopyTo
+?CopyTo@ScriptEffect@@UBEXABVActiveEffect@@@Z           = 0x006A4520,_NOTINCS__     ; CopyTo
 ?ApplyEffect@ScriptEffect@@UAEXXZ                       = 0x006A45F0,_NOTINCS__     ; ApplyEffect
 ?RemoveEffect@ScriptEffect@@UAEXXZ                      = 0x006A4620,_NOTINCS__     ; RemoveEffect
 ??0ScriptEffect@@QAE@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z    = 0x006A4420,_NOTINCS__     ; ScriptEffect
@@ -23,7 +23,7 @@ EXPORTS ;{ ; ScriptEffect
 ?LoadEffect@SunDamageEffect@@UAEXPAVTESObjectREFR@@@Z           = 0x006A6CE0,_NOTINCS__     ; LoadEffect
 ?PostLinkEffect@SunDamageEffect@@UAEXPAVTESObjectREFR@@@Z       = 0x006A6D10,_NOTINCS__     ; PostLinkEffect
 ?DoesHealthDamage@SunDamageEffect@@UBE_NXZ                      = 0x006A7260,_NOTINCS__     ; DoesHealthDamage
-?CopyTo@SunDamageEffect@@UAEXABVActiveEffect@@@Z                = 0x006A8A90,_NOTINCS__     ; CopyTo
+?CopyTo@SunDamageEffect@@UBEXABVActiveEffect@@@Z                = 0x006A8A90,_NOTINCS__     ; CopyTo
 ?IsMagicTargetValid@SunDamageEffect@@UAE_NPAVMagicTarget@@@Z    = 0x006A8AA0,_NOTINCS__     ; IsMagicTargetValid
 ?RemoveEffect@SunDamageEffect@@UAEXXZ                           = 0x006A6AA0,_NOTINCS__     ; RemoveEffect
 ?Make@SunDamageEffect@@SAPAV1@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z   = 0x006A6890,_NOTINCS__     ; Make
@@ -94,7 +94,7 @@ EXPORTS ;{ ; VampirismEffect
 ?Clone@VampirismEffect@@UBEPAVActiveEffect@@XZ                  = 0x006A8A00,_NOTINCS__     ; Clone
 ?LinkEffect@VampirismEffect@@UAEXPAVTESObjectREFR@@@Z           = 0x006A8C70,_NOTINCS__     ; LinkEffect
 ?PreLoadEffect@VampirismEffect@@UAEXPAVTESObjectREFR@@@Z        = 0x006E7260,_NOTINCS__     ; PreLoadEffect
-?CopyTo@VampirismEffect@@UAEXABVActiveEffect@@@Z                = 0x006A8A90,_NOTINCS__     ; CopyTo
+?CopyTo@VampirismEffect@@UBEXABVActiveEffect@@@Z                = 0x006A8A90,_NOTINCS__     ; CopyTo
 ?IsMagicTargetValid@VampirismEffect@@UAE_NPAVMagicTarget@@@Z    = 0x006A8AA0,_NOTINCS__     ; IsMagicTargetValid
 ?ApplyEffect@VampirismEffect@@UAEXXZ                            = 0x006A8B40,_NOTINCS__     ; ApplyEffect
 ?RemoveEffect@VampirismEffect@@UAEXXZ                           = 0x006A8BD0,_NOTINCS__     ; RemoveEffect
@@ -103,7 +103,7 @@ EXPORTS ;{ ; VampirismEffect
 
 EXPORTS ;{ ; DispelEffect
 ?Clone@DispelEffect@@UBEPAVActiveEffect@@XZ                     = 0x006939A0,_NOTINCS__     ; Clone
-?CopyTo@DispelEffect@@UAEXABVActiveEffect@@@Z                   = 0x006A8A90,_NOTINCS__     ; CopyTo
+?CopyTo@DispelEffect@@UBEXABVActiveEffect@@@Z                   = 0x006A8A90,_NOTINCS__     ; CopyTo
 ?IsMagicTargetValid@DispelEffect@@UAE_NPAVMagicTarget@@@Z       = 0x006A8AA0,_NOTINCS__     ; IsMagicTargetValid
 ?ApplyEffect@DispelEffect@@UAEXXZ                               = 0x00693AA0,_NOTINCS__     ; ApplyEffect
 ?Make@DispelEffect@@SAPAV1@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z  = 0x00693A30,_NOTINCS__     ; Make
@@ -153,7 +153,7 @@ EXPORTS ;{ ; SoulTrapEffect
 ?Clone@SoulTrapEffect@@UBEPAVActiveEffect@@XZ               = 0x006A4BF0,_NOTINCS__     ; Clone
 ?UpdateEffect@SoulTrapEffect@@UAEXM@Z                       = 0x006A4D80,_NOTINCS__     ; UpdateEffect
 ?RemoveCaster@SoulTrapEffect@@UAE_NPAVMagicCaster@@@Z       = 0x00691A50,_NOTINCS__     ; RemoveCaster
-?CopyTo@SoulTrapEffect@@UAEXABVActiveEffect@@@Z             = 0x006A8A90,_NOTINCS__     ; CopyTo
+?CopyTo@SoulTrapEffect@@UBEXABVActiveEffect@@@Z             = 0x006A8A90,_NOTINCS__     ; CopyTo
 ?IsMagicTargetValid@SoulTrapEffect@@UAE_NPAVMagicTarget@@@Z = 0x006A4C80,_NOTINCS__     ; IsMagicTargetValid
 ?RemoveEffect@SoulTrapEffect@@UAEXXZ                        = 0x006A5050,_NOTINCS__     ; RemoveEffect
 ?Make@SoulTrapEffect@@SAPAV1@PAVMagicCaster@@PAVMagicItem@@PAVEffectItem@@@Z    = 0x006A4D10,_NOTINCS__     ; Make
@@ -165,7 +165,7 @@ EXPORTS ;{ ; LightEffect
 ?UpdateEffect@LightEffect@@UAEXM@Z                          = 0x006943E0,_NOTINCS__     ; UpdateEffect
 ?PostLinkEffect@LightEffect@@UAEXPAVTESObjectREFR@@@Z       = 0x006943C0,_NOTINCS__     ; PostLinkEffect
 ?PreLoadEffect@LightEffect@@UAEXPAVTESObjectREFR@@@Z        = 0x00694AB0,_NOTINCS__     ; PreLoadEffect
-?CopyTo@LightEffect@@UAEXABVActiveEffect@@@Z                = 0x006945C0,_NOTINCS__     ; CopyTo
+?CopyTo@LightEffect@@UBEXABVActiveEffect@@@Z                = 0x006945C0,_NOTINCS__     ; CopyTo
 ?IsMagicTargetValid@LightEffect@@UAE_NPAVMagicTarget@@@Z    = 0x006938F0,_NOTINCS__     ; IsMagicTargetValid
 ?ApplyEffect@LightEffect@@UAEXXZ                            = 0x00694AF0,_NOTINCS__     ; ApplyEffect
 ?RemoveEffect@LightEffect@@UAEXXZ                           = 0x00694B10,_NOTINCS__     ; RemoveEffect

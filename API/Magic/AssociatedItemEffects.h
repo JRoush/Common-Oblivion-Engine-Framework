@@ -31,7 +31,7 @@ public:
     IMPORT /*010*/ virtual void             SaveEffect(TESObjectREFR* parent);
     IMPORT /*014*/ virtual void             LoadEffect(TESObjectREFR* parent);
     IMPORT /*018*/ virtual void             LinkEffect(TESObjectREFR* parent);
-    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo);
+    IMPORT /*02C*/ virtual void             CopyTo(const ActiveEffect& copyTo) const;
 
     // no additional virtual methods
 

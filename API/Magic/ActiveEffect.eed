@@ -13,7 +13,7 @@ EXPORTS ;{ ; ActiveEffect
 ?LinkEffect@ActiveEffect@@UAEXPAVTESObjectREFR@@@Z      = 0x0068DC90,_NOTINCS__     ; LinkEffect
 ?PostLinkEffect@ActiveEffect@@UAEXPAVTESObjectREFR@@@Z  = 0x0068E600,_NOTINCS__     ; PostLinkEffect
 ?RemoveCaster@ActiveEffect@@UAE_NPAVMagicCaster@@@Z     = 0x0068D900,_NOTINCS__     ; RemoveCaster
-?CopyTo@ActiveEffect@@UAEXABV1@@Z                       = 0x0068D8A0,_NOTINCS__     ; CopyTo
+?CopyTo@ActiveEffect@@UBEXABV1@@Z                       = 0x0068D8A0,_NOTINCS__     ; CopyTo
 ; methods
 ?ApplyScalingFactor@ActiveEffect@@QAEXM@Z                                                               = 0x0068E170,_NOTINCS__     ; ApplyScalingFactor
 ?Remove@ActiveEffect@@QAEX_N@Z                                                                          = 0x0068EA10,_NOTINCS__     ; Remove
