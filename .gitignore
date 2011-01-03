@@ -10,7 +10,6 @@ Release/
 !ExportInjector.lib
 
 # ignore side projects that don't belong in the public repo
-/testing.cpp
 /DecoratedNameExtractor*
 /ExportInjector/
 /UndecorateName/
