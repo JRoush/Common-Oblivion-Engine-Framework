@@ -161,6 +161,7 @@ public:
                 // returns a 'rule handle' that can be used for later manipulation
     void        RemoveRule(void* ruleHandle); // remove the rule with the specified handle from the rule list
     void        ClearRules(); // remove all rules from the rule list
+    bool        LoadRulesFromINI(const char* iniPath, const char* section); // parse & append rules from an INI file
 
 protected:
     // rule data

@@ -3,6 +3,8 @@
 #include <cstdarg>
 #include <regex>
 #include <ctime>
+#include <fstream>
+#include <string>
 
 #pragma warning (disable: 4996) // 'unsafe' c-style string manipulation functions
 
@@ -188,6 +190,68 @@ void RuleBasedTarget::ClearRules()
         if (*it) delete *it;
     }
     _outputRules.clear();
+}
+bool RuleBasedTarget::LoadRulesFromINI(const char* iniPath, const char* section)
+{/*
+    Load rules embedded in an INI file.  Each line has the form 
+        STATE CHANNELS "SOURCEFILTER"
+    where
+    -   STATE may be 'Block' or 'Print'
+    -   CHANNELS may be any combination of the characters F,E,W,M,V,D, or A, which correspond
+        to the 'Fatal Error','Error','Warning','Message', 'Verbose Message','Debug Message' 
+        channels respectively, and 'A' indicates all channels.
+    -   SOURCEFILTER may be any ECMA regular expression
+    Ouput is printed or blocked based on the state of the *last* line that matches it's channel and source.
+
+    Example: blocks messages, vmessages, and dmessages from all sources
+        Block DVM ".*"
+*/
+
+    std::ifstream fin(iniPath,std::ios_base::in);
+    if (!fin.is_open()) return false; // failed to open ini file
+
+    // iteratre through lines in ini file
+    std::string dataline;
+    std::tr1::regex rgxSection("^\\s*\\[([^\\]]*)\\]\\s*$");
+    std::tr1::regex rgxRule("^\\s*(Print|Block)\\s+([FEWMVDA]+)\\s+\"([^\"]*)\"\\s*$");
+    std::tr1::match_results<std::string::iterator> matches;
+    bool active = false;
+    bool sectionfound = false;
+    while (!fin.eof())
+    {        
+        // get line
+        getline(fin,dataline);
+        // check for section headers
+        if (std::tr1::regex_match(dataline.begin(),dataline.end(),matches,rgxSection))
+        {
+            active = (matches[1].str() == section);
+            if (active) sectionfound = true;
+        }
+        // check for rule matches
+        if (active && std::tr1::regex_match(dataline.begin(),dataline.end(),matches,rgxRule))
+        {            
+            // determine channels
+            int channel = 0;
+            for (int i = 0; i < matches[2].str().size(); i++)
+            {
+                switch (matches[2].str()[i])
+                {
+                case 'F': channel |= OutputLog::kChannel_FatalError; break;
+                case 'E': channel |= OutputLog::kChannel_Error; break;
+                case 'W': channel |= OutputLog::kChannel_Warning; break;
+                case 'M': channel |= OutputLog::kChannel_Message; break;
+                case 'V': channel |= OutputLog::kChannel_VerboseMessage; break;
+                case 'D': channel |= OutputLog::kChannel_DebugMessage; break;
+                case 'A': channel |= OutputLog::kChannel__ALL; break;
+                }
+            }
+            // determine state
+            int state = (matches[1].str() == "Block") ? kRuleState_Block : kRuleState_Print;
+            // add rule
+            AddRule(state,channel,matches[3].str().c_str());
+        }        
+    }    
+    return sectionfound;
 }
 RuleBasedTarget::Rule::Rule(int state, int channel, const char* filter) 
     : _state(state), _channel(channel), _filter(0)
