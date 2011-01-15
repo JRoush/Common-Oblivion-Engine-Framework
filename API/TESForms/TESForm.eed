@@ -63,8 +63,6 @@ EXPORTS ;{ ; TESForm
 ?InitializeFormRecord@TESForm@@QAEXXZ                               = 0x0046B990,0x00496240     ; InitializeFormRecord
 ?PutFormRecordChunkData@TESForm@@SAXKPAXK@Z                         = 0x0046AE40,0x00494FE0     ; PutFormRecordChunkData
 ?FinalizeFormRecord@TESForm@@QAEXXZ                                 = 0x0046B9F0,0x00494FC0     ; FinalizeFormRecord
-?SaveGenericComponents@TESForm@@QAEXPAXG@Z                          = 0x0046BBB0,0x00495540     ; SaveGenericComponents
-?LoadGenericComponents@TESForm@@QAEXAAVTESFile@@PAXG@Z              = 0x0046BDA0,0x00495730     ; LoadGenericComponents
 ?ResolveFormID@TESForm@@SA_NAAKAAVTESFile@@@Z                       = 0x0046BB20,0x00495410     ; ResolveFormID
 ?SetFormID@TESForm@@QAEXK_N@Z                                       = 0x0046C300,0x00497E50     ; SetFormID
 ?ReserveNextUnusedFormID@TESForm@@SAKXZ                             = 0x00448D40,0x0047C580     ; ReserveNextUnusedFormID
@@ -76,6 +74,10 @@ EXPORTS ;{ ; TESForm
 ?AddReference@TESForm@@QAEXPAV1@@Z                                  = _NOTINGAME,0x00496430     ; AddReference
 ?RemoveReference@TESForm@@QAEXPAV1@@Z                               = _NOTINGAME,0x00496470     ; RemoveReference
 ?ClearReferenceList@TESForm@@QAEXXZ                                 = _NOTINGAME,0x00496400     ; ClearReferenceList
+?SaveGenericComponents@TESForm@@QAEXPAXG@Z                          = 0x0046BBB0,0x00495540     ; SaveGenericComponents
+?LoadGenericComponents@TESForm@@QAEXAAVTESFile@@PAXG@Z              = 0x0046BDA0,0x00495730     ; LoadGenericComponents
+?CopyGenericComponentsFrom@TESForm@@QAEXAAV1@@Z                     = 0x0046ACB0,0x00494DA0     ; CopyGenericComponentsFrom
+?CompareGenericComponentsTo@TESForm@@QAE_NAAV1@@Z                   = 0x0046AD70,0x00494E60     ; CompareGenericComponentsTo
 ?GetFormTypeName@TESForm@@SAPBDE@Z                                  = 0x0047E190,0x004AC1B0     ; GetFormTypeName
 ?Create@TESForm@@SAPAV1@E@Z                                         = 0x00447DF0,0x004793F0     ; Create
 ?MakeTemporary@TESForm@@QAEXXZ                                      = 0x0046B590,0x004972A0     ; MakeTemporary

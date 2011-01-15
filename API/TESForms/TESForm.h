@@ -229,7 +229,7 @@ public:
     _NOUSE /*0A4/0A8*/ virtual bool         UnkForm0A4() {return false;}
     _NOUSE /*0A8/0AC*/ virtual bool         UnkForm0A8() {return false;}
     _NOUSE /*0AC/0B0*/ virtual bool         UnkForm0AC() {return false;}
-    _NOUSE /*0B0/0B4*/ virtual UInt32       UnkForm0B0() {return 0;}
+    _NOUSE /*0B0/0B4*/ virtual UInt32       UnkForm0B0() {return 0;} // get object (container) use count? 
     IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form); // copies all fields, including base components
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo); // returns 0 if equivalent.  compares all fields, including base components.
     IMPORT /*0BC/0C0*/ virtual bool         MatchGroupRecord(const RecordInfo& groupRecord, bool matchAllLevels, bool arg2); //
@@ -280,10 +280,6 @@ public:
                                 // In the CS, also saves EDID chunk if editorID is a non-empty string
     IMPORT static void          PutFormRecordChunkData(UInt32 chunkType, void* buffer, UInt32 size); // appends chunk to form record buffer                      
     IMPORT void                 FinalizeFormRecord(); // finalizes the form record buffer
-    IMPORT void                 SaveGenericComponents(void* extraDataBuffer, UInt16 extraDataSize); //
-                                // Saves select, very simple base form components, and the contents of the extra data buffer                                              
-    IMPORT void                 LoadGenericComponents(TESFile& file, void* extraDataBuffer, UInt16 extraDataSize); //
-                                // Saves select, very simple base form components, and the specified of the extra data
     IMPORT static bool          ResolveFormID(UInt32& formID, TESFile& file); // resolves a formid from a TESFile
     // methods - formID, editorID
     IMPORT void                 SetFormID(UInt32 newFormID, bool arg2 = true); // arg2=true to reserve formid from datahandler ?
@@ -301,7 +297,14 @@ public:
     IMPORT void                 RemoveReference(TESForm* referencingForm);
     IMPORT void                 ClearReferenceList();
     #endif
-    // methods -misc
+    // methods - batch handling of select, very simple base form components
+    IMPORT void                 SaveGenericComponents(void* extraDataBuffer, UInt16 extraDataSize); //
+                                // Saves components and the specified extra data                                              
+    IMPORT void                 LoadGenericComponents(TESFile& file, void* extraDataBuffer, UInt16 extraDataSize); //
+                                // Saves components and the any stored extra data
+    IMPORT void                 CopyGenericComponentsFrom(TESForm& form); // copies components
+    IMPORT bool                 CompareGenericComponentsTo(TESForm& compareTo); // compares components
+    // methods - misc
     IMPORT static const char*   GetFormTypeName(UInt8 formType);
     IMPORT static TESForm*      Create(UInt8 formType); // form 'Factory' - creates a new form by type, for supported types
     IMPORT void                 MakeTemporary(); // removes from formID map, editorID map, active file list, etc. and sets temporary flag
