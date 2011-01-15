@@ -1,0 +1,26 @@
+/*
+    HTMLTarget Example stylesheet
+    This file provides a suggested formatting scheme for the output produced by the HTMLTarget in Utilities/OutputLog.h
+    USEAGE - copy into the same directory as your log files
+*/
+
+ /* hide stylesheet warning */
+table.output .stylewarning {display:none;} 
+
+/* format table style */
+table.output {border-collapse:collapse;}
+table.output th,td {border: 1px solid #BBBBBB;}
+table.output td,th {padding:4px;}
+
+/* format rows by channel and parity */
+table.output tr:nth-child(odd) {background-color:#D0D0D0;}
+table.output tr:nth-child(even) {background-color:#FFFFFF;}
+table.output tr.title {background-color:#AAAAAA; color:#000000}
+table.output tr.channel0:nth-child(odd) {background-color:#FFA0A0; color:#000000;}
+table.output tr.channel0:nth-child(even) {background-color:#FFB0B0; color:#000000;}
+table.output tr.channel1:nth-child(odd) {background-color:#FFA0A0; color:#000000;}
+table.output tr.channel1:nth-child(even) {background-color:#FFB0B0; color:#000000;}
+table.output tr.channel2 {color:#C95201;}
+table.output tr.channel3 {color:#000000;}
+table.output tr.channel4 {color:#808080;}
+table.output tr.channel5 {color:#808080;}

@@ -361,32 +361,20 @@ HTMLTarget::HTMLTarget(const char* filename, const char* title) : FileTarget(fil
     // print html opener
     _out << "<html>" << std::endl;
     _out << "<head>" << std::endl;
-    // print embedded style info
-    _out << "<style type='text/css'>" << std::endl;
-    _out << "table {border-collapse:collapse;}" << std::endl; 
-    _out << "table,th,td {border: 1px solid #BBBBBB;}" << std::endl;
-    _out << "td,th {padding:4px;}" << std::endl;
-    _out << "tr.title {background-color:#AAAAAA; color:#000000}" << std::endl;
-    _out << "tr.channel0o {background-color:#FF8080; color:#000000}" << std::endl;
-    _out << "tr.channel0e {background-color:#FFA0A0; color:#000000}" << std::endl;
-    _out << "tr.channel1o {background-color:#FF8080; color:#000000}" << std::endl;
-    _out << "tr.channel1e {background-color:#FFA0A0; color:#000000}" << std::endl;
-    _out << "tr.channel2o {background-color:#D0D0D0; color:#C96211}" << std::endl;
-    _out << "tr.channel2e {background-color:#FFFFFF; color:#C96211}" << std::endl;
-    _out << "tr.channel3o {background-color:#D0D0D0; color:#0000A0}" << std::endl;
-    _out << "tr.channel3e {background-color:#FFFFFF; color:#0000A0}" << std::endl;
-    _out << "tr.channel4o {background-color:#D0D0D0; color:#005000}" << std::endl;
-    _out << "tr.channel4e {background-color:#FFFFFF; color:#005000}" << std::endl;
-    _out << "tr.channel5o {background-color:#D0D0D0; color:#000000}" << std::endl;
-    _out << "tr.channel5e {background-color:#FFFFFF; color:#000000}" << std::endl;
-    _out << "</style>" << std::endl;
+    // link to style info & scripts
+    _out << "<link rel='stylesheet' type='text/css' href='logstyle.css' />" << std::endl;
+    _out << "<script type='text/javascript' src='logscripts.js'></script>" << std::endl;    
     // print title if provided
-    if (title) _out << "<title>" << title << "</title>";
+    if (title) _out << "<title>" << title << "</title>" << std::endl;
     _out << "</head>" << std::endl;
     // print table opener
     _out << "<body>" << std::endl;
-    _out << "<table>" << std::endl;
-    _out << "<tr class='title'><th>Time</th><th>Channel</th><th>Source</th><th>Output</th></tr>" << std::endl;
+    _out << "<table class='output'>" << std::endl;
+    _out << "<caption>" << std::endl;
+    if (title) _out << "<h2>" << title << "</h2>"  << std::endl;
+    _out << "<span class='stylewarning'>Style information (placed in ./logstyle.css) greatly imrpoves the readability of this document</span>" << std::endl;
+    _out << "</caption>" << std::endl;
+    _out << "<tr class='title'  onclick='OpenSort();'><th>Time</th><th>Channel</th><th>Source</th><th>Output</th></tr>" << std::endl;
 }
 HTMLTarget::~HTMLTarget()
 {
@@ -402,7 +390,7 @@ void HTMLTarget::WriteOutputLine(const OutputStyle& style, time_t time, int chan
         if ((1 << channelIdx) & channel) break;
     }
     // html table row opener
-    _out << "<tr class='channel" << channelIdx << (_lineParity?"o":"e") << "'>";
+    _out << "<tr class='channel" << channelIdx /*<< (_lineParity?"o":"e")*/ << "'>";
     // data
     _out << "<td>" << (style.includeTime ? OutputStyle::GetTimeString(time) : "") << "</td>";
     _out << "<td>" << (style.includeChannel ? OutputStyle::GetChannelLabel(channel) : "") << "</td>";

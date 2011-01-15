@@ -32,6 +32,8 @@
         someTarget.AddRule(kRuleState_Block, kChannel__ALL, ".*bar.*");
 
     The third parameter to the rule is an ECMA regular expression to be matched against source strings.
+    The function RuleBasedTarget::LoadRulesFromINI() can be used to parse rules directly from an INI file;
+    see COEF/Utilities/OutputLog_Example_INI.ini for an example of this concept.
 
     Print() and PrintF() return zero if the specified message + source were not printed to any targets on
     any channels.  For efficiency reasons, it is a good idea to store this value in a static "guard" variable, 
@@ -230,7 +232,7 @@ protected:
     std::fstream    _fout;
 };
 
-// HTMLTarget - a file target that prints output as an html table
+// HTMLTarget - a file target that prints output as an html table.
 class HTMLTarget : public FileTarget
 {
 public:
