@@ -16,6 +16,7 @@ Release/
 /RSH Gamebryo SDK/
 /ResourceReader/
 /ExamplePlugin/
+/BasicExamplePlugin/
 
 # ignore files marked as TODO, which need further cleaning before being added to public repo
 *.TODO

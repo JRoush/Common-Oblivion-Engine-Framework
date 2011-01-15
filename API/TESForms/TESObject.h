@@ -115,7 +115,7 @@ public:
     MEMBER /*--/48*/ UInt32             unkBoundObj48;
     MEMBER /*--/4C*/ UInt32             unkBoundObj4C;
     MEMBER /*--/50*/ UInt32             unkBoundObj50;
-    MEMBER /*--/54*/ UInt32             unkBoundObj54;
+    MEMBER /*--/54*/ UInt32             unkBoundObj54; // object (container) use count ?
     #endif
 
     // TESForm virtual methods

@@ -205,7 +205,7 @@ public:
     IMPORT void             SetIsLoaded(bool isLoaded); // set/clear flag for file loading - takes effect when file list is processed
     // static methods
     IMPORT static UInt8     RecordTypeFromChunkType(UInt32 chunkType); // returns record type (i.e. form type) for a given chunk type
-                            // e.g. 'MGEF' -> 0xC, see TESForm::FomrTypes for complete enumeration
+                            // e.g. 'MGEF' -> 0xC, see TESForm::FormTypes for complete enumeration
 
     // constructor, destructor
     IMPORT TESFile();
