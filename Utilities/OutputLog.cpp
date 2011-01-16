@@ -372,7 +372,7 @@ HTMLTarget::HTMLTarget(const char* filename, const char* title) : FileTarget(fil
     _out << "<table class='output'>" << std::endl;
     _out << "<caption>" << std::endl;
     if (title) _out << "<h2>" << title << "</h2>"  << std::endl;
-    _out << "<span class='stylewarning'>Style information (placed in ./logstyle.css) greatly imrpoves the readability of this document</span>" << std::endl;
+    _out << "<span class='stylewarning'>Style information (placed in ./logstyle.css) greatly improves the readability of this document</span>" << std::endl;
     _out << "</caption>" << std::endl;
     _out << "<tr class='title'  onclick='OpenSort();'><th>Time</th><th>Channel</th><th>Source</th><th>Output</th></tr>" << std::endl;
 }
