@@ -4,10 +4,8 @@
 *.sln
 *.vcproj*
 *.lib
-Debug/
-Release/
-!COEF.vcproj
-!ExportInjector.lib
+Debug*/
+Release*/
 
 # ignore side projects that don't belong in the public repo
 /DecoratedNameExtractor*
@@ -17,6 +15,7 @@ Release/
 /ResourceReader/
 /ExamplePlugin/
 /BasicExamplePlugin/
+/AdvancedExamplePlugin/
 
 # ignore files marked as TODO, which need further cleaning before being added to public repo
 *.TODO
