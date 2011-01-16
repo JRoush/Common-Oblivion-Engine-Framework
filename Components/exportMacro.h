@@ -1,0 +1,1 @@
+#define COMPONENT_EXPORT _declspec(dllexport)
