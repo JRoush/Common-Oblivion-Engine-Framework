@@ -135,12 +135,6 @@ public:
         kFormFlags_IgnoresFriendlyHits  = /*14*/ 0x00100000,
     };
 
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_EditorID    = 0x404, // EDIT
-        IDC_QuestItem   = 0x693, // BUTTON
-    };
-
     enum ModifiedFlags
     {
         kModified_FormFlags = 0x00000001,
@@ -339,11 +333,6 @@ class IMPORTCLASS TESFormIDListView : public TESForm
     It does not appear in the RTTI structure of the game code. 
 */  
 public:
-
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_FormList    = 0x810, // SysListView32
-    };
 
     // no additional members
 

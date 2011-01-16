@@ -67,48 +67,6 @@ class IMPORTCLASS EffectSetting : public TESFormIDListView, public TESModel, pub
 public:
 
     #ifndef OBLIVION
-    enum DialogControlIDs // in addition to IDs defined in base classes and by windows
-    {
-        IDC_Flag_Spellmaking            = 0x3EE, // BUTTON
-        IDC_Flag_Enchanting             = 0x3EF, // BUTTON
-        IDC_Flag_Hostile                = 0x3F0, // BUTTON
-        IDC_Flag_Detrimental            = 0x3F1, // BUTTON
-        IDC_Flag_Recover                = 0x3F2, // BUTTON
-        IDC_Flag_MagnitudeIsPercent     = 0x3F3, // BUTTON
-        IDC_Flag_FXPersist              = 0x3F4, // BUTTON
-        IDC_Flag_OnSelf                 = 0x3F5, // BUTTON
-        IDC_Flag_OnTouch                = 0x3F6, // BUTTON
-        IDC_Flag_OnTarget               = 0x3F7, // BUTTON
-        IDC_Flag_NoDuration             = 0x3F8, // BUTTON
-        IDC_Flag_NoMagnitude            = 0x3F9, // BUTTON
-        IDC_Flag_NoArea                 = 0x3FA, // BUTTON
-        IDC_Flag_NoIngredient           = 0x3FB, // BUTTON
-        IDC_Flag_UseWeapon              = 0x3FC, // BUTTON
-        IDC_Flag_UseArmor               = 0x3FD, // BUTTON
-        IDC_Flag_UseCreature            = 0x3FE, // BUTTON
-        IDC_Flag_UseSkill               = 0x3FF, // BUTTON
-        IDC_Flag_UseAttribute           = 0x400, // BUTTON
-        IDC_Flag_NoRecast               = 0x402, // BUTTON
-        IDC_Flag_NoHitEffect            = 0x403, // BUTTON
-        IDC_ProjectileSpeed             = 0x425, // EDIT
-        IDC_School                      = 0x441, // COMBOBOX
-        IDC_AssociatedItem              = 0x443, // COMBOBOX
-        IDC_ResistValue                 = 0x444, // COMBOBOX
-        IDC_ProjectileType              = 0x445, // COMBOBOX
-        IDC_Light                       = 0x446, // COMBOBOX
-        IDC_CastingSound                = 0x447, // COMBOBOX
-        IDC_BoltSound                   = 0x448, // COMBOBOX
-        IDC_HitSound                    = 0x44A, // COMBOBOX
-        IDC_AreaSound                   = 0x44B, // COMBOBOX
-        IDC_IconImageFrame              = 0x460, // STATIC        
-        IDC_EnchantmentFactor           = 0x4C6, // EDIT
-        IDC_BarterFactor                = 0x4C7, // EDIT
-        IDC_EffectShader                = 0x5E6, // COMBOBOX        
-        IDC_CounterEffects              = 0x811, // SysListView32
-        IDC_BaseCost                    = 0x812, // EDIT
-        IDC_EnchantShader               = 0x877, // COMBOBOX
-    };
-    static const UInt32     IDD_EffectSettings = 0x0A3; // Dialog Tempate ID
     IMPORT static HWND      dialogHandle; // used to track single instance of editing dialog
     #endif
 

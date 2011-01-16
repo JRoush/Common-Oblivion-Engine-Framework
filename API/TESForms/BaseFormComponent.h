@@ -59,12 +59,7 @@ public:
 
 class IMPORTCLASS TESFullName : public BaseFormComponent
 {// size 0C/0C
-public:    
-
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_FullName    = 0x424, // EDIT
-    };
+public: 
 
     // members
     //     /*00/00*/ void**         vtbl;
@@ -95,11 +90,6 @@ public:
 class IMPORTCLASS TESDescription : public BaseFormComponent
 {// size 08/10
 public:
-
-    enum DialogControlIDs // default control IDs
-    {                 
-        IDC_Description         = 0x472, // EDIT
-    };    
 
     // static cache for loaded description (game only)
     #ifdef OBLIVION
@@ -146,13 +136,7 @@ class IMPORTCLASS TESTexture : public BaseFormComponent
     Partial:
     -   members
 */
-public:
-    
-    enum DialogControlIDs // default control IDs
-    {                 
-        IDC_TexturePath         = 0x414, // BUTTON
-        IDC_TextureImage        = 0x422, // BUTTON
-    };        
+public: 
 
     // members
     //     /*00/00*/ void**         vtbl;
@@ -228,11 +212,6 @@ class IMPORTCLASS TESModel : public BaseFormComponent
 */
 public:
 
-    enum DialogControlIDs // default control IDs
-    {                 
-        IDC_ModelPath       = 0x413, // BUTTON
-    };  
-
     // members
     //     /*00/00*/ void**                 vtbl;
     MEMBER /*04/04*/ BSStringT              modelPath; // 
@@ -288,12 +267,6 @@ class IMPORTCLASS TESScriptableForm : public BaseFormComponent
 */
 public:
 
-    enum DialogControlIDs // default control IDs
-    {                 
-        IDC_Script          = 0x4CA, // COMBOBOX
-        IDC_EditScript      = 0x426, // BUTTON
-    };
-
     // members
     //     /*00/00*/ void**     vtbl;
     MEMBER /*04/04*/ Script*    script; // script formid stored here during loading
@@ -331,11 +304,6 @@ public:
 class IMPORTCLASS TESUsesForm : public BaseFormComponent
 {// size 08/08
 public:
-   
-    enum DialogControlIDs // default control IDs
-    {   
-        IDC_Uses    = 0x434, // EDIT
-    };
 
     // members
     //     /*00/00*/ void**     vtbl;
@@ -370,11 +338,6 @@ public:
         kModified_Value     = 0x00000008,
     };
 
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_Value   = 0x405, // EDIT
-    };
-
     // members
     //     /*00/00*/ void**     vtbl;
     MEMBER /*04/04*/ SInt32     goldValue;
@@ -391,7 +354,7 @@ public:
 
     // additional virtual methods
     #ifdef OBLIVION
-    IMPORT /*010/---*/ virtual UInt16        ModifiedComponentSize(UInt32 modifiedMask);
+    IMPORT /*010/---*/ virtual UInt16       ModifiedComponentSize(UInt32 modifiedMask);
     IMPORT /*014/---*/ virtual void         SaveModifiedComponent(UInt32 modifiedMask);
     IMPORT /*018/---*/ virtual void         LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
     #endif
@@ -407,11 +370,6 @@ public:
 class IMPORTCLASS TESHealthForm : public BaseFormComponent
 {// size 08/08
 public:
-
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_Health  = 0x400, // EDIT
-    };
 
     // members
     //     /*00/00*/ void**     vtbl;
@@ -444,11 +402,6 @@ class IMPORTCLASS TESWeightForm : public BaseFormComponent
 {// size 08/08
 public:
 
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_Weight  = 0x5C6, // EDIT
-    };
-
     // members
     //     /*00/00*/ void**     vtbl;
     MEMBER /*04/04*/ float      weight; // 
@@ -477,11 +430,6 @@ class IMPORTCLASS TESQualityForm : public BaseFormComponent
 {// size 08/08
 public:
 
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_Quality = 0x42B, // EDIT
-    };
-
     // members
     //     /*00/00*/ void**     vtbl;
     MEMBER /*04/04*/ float      quality; // 
@@ -508,11 +456,6 @@ public:
 class IMPORTCLASS TESAttackDamageForm : public BaseFormComponent
 {// size 08/08
 public:
-
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_AttackDamage    = 0x3F7, // EDIT
-    };
 
     // members
     //     /*00/00*/ void**     vtbl;
@@ -546,18 +489,6 @@ public:
     enum ModifiedFlags
     {
         kModified_Attributes    = 0x00000008,
-    };
-
-    enum DialogControlIDs // default control IDs
-    {
-        IDC_Strength        = 0x640, // EDIT
-        IDC_Intelligence    = 0x641, // EDIT
-        IDC_Willpower       = 0x642, // EDIT
-        IDC_Agility         = 0x643, // EDIT
-        IDC_Speed           = 0x644, // EDIT
-        IDC_Endurance       = 0x645, // EDIT
-        IDC_Personality     = 0x646, // EDIT
-        IDC_Luck            = 0x647, // EDIT
     };
 
     enum Attributes

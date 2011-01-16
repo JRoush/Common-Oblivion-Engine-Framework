@@ -61,16 +61,6 @@ class IMPORTCLASS IngredientItem : public MagicItemObject, public TESModel, publ
 {// size 080/198
 public:
 
-    enum DialogControlIDs // in addition to IDs defined in base classes and by windows
-    {
-        IDC_IconFrame                   = 0x460, // STATIC        
-        IDC_Autocalc                    = 0x4BF, // BUTTON
-        IDC_IngredientValue             = 0x43C, // EDIT
-        IDC_Poison                      = 0x82B, // STATIC
-        IDC_Edible                      = 0x694, // BUTTON
-    };
-    static const UInt32     IDD_IngredientItem = 0xCAF; // Dialog Tempate ID
-
     enum IngredientFlags
     {
         kIngrFlag_NoAutocalc    = /*00*/ 0x01,
@@ -140,16 +130,6 @@ public:
 class IMPORTCLASS AlchemyItem : public MagicItemObject, public TESModel, public TESIcon, public TESScriptableForm, public TESWeightForm
 {// size 080/198
 public:
-    
-    enum DialogControlIDs // in addition to IDs defined in base classes and by windows
-    {
-        IDC_IconFrame                   = 0x460, // STATIC        
-        IDC_Autocalc                    = 0x4BF, // BUTTON
-        IDC_PotionValue                 = 0x43C, // EDIT
-        IDC_Poison                      = 0x82B, // STATIC
-        IDC_Edible                      = 0x694, // BUTTON
-    };
-    static const UInt32     IDD_AlchemyItem = 0x0A5; // Dialog Tempate ID
 
     enum AlchemyItemFlags
     {

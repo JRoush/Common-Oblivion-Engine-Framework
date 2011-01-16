@@ -58,16 +58,6 @@ class IMPORTCLASS EnchantmentItem : public MagicItemForm
 {// size 044/11C
 public:
 
-    enum DialogControlIDs // in addition to IDs defined in base classes and by windows
-    {
-        IDC_CastingType                 = 0x439, // COMBOBOX
-        IDC_ChargeAmount                = 0x43D, // EDIT
-        IDC_EnchantmentCost             = 0x55E, // EDIT
-        IDC_Autocalc                    = 0x3EE, // BUTTON
-        IDC_EnchantmentCostLabel        = 0x686, // STATIC
-    };
-    static const UInt32     IDD_EnchantmentItem = 0x0A6; // Dialog Tempate ID
-
     enum EnchantmentFlags
     {
         kEnchFlag_NoAutoCalc = 0x00000001,
@@ -125,23 +115,6 @@ public:
 class IMPORTCLASS SpellItem : public MagicItemForm
 {// size 044/11C
 public:
-
-    enum DialogControlIDs // in addition to IDs defined in base classes and by windows
-    {
-        IDC_PCStartSpell                = 0x3EF, // BUTTON
-        IDC_SpellCost                   = 0x50F, // EDIT
-        IDC_Autocalc                    = 0x3EE, // BUTTON
-        IDC_SpellCostLabel              = 0x687, // STATIC
-        IDC_SpellType                   = 0x41A, // COMBOBOX
-        IDC_MasteryLevel                = 0x823, // COMBOBOX
-        IDC_School                      = 0x827, // STATIC
-        IDC_ImmuneToSilence             = 0x3F0, // BUTTON
-        IDC_AOEIgnoresLOS               = 0x3F1, // BUTTON
-        IDC_ScriptEffectAlwaysApplies   = 0x3F2, // BUTTON
-        IDC_NoReflectOrAbsorb           = 0x3F3, // BUTTON
-        IDC_TouchExplodesWithoutTarget  = 0x3F4, // BUTTON
-    };
-    static const UInt32     IDD_SpellItem = 0x117; // Dialog Tempate ID
 
     enum SpellFlags
     {
