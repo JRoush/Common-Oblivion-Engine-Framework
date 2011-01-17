@@ -108,9 +108,9 @@ public:
 
     // output style
     OutputStyle&    Style(); // returns current style
-    void            PushStyle(); // push current style onto stack & set new style to default
-    void            PushStyle(const OutputStyle& newStyle); // push current style onto stack & set new style to copy of newStyle
-    void            PopStyle(); // restore last saved style state from stack
+    virtual void    PushStyle(); // push current style onto stack & set new style to default
+    virtual void    PushStyle(const OutputStyle& newStyle); // push current style onto stack & set new style to copy of newStyle
+    virtual void    PopStyle(); // restore last saved style state from stack
     void            Indent(); // (for compatibility) increases indent of current style
     void            Outdent(); // (for compatibility) decreases indent of current style
 
@@ -159,11 +159,11 @@ public:
         kRuleState_Print,
         kRuleState_Block,
     };
-    void*       AddRule(int state, int channel, const char* filter); // add an output control rule to the end of the rule list.  
-                // returns a 'rule handle' that can be used for later manipulation
-    void        RemoveRule(void* ruleHandle); // remove the rule with the specified handle from the rule list
-    void        ClearRules(); // remove all rules from the rule list
-    bool        LoadRulesFromINI(const char* iniPath, const char* section); // parse & append rules from an INI file
+    virtual void*   AddRule(int state, int channel, const char* filter); // add an output control rule to the end of the rule list.  
+                    // returns a 'rule handle' that can be used for later manipulation
+    virtual void    RemoveRule(void* ruleHandle); // remove the rule with the specified handle from the rule list
+    virtual void    ClearRules(); // remove all rules from the rule list
+    virtual bool    LoadRulesFromINI(const char* iniPath, const char* section); // parse & append rules from an INI file
 
 protected:
     // rule data
