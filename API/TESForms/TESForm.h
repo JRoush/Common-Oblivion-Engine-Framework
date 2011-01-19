@@ -260,7 +260,8 @@ public:
     _NOUSE /*---/100*/ virtual bool         UnkForm100(UInt32 arg0) {return false;} // checkout form for current user? (might not be used by public CS)
     IMPORT /*---/104*/ virtual bool         UpdateUsageInfo(); // update trackingData and (?) fileList
     _NOUSE /*---/108*/ virtual bool         UnkForm108(UInt32 arg0) {return false;} // undo checkout?
-    IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
+    IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); //
+                                            // processes messages not handled by main DialogProc.  Returns true if message was handled
     IMPORT /*---/110*/ virtual bool         IsDialogValid(HWND dialog); // Checks for necessary controls by id, returns true if found
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog); // Set dialog control values to reflect members
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog); // Get member values from dialog controls
@@ -279,6 +280,7 @@ public:
     IMPORT void                 SetFormID(UInt32 newFormID, bool arg2 = true); // arg2=true to reserve formid from datahandler ?
     IMPORT static UInt32        ReserveNextUnusedFormID(); // gets next formID, and marks it as used
     IMPORT static TESForm*      LookupByFormID(UInt32 formID);
+    IMPORT static bool          IsFormIDBuiltin(UInt32 formID); // returns true if formID is a 'builtin' form (e.g. >= 0x800)
     #ifndef OBLIVION
     IMPORT bool                 SetEditorID(const char* newEditorID); // this is a virtual method in the game
     IMPORT static TESForm*      LookupByEditorID(const char* editorID);
