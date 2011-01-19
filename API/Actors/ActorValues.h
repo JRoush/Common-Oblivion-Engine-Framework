@@ -109,6 +109,7 @@ public:
         //
         kActorVal__MAX                  = 0x48, // 0x48, 0xFF, and 0xFFFFFFFF are all used to indicate
         kActorVal__NONE                 = 0xFF, // 'invalid' or 'no av'.  This can cause confusion (and bugs)
+        kActorVal__UBOUND               = 0xFFFFFFFF, // used with EffectSetting::ResistAV 
     };
 
     // ActorValues - static data arrays
