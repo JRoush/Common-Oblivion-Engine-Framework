@@ -504,6 +504,22 @@
 				>
 			</File>
 		</Filter>
+		<Filter
+			Name="Components"
+			>
+			<File
+				RelativePath=".\Components\EventManager.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Components\ExtendedForm.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Components\TESFileFormats.h"
+				>
+			</File>
+		</Filter>
 		<File
 			RelativePath=".\Common Oblivion  Engine Framework.txt"
 			>

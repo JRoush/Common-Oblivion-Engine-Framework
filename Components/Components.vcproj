@@ -89,7 +89,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -168,7 +168,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -244,7 +244,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -323,7 +323,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;"
+				CommandLine="copy &quot;$(TargetPath)&quot; &quot;F:\Installed Games\Oblivion\Data\obse\plugins\COEF\Components\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetPath)&quot; &quot;.\$(TargetFileName)&quot;&#x0D;&#x0A;copy &quot;$(TargetDir)\$(TargetName).lib&quot; &quot;.\$(TargetName).lib&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
@@ -352,6 +352,14 @@
 		</File>
 		<File
 			RelativePath=".\ExtendedForm.h"
+			>
+		</File>
+		<File
+			RelativePath=".\TESFileFormats.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\TESFileFormats.h"
 			>
 		</File>
 	</Files>
