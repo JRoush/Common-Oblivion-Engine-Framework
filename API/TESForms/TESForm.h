@@ -2,6 +2,12 @@
     TESForm is the base class for all object 'types' (or 'Base forms') in the game.
     It provides a common, very sophisticated interface for Serialization, Revision Control,
     Inter-form references, and editing (in the CS).
+
+    NOTE: when dealing with the CS reference-tracking system, the list of forms that point to 
+    a this form ("backward" references) are referred to as "Cross References".  This distinguishes
+    them from members that point to another form ("forward" references), which are referred to as 
+    "Form" or "Component" references. The notation is akward, a result of choosing names before a 
+    clear picture of the system emerged (it still hasn't).
 */
 #pragma once
 
@@ -287,11 +293,11 @@ public:
     #endif
     // methods - CS reference tracking
     #ifndef OBLIVION
-    IMPORT FormReferenceList*   GetReferenceList(bool create); // if 'create', then an empty list will be created if none is found
-    IMPORT UInt32               GetReferenceCount();
-    IMPORT void                 AddReference(TESForm* referencingForm);
-    IMPORT void                 RemoveReference(TESForm* referencingForm);
-    IMPORT void                 ClearReferenceList();
+    IMPORT FormReferenceList*   GetCrossReferenceList(bool create); // if 'create', then an empty list will be created if none is found
+    IMPORT UInt32               GetCrossReferenceCount();
+    IMPORT void                 AddCrossReference(TESForm* referencingForm);
+    IMPORT void                 RemoveCrossReference(TESForm* referencingForm);
+    IMPORT void                 ClearCrossReferenceList();
     #endif
     // methods - batch handling of select, very simple base form components
     IMPORT void                 SaveGenericComponents(void* extraDataBuffer, UInt16 extraDataSize); //

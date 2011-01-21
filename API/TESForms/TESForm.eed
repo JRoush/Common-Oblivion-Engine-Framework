@@ -70,11 +70,11 @@ EXPORTS ;{ ; TESForm
 ?IsFormIDBuiltin@TESForm@@SA_NK@Z                                   = 0x0046ABD0,0x00494D10     ; IsFormIDBuiltin
 ?LookupByEditorID@TESForm@@SAPAV1@PBD@Z                             = _NOTINGAME,0x00495F20     ; LookupByEditorID
 ?SetEditorID@TESForm@@QAE_NPBD@Z                                    = _NOTINGAME,0x00497670     ; SetEditorID - this is a virtual method in game
-?GetReferenceList@TESForm@@QAEPAV?$BSSimpleList@PAVTESForm@@@@_N@Z  = _NOTINGAME,0x00496380     ; GetReferenceList
-?GetReferenceCount@TESForm@@QAEKXZ                                  = _NOTINGAME,0x00496520     ; GetReferenceCount
-?AddReference@TESForm@@QAEXPAV1@@Z                                  = _NOTINGAME,0x00496430     ; AddReference
-?RemoveReference@TESForm@@QAEXPAV1@@Z                               = _NOTINGAME,0x00496470     ; RemoveReference
-?ClearReferenceList@TESForm@@QAEXXZ                                 = _NOTINGAME,0x00496400     ; ClearReferenceList
+?GetCrossReferenceList@TESForm@@QAEPAV?$BSSimpleList@PAVTESForm@@@@_N@Z = _NOTINGAME,0x00496380     ; GetCrossReferenceList
+?GetCrossReferenceCount@TESForm@@QAEKXZ                                 = _NOTINGAME,0x00496520     ; GetCrossReferenceCount
+?AddCrossReference@TESForm@@QAEXPAV1@@Z                                 = _NOTINGAME,0x00496430     ; AddCrossReference
+?RemoveCrossReference@TESForm@@QAEXPAV1@@Z                              = _NOTINGAME,0x00496470     ; RemoveCrossReference
+?ClearCrossReferenceList@TESForm@@QAEXXZ                                = _NOTINGAME,0x00496400     ; ClearCrossReferenceList
 ?SaveGenericComponents@TESForm@@QAEXPAXG@Z                          = 0x0046BBB0,0x00495540     ; SaveGenericComponents
 ?LoadGenericComponents@TESForm@@QAEXAAVTESFile@@PAXG@Z              = 0x0046BDA0,0x00495730     ; LoadGenericComponents
 ?CopyGenericComponentsFrom@TESForm@@QAEXAAV1@@Z                     = 0x0046ACB0,0x00494DA0     ; CopyGenericComponentsFrom
