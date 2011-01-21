@@ -49,7 +49,10 @@ EXPORTS ;{ ; TESForm
 ?GetEditorID@TESForm@@UAEPBDXZ                              = 0x004129A0,0x00435BE0     ; GetEditorID
 ?SetEditorID@TESForm@@UAE_NPBD@Z                            = 0x006FDFF0,_NOTINCS__     ; SetEditorID - this is regular method in CS
 ?GetResourcePath@TESForm@@UAEXAAVBSStringT@@@Z              = _NOTINGAME,0x00497840     ; GetResourcePath
-?RemoveFormReference@TESForm@@UAEXAAV1@@Z                   = _NOTINGAME,0x00495260     ; RemoveFormReference
+?BuildFormRefList@TESForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                               = _NOTINGAME,0x00496540     ; BuildFormRefList
+?RemoveFormReference@TESForm@@UAEXAAV1@@Z                                                       = _NOTINGAME,0x00495260     ; RemoveFormReference
+?FormRefRevisionsMatch@TESForm@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                         = _NOTINGAME,0x00496560     ; FormRefRevisionsMatch
+?GetRevisionUnmatchedFormRefs@TESForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z     = _NOTINGAME,0x00497380     ; GetRevisionUnmatchedFormRefs
 ?UpdateUsageInfo@TESForm@@UAE_NXZ                           = _NOTINGAME,0x00497400     ; UpdateUsageInfo
 ?DialogMessageCallback@TESForm@@UAE_NPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x00495B80     ; DialogMessageCallback
 ?IsDialogValid@TESForm@@UAE_NPAUHWND__@@@Z                  = _NOTINGAME,0x00495CA0     ; IsDialogValid

@@ -2,6 +2,9 @@
     BaseFormComponents define the various 'components' that true TESForm classes can inherit,
     e.g. Name, Texture, Model, Weight, etc.  The root of the hierarchy is the BaseFormComponent
     class, which exposes a common interface for Comparison, Copying, Serialization, etc.
+
+    NOTE: "Form" or "Component" References refer to members that point to another form, which are
+    tracked by the CS.
 */
 #pragma once
 
@@ -32,17 +35,19 @@ public:
     // virtual methods:
     IMPORT /*000/000*/ virtual void         InitializeComponent() = 0 {} // 
                                             // Initializes member values of the component, called by constructor (always a stub for TESForms)
-    INLINE /*004/004*/ virtual void         ClearComponentReferences() {} // 
+    INLINE /*004/004*/ virtual void         ClearComponentReferences() {} // AKA clear FormReferences
                                             // e.g. Useage stats for TESForm, name hash list (?) for TESModel, etc.
     IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source) = 0;
-    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const = 0; // 
-                                            // return false if equivalent
-
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const = 0; // return false if equivalent
     #ifndef OBLIVION
-    _NOUSE /*---/010*/ virtual void         UnkBFC010(void* arg0) {}                           
+    INLINE /*---/010*/ virtual void         BuildComponentFormRefList(BSSimpleList<TESForm*>* formRefs) {} // append referenced forms to list
+                                            // ensures forms appear at most once in list.
     INLINE /*---/014*/ virtual void         RemoveComponentFormRef(TESForm& referencedForm) {}
-    _NOUSE /*---/018*/ virtual bool         UnkBFC018(UInt32 arg0) {return true;}
-    _NOUSE /*---/01C*/ virtual void         UnkBFC01C(UInt32 arg0, UInt32 arg1) {}
+    INLINE /*---/018*/ virtual bool         ComponentFormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList) {return true;} // checks each referenced form
+                                            // using TESForm::DoesRevisionMatch(), returns false if a referenced form requires checkin and isn't in list
+    INLINE /*---/01C*/ virtual void         GetRevisionUnmatchedComponentFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output) {} // 
+                                            // checks each referenced form using TESForm::DoesRevisionMatch()
+                                            // builds a string of referenced forms that require checkin but aren't in list
     INLINE /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result) {return false;} // 
                                             // Mostly for click events on relevant controls.  Returns true if message handled.                                   
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog) = 0; // Checks for necessary controls by id, returns true if found.
@@ -278,10 +283,10 @@ public:
     IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
     IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const ;
     #ifndef OBLIVION
-    _NOUSE /*---/010*/ virtual void         UnkBFC010(void* arg0) {}                           
+    IMPORT /*---/010*/ virtual void         BuildComponentFormRefList(BSSimpleList<TESForm*>* formRefs);
     IMPORT /*---/014*/ virtual void         RemoveComponentFormRef(TESForm& referencedForm);
-    _NOUSE /*---/018*/ virtual bool         UnkBFC018(UInt32 arg0) {return true;}
-    _NOUSE /*---/01C*/ virtual void         UnkBFC01C(UInt32 arg0, BSStringT& output) {} // dump list of refs?
+    IMPORT /*---/018*/ virtual bool         ComponentFormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/01C*/ virtual void         GetRevisionUnmatchedComponentFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);    
     IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);       
@@ -521,7 +526,7 @@ public:
 
     // additional virtual methods
     #ifdef OBLIVION
-    IMPORT /*010/---*/ virtual UInt16        ModifiedComponentSize(UInt32 modifiedMask);
+    IMPORT /*010/---*/ virtual UInt16       ModifiedComponentSize(UInt32 modifiedMask);
     IMPORT /*014/---*/ virtual void         SaveModifiedComponent(UInt32 modifiedMask);
     IMPORT /*018/---*/ virtual void         LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
     #endif

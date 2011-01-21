@@ -259,10 +259,10 @@ public:
     _NOUSE /*---/0E4*/ virtual bool         UnkForm0E4() {return false;}
     _NOUSE /*---/0E8*/ virtual bool         UnkForm0E8(UInt32 arg0) {return false;}
     _NOUSE /*---/0EC*/ virtual bool         UnkForm0EC(UInt32 arg0, UInt32 arg1) {return false;}
-    _NOUSE /*---/0F0*/ virtual void         UnkForm0F0(void* arg0) {} // calls Unk010() on all components
-    IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form); //
-    _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;} // calls Unk018() on all components
-    _NOUSE /*---/0FC*/ virtual void         UnkForm0FC(UInt32 arg0, BSStringT& output) {} // dump list of refs? calls Unk01C() on all components
+    IMPORT /*---/0F0*/ virtual void         BuildFormRefList(BSSimpleList<TESForm*>* formRefs);
+    IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& referencedForm);
+    IMPORT /*---/0F8*/ virtual bool         FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/0FC*/ virtual void         GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     _NOUSE /*---/100*/ virtual bool         UnkForm100(UInt32 arg0) {return false;} // checkout form for current user? (might not be used by public CS)
     IMPORT /*---/104*/ virtual bool         UpdateUsageInfo(); // update trackingData and (?) fileList
     _NOUSE /*---/108*/ virtual bool         UnkForm108(UInt32 arg0) {return false;} // undo checkout?

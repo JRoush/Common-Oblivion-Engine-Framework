@@ -117,11 +117,11 @@ public:
     _NOUSE /*---/0E0*/ virtual bool         UnkForm0E0(UInt32 arg0);
     _NOUSE /*---/0E4*/ virtual bool         UnkForm0E4();
     _NOUSE /*---/0E8*/ virtual bool         UnkForm0E8(UInt32 arg0);
-    _NOUSE /*---/0EC*/ virtual bool         UnkForm0EC(UInt32 arg0, UInt32 arg1);
-    _NOUSE /*---/0F0*/ virtual void         UnkForm0F0(void* arg0);
-    IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form);
-    _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0);
-    _NOUSE /*---/0FC*/ virtual void         UnkForm0FC(UInt32 arg0, BSStringT& output);
+    _NOUSE /*---/0EC*/ virtual bool         UnkForm0EC(UInt32 arg0, UInt32 arg1);    
+    IMPORT /*---/0F0*/ virtual void         BuildFormRefList(BSSimpleList<TESForm*>* formRefs);
+    IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& referencedForm);
+    IMPORT /*---/0F8*/ virtual bool         FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/0FC*/ virtual void         GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);

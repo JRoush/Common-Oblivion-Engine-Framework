@@ -93,10 +93,10 @@ public:
     IMPORT /*0D4/0C8*/ virtual const char*      GetEditorID();
     #ifndef OBLIVION
     _NOUSE /*---/0D4*/ virtual bool             UnkForm0D4();
-    _NOUSE /*---/0F0*/ virtual void             UnkForm0F0(void* arg0);
-    IMPORT /*---/0F4*/ virtual void             RemoveFormReference(TESForm& form);
-    _NOUSE /*---/0F8*/ virtual bool             UnkForm0F8(UInt32 arg0);
-    _NOUSE /*---/0FC*/ virtual void             UnkForm0FC(UInt32 arg0, BSStringT& output);
+    IMPORT /*---/0F0*/ virtual void             BuildFormRefList(BSSimpleList<TESForm*>* formRefs);
+    IMPORT /*---/0F4*/ virtual void             RemoveFormReference(TESForm& referencedForm);
+    IMPORT /*---/0F8*/ virtual bool             FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/0FC*/ virtual void             GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     _NOUSE /*---/100*/ virtual bool             UnkForm100(UInt32 arg0);
     IMPORT /*---/104*/ virtual bool             UpdateUsageInfo();
     IMPORT /*---/10C*/ virtual bool             DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);

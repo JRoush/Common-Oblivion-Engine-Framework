@@ -30,7 +30,10 @@ EXPORTS ;{ ; TESObjectREFR
 ?MatchGroupRecord@TESObjectREFR@@UAE_NABVRecordInfo@@_N1@Z                  = 0x004DFF40,0x00545820     ; MatchGroupRecord
 ?CreateGroupRecord@TESObjectREFR@@UAEXAAVRecordInfo@@0@Z                    = 0x004E0000,0x00545970     ; CreateGroupRecord
 ?GetEditorID@TESObjectREFR@@UAEPBDXZ                                        = 0x004D6DF0,0x005420A0     ; GetEditorID
-?RemoveFormReference@TESObjectREFR@@UAEXAAVTESForm@@@Z                      = _NOTINGAME,0x00543070     ; RemoveFormReference
+?BuildFormRefList@TESObjectREFR@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                             = _NOTINGAME,0x00545F80     ; BuildFormRefList
+?RemoveFormReference@TESObjectREFR@@UAEXAAVTESForm@@@Z                                              = _NOTINGAME,0x00543070     ; RemoveFormReference
+?FormRefRevisionsMatch@TESObjectREFR@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                       = _NOTINGAME,0x0053FE50     ; FormRefRevisionsMatch
+?GetRevisionUnmatchedFormRefs@TESObjectREFR@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z   = _NOTINGAME,0x00546080     ; GetRevisionUnmatchedFormRefs
 ?UpdateUsageInfo@TESObjectREFR@@UAE_NXZ                                     = _NOTINGAME,0x00540010     ; UpdateUsageInfo
 ?DialogMessageCallback@TESObjectREFR@@UAE_NPAUHWND__@@IIJAAJ@Z              = _NOTINGAME,0x0054BB80     ; DialogMessageCallback
 ?SetInDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                               = _NOTINGAME,0x00549590     ; SetInDialog
