@@ -29,10 +29,9 @@ struct TrackingData
     Used by the built-in revision-control in the CS, which seems to be disabled in the public version
     This struct is public (not a subclass of TESForm) because it is also used by TESFile
 */
-    UInt8   unkTrackingData00;
-    UInt8   unkTrackingData01;
-    UInt8   unkTrackingData02;  // 02 specific to form
-    UInt8   checkOutBy;         // 03 userID of user who has this form checked out
+    UInt16  date;               // 00 low byte is day of month, high byte is number of months with 1 = Jan. 2003 (Decembers are a little weird)
+    UInt8   lastUser;           // 02 userID that last had this form checked out
+    UInt8   currentUser;        // 03 userID that has this form checked out
 };
 
 class IMPORTCLASS TESForm : public BaseFormComponent
