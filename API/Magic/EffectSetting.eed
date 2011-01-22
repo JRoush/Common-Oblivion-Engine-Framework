@@ -34,7 +34,9 @@ EXPORTS ;{ ; EffectSetting
 ?LinkForm@EffectSetting@@UAEXXZ                                 = 0x00415960,0x00568610     ; LinkForm
 ?CopyFrom@EffectSetting@@UAEXAAVTESForm@@@Z                     = 0x00416000,0x005690E0     ; CopyFrom
 ?CompareTo@EffectSetting@@UAE_NAAVTESForm@@@Z                   = 0x00415BC0,0x00568A60     ; CompareTo
-?RemoveFormReference@EffectSetting@@UAEXAAVTESForm@@@Z          = _NOTINGAME,0x00568F40     ; RemoveFormReference
+?RemoveFormReference@EffectSetting@@UAEXAAVTESForm@@@Z                                              = _NOTINGAME,0x00568F40     ; RemoveFormReference
+?FormRefRevisionsMatch@EffectSetting@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                       = _NOTINGAME,0x00568FF0     ; FormRefRevisionsMatch
+?GetRevisionUnmatchedFormRefs@EffectSetting@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z   = _NOTINGAME,0x0056A1D0     ; GetRevisionUnmatchedFormRefs
 ?DialogMessageCallback@EffectSetting@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x00568C40     ; DialogMessageCallback
 ?SetInDialog@EffectSetting@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00569B00     ; SetInDialog
 ?GetFromDialog@EffectSetting@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00569580     ; GetFromDialog

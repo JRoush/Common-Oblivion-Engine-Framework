@@ -179,7 +179,8 @@ public:
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
     IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form); //
-    _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;}
+    IMPORT /*---/0F8*/ virtual bool         FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/0FC*/ virtual void         GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); 
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);
