@@ -72,7 +72,8 @@ public:
 
     enum EffectSettingFlags
     {   //                                      # Can be overriden in a vanilla mod file (other overrides are discarded by EffectSetting.Load())
-        //                                        + Displayed in CS with a checkbox                                       
+        //                                        + Displayed in CS with a checkbox  
+        kMgefFlag__Overridable          = /*    #   */ 0x0FC03C00, // bitmask of overridable flags
         kMgefFlag_Hostile               = /* 00   + */ 0x00000001,
         kMgefFlag_Recovers              = /* 01   + */ 0x00000002, // used for some effect types - changes are reversed when removed
         kMgefFlag_Detrimental           = /* 02   + */ 0x00000004, // used for ValueModifier effects - AV is decreased rather than increased
