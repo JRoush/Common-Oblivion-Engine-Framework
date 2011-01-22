@@ -124,7 +124,7 @@ public:
                                         // this function does not call ShowFileSelect(), it uses a different interface
 
     // methods - parsing floats to/from edit controls
-    IMPORT static bool                  SetDlgItemTextFloat(HWND dialog, INT dlgItemID, float value, int decimalPlaces = 2);
+    IMPORT static bool                  SetDlgItemTextFloat(HWND dialog, INT dlgItemID, float value, int decimalPlaces = 4);
     IMPORT static float                 GetDlgItemTextFloat(HWND dialog, INT dlgItemID);
 
     // static data 
