@@ -251,7 +251,7 @@ public:
     #else
     _NOUSE /*---/0CC*/ virtual bool         UnkForm0CC() {return false;}
     _NOUSE /*---/0D0*/ virtual bool         UnkForm0D0(UInt32 arg0) {return false;}
-    _NOUSE /*---/0D4*/ virtual bool         UnkForm0D4() {return false;} // checks userid in tracking data
+    _NOUSE /*---/0D4*/ virtual bool         UnkForm0D4() {return false;} // checks for valid current or last userid
     _NOUSE /*---/0D8*/ virtual bool         UnkForm0D8() {return false;}
     IMPORT /*---/0DC*/ virtual void         GetResourcePath(BSStringT& path); // default checks for model, biped model, texture component
     _NOUSE /*---/0E0*/ virtual bool         UnkForm0E0(UInt32 arg0) {return false;}
@@ -283,7 +283,6 @@ public:
     IMPORT static bool          ResolveFormID(UInt32& formID, TESFile& file); // resolves a formid from a TESFile
     // methods - formID, editorID
     IMPORT void                 SetFormID(UInt32 newFormID, bool arg2 = true); // arg2=true to reserve formid from datahandler ?
-    IMPORT static UInt32        ReserveNextUnusedFormID(); // gets next formID, and marks it as used
     IMPORT static TESForm*      LookupByFormID(UInt32 formID);
     IMPORT static bool          IsFormIDBuiltin(UInt32 formID); // returns true if formID is a 'builtin' form (e.g. >= 0x800)
     #ifndef OBLIVION

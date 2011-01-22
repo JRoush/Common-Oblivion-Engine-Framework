@@ -68,7 +68,6 @@ EXPORTS ;{ ; TESForm
 ?FinalizeFormRecord@TESForm@@QAEXXZ                                 = 0x0046B9F0,0x00494FC0     ; FinalizeFormRecord
 ?ResolveFormID@TESForm@@SA_NAAKAAVTESFile@@@Z                       = 0x0046BB20,0x00495410     ; ResolveFormID
 ?SetFormID@TESForm@@QAEXK_N@Z                                       = 0x0046C300,0x00497E50     ; SetFormID
-?ReserveNextUnusedFormID@TESForm@@SAKXZ                             = 0x00448D40,0x0047C580     ; ReserveNextUnusedFormID
 ?LookupByFormID@TESForm@@SAPAV1@K@Z                                 = 0x0046B250,0x00495EF0     ; LookupByFormID
 ?IsFormIDBuiltin@TESForm@@SA_NK@Z                                   = 0x0046ABD0,0x00494D10     ; IsFormIDBuiltin
 ?LookupByEditorID@TESForm@@SAPAV1@PBD@Z                             = _NOTINGAME,0x00495F20     ; LookupByEditorID

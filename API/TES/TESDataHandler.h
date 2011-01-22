@@ -136,6 +136,7 @@ public:
     IMPORT void         SaveForm(TESForm& form, bool arg1); // serializes form to active file using TESForm::SaveForm()    
     // members - misc
     IMPORT bool         AddFormToHandler(TESForm* form); // Adds form to handler.  Returns false for form types not handled
+    IMPORT UInt32       ReserveNextUnusedFormID(); // gets next formID, and marks it as used    
     IMPORT bool         Clear(); // destroys all objects managed by the data handler.  always returns true
     IMPORT void         CreateBuiltinObjects(); // (re)create built-in forms & objects managed by the data handler
 

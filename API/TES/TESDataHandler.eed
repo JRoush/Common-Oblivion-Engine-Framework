@@ -38,6 +38,7 @@ EXPORTS ;{ ; TESDataHandler
 ?SaveFile@TESDataHandler@@QAE_NPBD_N@Z                      = _NOTINGAME,0x0047E9B0     ; SaveFile
 ?SaveForm@TESDataHandler@@QAEXAAVTESForm@@_N@Z              = 0x004470B0,0x00479120     ; SaveForm
 ?AddFormToHandler@TESDataHandler@@QAE_NPAVTESForm@@@Z       = 0x0044D950,0x004818F0     ; AddFormToHandler
+?ReserveNextUnusedFormID@TESDataHandler@@QAEKXZ             = 0x00448D40,0x0047C580     ; ReserveNextUnusedFormID
 ?Clear@TESDataHandler@@QAE_NXZ                              = 0x004492E0,0x0047AA60     ; Clear
 ?CreateBuiltinObjects@TESDataHandler@@QAEXXZ                = 0x0044AC20,0x0047F520     ; CreateBuiltinObjects
 ??0TESDataHandler@@QAE@XZ                                   = 0x00446D80,0x0047A5E0     ; TESDataHandler
