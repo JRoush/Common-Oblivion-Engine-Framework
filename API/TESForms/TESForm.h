@@ -302,8 +302,8 @@ public:
                                 // Saves components and the specified extra data                                              
     IMPORT void                 LoadGenericComponents(TESFile& file, void* extraDataBuffer, UInt16 extraDataSize); //
                                 // Saves components and the any stored extra data
-    IMPORT void                 CopyGenericComponentsFrom(TESForm& form); // copies components
-    IMPORT bool                 CompareGenericComponentsTo(TESForm& compareTo); // compares components
+    IMPORT void                 CopyAllComponentsFrom(TESForm& form); // copies components
+    IMPORT bool                 CompareAllComponentsTo(TESForm& compareTo); // compares components
     // methods - misc
     IMPORT static const char*   GetFormTypeName(UInt8 formType);
     IMPORT static TESForm*      Create(UInt8 formType); // form 'Factory' - creates a new form by type, for supported types

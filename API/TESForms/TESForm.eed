@@ -79,8 +79,8 @@ EXPORTS ;{ ; TESForm
 ?ClearCrossReferenceList@TESForm@@QAEXXZ                                = _NOTINGAME,0x00496400     ; ClearCrossReferenceList
 ?SaveGenericComponents@TESForm@@QAEXPAXG@Z                          = 0x0046BBB0,0x00495540     ; SaveGenericComponents
 ?LoadGenericComponents@TESForm@@QAEXAAVTESFile@@PAXG@Z              = 0x0046BDA0,0x00495730     ; LoadGenericComponents
-?CopyGenericComponentsFrom@TESForm@@QAEXAAV1@@Z                     = 0x0046ACB0,0x00494DA0     ; CopyGenericComponentsFrom
-?CompareGenericComponentsTo@TESForm@@QAE_NAAV1@@Z                   = 0x0046AD70,0x00494E60     ; CompareGenericComponentsTo
+?CopyAllComponentsFrom@TESForm@@QAEXAAV1@@Z                         = 0x0046ACB0,0x00494DA0     ; CopyAllComponentsFrom
+?CompareAllComponentsTo@TESForm@@QAE_NAAV1@@Z                       = 0x0046AD70,0x00494E60     ; CompareAllComponentsTo
 ?GetFormTypeName@TESForm@@SAPBDE@Z                                  = 0x0047E190,0x004AC1B0     ; GetFormTypeName
 ?Create@TESForm@@SAPAV1@E@Z                                         = 0x00447DF0,0x004793F0     ; Create
 ?MakeTemporary@TESForm@@QAEXXZ                                      = 0x0046B590,0x004972A0     ; MakeTemporary
