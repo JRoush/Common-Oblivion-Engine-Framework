@@ -96,7 +96,7 @@ EXPORTS ;{ ; TESFormIDListView
 ?CompareInFormList@TESFormIDListView@@UAEHABVTESForm@@H@Z   = _NOTINGAME,0x0044A100     ; CompareInFormList
 ; methods
 ?DlgProc@TESFormIDListView@@SGHPAUHWND__@@IIJ@Z         = _NOTINGAME,0x00448820     ; DlgProc
-?FormListComparator@TESFormIDListView@@SAHABV1@0H@Z     = _NOTINGAME,0x00442EB0     ; FormListComparator
+?FormListComparator@TESFormIDListView@@SGHABV1@0H@Z     = _NOTINGAME,0x00442EB0     ; FormListComparator
 ; methods
 ??0TESFormIDListView@@QAE@XZ    = _NOTINGAME,0x00449DC0     ; TESFormIDListView()
 ;}

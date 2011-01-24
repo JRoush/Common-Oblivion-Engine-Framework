@@ -207,7 +207,7 @@ public:
     IMPORT static void          GetEffectDisplayInfo(void* displayInfo); // used callback to build display strings
                                 // for effect lists in magic item & sigil stone dialogs
                                 // argument is a NMLVDISPINFO*, defined in <Commctrl.h>
-    IMPORT static int           EffectItemComparator(const EffectItem& itemA, const EffectItem& itemB, int compareBy); //
+    IMPORT static int CALLBACK  EffectItemComparator(const EffectItem& itemA, const EffectItem& itemB, int compareBy); //
                                 // callback for sorting effect item lists.  returns -1 (A<B), 0 (A==B), +1 (A>B). 
                                 // compareBy is the column index in the listview, and is negative for reversed ordering
     #endif

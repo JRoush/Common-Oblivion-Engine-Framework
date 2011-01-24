@@ -362,7 +362,7 @@ public:
                                         // There is a bug(?) that causes this method to prematurely discard certain WM_COMMAND messages recieved
                                         // while processing a popup menu selection.  This can cause problems, as processing the menu selection
                                         // might require sending command messages to dialog controls.
-    IMPORT static int                   FormListComparator(const TESFormIDListView& formA, const TESFormIDListView& formB, int compareBy); //
+    IMPORT static int CALLBACK          FormListComparator(const TESFormIDListView& formA, const TESFormIDListView& formB, int compareBy); //
                                         // calls formA.CompareInFormList(formB), and reverses result if compareBy is negative
                                         // column index in the listview is |compareBy| - 1, compareBy is negative for reversed ordering
 
