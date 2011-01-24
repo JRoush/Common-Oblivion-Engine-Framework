@@ -31,6 +31,11 @@ public:
     // like BlackSoulGem, RepairHammer, the Player character, etc.  Useful for initializing
     // similar objects added by a plugin.
 
+    static Event&   DataHandler_PostCreateDefaults;
+    typedef void (*DataHandler_PostCreateDefaults_f)();
+    // Occurs after the DataHandler has created & initialized all default (or "builtin") objects.
+    // Useful for 'linking' references between default objects.
+
     static Event&   DataHandler_Clear;
     typedef void (*DataHandler_Clear_f)();
     // Occurs when the DataHandler is cleared, both when the game/CS is closed and when a

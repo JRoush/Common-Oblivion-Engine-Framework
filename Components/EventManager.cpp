@@ -72,6 +72,58 @@ namespace DataHandler_CreateDefaults
 }
 Event& EventManager::DataHandler_CreateDefaults = DataHandler_CreateDefaults::eventT;
 
+namespace DataHandler_PostCreateDefaults
+{
+    // Patch addresses
+    memaddr Hook        (0x0044CD71,0x00481067);    // very end of Creation method, on final retn instruction
+    // global objects
+    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    // event object
+    struct EventT : public Event
+    {        
+        // static methods
+        static void Hndl();
+        // virtual interface
+        virtual const char* Name() {return "DataHandler_PostCreateDefaults";}
+        virtual void Attach() 
+        {
+            _MESSAGE("Attached Event");
+            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            Hook.WriteRelJump(&Hndl);
+        }
+        virtual void Detach() 
+        {
+            _MESSAGE("Detached Event");
+            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+        }
+    } eventT;      
+    // handler
+    void _declspec(naked) EventT::Hndl()
+    {
+        __asm
+        {
+            // prolog
+            pushad
+            mov     ebp, esp
+            sub     esp, __LOCAL_SIZE
+        }
+        _DMESSAGE("");
+        for (int i = 0; i < eventT.callbacks.size(); i++)
+        {
+            ((EventManager::DataHandler_PostCreateDefaults_f)eventT.callbacks[i])();
+        }
+        __asm
+        {  
+            // epilog
+            mov     esp, ebp
+            popad
+            // overwritten code
+            retn
+        }
+    }
+}
+Event& EventManager::DataHandler_PostCreateDefaults = DataHandler_PostCreateDefaults::eventT;
+
 namespace DataHandler_Clear
 {
     // Patch addresses
