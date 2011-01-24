@@ -25,8 +25,6 @@
    Because the first node is a member, it is allowed to be empty - denoted by value 0.  All add operations will fill
    this preferentially.  Any further nodes are assumed to contain valid (!= 0) values.  Loops over the node list must
    be aware of this, and check for valid node data.
-
-   TODO: delete inline code & switch to imported
 */
 #pragma once
 #include "API/TES/MemoryHeap.h"
@@ -58,7 +56,7 @@ public:
     INLINE bool     Empty();
     INLINE void     PushFront(TVAL data);
     INLINE void     PushBack(TVAL data);
-    _NOUSE void     InsertedSorted(TVAL data, CompareFunc comparator);  // inserts such that all previous nodes are < new node
+    _NOUSE void     InsertedSorted(TVAL data, CompareFunc comparator);  // inserts such that all previous nodes are < new node (TODO)
     INLINE void     Remove(TVAL data);
     INLINE void     Clear();
     INLINE bool     Find(TVAL data);
