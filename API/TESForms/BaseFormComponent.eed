@@ -199,3 +199,29 @@ EXPORTS ;{ ; TESAttributes
 ; methods
 ??0TESAttributes@@QAE@XZ                                         = 0x00468BB0,0x0048F620     ; TESAttributes
 ;}
+
+EXPORTS ;{ ; TESLeveledList
+; virtual methods
+?InitializeComponent@TESLeveledList@@UAEXXZ                         = 0x0046CAD0,0x00499D70     ; InitializeComponent
+?ClearComponentReferences@TESLeveledList@@UAEXXZ                    = 0x0046D3C0,0x0049B880     ; ClearComponentReferences
+?CopyComponentFrom@TESLeveledList@@UAEXABVBaseFormComponent@@@Z     = 0x0046D1B0,0x0049A930     ; CopyComponentFrom
+?CompareComponentTo@TESLeveledList@@UAE_NABVBaseFormComponent@@@Z   = 0x0046D2E0,0x0049AAC0     ; CompareComponentTo
+?BuildComponentFormRefList@TESLeveledList@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                           = _NOTINGAME,0x0049B890     ; BuildComponentFormRefList
+?RemoveComponentFormRef@TESLeveledList@@UAEXAAVTESForm@@@Z                                                  = _NOTINGAME,0x0049ABD0     ; RemoveComponentFormRef
+?ComponentFormRefRevisionsMatch@TESLeveledList@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                     = _NOTINGAME,0x0049AC20     ; ComponentFormRefRevisionsMatch
+?GetRevisionUnmatchedComponentFormRefs@TESLeveledList@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z = _NOTINGAME,0x0049B920     ; GetRevisionUnmatchedComponentFormRefs
+?ComponentDlgMsgCallback@TESLeveledList@@UAE_NPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x0049AE60     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESLeveledList@@UAE_NPAUHWND__@@@Z             = _NOTINGAME,0x0049A030     ; IsComponentDlgValid
+?SetComponentInDlg@TESLeveledList@@UAEXPAUHWND__@@@Z                = _NOTINGAME,0x0049B5F0     ; SetComponentInDlg
+?GetComponentFromDlg@TESLeveledList@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x0049B7D0     ; GetComponentFromDlg
+?PopulateFormSelectCombo@TESLeveledList@@UAEXPAUHWND__@@@Z          = _NOTINGAME,0x00499F10     ; PopulateFormSelectCombo
+; methods
+?ClearLeveledList@TESLeveledList@@QAEXXZ                            = 0x0046CBA0,0x0049A270     ; ClearLeveledList
+?AddLeveledForm@TESLeveledList@@QAEPAUListEntry@1@GFPAVTESForm@@@Z  = 0x0046CBF0,0x0049A340     ; AddLeveledForm
+?SimpleCalcLeveledForm@TESLeveledList@@QAEXGAAPAVTESForm@@AAF_N@Z   = 0x0046CC70,0x0049A3F0     ; SimpleCalcLeveledForm
+?CalcLeveledForm@TESLeveledList@@QAEXGFPAVTESContainer@@@Z          = 0x0046CDE0,0x0049A590     ; CalcLeveledForm
+?SaveComponent@TESLeveledList@@QAEXXZ                               = 0x0046CFF0,0x0049A7C0     ; SaveComponent
+?LinkComponent@TESLeveledList@@QAEXAAVTESForm@@@Z                   = 0x0046D070,0x0049A840     ; LinkComponent
+??0TESLeveledList@@QAE@XZ                                           = 0x0046CB80,0x0049A250     ; TESLeveledList
+??1TESLeveledList@@QAE@XZ                                           = 0x0046CAC0,0x00499D60     ; ~TESLeveledList
+;}
