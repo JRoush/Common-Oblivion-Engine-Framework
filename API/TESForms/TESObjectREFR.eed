@@ -51,7 +51,7 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetBaseForm@TESObjectREFR@@UAEPAVTESForm@@XZ           = 0x004D9B40,0x00541930     ; GetBaseForm
 ?GetPosition@TESObjectREFR@@UAEAAVVector3@@XZ           = 0x004C8D00,0x00541940     ; GetPosition
 ?ChangeCell@TESObjectREFR@@UAEXPAVTESObjectCELL@@@Z     = 0x004D8AA0,0x00541680     ; ChangeCell
-?IsDead@TESObjectREFR@@UAE_NXZ                          = 0x004D7DD0,0x00543010     ; IsDead
+?IsDead@TESObjectREFR@@UAE_N_N@Z                        = 0x004D7DD0,0x00543010     ; IsDead
 ; methods
 ??0TESObjectREFR@@QAE@XZ    = 0x004D9A70,0x00541870     ; TESObjectREFR
 ;}

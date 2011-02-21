@@ -163,15 +163,17 @@ public:
     _NOUSE /*184/---*/ virtual void             UnkRefr184(bool arg0); 
     INLINE /*188/---*/ virtual bool             IsMobileObject() {return false;} // ? 
                                                 // hard to confirm, since all children of TESObjectREFR are also children of MobileObect
-    _NOUSE /*18C/---*/ virtual void             UnkRefr18C(void); 
+    _NOUSE /*18C/---*/ virtual UInt32           UnkRefr18C(); // returns 0 for REFR, mobile obj, returns process.Unk36C() for actor, 
+                                                // which returns 0 for low-midlow proc and sign-extended process.Unk11D for midhigh-high proc
+                                                // some kind of enum value
     INLINE /*190/---*/ virtual bool             IsActor() {return false;} 
     #else
     _NOUSE /*---/1A8*/ virtual bool             UnkRefr1A8(); // could be IsMobileObject, or IsActor, or neither.  called during destruction
     #endif
     IMPORT /*194/1AC*/ virtual void             ChangeCell(TESObjectCELL* newCell); 
-    IMPORT /*198/1B0*/ virtual bool             IsDead(); 
-    _NOUSE /*19C/1B4*/ virtual bool             UnkRefr19C();
-    _NOUSE /*1A0/1B4*/ virtual bool             UnkRefr1A0();
+    IMPORT /*198/1B0*/ virtual bool             IsDead(bool arg0); // arg0 = count deathstate 6 as dead, for actors.  ignored for base class
+    INLINE /*19C/1B4*/ virtual bool             HasFatigue() {return false;} // always false for base class
+    INLINE /*1A0/1B4*/ virtual bool             IsParalyzed() {return false;} // always false for base class
 
     // constructor
     IMPORT TESObjectREFR();
