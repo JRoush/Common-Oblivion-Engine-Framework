@@ -480,7 +480,9 @@ public:
     // additional virtual methods
     IMPORT /*010/034*/ virtual UInt16       Damage();
 
+    // methods
     // Ordinary Save/Load is done through TESForm::SaveGenericComponents() & TESForm::LoadGenericComponents()
+    IMPORT static UInt16    GetDamageForForm(const TESForm* form); // cast form into attackdamageform & return damage() if sucessful, or 0 if not
 
     // constructor, destructor
     IMPORT TESAttackDamageForm();

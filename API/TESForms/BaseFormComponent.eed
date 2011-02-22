@@ -181,6 +181,7 @@ EXPORTS ;{ ; TESAttackDamageForm
 ?GetComponentFromDlg@TESAttackDamageForm@@UAEXPAUHWND__@@@Z             = _NOTINGAME,0x0048F250     ; GetComponentFromDlg
 ?Damage@TESAttackDamageForm@@UAEGXZ                                     = 0x00468A40,0x0048F1A0     ; Damage
 ; methods
+?GetDamageForForm@TESAttackDamageForm@@SAGPBVTESForm@@@Z                = 0x00468A10,0x0048F170     ; GetDamageForForm
 ??0TESAttackDamageForm@@QAE@XZ                                          = 0x00468A60,0x0048F280     ; TESAttackDamageForm
 ;}
 
