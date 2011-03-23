@@ -117,7 +117,20 @@ public:
     MEMBER /*0BC/00BC*/ TESRegionList*                      regionList;
     MEMBER /*0C0/00C0*/ NiTLargeArray<TESObjectCELL*>       cellArray;
     MEMBER /*0D8/00D8*/ TESSkill                            skills[0x15];
-    MEMBER /*8B8/0DF8*/ TESFileManager                      fileManager;
+    MEMBER /*8B8/0DF8*/ BSSimpleList<void*>                 unk8B8; // general garbage list for unsupported form types?
+    MEMBER /*8C0/0E00*/ UInt32                              nextFormID; // next available formID?
+    MEMBER /*8C4/0E04*/ TESFile*                            activeFile;
+    MEMBER /*8C8/0E08*/ BSSimpleList<TESFile*>              fileList; // all files in Oblivion\Data\ directory
+    MEMBER /*8D0/0E10*/ UInt32                              fileCount; // loaded files
+    MEMBER /*8D4/0E14*/ TESFile*                            filesByID[0xFF]; // loaded files
+    MEMBER /*CD0/1210*/ UInt8                               unkCD0; // if true, prevents check for changes to masters during load
+    MEMBER /*CD1/1211*/ UInt8                               unkCD1; // set if there is an active file??
+    MEMBER /*CD2/1212*/ UInt8                               unkCD2; 
+    MEMBER /*CD3/1213*/ UInt8                               unkCD3;
+    MEMBER /*CD4/1214*/ UInt8                               unkCD4; // set when data handler cleared
+    MEMBER /*CD5/1215*/ UInt8                               unkCD5; // set after fileList is initialized?
+    MEMBER /*CD6/1216*/ UInt8                               unkCD6; // set after data handler is constructed
+    MEMBER /*CD7/1217*/ UInt8                               unkCD7; // set after files in LO have been opened, cleared after files have been loaded
     MEMBER /*CD8/1218*/ TESRegionDataManager*               regionDataManager;
     MEMBER /*CDC/121C*/ void*                               unkCDC; // pointer to same object type as an ExtraContainerChanges +0xC
 
