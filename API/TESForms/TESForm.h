@@ -379,7 +379,8 @@ class IMPORTCLASS TESMemContextForm
     -   possible inlined destructor
     Notes:
     TESMemContextForm is a parent class for TESObjectCELL and TESObjectREFR.  It has no members and is not polymorphic,
-    so it probably has only static methods & data.  This definition is a stub - this class needs further decoding.
+    so it probably has only static methods & data.  It may have something to do with the 'Memory Useage' debugging code
+    used by Bethesda, and it is possible that it has no use at all in the released game. 
 */
 
     // no members
