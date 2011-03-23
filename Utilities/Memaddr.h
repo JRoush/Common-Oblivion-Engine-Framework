@@ -1,7 +1,7 @@
 /* 
     Memaddr - wrapper class for a raw memory address, with methods for common patching tasks
 
-    Memaddr can be initialized with a piar of addresses as (gameAddress, csAddress).  Depending on
+    Memaddr can be initialized with a pair of addresses as (gameAddress, csAddress).  Depending on
     the state of the OBLIVION macro, one address will be stored and the other discarded.
 
     Use the address 0x0 as a special 'invalid' or 'not present' value.  Memaddr methods that operate on
