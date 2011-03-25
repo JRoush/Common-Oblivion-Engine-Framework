@@ -126,6 +126,8 @@ public:
     // methods - parsing floats to/from edit controls
     IMPORT static bool                  SetDlgItemTextFloat(HWND dialog, INT dlgItemID, float value, int decimalPlaces = 4);
     IMPORT static float                 GetDlgItemTextFloat(HWND dialog, INT dlgItemID);
+    IMPORT static void                  SetTextFloatLimits(HWND control, float min, float max, bool noDecimalPlaces = true, UInt32 decimalPlaces = 4); // 
+                                        // forces control text (current and future) within specified floating point limits
 
     // static data 
     IMPORT static BSSimpleList<HWND>    openDialogs; // LL of handles for open multiple-instance dialogs, 
