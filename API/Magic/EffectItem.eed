@@ -75,7 +75,7 @@ EXPORTS ;{ ; EffectItemList
 ?InitializeDialogEffectList@EffectItemList@@SAXPAUHWND__@@@Z        = _NOTINGAME,0x00566BF0     ; InitializeDialogEffectList
 ?ValidateEffectForDialog@EffectItemList@@QAE_NAAVEffectItem@@@Z     = _NOTINGAME,0x00567300     ; ValidateEffectForDialog
 ?ValidateEffectListForDialog@EffectItemList@@QAEXPAUHWND__@@@Z      = _NOTINGAME,0x00568330     ; ValidateEffectListForDialog
-?GetEffectDisplayInfo@EffectItemList@@SAXPAX@Z                      = _NOTINGAME,0x00567670     ; GetEffectDisplayInfo
+?GetEffectDisplayInfo@EffectItemList@@SGXPAX@Z                      = _NOTINGAME,0x00567670     ; GetEffectDisplayInfo
 ?EffectItemComparator@EffectItemList@@SGHABVEffectItem@@0H@Z        = _NOTINGAME,0x005678B0     ; EffectItemComparator
 ; methods - other
 ?Remove@EffectItemList@@QAEXPBVEffectItem@@@Z               = 0x00414BC0,0x00566F50     ; Remove

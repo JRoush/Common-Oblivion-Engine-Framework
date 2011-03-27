@@ -204,7 +204,7 @@ public:
     IMPORT static void          InitializeDialogEffectList(HWND listView); // size list & setup columns
     IMPORT bool                 ValidateEffectForDialog(EffectItem& item); // checks item against filter effect, return true if valid
     IMPORT void                 ValidateEffectListForDialog(HWND dialog); // checks each item with ValidateItem() & notifies user of problems
-    IMPORT static void          GetEffectDisplayInfo(void* displayInfo); // used callback to build display strings
+    IMPORT static void CALLBACK GetEffectDisplayInfo(void* displayInfo); // used callback to build display strings
                                 // for effect lists in magic item & sigil stone dialogs
                                 // argument is a NMLVDISPINFO*, defined in <Commctrl.h>
     IMPORT static int CALLBACK  EffectItemComparator(const EffectItem& itemA, const EffectItem& itemB, int compareBy); //
