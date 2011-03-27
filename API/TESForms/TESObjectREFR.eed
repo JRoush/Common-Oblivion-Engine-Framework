@@ -43,8 +43,9 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetScale@TESObjectREFR@@UAEMXZ                         = 0x004D7260,0x0053F180     ; GetScale
 ?GetInitialRotation@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8210,0x00540190     ; GetInitialRotation
 ?GetInitialPosition@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8230,0x005401B0     ; GetInitialPosition
-?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ    = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
-?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ    = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
+?AddItem@TESObjectREFR@@UAEXPAVTESForm@@PAVExtraDataList@@K@Z   = 0x004DDCF0,_NOTINCS__     ; TESObjectREFR::AddItem
+?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ            = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
+?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ            = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
 ?GenerateNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ         = 0x004E4080,0x0054AF30     ; GenerateNiNode
 ?Set3D@TESObjectREFR@@UAEXPAVNiNode@@@Z                 = 0x004E0F80,0x0054B5B0     ; Set3D
 ?GetNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ              = 0x00422DE0,0x00542950     ; GetNiNode

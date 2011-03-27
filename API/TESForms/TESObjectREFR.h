@@ -130,7 +130,7 @@ public:
     _NOUSE /*10C/14C*/ virtual UInt8            UnkRefr10C(UInt32 arg0, UInt32 arg1, UInt32 arg2); 
     _NOUSE /*110/150*/ virtual void             UnkRefr110(UInt32 arg0, UInt32 arg1); 
     #ifdef OBLIVION
-    _NOUSE /*114/---*/ virtual void             UnkRefr114(UInt32 arg0, UInt32 arg1, UInt32 arg2); 
+    IMPORT /*114/---*/ virtual void             AddItem(TESForm* item, ExtraDataList* itemExtraData, UInt32 count); // add item to container ref
     _NOUSE /*118/---*/ virtual void             UnkRefr118(); 
     _NOUSE /*11C/---*/ virtual void             UnkRefr11C(UInt32 arg0); 
     IMPORT /*120/---*/ virtual MagicCaster*     GetMagicCaster();
