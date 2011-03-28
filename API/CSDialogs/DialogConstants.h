@@ -68,6 +68,11 @@
 #define IDC_LVLS_LEVOBJECTLEVEL     1063 // EDIT
 #define IDC_LVLS_LEVOBJECTCOUNT     1026 // EDIT
 
+// TESContainer
+#define IDC_CONT_CONTENTS           2035 // SYSLISTVIEW32
+#define IDC_CONT_PREVIEWLVL         1064 // EDIT
+#define IDC_CONT_PREVIEW            2331 // BUTTON
+
 // TESForm
 #define IDC_FORM_EDITORID           1028 // EDIT
 #define IDC_FORM_QUESTITEM          1683 // BUTTON

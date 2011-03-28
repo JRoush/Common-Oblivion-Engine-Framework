@@ -1,0 +1,55 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESContainer
+; virtual methods
+?InitializeComponent@TESContainer@@UAEXXZ                       = 0x00470320,0x00491860     ; InitializeComponent
+?ClearComponentReferences@TESContainer@@UAEXXZ                  = 0x00469D00,0x00492890     ; ClearComponentReferences
+?CopyComponentFrom@TESContainer@@UAEXABVBaseFormComponent@@@Z   = 0x00469820,0x00492090     ; CopyComponentFrom
+?CompareComponentTo@TESContainer@@UBE_NABVBaseFormComponent@@@Z = 0x00469F30,0x004928A0     ; CompareComponentTo
+?BuildComponentFormRefList@TESContainer@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                             = _NOTINGAME,0x00492930     ; BuildComponentFormRefList
+?RemoveComponentFormRef@TESContainer@@UAEXAAVTESForm@@@Z                                                    = _NOTINGAME,0x00492420     ; RemoveComponentFormRef
+?ComponentFormRefRevisionsMatch@TESContainer@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                       = _NOTINGAME,0x004924A0     ; ComponentFormRefRevisionsMatch
+?GetRevisionUnmatchedComponentFormRefs@TESContainer@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z   = _NOTINGAME,0x004929C0     ; GetRevisionUnmatchedComponentFormRefs
+?ComponentDlgMsgCallback@TESContainer@@UAE_NPAUHWND__@@IIJAAJ@Z                                             = _NOTINGAME,0x00492DF0     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESContainer@@UAE_NPAUHWND__@@@Z                                                       = _NOTINGAME,0x00491BB0     ; IsComponentDlgValid
+?SetComponentInDlg@TESContainer@@UAEXPAUHWND__@@@Z                                                          = _NOTINGAME,0x004927D0     ; SetComponentInDlg
+; methods
+?AddContent@TESContainer@@QAEJAAVTESForm@@J_N@Z                             = 0x00469D10,0x00491DD0     ; AddContent
+?ClearContents@TESContainer@@QAEXXZ                                         = 0x004696B0,0x00491CF0     ; ClearContents
+?HasContent@TESContainer@@QAE_NPAVTESForm@@@Z                               = 0x00469920,0x00492210     ; HasContent
+?GetContentEntry@TESContainer@@QAEPAUContentEntry@1@PAVTESForm@@@Z          = 0x00469950,0x00492260     ; GetContentEntry
+?GetContentCount@TESContainer@@QAEJPAVTESForm@@@Z                           = 0x00469CA0,0x00492690     ; GetContentCount
+?MultiplyContents@TESContainer@@QAEXJ@Z                                     = 0x00469990,0x004922E0     ; MultiplyContents
+?CopyContentsToRef@TESContainer@@QAEXPAVTESObjectREFR@@@Z                   = 0x0046A020,_NOTINCS__     ; CopyContentsToRef
+?SaveComponent@TESContainer@@QAEXXZ                                         = 0x004697D0,0x00491FC0     ; SaveComponent
+?LinkComponent@TESContainer@@QAEXAAVTESForm@@@Z                             = 0x00469E90,0x00492000     ; LinkComponent
+?GetContentWeight@TESContainer@@QAEMXZ                                      = 0x004698B0,0x00492190     ; GetContentWeight
+?GetBestArmorForSlot@TESContainer@@QAEPAVTESObjectARMO@@AAVTESNPC@@K@Z      = 0x00469B30,0x00492320     ; GetBestArmorForSlot
+?GetBestClothingForSlot@TESContainer@@QAEPAVTESObjectCLOT@@AAVTESNPC@@K@Z   = 0x00469BD0,_NOTINCS__     ; GetBestClothingForSlot
+?GetBestWeapon@TESContainer@@QAEPAVTESObjectWEAP@@AAVTESNPC@@@Z             = 0x00469AB0,_NOTINCS__     ; GetBestWeapon
+?IsInventoryItemType@TESContainer@@SA_NE@Z                                  = 0x00469520,0x00491890     ; IsInventoryItemType
+?ShowContentPreviewWindow@TESContainer@@SAPAUHWND__@@PAV1@@Z                = _NOTINGAME,0x00492DC0     ; ShowContentPreviewWindow
+?InitializeContentListView@TESContainer@@QAEXPAUHWND__@@@Z                  = _NOTINGAME,0x004918E0     ; InitializeContentListView
+?PopulateContentListView@TESContainer@@QAEXPAUHWND__@@@Z                    = _NOTINGAME,0x004926E0     ; PopulateContentListView
+?GetContentEntryDisplayInfo@TESContainer@@SGXPAX@Z                          = _NOTINGAME,0x004919F0     ; GetContentEntryDisplayInfo
+?ContentEntryComparator@TESContainer@@SGHABUContentEntry@1@0H@Z             = _NOTINGAME,0x00491A00     ; ContentEntryComparator
+??0TESContainer@@QAE@XZ     = 0x00469690,0x00491CD0     ; TESContainer
+??1TESContainer@@QAE@XZ     = 0x0046A010,0x00492BD0     ; ~TESContainer
+;}  
+
+EXPORTS ;{ ; ExtraContainerChanges
+??1ExtraContainerChanges@@UAE@XZ                            = 0x00429D70,0x00461990     ; ~ExtraContainerChanges
+??0ExtraContainerChanges@@QAE@PAVContainerExtraData@@@Z     = 0x00429D50,0x00460A60     ; ExtraContainerChanges
+;}    
+
+EXPORTS ;{ ; ContainerExtraData
+??0ContainerExtraData@@QAE@PAVTESObjectREFR@@@Z             = 0x00485D50,0x004B07A0     ; ContainerExtraData
+??1ContainerExtraData@@QAE@XZ                               = 0x004894D0,0x004B1480     ; ~ContainerExtraData
+;}   
+
+EXPORTS ;{ ; EntryExtraData
+?ClearFormDataTable@EntryExtraData@ContainerExtraData@@QAEXXZ       = 0x004845A0,0x004B0390     ; ClearFormDataTable
+?DestroyFormDataTable@EntryExtraData@ContainerExtraData@@QAEXXZ     = 0x00484470,0x004B0360     ; DestroyFormDataTable
+??0EntryExtraData@ContainerExtraData@@QAE@PAVTESForm@@J@Z           = 0x00484420,0x004B0310     ; EntryExtraData
+;}                                    

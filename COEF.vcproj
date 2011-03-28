@@ -247,11 +247,27 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\TESForms\TESContainer.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\TESForms\TESContainer.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\TESForms\TESForm.eed"
 					>
 				</File>
 				<File
 					RelativePath=".\API\TESForms\TESForm.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\TESForms\TESLeveledList.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\TESForms\TESLeveledList.h"
 					>
 				</File>
 				<File
@@ -447,11 +463,23 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\CSDialogs\DialogExtraData.eed"
+					>
+				</File>
+				<File
 					RelativePath=".\API\CSDialogs\DialogExtraData.h"
 					>
 				</File>
 				<File
+					RelativePath=".\API\CSDialogs\TESDialog.eed"
+					>
+				</File>
+				<File
 					RelativePath=".\API\CSDialogs\TESDialog.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\CSDialogs\TESStringInputDialog.eed"
 					>
 				</File>
 				<File
