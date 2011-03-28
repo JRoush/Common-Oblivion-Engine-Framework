@@ -76,6 +76,9 @@
 // TESSpellList
 #define IDC_SPLO_SPELLLIST          1485 // SYSLISTVIEW32
 
+// TESAIForm
+#define IDC_AIFM_OPENAIDIALOG       1205 // BUTTON
+
 // TESForm
 #define IDC_FORM_EDITORID           1028 // EDIT
 #define IDC_FORM_QUESTITEM          1683 // BUTTON
