@@ -613,22 +613,6 @@ public:
 };
 
 /*
-class TESAnimation : public BaseFormComponent
-{// size 0C0/014
-public:
-    TESAnimation();
-    ~TESAnimation();
-
-    // members
-    //void**            vtbl            // 00/00
-    SLLNode<char*>      animations;     // 04/04 LL of animation names
-    #ifndef OBLIVION
-     SLLNode<void*>     unkAnimation0C; // --/0C
-    #endif
-
-    // no additional virtual methods
-};
-
 class TESActorBaseData : public BaseFormComponent
 {// size 020/020
 public:

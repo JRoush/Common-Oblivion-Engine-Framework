@@ -255,6 +255,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\TESForms\TESAnimation.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\TESForms\TESAnimation.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\TESForms\TESContainer.eed"
 					>
 				</File>

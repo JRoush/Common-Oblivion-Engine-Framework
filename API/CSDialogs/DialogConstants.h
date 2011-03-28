@@ -79,6 +79,9 @@
 // TESAIForm
 #define IDC_AIFM_OPENAIDIALOG       1205 // BUTTON
 
+// TESAnimation
+#define IDC_ANIM_KFFILELIST         2114 // SYSLISTVIEW32
+
 // TESForm
 #define IDC_FORM_EDITORID           1028 // EDIT
 #define IDC_FORM_QUESTITEM          1683 // BUTTON

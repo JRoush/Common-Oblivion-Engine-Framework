@@ -1,0 +1,20 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESAnimation
+; virtual methods
+?ClearComponentReferences@TESAnimation@@UAEXXZ                  = 0x00468740,0x0048E130     ; ClearComponentReferences
+?CopyComponentFrom@TESAnimation@@UAEXABVBaseFormComponent@@@Z   = 0x00468950,0x0048EB90     ; CopyComponentFrom
+?CompareComponentTo@TESAnimation@@UBE_NABVBaseFormComponent@@@Z = 0x00468790,0x0048E240     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESAnimation@@UAE_NPAUHWND__@@IIJAAJ@Z = _NOTINGAME,0x0048E540     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESAnimation@@UAE_NPAUHWND__@@@Z           = _NOTINGAME,0x0048DF20     ; IsComponentDlgValid
+?SetComponentInDlg@TESAnimation@@UAEXPAUHWND__@@@Z              = _NOTINGAME,0x0048EBF0     ; SetComponentInDlg
+?GetComponentFromDlg@TESAnimation@@UAEXPAUHWND__@@@Z            = _NOTINGAME,0x0048F010     ; GetComponentFromDlg
+?ComponentDlgCleanup@TESAnimation@@UAEXPAUHWND__@@@Z            = _NOTINGAME,0x0048E940     ; ComponentDlgCleanup
+; methods
+?AddAnimation@TESAnimation@@QAEXPBD@Z                   = 0x00468860,0x0048EAB0     ; AddAnimation
+?HasAnimation@TESAnimation@@QAE_NPBD@Z                  = 0x00468810,0x0048EA60     ; HasAnimation
+?SaveComponent@TESAnimation@@QAEXK@Z                    = _NOTINGAME,0x0048E170     ; SaveComponent
+?LoadComponent@TESAnimation@@QAEXAAV1@AAVTESFile@@@Z    = 0x004688D0,0x0048EB10     ; LoadComponent
+??0TESAnimation@@QAE@XZ     = 0x00468720,0x0048E100     ; TESAnimation
+;}    
