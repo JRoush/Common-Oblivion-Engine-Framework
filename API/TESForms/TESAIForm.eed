@@ -1,0 +1,38 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESAIForm
+; virtual methods
+?InitializeComponent@TESAIForm@@UAEXXZ                          = 0x00468160,0x0048C6B0     ; InitializeComponent
+?ClearComponentReferences@TESAIForm@@UAEXXZ                     = 0x00468170,0x0048C6C0     ; ClearComponentReferences
+?CopyComponentFrom@TESAIForm@@UAEXABVBaseFormComponent@@@Z      = 0x004684E0,0x0048C880     ; CopyComponentFrom
+?CompareComponentTo@TESAIForm@@UBE_NABVBaseFormComponent@@@Z    = 0x00468300,0x0048C970     ; CompareComponentTo
+?BuildComponentFormRefList@TESAIForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                            = _NOTINGAME,0x0048CB30     ; BuildComponentFormRefList
+?RemoveComponentFormRef@TESAIForm@@UAEXAAVTESForm@@@Z                                                   = _NOTINGAME,0x0048CB50     ; RemoveComponentFormRef
+?ComponentFormRefRevisionsMatch@TESAIForm@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                      = _NOTINGAME,0x0048CB70     ; ComponentFormRefRevisionsMatch
+?GetRevisionUnmatchedComponentFormRefs@TESAIForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z  = _NOTINGAME,0x0048CBB0     ; GetRevisionUnmatchedComponentFormRefs
+?ComponentDlgMsgCallback@TESAIForm@@UAE_NPAUHWND__@@IIJAAJ@Z                                            = _NOTINGAME,0x0048DC20     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESAIForm@@UAE_NPAUHWND__@@@Z                                                      = _NOTINGAME,0x0048CF90     ; IsComponentDlgValid
+?MarkComponentModified@TESAIForm@@UAEXK@Z   = 0x00468390,0x005320F0     ; MarkComponentModified
+?ModifiedComponentSize@TESAIForm@@UAEGK@Z   = 0x004683C0,_NOTINCS__     ; ModifiedComponentSize
+?SaveModifiedComponent@TESAIForm@@UAEXK@Z   = 0x004683E0,_NOTINCS__     ; SaveModifiedComponent
+?LoadModifiedComponent@TESAIForm@@UAEXKK@Z  = 0x00468440,_NOTINCS__     ; LoadModifiedComponent
+; methods
+?GetAggression@TESAIForm@@QAEEXZ                = 0x00538910,0x0048C6D0     ; GetAggression
+?SetAggression@TESAIForm@@QAEXE@Z               = 0x00468180,0x0048C6E0     ; SetAggression
+?GetConfidence@TESAIForm@@QAEEXZ                = 0x004681A0,0x0048C700     ; GetConfidence
+?SetConfidence@TESAIForm@@QAEXE@Z               = 0x004681B0,0x0048C710     ; SetConfidence
+?GetEnergy@TESAIForm@@QAEEXZ                    = 0x004681D0,0x0048C730     ; GetEnergy
+?SetEnergy@TESAIForm@@QAEXE@Z                   = 0x004681E0,0x0048C740     ; SetEnergy
+?GetResponsibility@TESAIForm@@QAEEXZ            = 0x00468200,0x0048C760     ; GetResponsibility
+?SetResponsibility@TESAIForm@@QAEXE@Z           = 0x00468210,0x0048C770     ; SetResponsibility
+?OffersService@TESAIForm@@QAE_NK@Z              = 0x00468240,0x0048C790     ; OffersService
+?GetTrainingSkillAV@TESAIForm@@QAEKXZ           = 0x00468250,0x0048C7C0     ; GetTrainingSkillAV
+?SetTrainingSkill@TESAIForm@@QAEXK@Z            = 0x004684C0,0x0048C7D0     ; SetTrainingSkill
+?GetTrainingLevel@TESAIForm@@QAEEXZ             = 0x00468260,0x0048C7F0     ; GetTrainingLevel
+?SetTrainingLevel@TESAIForm@@QAEXE@Z            = 0x00468270,0x0048C800     ; SetTrainingLevel
+?SaveComponent@TESAIForm@@QAEXXZ                = _NOTINGAME,0x0048CA60     ; SaveComponent
+?LinkComponent@TESAIForm@@QAEXAAVTESForm@@@Z    = 0x00468590,0x0048CA90     ; LinkComponent
+??0TESAIForm@@QAE@XZ    = 0x004684A0,0x0048CFC0     ; TESAIForm
+??1TESAIForm@@QAE@XZ    = 0x00468150,0x0048C6A0     ; ~TESAIForm
+;}  

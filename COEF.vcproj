@@ -247,6 +247,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\TESForms\TESAIForm.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\TESForms\TESAIForm.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\TESForms\TESContainer.eed"
 					>
 				</File>

@@ -607,66 +607,11 @@ public:
                                 // compareBy is the column index in the listview, and is negative for reversed ordering
     #endif
 
-    // constructor
+    // constructor, destructor
     IMPORT TESSpellList();
     IMPORT ~TESSpellList(); // WARNING - does not clear lists, will cause memory leaks unless ClearSpellLists() is called first (bug?)
 };
 
-/*
-class TESAIForm : public BaseFormComponent
-{// size 018/018
-public:
-    TESAIForm();
-    ~TESAIForm();
-
-    enum AISettings
-    {
-        kAISetting_Aggression = 0,
-        kAISetting_Confidence,
-        kAISetting_Energy,
-        kAISetting_Responsibility,    
-        kAISetting__MAX,
-    };
-
-    enum ServiceFlags
-    {
-        kService_Weapons        = 1 << 0,
-        kService_Armor            = 1 << 1,
-        kService_Clothing        = 1 << 2,
-        kService_Books            = 1 << 3,
-        kService_Ingredients    = 1 << 4,
-        kService_Lights            = 1 << 7,
-        kService_Apparatus        = 1 << 8,
-        kService_Misc            = 1 << 10,
-        kService_Spells            = 1 << 11,
-        kService_MagicItems     = 1 << 12,
-        kService_Potions        = 1 << 13,
-        kService_Training        = 1 << 14,
-        kService_Recharge        = 1 << 16,
-        kService_Repair            = 1 << 17,
-    };
-
-    // members
-    //void**                vtbl                // 00
-    UInt8                   aiSettings[4];      // 04
-    UInt32                    serviceFlags;        // 08
-    UInt8                    trainingSkill;        // 0C skill offset, i.e. (avCode - 12)
-    UInt8                    trainingLevel;        // 0D
-    UInt16                    unk00E;                // 0E
-    SLLNode<TESPackage*>    packages;            // 10
-
-    // virtual methods
-    #ifdef OBLIVION
-     virtual void        MarkAsModified(UInt32 modifiedMask);        // 010/--- calls MarkAsModified for parent TESForm
-     virtual UInt16     GetSaveSize(UInt32 modifiedMask);           // 014/--- just save size of this component?
-     virtual void        SaveGame(UInt32 modifiedMask);              // 018/---
-     virtual void        LoadGame(UInt32 modifiedMask, UInt32 arg1); // 01C/---
-    #else
-     virtual void        unkAIForm034(UInt32 arg0);                  // ---/034
-    #endif
-
-};
-*/
 /*
 class TESAnimation : public BaseFormComponent
 {// size 0C0/014
