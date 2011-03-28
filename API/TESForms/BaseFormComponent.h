@@ -20,6 +20,8 @@ class   TESForm;    // TESForms/TESForm.h
 class   NiNode;
 struct  FULL_HASH;  // Useage unknown
 class   Script;
+class   SpellItem;
+class   TESLevSpell;
 
 class IMPORTCLASS BaseFormComponent
 {// size 04/04
@@ -543,26 +545,73 @@ public:
     INLINE ~TESAttributes() {}  // stub, inlined by game/CS
 };
 
-/*
-class TESSpellList : public BaseFormComponent
+class IMPORTCLASS TESSpellList : public BaseFormComponent
 {// size 014/014
 public:
-    TESSpellList();
-    ~TESSpellList();
+
+    typedef BSSimpleList<SpellItem*> SpellListT;
+    typedef BSSimpleList<TESLevSpell*> LevSpellListT;
+
+    enum ModifiedFlags
+    {
+        kModified_SpellLists    = 0x00000020,
+    };
 
     // members
-    //void**                vtbl            // 000
-    SLLNode<SpellItem*>        spells;            // 004
-    SLLNode<TESLevSpell*>    leveledSpells;    // 00C
+    //     /*00/00*/ void**         vtbl;
+    MEMBER /*04/04*/ SpellListT     spells;
+    MEMBER /*0C/0C*/ LevSpellListT  leveledSpells;
 
-    // virtual methods
-    #ifdef OBLIVION
-     virtual UInt16     GetSaveSize(UInt8 modifiedMask);            // 010/--- just save size of this component?
-     virtual void        SaveGame(UInt8 modifiedMask);               // 014/---
-     virtual void        LoadGame(UInt8 modifiedMask, UInt32 arg1);  // 018/---
+    // virtual method overrides
+    INLINE /*000/000*/ virtual void         InitializeComponent() {}
+    IMPORT /*004/004*/ virtual void         ClearComponentReferences();
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const;
+    #ifndef OBLIVION
+    IMPORT /*---/010*/ virtual void         BuildComponentFormRefList(BSSimpleList<TESForm*>* formRefs);
+    IMPORT /*---/014*/ virtual void         RemoveComponentFormRef(TESForm& referencedForm) ;
+    IMPORT /*---/018*/ virtual bool         ComponentFormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList) ;
+    IMPORT /*---/01C*/ virtual void         GetRevisionUnmatchedComponentFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output) ;
+    IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);                      
+    IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);
+    IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);
+    INLINE /*---/02C*/ virtual void         GetComponentFromDlg(HWND dialog) {}
     #endif
+
+    // additional virtual methods
+    #ifdef OBLIVION
+    IMPORT /*010/---*/ virtual UInt16       ModifiedComponentSize(UInt32 modifiedMask);
+    IMPORT /*014/---*/ virtual void         SaveModifiedComponent(UInt32 modifiedMask);
+    IMPORT /*018/---*/ virtual void         LoadModifiedComponent(UInt32 modifiedMask, UInt32 unkFlags);
+    #endif
+
+    // methods - spell lists
+    IMPORT bool             AddSpell(SpellItem* spell); // returns false if already in list.  if parent ref is player, updates known effects
+    IMPORT bool             AddLeveledSpell(TESLevSpell* levSpell); // returns false is already in list.  does nothing if parent ref is player
+    IMPORT bool             AddFormToSpellList(TESForm* form); // calls AddSpell/AddLeveledSpell via dynamic cast
+    IMPORT void             ClearSpellLists(); // clear spell and levspell lists
+
+    // methods - serialization
+    IMPORT void             SaveComponent(); // serialize to active file buffer 
+    IMPORT void             LinkComponent(TESForm& parentForm);  // resolve spell formids into SpellItem*/TESLevSpell*
+    // NOTE: there is no LoadComponent() for this class; it is completely integrated into the LoadForm method of it's assorted descendents 
+
+    // methods - CS dialogs
+    #ifndef OBLIVION
+    IMPORT void                 InitializeSpellListView(HWND listView); // clear listview, setup columns, etc.
+    IMPORT void                 PopulateSpellListView(HWND listView); // populate listview with contents
+    IMPORT static void CALLBACK SpellListDisplayInfo(void* displayInfo); // used to build display strings for contents in listview
+                                // argument is a NMLVDISPINFO*, defined in <Commctrl.h>
+    IMPORT static int CALLBACK  SpellListComparator(const TESForm& entryA, const TESForm& entryB, int compareBy); //
+                                // callback for sorting content lists.  returns -1 (A<B), 0 (A==B), +1 (A>B). 
+                                // compareBy is the column index in the listview, and is negative for reversed ordering
+    #endif
+
+    // constructor
+    IMPORT TESSpellList();
+    IMPORT ~TESSpellList(); // WARNING - does not clear lists, will cause memory leaks unless ClearSpellLists() is called first (bug?)
 };
-*/
+
 /*
 class TESAIForm : public BaseFormComponent
 {// size 018/018

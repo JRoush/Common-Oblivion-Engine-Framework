@@ -201,3 +201,33 @@ EXPORTS ;{ ; TESAttributes
 ; methods
 ??0TESAttributes@@QAE@XZ                                         = 0x00468BB0,0x0048F620     ; TESAttributes
 ;}
+
+EXPORTS ;{ ; TESSpellList
+; virtual methods
+?ClearComponentReferences@TESSpellList@@UAEXXZ                  = 0x0046FC00,0x004A3380     ; ClearComponentReferences
+?CopyComponentFrom@TESSpellList@@UAEXABVBaseFormComponent@@@Z   = 0x0046F520,0x004A2710     ; CopyComponentFrom
+?CompareComponentTo@TESSpellList@@UBE_NABVBaseFormComponent@@@Z = 0x0046FE30,0x004A3390     ; CompareComponentTo
+?BuildComponentFormRefList@TESSpellList@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                             = _NOTINGAME,0x004A3450     ; BuildComponentFormRefList
+?RemoveComponentFormRef@TESSpellList@@UAEXAAVTESForm@@@Z                                                    = _NOTINGAME,0x004A2970     ; RemoveComponentFormRef
+?ComponentFormRefRevisionsMatch@TESSpellList@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                       = _NOTINGAME,0x004A2A20     ; ComponentFormRefRevisionsMatch
+?GetRevisionUnmatchedComponentFormRefs@TESSpellList@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z   = _NOTINGAME,0x004A3560     ; GetRevisionUnmatchedComponentFormRefs
+?ComponentDlgMsgCallback@TESSpellList@@UAE_NPAUHWND__@@IIJAAJ@Z                                             = _NOTINGAME,0x004A2F20     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESSpellList@@UAE_NPAUHWND__@@@Z                                                       = _NOTINGAME,0x004A2300     ; IsComponentDlgValid
+?SetComponentInDlg@TESSpellList@@UAEXPAUHWND__@@@Z                                                          = _NOTINGAME,0x004A3310     ; SetComponentInDlg
+?ModifiedComponentSize@TESSpellList@@UAEGK@Z                    = 0x0046F620,_NOTINCS__     ; ModifiedComponentSize
+?SaveModifiedComponent@TESSpellList@@UAEXK@Z                    = 0x0046F710,_NOTINCS__     ; SaveModifiedComponent
+?LoadModifiedComponent@TESSpellList@@UAEXKK@Z                   = 0x0046F8E0,_NOTINCS__     ; LoadModifiedComponent
+; methods
+?AddSpell@TESSpellList@@QAE_NPAVSpellItem@@@Z           = 0x0046F350,0x004A23B0     ; AddSpell
+?AddLeveledSpell@TESSpellList@@QAE_NPAVTESLevSpell@@@Z  = 0x0046F3D0,0x004A23F0     ; AddLeveledSpell
+?AddFormToSpellList@TESSpellList@@QAE_NPAVTESForm@@@Z   = 0x0046F420,0x004A2430     ; AddFormToSpellList
+?ClearSpellLists@TESSpellList@@QAEXXZ                   = 0x0046F2E0,0x004A2360     ; ClearSpellLists
+?SaveComponent@TESSpellList@@QAEXXZ                     = 0x0046F4B0,0x004A24C0     ; SaveComponent
+?LinkComponent@TESSpellList@@QAEXAAVTESForm@@@Z         = 0x0046FC10,0x004A2550     ; LinkComponent
+?InitializeSpellListView@TESSpellList@@QAEXPAUHWND__@@@Z    = _NOTINGAME,0x004A2220     ; InitializeSpellListView
+?PopulateSpellListView@TESSpellList@@QAEXPAUHWND__@@@Z      = _NOTINGAME,0x004A2E40     ; PopulateSpellListView
+?SpellListDisplayInfo@TESSpellList@@SGXPAX@Z                = _NOTINGAME,0x004A2060     ; SpellListDisplayInfo
+?SpellListComparator@TESSpellList@@SGHABVTESForm@@0H@Z      = _NOTINGAME,0x004A2130     ; SpellListComparator
+??0TESSpellList@@QAE@XZ                                 = 0x0046F2C0,0x004A2330     ; TESSpellList
+??1TESSpellList@@QAE@XZ                                 = 0x0046F2B0,0x004A2050     ; ~TESSpellList
+;}    

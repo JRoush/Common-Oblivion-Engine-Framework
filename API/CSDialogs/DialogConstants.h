@@ -73,6 +73,9 @@
 #define IDC_CONT_PREVIEWLVL         1064 // EDIT
 #define IDC_CONT_PREVIEW            2331 // BUTTON
 
+// TESSpellList
+#define IDC_SPLO_SPELLLIST          1485 // SYSLISTVIEW32
+
 // TESForm
 #define IDC_FORM_EDITORID           1028 // EDIT
 #define IDC_FORM_QUESTITEM          1683 // BUTTON
