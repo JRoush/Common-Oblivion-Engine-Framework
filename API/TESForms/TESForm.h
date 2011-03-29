@@ -214,7 +214,7 @@ public:
     IMPORT /*06C/070*/ virtual void         LinkForm(); // resolve formids into pointers
     IMPORT /*070/074*/ virtual UInt8        GetFormType();
     IMPORT /*074/078*/ virtual void         GetDebugDescription(BSStringT& output); // descriptive string (for debugging ?) 
-    IMPORT /*078/07C*/ virtual bool         IsQuestItem(); // aka IsPersistentReference()
+    IMPORT /*078/07C*/ virtual bool         IsQuestItem(); // Quest item status only (not persistent ref); refs will return flag of their base form
     _NOUSE /*07C/080*/ virtual bool         UnkForm07C() {return false;} // gets flag (1<<6), "BorderRegion"
     _NOUSE /*080/084*/ virtual bool         UnkForm080() {return false;} // gets flag (1<<16)
     _NOUSE /*084/088*/ virtual bool         UnkForm084() {return false;} // gets flag (1<<17), "OffLimits/Dangerous"

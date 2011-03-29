@@ -1,6 +1,8 @@
 /* 
-    TESObject is the parent for all inventory items & placed object refs.  Most(all?) objects are connected 
+    TESObject is the parent for all inventory items & placed object refs.  Most(all?) TESObjects are connected 
     in a doubly-linked list, maintained by the global data handler.
+
+    TESBoundObject is a subclass, used for (I think) all objects that can be independently rendered.
 */
 #pragma once
 

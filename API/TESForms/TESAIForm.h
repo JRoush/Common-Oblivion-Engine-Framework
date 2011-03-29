@@ -99,7 +99,7 @@ public:
     // methods - serialization
     // NOTE: there is no LoadComponent() for this class; it is completely integrated into the LoadForm method of it's assorted descendents 
     #ifndef OBLIVION
-    IMPORT void             SaveComponent(); // this method was apparently omitted from the game code; dynamically created actors can't save their AI data
+    IMPORT void             SaveComponent();
     #endif
     IMPORT void             LinkComponent(TESForm& parentForm);  // resolve spell formids into SpellItem*/TESLevSpell*
 

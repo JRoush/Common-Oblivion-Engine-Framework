@@ -45,7 +45,6 @@ public:
     // methods - serialization
     #ifndef OBLIVION
     IMPORT void         SaveComponent(UInt32 chunkType = 'ZFFK'); // saves animation names in a single dynamically sized chunk
-                        // this method was apparently omitted from the game code; dynamically created actors can't save their anim data
     #endif
     IMPORT void         LoadComponent(TESAnimation& anim, TESFile& file); // load animation list from a 'KFFZ' chunk
                         // the anim argument is does nothing, but cannot be null - pass this*

@@ -136,7 +136,7 @@ public:
     IMPORT /*120/---*/ virtual MagicCaster*     GetMagicCaster();
     IMPORT /*124/---*/ virtual MagicTarget*     GetMagicTarget();
     #endif
-    _NOUSE /*128/154*/ virtual UInt32           UnkRefr128(); 
+    _NOUSE /*128/154*/ virtual TESForm*         UnkRefr128(); // used as possible alternative to base form*
     _NOUSE /*12C/158*/ virtual void             UnkRefr12C(UInt32 arg0); 
     _NOUSE /*130/15C*/ virtual UInt32           UnkRefr130(UInt32 arg0); 
     _NOUSE /*134/160*/ virtual UInt32           UnkRefr134(UInt32 arg0); 

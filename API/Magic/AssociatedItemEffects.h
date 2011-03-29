@@ -48,10 +48,10 @@ public:
     MEMBER /*3C*/ Actor*                summonedActor;
     MEMBER /*40*/ UInt8                 unkSumn40;
     MEMBER /*41*/ UInt8                 padSumn41[3];
-    MEMBER /*44*/ float                 unkSumn44;
+    MEMBER /*44*/ float                 unkSumn44; // time elapsed ?
     MEMBER /*48*/ Vector3               position;
     MEMBER /*54*/ Vector3               rotation;
-    MEMBER /*60*/ bool                  unkSumn60; // checked other active effects to enforce summoning limit
+    MEMBER /*60*/ bool                  initialized; // placed summon, checked other active effects to enforce summoning limit
     MEMBER /*61*/ UInt8                 unkSumn61;
     MEMBER /*62*/ UInt8                 padSumn62[2];   
 
