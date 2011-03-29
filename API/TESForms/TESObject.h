@@ -71,7 +71,9 @@ public:
     _NOUSE TESObject() {}   // inlined by game, differs between game & CS
 };
 
-#ifndef OBLIVION
+#ifdef OBLIVION
+#define TESBoundObjectParents       public TESObject
+#else
 class IMPORTCLASS TESCellUseList
 {// size --/08 ? - size may be as large as 20, but probably is no larger than 08
 public:
@@ -94,10 +96,14 @@ public:
     // construction, destruction
     IMPORT TESCellUseList();
     IMPORT ~TESCellUseList();
+
+    // use FormHeap for class new & delete
+    USEFORMHEAP 
 };
+#define TESBoundObjectParents       public TESObject, public TESCellUseList
 #endif
 
-class IMPORTCLASS TESBoundObject : public TESObject
+class IMPORTCLASS TESBoundObject : TESBoundObjectParents // parents are TESObject, + TESCellUseList in CS
 {// size 24/58
 /*  
     Partial:
@@ -109,8 +115,9 @@ class IMPORTCLASS TESBoundObject : public TESObject
 public: 
 
     // members
+    //     /*00/00*/ TESObject
     #ifndef OBLIVION
-    MEMBER /*--/34*/ TESCellUseList     cellUseList;
+    //     /*--/34*/ TESCellUseList
     MEMBER /*--/3C*/ UInt32             unkBoundObj3C;
     MEMBER /*--/40*/ UInt32             unkBoundObj40;
     MEMBER /*--/44*/ UInt32             unkBoundObj44;
@@ -145,13 +152,28 @@ public:
 
     // constructor
     IMPORT TESBoundObject();
+    
+    // use FormHeap for class new & delete
+    USEFORMHEAP 
 };
 
-//class TESBoundAnimObject : public TESBoundObject
-//{// size 24/58
-//public:
-//    TESBoundAnimObject();
-//    ~TESBoundAnimObject();
-//
-//    // no additional members or virtual methods
-//};
+class TESBoundAnimObject : public TESBoundObject
+{// size 24/58
+/*  
+    Partial:
+    -   virtual methods
+    Notes:
+    -   Overrides for undecoded virtual functions (be sure to update these if the base definition changes)
+*/
+public:
+    
+    // no additional members or virtual methods
+
+    // TESObject virtual methods
+    _NOUSE /*0E0/128*/ virtual bool         UnkObj0E0() {return true;}
+
+    // TESBoundObject virtual methods
+    _NOUSE /*118/160*/ virtual bool         UnkBoundObj118(UInt32 arg0) {return false;}
+    
+    // uses TESBoundObject constructor + destructor
+};
