@@ -82,6 +82,14 @@
 // TESAnimation
 #define IDC_ANIM_KFFILELIST         2114 // SYSLISTVIEW32
 
+// TESActorBaseData
+#define IDC_ACBS_LEVEL              1063 // EDIT
+#define IDC_ACBS_LEVELLABEL         3211 // STATIC
+#define IDC_ACBS_LEVELMIN           1064 // EDIT
+#define IDC_ACBS_LEVELMAX           1065 // EDIT
+#define IDC_ACBS_MAGICKA            1178 // EDIT
+#define IDC_ACBS_FATIGUE            1179 // EDIT
+
 // TESForm
 #define IDC_FORM_EDITORID           1028 // EDIT
 #define IDC_FORM_QUESTITEM          1683 // BUTTON
