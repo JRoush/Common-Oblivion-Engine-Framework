@@ -22,7 +22,7 @@
 // argument classes
 class   TESForm;        // TESForms/TESForm.h
 class   TESObjectREFR;  // TESForms/TESObjectREFR.h
-class   TESNPC;  
+class   TESActorBase;   // Actors/TESActorBase.h
 class   TESObjectARMO;
 class   TESObjectCLOT;
 class   TESObjectWEAP;
@@ -89,11 +89,11 @@ public:
 
     // methods - aggregate values
     IMPORT float            GetContentWeight();  // total weight of contents, used for encumberance calcs
-    IMPORT TESObjectARMO*   GetBestArmorForSlot(TESNPC& wearer, UInt32 slotIndex); // uses TESNPC::GetEquippableItemRating to find 'best' armor
-                            // for target wearer that covers the specified slot (see TESBipedModelForm).  Returns null if no suitable armor found.
+    IMPORT TESObjectARMO*   GetBestArmorForSlot(TESActorBase& wearer, UInt32 slotIndex); // uses TESActorBase::GetEquippableItemRating() to find 'best'
+                            //  armor for target wearer that covers the specified slot (see TESBipedModelForm).  Returns null if no suitable armor found.
     #ifdef OBLIVION
-    IMPORT TESObjectCLOT*   GetBestClothingForSlot(TESNPC& wearer, UInt32 slotIndex); // same details as GetBestArmorForSlot
-    IMPORT TESObjectWEAP*   GetBestWeapon(TESNPC& user); // same details as GetBestArmorForSlot
+    IMPORT TESObjectCLOT*   GetBestClothingForSlot(TESActorBase& wearer, UInt32 slotIndex); // same details as GetBestArmorForSlot
+    IMPORT TESObjectWEAP*   GetBestWeapon(TESActorBase& user); // same details as GetBestArmorForSlot
     #endif
     
     // method - valid content types
