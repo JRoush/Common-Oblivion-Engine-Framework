@@ -86,6 +86,10 @@ A class definition in the API must, at minimum, correctly produce the following 
         Virtual methods that cannot be given proper signatures because they have not yet been decoded should be inlined with a stub & marked NOUSE.
         NOUSE virtual methods have no effect so long as the game ctor & game vtbl are being used.  They will cause problems if the game ctor is
         *not* used, or if the compiler optimizes a virtual call into a direct call.
+        Virtual methods with a common name but inherited from multiple base classes are a problem case.  Try to avoid naming collisions when
+        giving names to methods of commonly inherited classes, e.g. for TESContainer use "AddContent()" rather than just "Add()".
+        The exception is for methods that share a common purpose and will be overriden with thunks to a single central function, e.g.
+        destructors or the common "GetModifiedSize()", etc.
     - New/Delete overloads:
         Classes must override thier new/delete operators with the FormHeap routines (the USEFORMHEAP macro).
         If the class has only a single base class that already does this, then it need not repeat.
