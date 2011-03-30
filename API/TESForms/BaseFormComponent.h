@@ -68,6 +68,11 @@ class IMPORTCLASS TESFullName : public BaseFormComponent
 {// size 0C/0C
 public: 
 
+    enum ModifiedFlags
+    {
+        kModified_FullName      = 0x00000080,
+    };
+
     // members
     //     /*00/00*/ void**         vtbl;
     MEMBER /*04/04*/ BSStringT      name;
@@ -377,6 +382,11 @@ public:
 class IMPORTCLASS TESHealthForm : public BaseFormComponent
 {// size 08/08
 public:
+
+    enum ModifiedFlags
+    {
+        kModified_Health        = 0x00000004,
+    };
 
     // members
     //     /*00/00*/ void**     vtbl;
