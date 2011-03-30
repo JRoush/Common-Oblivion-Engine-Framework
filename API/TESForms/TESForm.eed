@@ -54,11 +54,12 @@ EXPORTS ;{ ; TESForm
 ?FormRefRevisionsMatch@TESForm@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                         = _NOTINGAME,0x00496560     ; FormRefRevisionsMatch
 ?GetRevisionUnmatchedFormRefs@TESForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z     = _NOTINGAME,0x00497380     ; GetRevisionUnmatchedFormRefs
 ?UpdateUsageInfo@TESForm@@UAE_NXZ                           = _NOTINGAME,0x00497400     ; UpdateUsageInfo
-?DialogMessageCallback@TESForm@@UAE_NPAUHWND__@@IIJAAJ@Z     = _NOTINGAME,0x00495B80     ; DialogMessageCallback
+?DialogMessageCallback@TESForm@@UAE_NPAUHWND__@@IIJAAJ@Z    = _NOTINGAME,0x00495B80     ; DialogMessageCallback
 ?IsDialogValid@TESForm@@UAE_NPAUHWND__@@@Z                  = _NOTINGAME,0x00495CA0     ; IsDialogValid
 ?SetInDialog@TESForm@@UAEXPAUHWND__@@@Z                     = _NOTINGAME,0x00495C20     ; SetInDialog
 ?GetFromDialog@TESForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00495D20     ; GetFromDialog
 ?CleanupDialog@TESForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00495DA0     ; CleanupDialog
+?GetSubtypeName@TESForm@@UAEPBDXZ                           = _NOTINGAME,0x00449E40     ; GetSubtypeName
 ;}
 ;{ ; TESForm - methods
 ??0TESForm@@QAE@XZ                                                  = 0x0046C460,0x00498280     ; TESForm()

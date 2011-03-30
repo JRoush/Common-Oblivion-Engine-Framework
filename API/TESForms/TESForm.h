@@ -271,7 +271,7 @@ public:
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog); // Set dialog control values to reflect members
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog); // Get member values from dialog controls
     IMPORT /*---/11C*/ virtual void         CleanupDialog(HWND dialog); // called when dialog closes (?)
-    _NOUSE /*---/120*/ virtual const char*  UnkForm120() {return 0;}
+    IMPORT /*---/120*/ virtual const char*  GetSubtypeName(); // text for 'Type' field in Object Window
     #endif
 
     // methods - serialization
