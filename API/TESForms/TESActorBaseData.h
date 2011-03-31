@@ -46,7 +46,7 @@ public:
         kCreatureFlag_Flies             = 0x00000020,
         kCreatureFlag_Walks             = 0x00000040,
         kCreatureFlag_PCLevelOffset     = 0x00000080,
-        kCreatureFlag_HasSounds         = 0x00000100,   // if not set has a TESCreature* soundBase
+        kCreatureFlag_HasSounds         = 0x00000100,   // has a CreatureSoundArray (instead of a TESCreature* for inherited sounds)
         kCreatureFlag_NoLowProc         = 0x00000200,
         kCreatureFlag_NoBloodParticle   = 0x00000800,
         kCreatureFlag_NoBloodTexture    = 0x00001000,
@@ -138,7 +138,7 @@ public:
     #ifndef OBLIVION    
     IMPORT void             SetMinLevel(UInt16 value); // these functions apparently not used in game, so culled by compiler
     IMPORT void             SetMaxLevel(UInt16 value);
-    IMPORT void             SetFlag(UInt32 flagMask, bool value);
+    IMPORT void             SetActorFlag(UInt32 flagMask, bool value);
     #endif
 
     // methods - faction list

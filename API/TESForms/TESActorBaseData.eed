@@ -33,7 +33,7 @@ EXPORTS ;{ ; TESActorBaseData
 ?SetLevel@TESActorBaseData@@QAEXG@Z         = 0x00467270,0x0048A640     ; SetLevel
 ?SetMinLevel@TESActorBaseData@@QAEXG@Z      = _NOTINGAME,0x0048A520     ; SetMinLevel
 ?SetMaxLevel@TESActorBaseData@@QAEXG@Z      = _NOTINGAME,0x0048A540     ; SetMaxLevel
-?SetFlag@TESActorBaseData@@QAEXK_N@Z        = _NOTINGAME,0x0048A4F0     ; SetFlag
+?SetActorFlag@TESActorBaseData@@QAEXK_N@Z   = _NOTINGAME,0x0048A4F0     ; SetActorFlag
 ?ClearFactions@TESActorBaseData@@QAEXXZ                             = 0x00467370,0x0048AF20     ; ClearFactions
 ?GetFactionRank@TESActorBaseData@@QAECPAVTESFaction@@_N@Z           = 0x00467510,0x0048B180     ; GetFactionRank
 ?SetFactionRank@TESActorBaseData@@QAEXPAVTESFaction@@C@Z            = 0x004675E0,0x0048B1E0     ; SetFactionRank
