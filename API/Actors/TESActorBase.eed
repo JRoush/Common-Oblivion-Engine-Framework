@@ -1,0 +1,29 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESActorBase
+; TESBoundAnimObject virtual methods
+??1TESActorBase@@UAE@XZ                     = 0x0051E850,0x004CE5B0     ; ~TESActorBase
+?ModifiedFormSize@TESActorBase@@UAEGK@Z     = 0x0051A3B0,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESActorBase@@UAEXK@Z     = 0x0051A520,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESActorBase@@UAEXKK@Z    = 0x0051A6F0,_NOTINCS__     ; LoadModifiedForm
+?PreLoadModifiedForm@TESActorBase@@UAEXK@Z  = 0x00519C30,_NOTINCS__     ; PreLoadModifiedForm
+?IsObjectAutoCalc@TESActorBase@@UAE_NXZ     = 0x00519D40,0x004C8F70     ; IsObjectAutoCalc
+?SetObjectAutoCalc@TESActorBase@@UAEX_N@Z   = 0x00519D60,0x004C8F90     ; SetObjectAutoCalc
+; TESActorBase virtual methods
+?GetAViBase@TESActorBase@@UAEJK@Z   = 0x00519D90,0x004C9230     ; GetAViBase
+?GetAVfBase@TESActorBase@@UAEMK@Z   = 0x0051E790,0x004CE4E0     ; GetAVfBase
+?SetAVfBase@TESActorBase@@UAEXKM@Z  = 0x0051E7B0,0x004CE500     ; SetAVfBase
+?SetAViBase@TESActorBase@@UAEXKJ@Z  = 0x00519F50,0x004C93D0     ; SetAViBase
+?ModAVfBase@TESActorBase@@UAEXKM@Z  = 0x0051E810,0x004CE560     ; ModAVfBase
+?ModAViBase@TESActorBase@@UAEXKJ@Z  = 0x0051E7E0,0x004CE530     ; ModAViBase
+; methods
+?SetHealth@TESActorBase@@QAEXK@Z    = 0x00519C50,0x004C8EA0     ; SetHealth
+?IsFemale@TESActorBase@@QAE_NXZ     = 0x00519D20,0x004C8F50     ; IsFemale
+?CanWalk@TESActorBase@@QAE_NXZ      = 0x00519CC0,0x004C8EE0     ; CanWalk
+?CanFly@TESActorBase@@QAE_NXZ       = 0x00519CE0,0x004C8F00     ; CanFly
+?CanSwim@TESActorBase@@QAE_NXZ      = 0x00519C70,0x004C8EC0     ; CanSwim
+?CanUseWeaponAndShield@TESActorBase@@QAE_NXZ                = 0x00519D00,0x004C8F20     ; CanUseWeaponAndShield
+?GetEquippableItemRating@TESActorBase@@QAEMPAVTESForm@@@Z   = 0x0051A120,0x004C8FC0     ; GetEquippableItemRating
+??0TESActorBase@@QAE@XZ     = 0x0051E560,0x004CE360     ; TESActorBase
+;}

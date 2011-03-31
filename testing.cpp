@@ -12,6 +12,7 @@
 
 //// included classes
 //#include "API/Actors/ActorValues.h"
+//#include "API/Actors/TESActorBase.h"
 //#include "API/BSTypes/BSSimpleList.h"
 //#include "API/BSTypes/BSStringT.h"
 //#include "API/CSDialogs/TESStringInputDialog.h"

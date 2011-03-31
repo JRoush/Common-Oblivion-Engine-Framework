@@ -422,6 +422,14 @@
 					RelativePath=".\API\Actors\ActorValues.h"
 					>
 				</File>
+				<File
+					RelativePath=".\API\Actors\TESActorBase.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Actors\TESActorBase.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="ExtraData"
