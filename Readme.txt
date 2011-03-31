@@ -18,11 +18,18 @@ Basic Installation (for everyone):
 Advanced Installation (in an alternate directory):
 ==================================================
 1.  Extract COEF folder in the archive to a working directory of your choice
-2.  Create a Oblivion\Data\OBSE\Plugins\COEF\API folder, and copy ExportInjector.dll and ExportInjector.ini
-    into it (they can be found under API\ in your working firectory).
-3.  Open Oblivion\Data\OBSE\Plugins\COEF\ExportInjector.ini and edit the FileName field to point to the API\
-    subfolder of your working directory, e.g. 
+2.  Create a Oblivion\Data\OBSE\Plugins\COEF folder, and copy these files to it:
+        \COEF
+            \API
+                \ExportInjector.dll
+                \ExportInjector.ini
+            \Components
+                \Components.CS.dll
+                \Components.Game.dll            
+3.  Open the newly copied Oblivion\Data\OBSE\Plugins\COEF\API\ExportInjector.ini and edit
+    the "FileName" field to point to the API\ subfolder of your working directory. 
+    For example:
         Filename = "*.eed"      
-    becomes
+        becomes
         Filename = "C:\My Oblivion Mods\COEF\API\*.eed"      
     
