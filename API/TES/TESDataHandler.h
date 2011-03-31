@@ -12,6 +12,7 @@
 #include "API/NiTypes/NiTArray.h"
 
 // argument classes
+class   Vector3;            // NiVector3?  currently defined in Utilities/ITypes.h
 class   TESObjectListHead;  // TESForms/TESObject.h
 class   TESFile;            // TESFiles/TESFile.h
 class   TESForm;            // TESForms/TESForm.h
@@ -49,6 +50,7 @@ class   TESObjectMISC;
 class   TESObjectCONT;
 class   TESObjectDOOR;
 class   TESObjectREFR;      // TESForms/TESObjectREFR.h
+class   ContainerExtraData; // TESForms/TESContainer.h
 
 // 'faked' base: TESSkill
 class TESSkill
@@ -58,27 +60,6 @@ class TESSkill
     #else
     UInt8   unk[0xA0];
     #endif
-};
-
-class TESFileManager
-{// size 420/420
-// (as seen in editor by obse team) Not sure if this is a distinct named object, or just a logical grouping of members
-public:
-    // members
-    MEMBER /*000*/ BSSimpleList<void*>      unk00; // general garbage list for unsupported form types?
-    MEMBER /*008*/ UInt32                   nextFormID; // next available formID?
-    MEMBER /*00C*/ TESFile*                 activeFile;
-    MEMBER /*010*/ BSSimpleList<TESFile*>   fileList; // all files in Oblivion\Data\ directory
-    MEMBER /*018*/ UInt32                   fileCount; // loaded files
-    MEMBER /*01C*/ TESFile*                 filesByID[0xFF]; // loaded files
-    MEMBER /*418*/ UInt8                    unk418; // if true, prevents check for changes to masters during load
-    MEMBER /*419*/ UInt8                    unk419; // set if there is an active file??
-    MEMBER /*41A*/ UInt8                    unk41A; 
-    MEMBER /*41B*/ UInt8                    unk41B;
-    MEMBER /*41C*/ UInt8                    unk41C; // set when data handler cleared
-    MEMBER /*41D*/ UInt8                    unk41D; // set after fileList is initialized?
-    MEMBER /*41E*/ UInt8                    unk41E; // set after data handler is constructed
-    MEMBER /*41F*/ UInt8                    unk41F; // set after files in LO have been opened, cleared after files have been loaded
 };
 
 class IMPORTCLASS TESDataHandler
@@ -117,41 +98,46 @@ public:
     MEMBER /*0BC/00BC*/ TESRegionList*                      regionList;
     MEMBER /*0C0/00C0*/ NiTLargeArray<TESObjectCELL*>       cellArray;
     MEMBER /*0D8/00D8*/ TESSkill                            skills[0x15];
-    MEMBER /*8B8/0DF8*/ BSSimpleList<void*>                 unk8B8; // general garbage list for unsupported form types?
+    MEMBER /*8B8/0DF8*/ BSSimpleList<void*>                 unk8B8;     // general garbage list for unsupported form types?
     MEMBER /*8C0/0E00*/ UInt32                              nextFormID; // next available formID?
     MEMBER /*8C4/0E04*/ TESFile*                            activeFile;
-    MEMBER /*8C8/0E08*/ BSSimpleList<TESFile*>              fileList; // all files in Oblivion\Data\ directory
-    MEMBER /*8D0/0E10*/ UInt32                              fileCount; // loaded files
+    MEMBER /*8C8/0E08*/ BSSimpleList<TESFile*>              fileList;   // all files in Oblivion\Data\ directory
+    MEMBER /*8D0/0E10*/ UInt32                              fileCount;  // loaded files
     MEMBER /*8D4/0E14*/ TESFile*                            filesByID[0xFF]; // loaded files
-    MEMBER /*CD0/1210*/ UInt8                               unkCD0; // if true, prevents check for changes to masters during load
-    MEMBER /*CD1/1211*/ UInt8                               unkCD1; // set if there is an active file??
+    MEMBER /*CD0/1210*/ UInt8                               unkCD0;     // if true, prevents check for changes to masters during load
+    MEMBER /*CD1/1211*/ UInt8                               unkCD1;     // set if there is an active file??
     MEMBER /*CD2/1212*/ UInt8                               unkCD2; 
     MEMBER /*CD3/1213*/ UInt8                               unkCD3;
-    MEMBER /*CD4/1214*/ UInt8                               unkCD4; // set when data handler cleared
-    MEMBER /*CD5/1215*/ UInt8                               unkCD5; // set after fileList is initialized?
-    MEMBER /*CD6/1216*/ UInt8                               unkCD6; // set after data handler is constructed
-    MEMBER /*CD7/1217*/ UInt8                               unkCD7; // set after files in LO have been opened, cleared after files have been loaded
+    MEMBER /*CD4/1214*/ UInt8                               unkCD4;     // set when data handler cleared
+    MEMBER /*CD5/1215*/ UInt8                               unkCD5;     // set after fileList is initialized?
+    MEMBER /*CD6/1216*/ UInt8                               unkCD6;     // set after data handler is constructed
+    MEMBER /*CD7/1217*/ UInt8                               unkCD7;     // set after files in LO have been opened, cleared after files have been loaded
     MEMBER /*CD8/1218*/ TESRegionDataManager*               regionDataManager;
-    MEMBER /*CDC/121C*/ void*                               unkCDC; // pointer to same object type as an ExtraContainerChanges +0xC
+    MEMBER /*CDC/121C*/ ContainerExtraData*                 unkCDC; 
 
     // methods - serilaization
-    IMPORT bool         LoadFile(TESFile& file, bool arg1); // Deserializes file, loading all records with LoadFormRecord()
-                        // returns false if any of the records failed to load
-    IMPORT bool         LoadFormRecord(TESFile& file, bool arg1); // Creates a form object if necessary, using LoadForm()
-                        // select form types are added to data handler with AddForm() or their own tables (settings, etc.)
-                        // returns false if record could not be loaded
-    IMPORT static bool  LoadForm(TESForm& form, TESFile& file); // Parses a form record into a form object, using TESForm::LoadForm() method
-                        // returns false if form could not be loaded
+    IMPORT bool             LoadFile(TESFile& file, bool arg1); // Deserializes file, loading all records with LoadFormRecord()
+                            // returns false if any of the records failed to load
+    IMPORT bool             LoadFormRecord(TESFile& file, bool arg1); // Creates a form object if necessary, using LoadForm()
+                            // select form types are added to data handler with AddForm() or their own tables (settings, etc.)
+                            // returns false if record could not be loaded
+    IMPORT static bool      LoadForm(TESForm& form, TESFile& file); // Parses a form record into a form object, using TESForm::LoadForm() method
+                            // returns false if form could not be loaded
     #ifndef OBLIVION
-    IMPORT bool         SaveFile(const char* filename, bool arg1); // calls SaveFormRecord() all forms in TESForm::activeFileFormList
-                        // Creates the file & sets as active file if necessary.  returns false if save failed    
+    IMPORT bool             SaveFile(const char* filename, bool arg1); // calls SaveFormRecord() all forms in TESForm::activeFileFormList
+                            // Creates the file & sets as active file if necessary.  returns false if save failed    
     #endif
-    IMPORT void         SaveForm(TESForm& form, bool arg1); // serializes form to active file using TESForm::SaveForm()    
+    IMPORT void             SaveForm(TESForm& form, bool arg1); // serializes form to active file using TESForm::SaveForm()    
+    
     // members - misc
-    IMPORT bool         AddFormToHandler(TESForm* form); // Adds form to handler.  Returns false for form types not handled
-    IMPORT UInt32       ReserveNextUnusedFormID(); // gets next formID, and marks it as used    
-    IMPORT bool         Clear(); // destroys all objects managed by the data handler.  always returns true
-    IMPORT void         CreateBuiltinObjects(); // (re)create built-in forms & objects managed by the data handler
+    IMPORT bool             AddFormToHandler(TESForm* form); // Adds form to handler.  Returns false for form types not handled
+    IMPORT UInt32           ReserveNextUnusedFormID(); // gets next formID, and marks it as used    
+    IMPORT bool             Clear(); // destroys all objects managed by the data handler.  always returns true
+    IMPORT void             CreateBuiltinObjects(); // (re)create built-in forms & objects managed by the data handler
+    IMPORT TESObjectREFR*   PlaceObjectRef(TESObject* baseObject, Vector3& position, Vector3& rotation, 
+                                            TESObjectCELL* cell, TESWorldSpace* worldSpace, TESObjectREFR* existingRef); // 
+                            // place an object ref at the specified position in the specified cell/worldspace, with the specified base form.
+                            // if existingRef is provided, it is used as the ref, otherwise a new ref is created.  returns null on  failure
 
     // constructor, destructor
     IMPORT TESDataHandler();
