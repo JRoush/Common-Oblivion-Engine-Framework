@@ -1,6 +1,8 @@
 /* 
-    TESObject is the parent for all inventory items & placed object refs.  Most(all?) TESObjects are connected 
+    TESObject is the parent for all placeable form classes.  Most(all?) TESObjects are connected 
     in a doubly-linked list, maintained by the global data handler.
+    TESObject maintains info on the number of TESObjectREFR that use a form, and a list of cells in 
+    which those refs appear.  This complements the the normal Cross-Referencing of base forms in the CS. 
 
     TESBoundObject is a subclass, used for (I think) all objects that can be independently rendered.
 */
@@ -11,8 +13,10 @@
 #include "API/BSTypes/BSSimpleList.h"
 
 // argument classes
+class   Vector3;        // NiVector3?  currently defined in Utilities/ITypes.h
 class   TESObject;
 class   TESObjectCELL;  // GameWorld/TESObjectCELL.h
+class   TESObjectREFR;  // TESForms/TESObjectREFR.h
 
 class IMPORTCLASS TESObjectListHead 
 {// size 10/10 - control structure for object list.  Seems to be BoundObjects in game, but includes static objects in CS.
@@ -56,16 +60,16 @@ public:
     _NOUSE /*0E0/128*/ virtual bool         UnkObj0E0() {return false;}
     INLINE /*0E4/12C*/ virtual bool         IsObjectAutoCalc() {return false;} // magicka, cost, attribute autocalcs
     INLINE /*0E8/130*/ virtual void         SetObjectAutoCalc(bool autoCalc) {} // magicka, cost, attribute autocalcs
-    _NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(UInt32 arg0, UInt32 arg1) {return 0;}
+    _NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(TESObjectREFR* arg0, bool arg1) {return 0;}
     _NOUSE /*0F0/138*/ virtual void         UnkObj0F0(UInt32 arg0) {}
     _NOUSE /*0F4/13C*/ virtual bool         UnkObj0F4() {return false;}
     _NOUSE /*0F8/140*/ virtual void         UnkObj0F8() {}
     _NOUSE /*0FC/144*/ virtual bool         UnkObj0FC() {return false;}
     _NOUSE /*100/148*/ virtual bool         UnkObj100(UInt32 arg0) {return false;}
     _NOUSE /*104/14C*/ virtual void         UnkObj104(UInt32 arg0) {}
-    _NOUSE /*108/150*/ virtual UInt32       UnkObj108() {return 0;}
-    _NOUSE /*10C/154*/ virtual UInt32       UnkObj10C() {return 0;}
-    _NOUSE /*110/158*/ virtual void         UnkObj110(UInt32 arg0) {}
+    INLINE /*108/150*/ virtual UInt32       IncrObjectRefCount() {return 0;}  // return new count
+    INLINE /*10C/154*/ virtual UInt32       DecrObjectRefCount() {return 0;}  // return new count
+    _NOUSE /*110/158*/ virtual void         UnkObj110(TESObjectREFR* arg0) {}
 
     // constructor
     _NOUSE TESObject() {}   // inlined by game, differs between game & CS
@@ -118,13 +122,9 @@ public:
     //     /*00/00*/ TESObject
     #ifndef OBLIVION
     //     /*--/34*/ TESCellUseList
-    MEMBER /*--/3C*/ UInt32             unkBoundObj3C;
-    MEMBER /*--/40*/ UInt32             unkBoundObj40;
-    MEMBER /*--/44*/ UInt32             unkBoundObj44;
-    MEMBER /*--/48*/ UInt32             unkBoundObj48;
-    MEMBER /*--/4C*/ UInt32             unkBoundObj4C;
-    MEMBER /*--/50*/ UInt32             unkBoundObj50;
-    MEMBER /*--/54*/ UInt32             unkBoundObj54; // object (container) use count ?
+    MEMBER /*--/3C*/ Vector3            center;     // filled in as requested
+    MEMBER /*--/48*/ Vector3            extents;    // filled in as requested
+    MEMBER /*--/54*/ UInt32             objectRefrCount;  // count of TESObjectREFR using this form
     #endif
 
     // TESForm virtual methods
@@ -137,11 +137,11 @@ public:
     #endif
 
     // TESObject virtual methods
-    _NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(UInt32 arg0, UInt32 arg1) {return 0;}
+    _NOUSE /*0EC/134*/ virtual UInt32       UnkObj0EC(TESObjectREFR* arg0, bool arg1) {return 0;}
     _NOUSE /*0FC/144*/ virtual bool         UnkObj0FC() {return false;}
     #ifndef OBLIVION
-    _NOUSE /*108/150*/ virtual UInt32       UnkObj108() {return 0;}
-    _NOUSE /*10C/154*/ virtual UInt32       UnkObj10C() {return 0;}
+    IMPORT /*108/150*/ virtual UInt32       IncrObjectRefCount();
+    IMPORT /*10C/154*/ virtual UInt32       DecrObjectRefCount();
     #endif
 
     // additional virtual methods
