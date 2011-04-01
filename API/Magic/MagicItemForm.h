@@ -68,7 +68,7 @@ public:
     //     /*018/024*/ MagicItem.TESFullName
     //     /*024/030*/ MagicItem.EffectItemList
     MEMBER /*034/10C*/ UInt32           enchType; // from Magic::CastTypes
-    MEMBER /*038/110*/ SInt32           charge; // for non-auto calc
+    MEMBER /*038/110*/ SInt32           baseCost; // base magicka / charge cost for non-autocalc
     MEMBER /*03C/114*/ SInt32           cost;
     MEMBER /*040/118*/ UInt8            enchFlags;
     MEMBER /*041/119*/ UInt8            enchPad041[3]; // saved & loaded, but not initialized
@@ -133,7 +133,7 @@ public:
     //     /*018/024*/ MagicItem.TESFullName
     //     /*024/030*/ MagicItem.EffectItemList
     MEMBER /*034/10C*/ UInt32           spellType; // from Magic::MagicTypes, from Spell - Ability
-    MEMBER /*038/110*/ SInt32           magickaCost; // for non-auto calc
+    MEMBER /*038/110*/ SInt32           baseCost; // base magicka cost for non-autocalc
     MEMBER /*03C/114*/ UInt32           masteryLevel; // for non-autocalc
     MEMBER /*040/118*/ UInt8            spellFlags;
     MEMBER /*041/119*/ UInt8            spellPad041[3]; // saved & loaded, but not initialized

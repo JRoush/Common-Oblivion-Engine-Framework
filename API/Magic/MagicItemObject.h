@@ -75,7 +75,7 @@ public:
     //     /*058/164*/ TESIcon
     //     /*064/17C*/ TESScriptableForm
     //     /*070/188*/ TESWeightForm
-    MEMBER /*078/190*/ SInt32           goldValue; // for non-auto calc, 1:1 with base magicka cost
+    MEMBER /*078/190*/ SInt32           baseCost; // base magicka cost / gold cost for non-autocalc
     MEMBER /*07C/194*/ UInt8            ingrFlags;
     MEMBER /*07D/195*/ UInt8            ingrPad7D[3]; // saved & loaded, but not initialized    
 
@@ -145,7 +145,7 @@ public:
     //     /*058/164*/ TESIcon
     //     /*064/17C*/ TESScriptableForm
     //     /*070/188*/ TESWeightForm
-    MEMBER /*078/190*/ SInt32           goldValue; // for non-auto calc, 1:1 with base magicka cost
+    MEMBER /*078/190*/ SInt32           baseCost; // base magicka cost / gold cost for non-autocalc
     MEMBER /*07C/194*/ UInt8            alchFlags;
     MEMBER /*07D/195*/ UInt8            alchPad7D[3]; // saved & loaded, but not initialized    
 
