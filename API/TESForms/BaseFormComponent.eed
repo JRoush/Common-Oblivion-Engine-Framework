@@ -80,6 +80,7 @@ EXPORTS ;{ ; TESModel
 ?GetModelPathFromDlg@TESModel@@UAE_NPAUHWND__@@K@Z              = _NOTINGAME,0x0049BCD0     ; GetModelPathFromDlg
 ?SetModelPath@TESModel@@UAEXPBD@Z                               = 0x0046E080,0x0049C8A0     ; SetModelPath
 ?UpdateModelBound@TESModel@@UAEXPAVNiNode@@PAVTESForm@@M@Z      = _NOTINGAME,0x0049C290     ; UpdateModelBound
+?UpdateModelTextureList@TESModel@@UAEXPAVNiNode@@PAVTESForm@@@Z = _NOTINGAME,0x0049D6E0     ; UpdateModelTextureList
 ; methods
 ?SaveComponent@TESModel@@QAEXKKK@Z              = 0x0046D8B0,0x0049C960     ; SaveComponent
 ?LoadComponent@TESModel@@SAXAAV1@AAVTESFile@@@Z = 0x0046DB00,0x0049D0D0     ; LoadComponent

@@ -46,7 +46,8 @@ public:
     // members
     MEMBER /*18/24*/    TESObjectListHead*  head;
     #ifndef OBLIVION
-    MEMBER /*--/28*/    void*               unkObj28;   // for ref counting of loaded models (?)
+    MEMBER /*--/28*/    void*               unkObj28;   // for ref counting of loaded models (?)  
+                                                        // struct {void* reflist; UInt32 modelUseCount?; BSSimpleList<UInt32> unk; ...?}
     #endif
     MEMBER /*1C/2C*/    TESObject*          prev;
     MEMBER /*20/30*/    TESObject*          next;   

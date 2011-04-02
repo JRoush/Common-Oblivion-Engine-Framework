@@ -18,7 +18,7 @@
 class   TESFile;
 class   TESForm;    // TESForms/TESForm.h
 class   NiNode;
-struct  FULL_HASH;  // Useage unknown
+struct  FULL_HASH;  // Useage unknown - struct {void* unk00; void* unk04; void* unk08;}
 class   Script;
 class   SpellItem;
 class   TESLevSpell;
@@ -220,9 +220,10 @@ class IMPORTCLASS TESModel : public BaseFormComponent
 /*
     Partial:
     -   members
-    -   virtual methods
 */
 public:
+
+    typedef NiTList<FULL_HASH*> ModelHashList;  // probably a named class, but without it's own vtbl or RTTI info
 
     // members
     //     /*00/00*/ void**                 vtbl;
@@ -233,7 +234,7 @@ public:
     MEMBER /*11/--*/ UInt8                  unkModel11[3]; // 
     MEMBER /*14/--*/ void*                  unkModel14; // Object released by destructor, ClearComponentReferences()
     #else
-    MEMBER /*--/10*/ NiTList<FULL_HASH*>    unkModel10; // 
+    MEMBER /*--/10*/ ModelHashList          modelHashList; // texture hash list ?
     MEMBER /*--/20*/ UInt32                 modelPathDlgItem; // Dialog Control ID for model path
     #endif
 
@@ -251,7 +252,7 @@ public:
 
     // additional virtual methods 
     IMPORT /*010/034*/ virtual              ~TESModel();    // 
-                                            // The vtbl entry is acutally the compiler-generated 'vector deleting destructor', which calls this method
+                                            // The vtbl entry is acutally the compiler-generated 'scalar deleting destructor', which calls this method
     IMPORT /*014/038*/ virtual const char*  ModelPath();
     #ifndef OBLIVION
     IMPORT /*---/03C*/ virtual bool         GetModelPathFromDlg(HWND dialog, UInt32 pathDialogItem);   //
@@ -260,7 +261,7 @@ public:
     IMPORT /*018/040*/ virtual void         SetModelPath(const char* path);
     #ifndef OBLIVION
     IMPORT /*---/044*/ virtual void         UpdateModelBound(NiNode* node, TESForm* parentForm = 0, float newBound = 0.0);
-    _NOUSE /*---/048*/ virtual void         UnkTESModel048(UInt32 arg0, TESForm* parentForm = 0) {} // update hash table member??
+    IMPORT /*---/048*/ virtual void         UpdateModelTextureList(NiNode* node, TESForm* parentForm = 0); // invoked by the corresponding menu command
     #endif
 
     // methods
