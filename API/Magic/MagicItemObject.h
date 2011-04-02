@@ -80,7 +80,8 @@ public:
     MEMBER /*07D/195*/ UInt8            ingrPad7D[3]; // saved & loaded, but not initialized    
 
     // TESBoundObject virtual methods
-    IMPORT /*010/034*/ virtual              ~IngredientItem();
+    IMPORT /*010/034*/ virtual              ~IngredientItem();// also overrides TESModel::~TESModel(), for which
+                                            // the compiler automatically generates a thunk redirecting to this method
     IMPORT /*014/038*/ virtual void         InitializeAllComponents();
     IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences();
     IMPORT /*06C/070*/ virtual void         LinkForm();
@@ -150,7 +151,8 @@ public:
     MEMBER /*07D/195*/ UInt8            alchPad7D[3]; // saved & loaded, but not initialized    
 
     // TESBoundObject virtual methods
-    IMPORT /*010/034*/ virtual              ~AlchemyItem();
+    IMPORT /*010/034*/ virtual              ~AlchemyItem();// also overrides TESModel::~TESModel(), for which
+                                            // the compiler automatically generates a thunk redirecting to this method
     IMPORT /*014/038*/ virtual void         InitializeAllComponents();
     IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences();
     IMPORT /*06C/070*/ virtual void         LinkForm();

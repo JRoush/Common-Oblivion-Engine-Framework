@@ -171,14 +171,15 @@ public:
     #endif
 
     // virtual methods - TESFormIDListView
-    IMPORT /*010/034*/ virtual              ~EffectSetting();
+    IMPORT /*010/034*/ virtual              ~EffectSetting();// also overrides TESModel::~TESModel(), for which
+                                            // the compiler automatically generates a thunk redirecting to this method
     IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file); 
     IMPORT /*024/048*/ virtual void         SaveFormChunks();
     IMPORT /*06C/070*/ virtual void         LinkForm();
     IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form); 
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
-    IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form); //
+    IMPORT /*---/0F4*/ virtual void         RemoveFormReference(TESForm& form);
     IMPORT /*---/0F8*/ virtual bool         FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
     IMPORT /*---/0FC*/ virtual void         GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); 
