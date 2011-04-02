@@ -84,7 +84,7 @@ protected:  UInt32                  m_uiHashSize;       // 04 maximum slots in h
 
             // virtual methods              
 public:     virtual                         ~NiTMapBase();                                                  // 000 
-                                            // vtbl entry is actually 'vector deleting destructor', which calls this method       
+                                            // vtbl entry is actually 'scalar deleting destructor', which calls this method       
 protected:  virtual UInt32                  KeyToHashIndex(TKEY key) const;                                 // 004 actually a templated functor
             virtual bool                    IsKeysEqual(TKEY key1, TKEY key2) const;                        // 008 actually a templated functor
             virtual void                    SetValue(NiTMapItem<TKEY,TVAL>* pkItem, TKEY key, TVAL val);    // 00C

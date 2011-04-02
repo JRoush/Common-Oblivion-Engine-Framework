@@ -79,7 +79,7 @@ public:
 
     // virtual methods    
     IMPORT /*000*/ virtual                  ~ActiveEffect();
-                                            // The vtbl entry is acutally the compiler-generated 'vector deleting destructor', which calls this method
+                                            // The vtbl entry is acutally the compiler-generated 'scalar deleting destructor', which calls this method
     IMPORT /*004*/ virtual ActiveEffect*    Clone() const; // allocate new AE of the same type & copy member values to it
     INLINE /*008*/ virtual void             UpdateEffect(float timeElapsed) {} // update effect, called every frame
     IMPORT /*00C*/ virtual UInt16           EffectSaveSize(TESObjectREFR* parent); // size of type-specific members when serialized

@@ -141,7 +141,7 @@ public:
     
     // virtual methods:
     IMPORT /*00/00*/ virtual            ~BSExtraData(); //
-                                        // The vtbl entry is actually the compiler-generated 'vector deleting destructor', which calls this method
+                                        // The vtbl entry is actually the compiler-generated 'scalar deleting destructor', which calls this method
     IMPORT /*04/04*/ virtual bool       CompareExtraTo(const BSExtraData& compareTo); // returns true if not equal
 
     // use FormHeap for class new & delete

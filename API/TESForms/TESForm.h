@@ -178,7 +178,7 @@ public:
 
     // TESForm virtual methods
     IMPORT /*010/034*/ virtual              ~TESForm(); //
-                                            // The vtbl entry is actually the compiler-generated 'vector deleting destructor', which calls this method
+                                            // The vtbl entry is actually the compiler-generated 'scalar deleting destructor', which calls this method
     IMPORT /*014/038*/ virtual void         InitializeAllComponents(); // use to init forms before loading their record from file
     IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences(); // used to clear forms before calling InitAllComponents and loading record from file
     IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file);

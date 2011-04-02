@@ -70,7 +70,7 @@ protected:  TVAL*       m_pBase;        // 04 pointer to the array storage
             UInt16      m_usGrowBy;     // 0E number of slots to grow array when full
 
             // virtual methods
-public:     virtual     ~NiTArray();    // 00 vtbl entry is actually 'vector deleting destructor', which calls this method    
+public:     virtual     ~NiTArray();    // 00 vtbl entry is actually 'scalar deleting destructor', which calls this method    
 
             // array size
 public:     inline UInt16       GetSize() const;                    // Number of slots used in array, up to 1 past last used slot

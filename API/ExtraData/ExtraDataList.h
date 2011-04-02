@@ -23,7 +23,7 @@ public:
 
     // virtual methods
     IMPORT /*00/00*/ virtual        ~BaseExtraList(); // destroys all data in list.  The vtbl entry is actually the
-                                    // compiler-generated 'vector deleting destructor', which calls this method
+                                    // compiler-generated 'scalar deleting destructor', which calls this method
 
     // methods
     IMPORT void             AddExtra(BSExtraData* data); // inserts in list and updates type bitfield
