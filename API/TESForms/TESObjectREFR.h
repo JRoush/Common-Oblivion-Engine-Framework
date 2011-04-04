@@ -119,8 +119,8 @@ public:
                                                 // actually 'Vector3& GetInitialRotation(Vector3& temp)', but the compiler handles the temp
     IMPORT /*0F4/134*/ virtual Vector3          GetInitialPosition(); // 
                                                 // actually 'Vector3& GetInitialPosition(Vector3& temp)', but the compiler handles the temp 
-    _NOUSE /*0F8/138*/ virtual Vector3          UnkRefr0F8(); // 
-                                                // actually 'Vector3& GetInitialPosition(Vector3& temp)', but the compiler handles the temp 
+    IMPORT /*0F8/138*/ virtual void             MoveInitialPosition(Vector3 position); // moves starting position to specified coords
+                                                // or current position if coords are (0,0,0)
     _NOUSE /*0FC/13C*/ virtual bool             UnkRefr0FC(); 
     _NOUSE /*100/140*/ virtual void             RemoveItem(TESForm* toRemove, void* extraList, UInt32 arg2, UInt32 arg3, UInt32 arg4, 
                                                     TESObjectREFR* destRef, UInt32 arg6, UInt32 arg7, UInt32 arg8, UInt8 arg9); // 

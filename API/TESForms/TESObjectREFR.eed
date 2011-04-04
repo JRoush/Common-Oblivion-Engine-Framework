@@ -43,6 +43,7 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetScale@TESObjectREFR@@UAEMXZ                         = 0x004D7260,0x0053F180     ; GetScale
 ?GetInitialRotation@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8210,0x00540190     ; GetInitialRotation
 ?GetInitialPosition@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8230,0x005401B0     ; GetInitialPosition
+?MoveInitialPosition@TESObjectREFR@@UAEXVVector3@@@Z    = 0x004DD1A0,0x00543240     ; MoveInitialPosition
 ?AddItem@TESObjectREFR@@UAEXPAVTESForm@@PAVExtraDataList@@K@Z   = 0x004DDCF0,_NOTINCS__     ; TESObjectREFR::AddItem
 ?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ            = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
 ?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ            = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
