@@ -1,0 +1,14 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESFormSelection
+; static members
+?primarySelection@TESFormSelection@@2PAV1@A     = _NOTINGAME,0x00A0AF60     ; primarySelection
+; methods
+?AddSelection@TESFormSelection@@QAEXPAVTESForm@@_N@Z        = _NOTINGAME,0x00512730     ; AddSelection
+?RemoveSelection@TESFormSelection@@QAE_NPAVTESForm@@_N@Z    = _NOTINGAME,0x00512830     ; RemoveSelection
+?ClearSelection@TESFormSelection@@QAEX_N@Z                  = _NOTINGAME,0x00511C20     ; ClearSelection
+?HasSelection@TESFormSelection@@QAE_NPAVTESForm@@@Z         = _NOTINGAME,0x00511CC0     ; HasSelection
+??0TESFormSelection@@QAE@XZ     = _NOTINGAME,0x00511A20     ; TESFormSelection
+??1TESFormSelection@@QAE@XZ     = _NOTINGAME,0x00511A50     ; ~TESFormSelection
+;}

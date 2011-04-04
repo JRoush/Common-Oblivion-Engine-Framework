@@ -44,6 +44,8 @@ EXPORTS ;{ ; TESDialog
 ?SetDlgItemTextFloat@TESDialog@@SA_NPAUHWND__@@HMH@Z        = _NOTINGAME,0x00403FB0     ; SetDlgItemTextFloat
 ?GetDlgItemTextFloat@TESDialog@@SAMPAUHWND__@@H@Z           = _NOTINGAME,0x00403F50     ; GetDlgItemTextFloat
 ?SetTextFloatLimits@TESDialog@@SAXPAUHWND__@@MM_NK@Z        = _NOTINGAME,0x004042C0     ; SetTextFloatLimits
+; form selection drag&drop
+?CanDropFormSelection@TESDialog@@SA_NEPAUHWND__@@@Z         = _NOTINGAME,0x004433C0     ; CanDropFormSelection
 ;}
 
 EXPORTS ;{ ; TESComboBox

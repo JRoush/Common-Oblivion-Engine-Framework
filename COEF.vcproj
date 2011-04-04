@@ -511,6 +511,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\CSDialogs\TESFormSelection.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\CSDialogs\TESFormSelection.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\CSDialogs\TESStringInputDialog.eed"
 					>
 				</File>

@@ -19,6 +19,7 @@
 //#include "API/CSDialogs/TESDialog.h"
 //#include "API/CSDialogs/DialogExtraData.h"
 //#include "API/CSDialogs/DialogConstants.h"
+//#include "API/CSDialogs/TESFormSelection.h"
 //#include "API/ExtraData/BSExtraData.h"
 //#include "API/ExtraData/ExtraDataList.h"
 //#include "API/GameWorld/TESObjectCELL.h"

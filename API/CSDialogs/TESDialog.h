@@ -40,7 +40,6 @@ public:
     class IMPORTCLASS Subwindow
     {// size 20
     public:
-
         // members
         MEMBER /*00*/ BSSimpleList<HWND>    controls;
         MEMBER /*08*/ HWND                  hDialog; // handle of parent dialog window
@@ -68,6 +67,8 @@ public:
         MEMBER /*00*/ UInt8     formType; // see TESForm::FormTypes
         MEMBER /*01*/ UInt8     pad01[3]; 
         MEMBER /*04*/ TESForm*  form; // form object to be edited by the dialog
+        // use FormHeap for class new & delete
+        USEFORMHEAP
     };
 
     // methods - for Form-editing dialogs, only forms accessed through the Object Window.  
@@ -128,6 +129,15 @@ public:
     IMPORT static float                 GetDlgItemTextFloat(HWND dialog, INT dlgItemID);
     IMPORT static void                  SetTextFloatLimits(HWND control, float min, float max, bool noDecimalPlaces = true, UInt32 decimalPlaces = 4); // 
                                         // forces control text (current and future) within specified floating point limits
+
+    // methods - form selection for Drag & Drop
+    static const UINT   WM_CANDROPSELECTION = 0x408;    // dispatched to target window during drag & drop to determine if window is a valid drop target
+                                                        // WParam = form typecode, LParam = target window handle
+                                                        // LResult = 1 if primary form selection can be dropped on target
+    static const UINT   WM_DROPSELECTION    = 0x407;    // dispatched to target window during drag & drop to notify window of drop
+                                                        // WParam = 0, LParam = POINT* containing coordinates of drop
+                                                        // Window should process TESFormSelection::primarySelection, and then clear it
+    IMPORT static bool                  CanDropFormSelection(UInt8 formType, HWND targetWindow);
 
     // static data 
     IMPORT static BSSimpleList<HWND>    openDialogs; // LL of handles for open multiple-instance dialogs, 
