@@ -19,7 +19,8 @@
 #endif
 
 // argument classes
-struct Event;
+struct  Event;
+class   TESForm;    // TESForms/TESForm.h
 
 class COMPONENT_EXPORT EventManager
 {
@@ -51,6 +52,20 @@ public:
     // See MS documentation on WM_COMMAND message for meaningof wparam & lparam
     // Callback should return zero if message was handled (prevents CS from handling
     // the message itself).
+
+    static Event&   CSObjectWindow_CompareObject;
+    typedef bool (*CSObjectWindow_CompareObject_f)(TESForm* formA, TESForm* formB, UInt32 columnID, int& result);   
+    // Intercepts calls to the Object Window sorting method, used to order objects in the window
+    // result should be positive if formA > formB, negative if formA < formB, and 0 if formA == formB
+    // return true to use result value, return false to use default sort comparision
+
+    static Event&   CSObjectWindow_GetObjectDispInfo;
+    typedef bool (*CSObjectWindow_GetObjectDispInfo_f)(void* displayInfo);   
+    // Intercepts calls to the Object Window display info method, used to determine contents of object listview grid
+    // displayInfo is a NMLVDISPINFO*, defined in <CommCtrl.h>
+    // displayInfo->item.iSubItem is the Object Window column ID
+    // displayInfo->item.lParam is the TESForm*
+    // return false to use default display value
 
     #endif
     
