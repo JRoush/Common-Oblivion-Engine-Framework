@@ -134,7 +134,7 @@ public:
     #ifdef OBLIVION
     _NOUSE /*0CC/---*/ virtual bool         UnkForm0CC(TESObjectREFR* arg0, TESObjectREFR* arg1, UInt32 arg2, UInt32 arg3, UInt32 arg4) {return false;}
     #else
-    _NOUSE /*0B0/0B4*/ virtual UInt32       UnkForm0B0() {return 0;} // 
+    IMPORT /*0B0/0B4*/ virtual UInt32       GetObjectRefCount();
     #endif
 
     // TESObject virtual methods

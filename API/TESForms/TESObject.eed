@@ -21,8 +21,9 @@ EXPORTS ;{ ; TESCellUseList
 EXPORTS ;{ ; TESBoundObject
 ; virtual methods
 ??1TESBoundObject@@UAE@XZ    = 0x004B3010,0x00514040     ; ~TESBoundObject
-?IncrObjectRefCount@TESBoundObject@@UAEKXZ = _NOTINGAME,0x004CE4C0     ; IncrObjectRefCount
-?DecrObjectRefCount@TESBoundObject@@UAEKXZ = _NOTINGAME,0x004CE4D0     ; DecrObjectRefCount
+?GetObjectRefCount@TESBoundObject@@UAEKXZ   = _NOTINGAME,0x006DA260     ; GetObjectRefCount
+?IncrObjectRefCount@TESBoundObject@@UAEKXZ  = _NOTINGAME,0x004CE4C0     ; IncrObjectRefCount
+?DecrObjectRefCount@TESBoundObject@@UAEKXZ  = _NOTINGAME,0x004CE4D0     ; DecrObjectRefCount
 ; methods
 ??0TESBoundObject@@QAE@XZ    = 0x004B2FF0,0x00513FA0     ; TESBoundObject
 ;}

@@ -3,11 +3,13 @@
     It provides a common, very sophisticated interface for Serialization, Revision Control,
     Inter-form references, and editing (in the CS).
 
-    NOTE: when dealing with the CS reference-tracking system, the list of forms that point to 
-    a this form ("backward" references) are referred to as "Cross References".  This distinguishes
-    them from members that point to another form ("forward" references), which are referred to as 
-    "Form" or "Component" references. The notation is akward, a result of choosing names before a 
-    clear picture of the system emerged (it still hasn't).
+    NOTE on the CS reference-tracking:
+    A Form may point to other forms through it's member fields; these are it's "Form", or "Component" references.
+    These list of other forms that point to this one are it's "Cross" references.
+    The exception is if this form is a base for a placed TESObjectREFR - refs that point to this form are it's "Object" references.
+    The notation is admittedly akward, a result of choosing names before a clear picture of the system emerged.
+    Form and Cross references are tracked individually through a global table.  Object refs are not tracked individually, but
+    every instance of TESBoundObject does maintain a cell-by-cell count.
 */
 #pragma once
 
@@ -228,7 +230,7 @@ public:
     _NOUSE /*0A4/0A8*/ virtual bool         UnkForm0A4() {return false;}
     _NOUSE /*0A8/0AC*/ virtual bool         UnkForm0A8() {return false;}
     _NOUSE /*0AC/0B0*/ virtual bool         UnkForm0AC() {return false;}
-    _NOUSE /*0B0/0B4*/ virtual UInt32       UnkForm0B0() {return 0;} // get object (container) use count? 
+    INLINE /*0B0/0B4*/ virtual UInt32       GetObjectRefCount() {return 0;} // get object ref count (placed references with this as base form)
     IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form); // copies all fields, including base components
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo); // returns 0 if equivalent.  compares all fields, including base components.
     IMPORT /*0BC/0C0*/ virtual bool         MatchGroupRecord(const RecordInfo& groupRecord, bool matchAllLevels, bool arg2); //
