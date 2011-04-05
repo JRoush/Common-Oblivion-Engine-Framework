@@ -235,8 +235,6 @@
 #define IDC_EFIT_ACTORVALUELABEL            2069 // STATIC
 #define IDC_EFIT_SCRIPTEFFECTINFOFRAME      2082 // BUTTON
 #define IDC_EFIT_SCRIPTLABEL                2079 // STATIC
-#define IDC_EFIT_SCRIPT                     1226 // COMBOBOX
-#define IDC_EFIT_EDITSCRIPT                 1062 // BUTTON
 #define IDC_EFIT_NAMELABEL                  2080 // STATIC
 #define IDC_EFIT_NAME                       2071 // EDIT
 #define IDC_EFIT_SCHOOLLABEL                2081 // STATIC
