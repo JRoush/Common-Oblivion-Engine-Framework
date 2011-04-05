@@ -255,7 +255,7 @@ public:
     _NOUSE /*---/0D0*/ virtual bool         UnkForm0D0(UInt32 arg0) {return false;}
     _NOUSE /*---/0D4*/ virtual bool         UnkForm0D4() {return false;} // checks for valid current or last userid
     _NOUSE /*---/0D8*/ virtual bool         UnkForm0D8() {return false;}
-    IMPORT /*---/0DC*/ virtual void         GetResourcePath(BSStringT& path); // default checks for model, biped model, texture component
+    IMPORT /*---/0DC*/ virtual void         GetResourcePath(BSStringT& path); // used to subdivide entries in the object window
     _NOUSE /*---/0E0*/ virtual bool         UnkForm0E0(UInt32 arg0) {return false;}
     _NOUSE /*---/0E4*/ virtual bool         UnkForm0E4() {return false;}
     _NOUSE /*---/0E8*/ virtual bool         UnkForm0E8(UInt32 arg0) {return false;}

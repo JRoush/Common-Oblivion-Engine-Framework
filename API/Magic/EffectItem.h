@@ -51,14 +51,14 @@ public:
     MEMBER /*20/20*/ float              cost;
     #ifndef OBLIVION
     // These fields are initialized before or just after an EffectItem is edited in the Efit dialog
-    MEMBER /*24/24*/ EffectSetting*     filterMgef; // filter effect from source magic item
-    MEMBER /*28/28*/ SInt32             origBaseMagicka; // pre-editing base magicka cost
-    MEMBER /*2C/2C*/ SInt32             origItemMagicka; // pre-editing base magicka cost of magic item
-    MEMBER /*30/30*/ UInt32             origItemMastery; // pre-editing mastery of magic item (not used by vanilla dialog)
+    MEMBER /*--/24*/ EffectSetting*     filterMgef; // filter effect from source magic item
+    MEMBER /*--/28*/ SInt32             origBaseMagicka; // pre-editing base magicka cost
+    MEMBER /*--/2C*/ SInt32             origItemMagicka; // pre-editing base magicka cost of magic item
+    MEMBER /*--/30*/ UInt32             origItemMastery; // pre-editing mastery of magic item (not used by vanilla dialog)
     #endif
 
     // methods - other effect items
-    IMPORT bool                 CompareTo(const EffectItem& compareTo) const ; // return false if equivalent
+    IMPORT bool                 CompareTo(const EffectItem& compareTo) const; // return false if equivalent
                                 // compares param even if not used
     IMPORT void                 CopyFrom(const EffectItem& copyFrom); 
     #ifdef OBLIVION
@@ -73,11 +73,11 @@ public:
     IMPORT void                 Save(); // serialize to current file record, including scripteffectinfo if present
 
     // methods - magnitude, duration, area, range, effect setting
-    IMPORT SInt32               GetMagnitude() const ; // always returns 0 if effect cannot have magnitude
+    IMPORT SInt32               GetMagnitude() const; // always returns 0 if effect cannot have magnitude
     IMPORT bool                 SetMagnitude(SInt32 magnitude); // returns false on failure
-    IMPORT SInt32               GetArea() const ; // always returns 0 if effect cannot have area
+    IMPORT SInt32               GetArea() const; // always returns 0 if effect cannot have area
     IMPORT bool                 SetArea(SInt32 area); // returns false on failure
-    IMPORT SInt32               GetDuration() const ; // always returns 0 if effect cannot have duration
+    IMPORT SInt32               GetDuration() const; // always returns 0 if effect cannot have duration
     IMPORT bool                 SetDuration(SInt32 duration); // returns false on failure
     INLINE UInt32               GetRange() const {return range;} // completely inlined in game/CS code
     IMPORT bool                 SetRange(UInt32 range);  // returns false on failure
@@ -91,18 +91,18 @@ public:
     #endif
 
     // methods - properties of underlying effect, use instead of accessing the effect directly
-    IMPORT UInt32               GetSchool() const ;
-    IMPORT Script*              GetScript() const ; // returns null if not a script effect
-    IMPORT bool                 IsHostile() const ;
-    IMPORT UInt32               GetSummonedForm() const ; // returns summoned formID for summoning effects, 0 otherwise
-    IMPORT BSStringT            GetEffectName() const ; // copy of effect name, or script effect name if present. 
+    IMPORT UInt32               GetSchool() const;
+    IMPORT Script*              GetScript() const; // returns null if not a script effect
+    IMPORT bool                 IsHostile() const;
+    IMPORT UInt32               GetSummonedForm() const; // returns summoned formID for summoning effects, 0 otherwise
+    IMPORT BSStringT            GetEffectName() const; // copy of effect name, or script effect name if present. 
                                 // actually 'BSStringT& GetEffectName(BSStringT& temp)', temp arg handled by compiler
     #ifdef OBLIVION    
-    IMPORT BSStringT            GetDisplayText(UInt32 magicType, float effectiveness, bool noDuration, bool noRange, bool onStrikeRange) const ; //
+    IMPORT BSStringT            GetDisplayText(UInt32 magicType, float effectiveness, bool noDuration, bool noRange, bool onStrikeRange) const; //
                                 // Complete item text as shown in game menus.  OnStrikeRange only applies if noRange is false
                                 // actually 'BSStringT& GetDisplayText(BSStringT& temp, ...)', temp arg handled by compiler
-    IMPORT BSStringT            GetDisplayText(const MagicItem& parentItem, float effectiveness = 1.0) const ; // overload for convenience
-    IMPORT void                 GetAVQualifiedName(char* buffer) const ; // effective name 
+    IMPORT BSStringT            GetDisplayText(const MagicItem& parentItem, float effectiveness = 1.0) const; // overload for convenience
+    IMPORT void                 GetAVQualifiedName(char* buffer) const; // effective name 
                                 // for ValueModifier effects w/ the UseSkill/UseAttribute flags
     #endif
 
