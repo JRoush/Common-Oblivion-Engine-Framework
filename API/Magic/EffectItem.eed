@@ -58,10 +58,10 @@ EXPORTS ;{ ; EffectItemList
 ?HasEffectWithFlag@EffectItemList@@QAE_NK@Z                 = 0x00415130,0x00567080     ; HasEffectWithFlag
 ?HasHostileEffect@EffectItemList@@QAE_NXZ                   = 0x004149F0,0x00566BE0     ; HasHostileEffect
 ?HasAllHostileEffects@EffectItemList@@QAE_NXZ               = 0x00414EB0,0x00566F90     ; HasAllHostileEffects
-?GetStrongestItem@EffectItemList@@QAEPAVEffectItem@@K_N@Z   = 0x004152C0,0x005671B0     ; GetStrongestItem
+?GetStrongestEffect@EffectItemList@@QAEPAVEffectItem@@K_N@Z = 0x004152C0,0x005671B0     ; GetStrongestEffect
 ?HasAreaEffect@EffectItemList@@QAE_NXZ                      = 0x004150D0,_NOTINCS__     ; HasAreaEffect
 ?HasEffectCode@EffectItemList@@QAA_NKZZ                     = 0x00414C00,_NOTINCS__     ; HasEffectCode
-?HasIgnored@EffectItemList@@QAE_NXZ                         = 0x00415180,_NOTINCS__     ; HasIgnored
+?HasIgnoredEffect@EffectItemList@@QAE_NXZ                   = 0x00415180,_NOTINCS__     ; HasIgnoredEffect
 ?HasScriptEffect@EffectItemList@@QAE_NPAVScript@@@Z         = 0x00414F80,_NOTINCS__     ; HasScriptEffect
 ?HasSelfEffect@EffectItemList@@QAE_NXZ                      = 0x00415080,_NOTINCS__     ; HasSelfEffect
 ?HasTouchEffect@EffectItemList@@QAE_NXZ                     = 0x00415030,_NOTINCS__     ; HasTouchEffect
@@ -78,11 +78,11 @@ EXPORTS ;{ ; EffectItemList
 ?GetEffectDisplayInfo@EffectItemList@@SGXPAX@Z                      = _NOTINGAME,0x00567670     ; GetEffectDisplayInfo
 ?EffectItemComparator@EffectItemList@@SGHABVEffectItem@@0H@Z        = _NOTINGAME,0x005678B0     ; EffectItemComparator
 ; methods - other
-?Remove@EffectItemList@@QAEXPBVEffectItem@@@Z               = 0x00414BC0,0x00566F50     ; Remove
-?Add@EffectItemList@@QAEXPAVEffectItem@@@Z                  = 0x00414B90,0x00566F20     ; Add
-?Clear@EffectItemList@@QAEXXZ                               = 0x00414C70,0x005670F0     ; Clear
-?GetItemByIndex@EffectItemList@@QAEPAVEffectItem@@J@Z       = 0x00414B10,0x00566EA0     ; GetItemByIndex
-?GetIndexOfItem@EffectItemList@@QAEEPAVEffectItem@@@Z       = 0x00414D50,_NOTINCS__     ; GetIndexOfItem
+?RemoveEffect@EffectItemList@@QAEXPBVEffectItem@@@Z         = 0x00414BC0,0x00566F50     ; RemoveEffect
+?AddEffect@EffectItemList@@QAEXPAVEffectItem@@@Z            = 0x00414B90,0x00566F20     ; AddEffect
+?ClearEffects@EffectItemList@@QAEXXZ                        = 0x00414C70,0x005670F0     ; ClearEffects
+?GetEffectByIndex@EffectItemList@@QAEPAVEffectItem@@J@Z     = 0x00414B10,0x00566EA0     ; GetEffectByIndex
+?GetIndexOfEffect@EffectItemList@@QAEEPAVEffectItem@@@Z     = 0x00414D50,_NOTINCS__     ; GetIndexOfEffect
 ?CompareEffectsTo@EffectItemList@@QAE_NABV1@@Z              = 0x00414A70,0x00566E00     ; CompareEffectsTo
 ?CopyEffectsFrom@EffectItemList@@QAEXABV1@@Z                = 0x00414DC0,0x005673D0     ; CopyEffectsFrom
 ?SaveEffects@EffectItemList@@QAEXXZ                         = 0x00414A20,0x00566DA0     ; SaveEffects

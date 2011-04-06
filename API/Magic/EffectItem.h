@@ -154,12 +154,12 @@ public:
     IMPORT /*08/08*/ virtual UInt32     GetMasteryLevel(); 
 
     // methods - add, remove, iterate effect items
-    IMPORT void                 Remove(const EffectItem* item); // remove item & update hostile count. Does NOT delete item.
-    IMPORT void                 Add(EffectItem* item); // append item to end & update hostile count.
-    IMPORT void                 Clear(); // delete all items & nodes.  WARNING: Does NOT zero hostile count (probably a bug) 
-    IMPORT EffectItem*          GetItemByIndex(SInt32 index); // get item by position 
+    IMPORT void                 RemoveEffect(const EffectItem* item); // remove item & update hostile count. Does NOT delete item.
+    IMPORT void                 AddEffect(EffectItem* item); // append item to end & update hostile count.
+    IMPORT void                 ClearEffects(); // delete all items & nodes.  WARNING: Does NOT zero hostile count (probably a bug) 
+    IMPORT EffectItem*          GetEffectByIndex(SInt32 index); // get item by position 
     #ifdef OBLIVION
-    IMPORT UInt8                GetIndexOfItem(EffectItem* item);
+    IMPORT UInt8                GetIndexOfEffect(EffectItem* item);
     #endif
     
     // methods - aggregate properties
@@ -169,13 +169,13 @@ public:
     IMPORT bool                 HasEffectWithFlag(UInt32 mgefFlag);                    
     IMPORT bool                 HasHostileEffect(); // used to determine hostile/nonhostile for spells & enchantments
     IMPORT bool                 HasAllHostileEffects(); // used to determine potion/poison for alchemy items
-    IMPORT EffectItem*          GetStrongestItem(UInt32 range = Magic::kRange__MAX, bool areaRequired = false); //
+    IMPORT EffectItem*          GetStrongestEffect(UInt32 range = Magic::kRange__MAX, bool areaRequired = false); //
                                 // range = 3 (kRange__MAX) for any range.  areaRequired = true for only AOE effects
     #ifdef OBLIVION        
     IMPORT bool                 HasAreaEffect(); // checks for effects with area > 1
     IMPORT bool                 HasEffectCode(UInt32 count, ...); // checks for any effect with the specified codes
                                 // '...' is a list of effect codes, count is the number of codes given
-    IMPORT bool                 HasIgnored(); // checks for an effect with the 'ignored' flag (1<<22)
+    IMPORT bool                 HasIgnoredEffect(); // checks for an effect with the 'ignored' flag (1<<22)
     IMPORT bool                 HasScriptEffect(Script* targetScript); // checks for a scripted effect with the specified script
     IMPORT bool                 HasSelfEffect();
     IMPORT bool                 HasTouchEffect();
