@@ -109,12 +109,12 @@ public:
     // methods - dialog interface for CS
     #ifndef OBLIVION    
     IMPORT void                 BuildActorValueList(HWND comboList); // build AV list appropriate to item
-    IMPORT void                 BuildEffectList(HWND comboList); // build effect list using filter mgef 
+    IMPORT void                 BuildEffectList(HWND comboList, bool allowNone); // build effect list using filter mgef.  'allowNone' will also exclude SEFF
     IMPORT void                 BuildRangeList(HWND comboList); // build range list using flags from effect
     IMPORT void                 BuildSchoolList(HWND comboList); // build school list
     IMPORT void                 BuildScriptList(HWND comboList); // build list of magic effect scripts
-    IMPORT void                 InitializeDialog(HWND dialog); // initialize dialog & temp effect item   
-    IMPORT void                 SetInDialog(HWND dialog); // set dialog controls from effect members
+    IMPORT void                 InitializeDialog(HWND dialog); // initialize dialog & temp effect item, set once-only control values 
+    IMPORT void                 SetInDialog(HWND dialog); // set control values that depend on selected EffectSetting
     IMPORT void                 GetFromDialog(HWND dialog); // update effect item from dialog controls      
     IMPORT bool                 HandleDialogEvent(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); //
                                 // non-static method for handling events that require access to members

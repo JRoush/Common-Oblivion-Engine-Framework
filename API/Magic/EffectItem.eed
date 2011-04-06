@@ -31,7 +31,7 @@ EXPORTS ;{ ; EffectItem
 ?GetAVQualifiedName@EffectItem@@QBEXPAD@Z                       = 0x00413A90,_NOTINCS__     ; GetAVQualifiedName
 ; dialog methods
 ?BuildActorValueList@EffectItem@@QAEXPAUHWND__@@@Z          = _NOTINGAME,0x00565440      ; BuildActorValueList
-?BuildEffectList@EffectItem@@QAEXPAUHWND__@@@Z              = _NOTINGAME,0x005652A0      ; BuildEffectList
+?BuildEffectList@EffectItem@@QAEXPAUHWND__@@_N@Z            = _NOTINGAME,0x005652A0      ; BuildEffectList
 ?BuildRangeList@EffectItem@@QAEXPAUHWND__@@@Z               = _NOTINGAME,0x00565380      ; BuildRangeList
 ?BuildSchoolList@EffectItem@@QAEXPAUHWND__@@@Z              = _NOTINGAME,0x005654E0      ; BuildSchoolList
 ?BuildScriptList@EffectItem@@QAEXPAUHWND__@@@Z              = _NOTINGAME,0x005654A0      ; BuildScriptList
