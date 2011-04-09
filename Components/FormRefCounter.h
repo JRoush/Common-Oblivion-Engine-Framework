@@ -15,10 +15,8 @@
     Useage:
     1.  Call FormRefCounter::ClearRefences() to initialize the global data structure
     2.  For each form member that points to another form:
-        -   call TESForm::RemoveCrossReference() on the old value, 
-            immediately clearing the relevanty use info for that form
-        -   call FormRefCounter::AddReference() on the new value, 
-            storing the ref for later use
+        -   call TESForm::RemoveCrossReference() on the old value, immediately clearing the relevant use info for that form
+        -   call FormRefCounter::AddReference() on the new value, storing the ref for later use
     3.  After all pointer members have been updated, call FormRefCounter::CommitReferences() 
         to move changes to the regular use info system.
 
