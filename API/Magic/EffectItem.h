@@ -166,7 +166,8 @@ public:
     IMPORT bool                 HasEffect(UInt32 mgefCode, UInt32 avCode); // list has specified effect code.   
                                 // avCode is checked only for effects that use the ActorValue field on effect items
                                 // pass an avCode of 72 (ActorVal__MAX) to skip the avCoder check
-    IMPORT bool                 HasEffectWithFlag(UInt32 mgefFlag);                    
+    IMPORT bool                 HasEffectWithFlag(UInt32 mgefFlag); // used for checking for summon/bound item effects  
+                                // also when building filtered effect setting lists, for e.g. the spellmaking menu
     IMPORT bool                 HasHostileEffect(); // used to determine hostile/nonhostile for spells & enchantments
     IMPORT bool                 HasAllHostileEffects(); // used to determine potion/poison for alchemy items
     IMPORT EffectItem*          GetStrongestEffect(UInt32 range = Magic::kRange__MAX, bool areaRequired = false); //
@@ -177,6 +178,7 @@ public:
                                 // '...' is a list of effect codes, count is the number of codes given
     IMPORT bool                 HasIgnoredEffect(); // checks for an effect with the 'ignored' flag (1<<22)
     IMPORT bool                 HasScriptEffect(Script* targetScript); // checks for a scripted effect with the specified script
+                                // used in Dispel script command to determine if calling script needs to be terminated
     IMPORT bool                 HasSelfEffect();
     IMPORT bool                 HasTouchEffect();
     IMPORT bool                 HasTargetEffect();
