@@ -31,14 +31,15 @@ public:
     RefChange*      lastListHead;
     RefTableT&      GetRefTable()       // return ref table for this instance, creating one if necessary  
     {
-        if (!refTable) refTable = new RefTableT;
+        if (!refTable) refTable = new RefTableT(1000);
         return *refTable;
     }
 
     // reference management
-    SInt32          ModifyCount(TESForm* masterForm, TESForm* refForm, SInt32 countChange)   // returns new count
+    SInt32          ModifyCount(TESForm* masterForm, TESForm* refForm, SInt32 countChange)   // updates use-info system, returns new count
     {
-        if (!masterForm || !refForm) return 0;  // bad form*
+        if (!masterForm || masterForm->formFlags & TESForm::kFormFlags_Temporary) return 0; // invalid or temporary master form
+        if (!refForm || refForm->formFlags & TESForm::kFormFlags_Temporary) return 0; // invalid or temporary referenced form
 
         // lookup list head in map 
         if (masterForm != lastKey) 
@@ -50,13 +51,15 @@ public:
         if (!lastListHead)
         {
             // no list found for master form
-            if (countChange != 0)
+            if (countChange > 0)
             {
                 // non-zero change to count; create a new list entry
                 lastListHead = new RefChange(refForm,countChange);
                 GetRefTable().SetAt(masterForm,lastListHead);
+                refForm->AddCrossReference(masterForm);
+                return countChange;
             }
-            return countChange;
+            else return 0;
         }
 
         // search list for referenced form
@@ -70,18 +73,20 @@ public:
         if (!change)
         {
             // no entry found for referenced form
-            if (countChange != 0)   
+            if (countChange > 0)   
             {
                 // non-zero change to count; create a new list entry
                 change = new RefChange(refForm,countChange);
                 if (prevChange) prevChange->next = change;
-            }
-            return countChange;        
+                refForm->AddCrossReference(masterForm);
+                return countChange;   
+            }  
+            else return 0;
         }
 
         // modify count for existing entry
         change->count += countChange;
-        if (change->count == 0)
+        if (change->count <= 0)
         {
             // change record now empty, remove from list
             if (prevChange)
@@ -108,11 +113,12 @@ public:
                 lastListHead = 0;
                 delete change;
             }
+            refForm->RemoveCrossReference(masterForm);
             return 0;
         }
         return change->count;
     }
-    void            ClearTable()        // clear all tracked changes
+    void            ClearTable()        // clear all tracked changes, does *not* update use-info system
     {
         NiTMapIterator pos = GetRefTable().GetFirstPos();
         while (pos)
@@ -123,27 +129,6 @@ public:
             while (refChange)
             {
                 RefChange* n = refChange->next;
-                delete refChange;
-                refChange = n;
-            }
-        }
-        GetRefTable().RemoveAll();
-        lastKey = 0;
-        lastListHead = 0;
-    }
-    void            CommitChanges()     // commit all changes to CS use info system and clear table
-    {
-        NiTMapIterator pos = GetRefTable().GetFirstPos();
-        while (pos)
-        {
-            TESForm*    masterForm;
-            RefChange*  refChange;
-            GetRefTable().GetNext(pos,masterForm,refChange);
-            while (refChange)
-            {
-                RefChange* n = refChange->next;
-                if (refChange->form && refChange->count > 0) refChange->form->AddCrossReference(masterForm);
-                else if (refChange->form && refChange->count < 0) refChange->form->RemoveCrossReference(masterForm);
                 delete refChange;
                 refChange = n;
             }
@@ -222,9 +207,9 @@ void FormRefCounter::ClearReferences()
     FormRefCounterInstance::instance.ClearTable();
     #endif
 }
-void FormRefCounter::CommitReferences()
+void FormRefCounter::DumpReferences()
 {
     #ifndef OBLIVION
-    FormRefCounterInstance::instance.CommitChanges();
+    FormRefCounterInstance::instance.DumpTable();
     #endif
 }
