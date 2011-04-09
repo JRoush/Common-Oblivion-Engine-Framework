@@ -1,7 +1,7 @@
 /*   
     TESFile Formats
 
-    Common definitions for saaving, loading, and resolving data in mod (.esp/.esm) files
+    Common definitions for saving, loading, and resolving data in mod (.esp/.esm) files
 */
 #pragma once
 #ifndef COMPONENT_EXPORT

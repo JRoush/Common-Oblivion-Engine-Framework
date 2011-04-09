@@ -355,6 +355,14 @@
 			>
 		</File>
 		<File
+			RelativePath=".\FormRefCounter.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\FormRefCounter.h"
+			>
+		</File>
+		<File
 			RelativePath=".\TESFileFormats.cpp"
 			>
 		</File>

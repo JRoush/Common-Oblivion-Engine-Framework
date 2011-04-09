@@ -584,6 +584,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Components\FormRefCounter.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Components\TESFileFormats.h"
 				>
 			</File>
