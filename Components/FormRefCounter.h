@@ -13,10 +13,14 @@
     system easier to use.
 
     Useage:
-    -   Call ClearRefences() to initialize the global data structure
-    -   Call AddReference()/RemoveReference() instead of TESForm::AddCrossReference()/TESForm::RemoveCrossReference()
-    -   After *all* reference count changes have been accounted for, call CommitReferences() to move 
-        changes to the regular use info system.
+    1.  Call FormRefCounter::ClearRefences() to initialize the global data structure
+    2.  For each form member that points to another form:
+        -   call TESForm::RemoveCrossReference() on the old value, 
+            immediately clearing the relevanty use info for that form
+        -   call FormRefCounter::AddReference() on the new value, 
+            storing the ref for later use
+    3.  After all pointer members have been updated, call FormRefCounter::CommitReferences() 
+        to move changes to the regular use info system.
 
     NOTE: to simplify code that uses it, the interface for this class is defined in both the game and CS.
            If called in game mode, the methods will have absolutely no effect.
