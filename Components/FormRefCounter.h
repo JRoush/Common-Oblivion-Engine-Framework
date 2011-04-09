@@ -13,7 +13,7 @@
     system easier to use.
 
     Useage:
-    1.  Call FormRefCounter::ClearRefences() to initialize the global data structure
+    1.  Call FormRefCounter::ClearReferences() to initialize the global data structure
     2.  For each form member that points to another form:
         -   call TESForm::RemoveCrossReference() on the old value, immediately clearing the relevant use info for that form
         -   call FormRefCounter::AddReference() on the new value, storing the ref for later use
@@ -38,6 +38,6 @@ public:
     // reference management
     static SInt32       AddReference(TESForm* masterForm, TESForm* refForm); // returns new count
     static SInt32       RemoveReference(TESForm* masterForm, TESForm* refForm); // returns new count
-    static void         ClearRefences();    // clears all tracked changes
+    static void         ClearReferences();    // clears all tracked changes
     static void         CommitReferences(); // commit all changes to CS use info system and clear table
 };

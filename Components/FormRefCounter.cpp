@@ -216,7 +216,7 @@ SInt32 FormRefCounter::RemoveReference(TESForm* masterForm, TESForm* refForm)
     return 0;
     #endif
 }
-void FormRefCounter::ClearRefences()
+void FormRefCounter::ClearReferences()
 {
     #ifndef OBLIVION
     FormRefCounterInstance::instance.ClearTable();
