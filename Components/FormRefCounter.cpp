@@ -1,4 +1,5 @@
 #include "FormRefCounter.h"
+#include "EventManager.h"
 
 #include "API/TES/MemoryHeap.h"
 #include "API/NiTypes/NiTMap.h"
@@ -31,13 +32,20 @@ public:
     RefChange*      lastListHead;
     RefTableT&      GetRefTable()       // return ref table for this instance, creating one if necessary  
     {
-        if (!refTable) refTable = new RefTableT(1000);
+        if (!refTable) 
+        {
+            // construct a new ref table
+            refTable = new RefTableT(1000);
+            // register event to destroy table when data handler is cleared
+            EventManager::RegisterEventCallback(EventManager::DataHandler_Clear,&FormRefCounter::ClearAllReferences);
+        }
         return *refTable;
     }
 
     // reference management
     SInt32          ModifyCount(TESForm* masterForm, TESForm* refForm, SInt32 countChange)   // updates use-info system, returns new count
     {
+        if (!refTable && countChange <= 0) return 0;  // table is empty
         if (!masterForm || masterForm->formFlags & TESForm::kFormFlags_Temporary) return 0; // invalid or temporary master form
         if (!refForm || refForm->formFlags & TESForm::kFormFlags_Temporary) return 0; // invalid or temporary referenced form
 
@@ -118,8 +126,37 @@ public:
         }
         return change->count;
     }
+    void            ClearCount(TESForm* masterForm)   // clears ref info for master form, update use-info system
+    {
+        if (!refTable) return;  // table is empty
+        if (!masterForm) return; // invalid master form
+
+        // lookup list head in map 
+        RefChange* listHead = 0;
+        if (masterForm == lastKey) 
+        {
+            // lookup result cached
+            listHead = lastListHead;
+            lastListHead = 0;
+            lastKey = 0;
+        }
+        else if (!GetRefTable().GetAt(masterForm,listHead)) listHead = 0;    // lookup result not cached
+        if (!listHead) return;  // no ref data for this master form
+
+        // destroy ref list
+        GetRefTable().RemoveAt(masterForm);
+        while (listHead)
+        {
+            RefChange* n = listHead->next;
+            delete listHead;        
+            listHead = n;
+        }
+    }
     void            ClearTable()        // clear all tracked changes, does *not* update use-info system
     {
+        if (!refTable) return;  // table already empty
+
+        // clear table lists
         NiTMapIterator pos = GetRefTable().GetFirstPos();
         while (pos)
         {
@@ -133,7 +170,13 @@ public:
                 refChange = n;
             }
         }
+        // clear & destroy table itself
         GetRefTable().RemoveAll();
+        delete refTable;
+        refTable = 0;
+        // unregister cleanup event
+        EventManager::UnregisterEventCallback(EventManager::DataHandler_Clear,&FormRefCounter::ClearAllReferences);
+        // clear cached search results
         lastKey = 0;
         lastListHead = 0;
     }
@@ -168,11 +211,7 @@ public:
     ~FormRefCounterInstance()
     {
         // cleanup map if present
-        if (refTable) 
-        {
-            ClearTable();
-            delete refTable;
-        }
+        ClearTable();
     }
 
     // global static instance
@@ -201,7 +240,13 @@ SInt32 FormRefCounter::RemoveReference(TESForm* masterForm, TESForm* refForm)
     return 0;
     #endif
 }
-void FormRefCounter::ClearReferences()
+void FormRefCounter::ClearReferences(TESForm* masterForm)
+{
+    #ifndef OBLIVION
+    FormRefCounterInstance::instance.ClearCount(masterForm);
+    #endif
+}
+void FormRefCounter::ClearAllReferences()
 {
     #ifndef OBLIVION
     FormRefCounterInstance::instance.ClearTable();

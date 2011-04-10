@@ -9,10 +9,12 @@
     FormRefCounter is a supplementary class that can track reference changes more accurately.  
     Using it allows a CopyFrom() method to be broken down into independent parts.
 
-    FormRefCounter makes *no changes* to existing game or CS code; it is just a convenient accessory 
-    that makes the existing  system easier to use.
+    FormRefCounter does not replace the normal CS use-info system; it is just a convenient accessory 
+    that makes the normal system easier to use.
 
-    Useage: Replace all calls to TESForm::Add/RemoveCrossReference() with calls to FormRefCounter::Add/RemoveReference()
+    Useage: 
+    -   Replace all calls to TESForm::Add/RemoveCrossReference() with calls to FormRefCounter::Add/RemoveReference()
+    -   Add a call to FormRefCounter::ClearReferences() in the destructor of all form classes that use this component
     
     NOTE: to simplify code that uses it, the interface for this class is defined in both the game and CS.
            If called in game mode, the methods will have absolutely no effect.
@@ -30,9 +32,10 @@ class COMPONENT_EXPORT FormRefCounter
 public:
 
     // reference management
-    static SInt32       AddReference(TESForm* masterForm, TESForm* refForm);    // returns new count
-    static SInt32       RemoveReference(TESForm* masterForm, TESForm* refForm); // returns new count
-    static void         ClearReferences();    // clears all tracked changes, without affecting use-info system
+    static SInt32       AddReference(TESForm* masterForm, TESForm* refForm);    // returns new count, update use-info
+    static SInt32       RemoveReference(TESForm* masterForm, TESForm* refForm); // returns new count, update use-info if count == 0
+    static void         ClearReferences(TESForm* masterForm);                   // clears all refs for form, does not notify use-info system
+    static void         ClearAllReferences();   // clears entire ref table; does not notify use-info system
 
     // debugging
     static void         DumpReferences();   // dumps contents of reference table to output log
