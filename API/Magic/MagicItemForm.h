@@ -11,10 +11,6 @@
 
 class IMPORTCLASS MagicItemForm : public TESForm, public MagicItem
 {// size 034/10C
-/*
-    Notes:
-    -   Overrides for undecoded virtual functions (be sure to update these if the base definition changes)
-*/
 public:
 
     // members
@@ -30,8 +26,8 @@ public:
     IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form);
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
-    _NOUSE /*---/0F8*/ virtual bool         UnkForm0F8(UInt32 arg0) {return false;}
-    _NOUSE /*---/0FC*/ virtual void         UnkForm0FC(UInt32 arg0, BSStringT& output) {}
+    IMPORT /*---/0F8*/ virtual bool         FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/0FC*/ virtual void         GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
     IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);

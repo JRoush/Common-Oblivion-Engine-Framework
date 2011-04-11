@@ -8,7 +8,9 @@ EXPORTS ;{ ; MagicItemForm
 ?SaveFormChunks@MagicItemForm@@UAEXXZ                           = 0x0041B1B0,0x0056DBD0     ; SaveFormChunks
 ?CopyFrom@MagicItemForm@@UAEXAAVTESForm@@@Z                     = 0x0041B280,0x0056DCA0     ; CopyFrom
 ?CompareTo@MagicItemForm@@UAE_NAAVTESForm@@@Z                   = 0x0041B210,0x0056DC30     ; CompareTo
-?DialogMessageCallback@MagicItemForm@@UAE_NPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x0056DCF0     ; DialogMessageCallback
+?FormRefRevisionsMatch@MagicItemForm@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                       = _NOTINGAME,0x0056DD60 ; FormRefRevisionsMatch
+?GetRevisionUnmatchedFormRefs@MagicItemForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@AAVBSStringT@@@Z   = _NOTINGAME,0x0056DD80 ; GetRevisionUnmatchedFormRefs
+?DialogMessageCallback@MagicItemForm@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x0056DCF0     ; DialogMessageCallback
 ?SetInDialog@MagicItemForm@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0056DD40     ; SetInDialog
 ?GetFromDialog@MagicItemForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x0056DF40     ; GetFromDialog
 ; MagicItem virtual methods
