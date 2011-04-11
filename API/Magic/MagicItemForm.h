@@ -143,7 +143,7 @@ public:
     IMPORT /*014/038*/ virtual void         InitializeAllComponents();
     IMPORT /*018/03C*/ virtual void         ClearAllComponentReferences();
     #ifndef OBLIVION
-    IMPORT /*---/0DC*/ virtual void         GetResourcePath(BSStringT& path);
+    IMPORT /*---/0DC*/ virtual void         GetObjectWindowTreePath(BSStringT& path);
     IMPORT /*---/10C*/ virtual bool         DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/114*/ virtual void         SetInDialog(HWND dialog);
     IMPORT /*---/118*/ virtual void         GetFromDialog(HWND dialog);

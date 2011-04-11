@@ -48,7 +48,7 @@ EXPORTS ;{ ; TESForm
 ?CreateGroupRecord@TESForm@@UAEXAAVRecordInfo@@0@Z          = 0x0046B950,0x00494F70     ; CreateGroupRecord
 ?GetEditorID@TESForm@@UAEPBDXZ                              = 0x004129A0,0x00435BE0     ; GetEditorID
 ?SetEditorID@TESForm@@UAE_NPBD@Z                            = 0x006FDFF0,_NOTINCS__     ; SetEditorID - this is regular method in CS
-?GetResourcePath@TESForm@@UAEXAAVBSStringT@@@Z              = _NOTINGAME,0x00497840     ; GetResourcePath
+?GetObjectWindowTreePath@TESForm@@UAEXAAVBSStringT@@@Z      = _NOTINGAME,0x00497840     ; GetObjectWindowTreePath
 ?BuildFormRefList@TESForm@@UAEXPAV?$BSSimpleList@PAVTESForm@@@@@Z                               = _NOTINGAME,0x00496540     ; BuildFormRefList
 ?RemoveFormReference@TESForm@@UAEXAAV1@@Z                                                       = _NOTINGAME,0x00495260     ; RemoveFormReference
 ?FormRefRevisionsMatch@TESForm@@UAE_NPAV?$BSSimpleList@PAVTESForm@@@@@Z                         = _NOTINGAME,0x00496560     ; FormRefRevisionsMatch

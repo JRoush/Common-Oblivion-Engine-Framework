@@ -53,7 +53,7 @@ EXPORTS ;{ ; SpellItem
 ??1SpellItem@@UAE@XZ                                        = 0x0041D1D0,0x0056F7F0     ; ~SpellItem
 ?InitializeAllComponents@SpellItem@@UAEXXZ                  = 0x0041D1B0,0x0056F2A0     ; InitializeAllComponents
 ?ClearAllComponentReferences@SpellItem@@UAEXXZ              = 0x00418F10,0x0056C9D0     ; ClearAllComponentReferences
-?GetResourcePath@SpellItem@@UAEXAAVBSStringT@@@Z            = _NOTINGAME,0x0056FCC0     ; GetResourcePath
+?GetObjectWindowTreePath@SpellItem@@UAEXAAVBSStringT@@@Z    = _NOTINGAME,0x0056FCC0     ; GetObjectWindowTreePath
 ?DialogMessageCallback@SpellItem@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x0056F8C0     ; DialogMessageCallback
 ?SetInDialog@SpellItem@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0056FA40     ; SetInDialog
 ?GetFromDialog@SpellItem@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x0056F4D0     ; GetFromDialog
