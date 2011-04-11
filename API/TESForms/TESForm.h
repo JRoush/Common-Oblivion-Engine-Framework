@@ -229,7 +229,7 @@ public:
     _NOUSE /*0A0/0A4*/ virtual void         UnkForm0A0(bool newValue) {} // sets flag (1<<17), "OffLimits/Dangerous", but doesn't call MarkAsModified
     _NOUSE /*0A4/0A8*/ virtual bool         UnkForm0A4() {return false;}
     _NOUSE /*0A8/0AC*/ virtual bool         UnkForm0A8() {return false;}
-    _NOUSE /*0AC/0B0*/ virtual bool         UnkForm0AC() {return false;}
+    INLINE /*0AC/0B0*/ virtual bool         IsMagicItem() {return false;} // apparently used to avoid unnecessary dynamic casts
     INLINE /*0B0/0B4*/ virtual UInt32       GetObjectRefCount() {return 0;} // get object ref count (placed references with this as base form)
     IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form); // copies all fields, including base components
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo); // returns 0 if equivalent.  compares all fields, including base components.

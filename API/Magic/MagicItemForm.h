@@ -26,7 +26,7 @@ public:
     IMPORT /*010/034*/ virtual              ~MagicItemForm();
     IMPORT /*01C/040*/ virtual bool         LoadForm(TESFile& file);
     IMPORT /*024/048*/ virtual void         SaveFormChunks(); 
-    _NOUSE /*0AC/0B0*/ virtual bool         UnkForm0AC() {return true;}
+    INLINE /*0AC/0B0*/ virtual bool         IsMagicItem() {return true;}
     IMPORT /*0B4/0B8*/ virtual void         CopyFrom(TESForm& form);
     IMPORT /*0B8/0BC*/ virtual bool         CompareTo(TESForm& compareTo);
     #ifndef OBLIVION
