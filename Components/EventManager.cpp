@@ -3,14 +3,28 @@
 #include "Utilities/Memaddr.h"
 #include "API/TESForms/TESForm.h"
 
-#include <vector>
+#include <list>
 
 //----------------------------- Event Interface -------------------------------------
 // an abstract interface for event objects
 struct Event
 {
-    // members
-    std::vector<void*>  callbacks;
+    // callback list
+    typedef std::list<void*> CallbackListT;
+    CallbackListT   callbacks;
+
+    // wrappers to avoid issues with possible exceptions in naked handler functions
+    CallbackListT::iterator begin() throw ()
+    {
+        try { return callbacks.begin(); }
+        catch (...) { _ERROR(""); }
+    } 
+    CallbackListT::iterator     end()   
+    {
+        try { return callbacks.end(); }
+        catch (...) { _ERROR(""); }
+    }
+
     // virtual methods
     virtual const char*     Name() = 0;     // event name, for debugging output
     virtual void            Attach() = 0;   // write hooks/patches to implement event callbacks
@@ -28,7 +42,8 @@ namespace DataHandler_CreateDefaults
     // event object
     struct EventT : public Event
     {        
-        // static methods
+        // handler methods
+        void Call();
         static void Hndl();
         // virtual interface
         virtual const char* Name() {return "DataHandler_CreateDefaults";}
@@ -45,6 +60,16 @@ namespace DataHandler_CreateDefaults
         }
     } eventT;      
     // handler
+    void EventT::Call()
+    {
+        _DMESSAGE("");
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            ((EventManager::DataHandler_CreateDefaults_f)func)();
+        }
+    }
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -54,11 +79,7 @@ namespace DataHandler_CreateDefaults
             mov     ebp, esp
             sub     esp, __LOCAL_SIZE
         }
-        _DMESSAGE("");
-        for (int i = 0; i < eventT.callbacks.size(); i++)
-        {
-            ((EventManager::DataHandler_CreateDefaults_f)eventT.callbacks[i])();
-        }
+        eventT.Call();
         __asm
         {  
             // epilog
@@ -81,7 +102,8 @@ namespace DataHandler_PostCreateDefaults
     // event object
     struct EventT : public Event
     {        
-        // static methods
+        // handler methods
+        void Call();
         static void Hndl();
         // virtual interface
         virtual const char* Name() {return "DataHandler_PostCreateDefaults";}
@@ -98,6 +120,16 @@ namespace DataHandler_PostCreateDefaults
         }
     } eventT;      
     // handler
+    void EventT::Call()
+    {
+        _DMESSAGE("");
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            ((EventManager::DataHandler_PostCreateDefaults_f)func)();
+        }
+    }
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -107,11 +139,7 @@ namespace DataHandler_PostCreateDefaults
             mov     ebp, esp
             sub     esp, __LOCAL_SIZE
         }
-        _DMESSAGE("");
-        for (int i = 0; i < eventT.callbacks.size(); i++)
-        {
-            ((EventManager::DataHandler_PostCreateDefaults_f)eventT.callbacks[i])();
-        }
+        eventT.Call();
         __asm
         {  
             // epilog
@@ -134,7 +162,8 @@ namespace DataHandler_Clear
     // event object
     struct EventT : public Event
     {        
-        // static methods
+        // handler methods
+        void Call();
         static void Hndl();
         // virtual interface
         virtual const char* Name() {return "DataHandler_Clear";}
@@ -151,6 +180,16 @@ namespace DataHandler_Clear
         }
     } eventT;      
     // handler
+    void EventT::Call()
+    {
+        _DMESSAGE("");
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            ((EventManager::DataHandler_Clear_f)func)();
+        }
+    }
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -160,11 +199,7 @@ namespace DataHandler_Clear
             mov     ebp, esp
             sub     esp, __LOCAL_SIZE
         }
-        _DMESSAGE("");
-        for (int i = 0; i < eventT.callbacks.size(); i++)
-        {
-            ((EventManager::DataHandler_Clear_f)eventT.callbacks[i])();
-        }  
+        eventT.Call(); 
         __asm
         {
             // epilog
@@ -192,7 +227,8 @@ namespace CSMainWindow_WMCommand
     // event object
     struct EventT : public Event
     {        
-        // static methods
+        // handler methods
+        bool Call(WPARAM wparam, LPARAM lparam);
         static void Hndl();
         // virtual interface
         virtual const char* Name() {return "CSMainWindow_WMCommand";}
@@ -209,11 +245,25 @@ namespace CSMainWindow_WMCommand
         }
     } eventT;      
     // handler
+    bool EventT::Call(WPARAM wparam, LPARAM lparam)
+    {
+        bool handled = false;
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            if (((EventManager::CSMainWindow_WMCommand_f)func)(wparam,lparam) == 0)
+            {
+                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",Name(),wparam,lparam,*it);
+                handled = true;
+            }
+        }
+        return handled;
+    }
     void _declspec(naked) EventT::Hndl()
     {
         WPARAM  wparam;
         LPARAM  lparam;
-        bool    handled;
         __asm
         {
             // prolog
@@ -224,17 +274,9 @@ namespace CSMainWindow_WMCommand
             mov     wparam, eax
             mov     lparam, edi
         }
-        handled = false;
-        for (int i = 0; i < eventT.callbacks.size(); i++)
+        if (eventT.Call(wparam,lparam)) 
         {
-            if (((EventManager::CSMainWindow_WMCommand_f)eventT.callbacks[i])(wparam,lparam) == 0)
-            {
-                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",eventT.Name(),wparam,lparam,eventT.callbacks[i]);
-                handled = true;
-            }
-        }
-        if (handled) // event was handled, return out of message pump
-        {
+            // event was handled, return out of message pump
             __asm
             {
                 // epilog
@@ -245,15 +287,19 @@ namespace CSMainWindow_WMCommand
                 jmp     [RetnB._addr]
             }
         }
-        _VMESSAGE("Event '%s' (%p,%p) not handled",eventT.Name(),wparam,lparam);
-        __asm   // event was not handled, continue normal execution
+        else
         {
-            // epilog
-            mov     esp, ebp
-            popad
-            // overwritten code
-            cmp     eax, 0x9C43
-            jmp     [RetnA._addr]
+            // event was not handled, continue normal execution
+            _VMESSAGE("Event '%s' (%p,%p) not handled",eventT.Name(),wparam,lparam);
+            __asm   
+            {
+                // epilog
+                mov     esp, ebp
+                popad
+                // overwritten code
+                cmp     eax, 0x9C43
+                jmp     [RetnA._addr]
+            }
         }
     }
 }
@@ -270,7 +316,8 @@ namespace CSObjectWindow_CompareObject
     // event object
     struct EventT : public Event
     {        
-        // static methods
+        // handler methods
+        bool Call(TESForm* formA, TESForm* formB, UInt32 columnID, int& result);   
         static void Hndl();
         // virtual interface
         virtual const char* Name() {return "CSObjectWindow_CompareObject";}
@@ -287,13 +334,27 @@ namespace CSObjectWindow_CompareObject
         }
     } eventT;      
     // handler
+    bool EventT::Call(TESForm* formA, TESForm* formB, UInt32 columnID, int& result)
+    {
+        bool handled = false;
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            if (((EventManager::CSObjectWindow_CompareObject_f)func)(formA,formB,columnID,result))
+            {
+                _VMESSAGE("Event '%s' (%p,%p,%i) handled by <%p>",Name(),formA,formB,columnID,*it);
+                handled = true;
+            }
+        }
+        return handled;
+    }
     void _declspec(naked) EventT::Hndl()
     {
         TESForm*    formA;
         TESForm*    formB;
         UInt32      colIndx;
         int*        result;
-        bool        handled;
         __asm
         {
             // prolog
@@ -306,17 +367,9 @@ namespace CSObjectWindow_CompareObject
             mov     colIndx,eax
             mov     result,ecx
         }
-        handled = false;
-        for (int i = 0; i < eventT.callbacks.size(); i++)
+        if (eventT.Call(formA,formB,colIndx,*result)) 
         {
-            if (((EventManager::CSObjectWindow_CompareObject_f)eventT.callbacks[i])(formA,formB,colIndx,*result))
-            {
-                _VMESSAGE("Event '%s' (%p,%p,%i) handled by <%p>",eventT.Name(),formA,formB,colIndx,eventT.callbacks[i]);
-                handled = true;
-            }
-        }
-        if (handled) // event was handled, jump to end of comparitor
-        {
+            // event was handled, jump to end of comparitor
             __asm
             {
                 // epilog
@@ -326,16 +379,20 @@ namespace CSObjectWindow_CompareObject
                 jmp     [RetnB._addr]
             }
         }
-        _VMESSAGE("Event '%s' (%p,%p,%i) not handled",eventT.Name(),formA,formB,colIndx);
-        *result = 1;
-        __asm   // event was not handled, continue normal execution
+        else
         {
-            // epilog
-            mov     esp, ebp
-            popad
-            // overwritten code
-            cmp     eax, 0x3E
-            jmp     [RetnA._addr]
+            // event was not handled, continue normal execution
+            _VMESSAGE("Event '%s' (%p,%p,%i) not handled",eventT.Name(),formA,formB,colIndx);
+            *result = 1;
+            __asm   
+            {
+                // epilog
+                mov     esp, ebp
+                popad
+                // overwritten code
+                cmp     eax, 0x3E
+                jmp     [RetnA._addr]
+            }
         }
     }
 }
@@ -352,7 +409,8 @@ namespace CSObjectWindow_GetObjectDispInfo
     // event object
     struct EventT : public Event
     {        
-        // static methods
+        // handler methods
+        bool Call(void* displayInfo);   
         static void Hndl();
         // virtual interface
         virtual const char* Name() {return "CSObjectWindow_GetObjectDispInfo";}
@@ -369,10 +427,24 @@ namespace CSObjectWindow_GetObjectDispInfo
         }
     } eventT;      
     // handler
+    bool EventT::Call(void* displayInfo)
+    {
+        bool handled = false;
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            if (((EventManager::CSObjectWindow_GetObjectDispInfo_f)func)(displayInfo))
+            {
+                _VMESSAGE("Event '%s' (%p) handled by <%p>",Name(),displayInfo,*it);
+                handled = true;
+            }
+        }
+        return handled;
+    }
     void _declspec(naked) EventT::Hndl()
     {
         void*       displayInfo;
-        bool        handled;
         __asm
         {
             // prolog
@@ -381,17 +453,9 @@ namespace CSObjectWindow_GetObjectDispInfo
             sub     esp, __LOCAL_SIZE
             mov     displayInfo,esi
         }
-        handled = false;
-        for (int i = 0; i < eventT.callbacks.size(); i++)
+        if (eventT.Call(displayInfo)) 
         {
-            if (((EventManager::CSObjectWindow_GetObjectDispInfo_f)eventT.callbacks[i])(displayInfo))
-            {
-                _VMESSAGE("Event '%s' (%p) handled by <%p>",eventT.Name(),displayInfo,eventT.callbacks[i]);
-                handled = true;
-            }
-        }
-        if (handled) // event was handled, jump to end of comparitor
-        {
+            // event was handled, jump to end of comparitor
             __asm
             {
                 // epilog
@@ -401,16 +465,20 @@ namespace CSObjectWindow_GetObjectDispInfo
                 jmp     [RetnB._addr]
             }
         }
-        _VMESSAGE("Event '%s' (%p) not handled",eventT.Name(),displayInfo);
-        __asm   // event was not handled, continue normal execution
+        else
         {
-            // epilog
-            mov     esp, ebp
-            popad
-            // overwritten code
-            mov     eax, [esi + 0x14]
-            mov     edx, [esi]
-            jmp     [RetnA._addr]
+            // event was not handled, continue normal execution
+            _VMESSAGE("Event '%s' (%p) not handled",eventT.Name(),displayInfo);
+            __asm   
+            {
+                // epilog
+                mov     esp, ebp
+                popad
+                // overwritten code
+                mov     eax, [esi + 0x14]
+                mov     edx, [esi]
+                jmp     [RetnA._addr]
+            }
         }
     }
 }
@@ -437,7 +505,7 @@ bool EventManager::RegisterEventCallback(Event& eventT, void* callback)
 bool EventManager::UnregisterEventCallback(Event& eventT, void* callback)
 {
     // find callback in list
-    for (std::vector<void*>::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end(); it++)
+    for (Event::CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end(); it++)
     {
         if (*it != callback) continue;
         // callback found
