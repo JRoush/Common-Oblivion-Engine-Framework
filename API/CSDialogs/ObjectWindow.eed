@@ -1,0 +1,13 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; ObjectWindow
+; static globals
+?seperatorHandle@ObjectWindow@@2PAUHWND__@@A        = _NOTINGAME,0x00A0BA6C     ; seperatorHandle
+?treeviewHandle@ObjectWindow@@2PAUHWND__@@A         = _NOTINGAME,0x00A0BAA4     ; treeviewHandle
+?listviewHandle@ObjectWindow@@2PAUHWND__@@A         = _NOTINGAME,0x00A0BAA0     ; listviewHandle
+?objectWindowHandle@ObjectWindow@@2PAUHWND__@@A     = _NOTINGAME,0x00A0AF44     ; objectWindowHandle
+?isOpen@ObjectWindow@@2_NA                          = _NOTINGAME,0x00A0AF40     ; isOpen
+; static methods
+?DlgProc@ObjectWindow@@SGHPAUHWND__@@IIJ@Z          = _NOTINGAME,0x00420240     ; DlgProc
+;}

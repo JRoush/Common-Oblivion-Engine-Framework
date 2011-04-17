@@ -503,6 +503,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\CSDialogs\ObjectWindow.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\CSDialogs\ObjectWindow.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\CSDialogs\TESDialog.eed"
 					>
 				</File>

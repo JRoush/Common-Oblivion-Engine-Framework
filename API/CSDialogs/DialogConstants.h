@@ -288,8 +288,13 @@
 #define IDC_ALCH_POISON                     2091 // STATIC
 #define IDC_ALCH_EDIBLE                     1684 // BUTTON
 
-//------------------------------------- Magic --------------------------------------
-
-// TESStringInputDialog
+//------------------------------------- String Input Dialog --------------------------------------
 #define IDD_STRINGINPUT                      174 // DIALOG
 #define IDC_STRINGINPUT_STRING              1000 // EDIT
+
+//-------------------------------------- Object Window -------------------------------------------
+#define IDD_OBJECTWINDOW                     122 // DIALOG
+#define IDC_OBJECTWINDOW_TREEVIEW           2093 // SYSTREEVIEW32
+#define IDC_OBJECTWINDOW_LISTVIEW           1041 // SYSLISTVIEW32
+#define IDC_OBJECTWINDOW_SEPERATOR          2157 // STATIC
+
