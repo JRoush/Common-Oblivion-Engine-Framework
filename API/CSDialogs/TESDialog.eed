@@ -13,7 +13,7 @@ EXPORTS ;{ ; TESDialog
 ?openDialogs@TESDialog@@2V?$BSSimpleList@PAUHWND__@@@@A     = _NOTINGAME,0x00A0B55C     ; openDialogs
 ?csInstance@TESDialog@@2PAUHINSTANCE__@@A                   = _NOTINGAME,0x00A0AF1C     ; csInstance
 ?csHandle@TESDialog@@2PAUHWND__@@A                          = _NOTINGAME,0x00A0AF20     ; csHandle
-?csMainMenu@TESDialog@@2PAUHMENU__@@A                       = _NOTINGAME,0x00A0B630     ; csMainMenu
+?csMainMenuHandle@TESDialog@@2PAUHMENU__@@A                 = _NOTINGAME,0x00A0B630     ; csMainMenuHandle
 ; TESForm editing
 ?FormEditDlgProc@TESDialog@@SGHPAUHWND__@@IIJ@Z                 = _NOTINGAME,0x00447580     ; FormEditDlgProc
 ?GetFormEditDlgTemplateID@TESDialog@@SAKE@Z                     = _NOTINGAME,0x00442050     ; GetFormEditDlgTemplateID

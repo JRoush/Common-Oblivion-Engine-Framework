@@ -144,7 +144,7 @@ public:
                                         // used to ensure same object isn't edited in more than one window
     IMPORT static HWND                  csHandle; // handle of main CS container window
     IMPORT static HINSTANCE             csInstance; // handle of main CS module instance
-    IMPORT static HMENU                 csMainMenu; // handle of main CS menu
+    IMPORT static HMENU                 csMainMenuHandle; // handle of main CS menu
 };
 
 class TESComboBox
