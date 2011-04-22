@@ -214,6 +214,74 @@ namespace DataHandler_Clear
 }
 Event& EventManager::DataHandler_Clear = DataHandler_Clear::eventT;
 
+namespace DataHandler_AddForm
+{
+    // Patch addresses
+    memaddr Hook                (0x0044D955,0x004818F5);    // just before leak checking on formid map
+    memaddr RetnA               (0x0044D95A,0x004818FA);
+    // global objects
+    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    // event object
+    struct EventT : public Event
+    {        
+        // handler methods
+        bool Call(TESForm* form);
+        static void Hndl();
+        // virtual interface
+        virtual const char* Name() {return "DataHandler_AddForm";}
+        virtual void Attach() 
+        {
+            _MESSAGE("Attached Event");
+            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            Hook.WriteRelJump(&Hndl);
+        }
+        virtual void Detach() 
+        {
+            _MESSAGE("Detached Event");
+            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+        }
+    } eventT;      
+    // handler
+    bool EventT::Call(TESForm* form)
+    {
+        bool handled = false;
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            if (((EventManager::DataHandler_AddForm_f)func)(form))
+            {
+                _VMESSAGE("Event '%s' <%p> handled by <%p>",Name(),form,func);
+                handled = true;
+            }
+        }
+        return handled;
+    }
+    void _declspec(naked) EventT::Hndl()
+    {
+        __asm
+        {
+            // overwritten code
+            push    edi 
+            mov     edi, ecx
+            // check for a valid form*
+            test    esi,esi 
+            jz      DONE 
+            // call event handlers
+            push    esi     // push form argument
+            mov     ecx, offset eventT // set this* pointer
+            call    EventT::Call
+            test    al,al
+            setz    al
+            test    al,al   // check if event was not overridden
+            // return
+            DONE:
+            jmp     [RetnA._addr]
+        }
+    }
+}
+Event& EventManager::DataHandler_AddForm = DataHandler_AddForm::eventT;
+
 #ifndef OBLIVION
 
 namespace CSMainWindow_WMCommand

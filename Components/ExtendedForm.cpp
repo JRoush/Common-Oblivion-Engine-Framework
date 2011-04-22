@@ -88,43 +88,15 @@ UInt32 GetFormTypeFromChunkType(UInt32 chunkType)
     _WARNING("Chunk type %08X %4.4s not found",chunkType,&chunkType);
     return 0;   // form not found
 }
-void _declspec(naked) TESDataHandler_AddForm_Hndl()
+bool TESDataHandler_AddForm_Hndl(TESForm* form)
 {
-    TESForm*    form;
-    bool        success;
-    __asm
+    if (form && exFormInfoList[form->formType])
     {
-        // prolog
-        pushad
-        mov     ebp, esp
-        sub     esp, __LOCAL_SIZE
-        mov     form, esi
-    }
-    if (exFormInfoList[form->formType])
-    {        
         exFormInfoList[form->formType]->FormList().PushFront(form); // add form to list
-        success = true;
         _VMESSAGE("Added Form %s @ <%p> to data handler",exFormTypeList[form->formType].shortName,form);
+        return true;
     }
-    else 
-    {
-        success = false;
-        _ERROR("The data handler does not support FormType 0x%02X",form->formType);
-    }
-    __asm
-    {
-        // write result into stack were it will be popped into eax
-        movzx   eax, success
-        mov     [ebp + 0x1C], eax    
-        // epilog
-        mov     esp, ebp
-        popad
-        // overwritten code
-        pop     ebx
-        pop     edi
-        pop     esi
-        retn    4
-    }
+    else return false;  // bad form or non-extended form type
 }
 void TESDataHandler_Clear_Hndl()
 {
@@ -324,7 +296,7 @@ void InitializeExtendedForms()
     GetFormTypeFromChunkType_Hook.WriteRelJump(&GetFormTypeFromChunkType);
 
     // hook TESDataHandler::AddForm, Clear, and CreateDefaultForms
-    TESDataHandler_AddForm_Hook.WriteRelJump(&TESDataHandler_AddForm_Hndl);
+    EventManager::RegisterEventCallback(EventManager::DataHandler_AddForm,&TESDataHandler_AddForm_Hndl);
     EventManager::RegisterEventCallback(EventManager::DataHandler_Clear,&TESDataHandler_Clear_Hndl);
     EventManager::RegisterEventCallback(EventManager::DataHandler_CreateDefaults,&TESDataHandler_CreateBuiltins_Hndl);
 

@@ -43,6 +43,11 @@ public:
     // new set of files is selected (CS only).  Useful for cleaning up any objects managed 
     // by a plugin.
 
+    static Event&   DataHandler_AddForm;
+    typedef bool (*DataHandler_AddForm_f)(TESForm* form);
+    // Occurs just before a TESForm is added to the DataHandler. 
+    // return true to prevent form from being added
+
     #ifndef OBLIVION
 
     static Event&   CSMainWindow_WMCommand;
