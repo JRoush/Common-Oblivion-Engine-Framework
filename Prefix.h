@@ -17,10 +17,10 @@
 // 4800 - forcing bool to integer
 #pragma warning(disable: 4005 4018 4244 4267 4305 4288 4312 4311 4800)
 
-// Windows version macros: win2k and above
-#define _WIN32_WINDOWS  0x0500
-#define _WIN32_WINNT    0x0500
-#define WINVER          0x0500
+// Windows version macros: WinXP/Server2003 and above
+#define _WIN32_WINDOWS  0x0501
+#define _WIN32_WINNT    0x0501
+#define WINVER          0x0501
 
 // windows/mfc headers - cannot include both
 #ifdef MFC
