@@ -203,7 +203,7 @@ public:
     IMPORT bool                 EffectListDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); //
                                 // non-static method for handling events that require access to members
     IMPORT void                 PopulateDialogEffectList(HWND listView); // clears & populates listview control with effect items
-    IMPORT static void          InitializeDialogEffectList(HWND listView); // size list & setup columns
+    IMPORT void                 InitializeDialogEffectList(HWND listView); // size list & setup columns
     IMPORT bool                 ValidateEffectForDialog(EffectItem& item); // checks item against filter effect, return true if valid
     IMPORT void                 ValidateEffectListForDialog(HWND dialog); // checks each item with ValidateItem() & notifies user of problems
     IMPORT static void CALLBACK GetEffectDisplayInfo(void* displayInfo); // used callback to build display strings

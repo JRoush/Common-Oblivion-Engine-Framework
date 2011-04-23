@@ -72,7 +72,7 @@ EXPORTS ;{ ; EffectItemList
 ; methods - dialog
 ?EffectListDlgMsgCallback@EffectItemList@@QAE_NPAUHWND__@@HIJAAJ@Z  = _NOTINGAME,0x00567CF0     ; EffectListDlgMsgCallback
 ?PopulateDialogEffectList@EffectItemList@@QAEXPAUHWND__@@@Z         = _NOTINGAME,0x00567260     ; PopulateDialogEffectList
-?InitializeDialogEffectList@EffectItemList@@SAXPAUHWND__@@@Z        = _NOTINGAME,0x00566BF0     ; InitializeDialogEffectList
+?InitializeDialogEffectList@EffectItemList@@QAEXPAUHWND__@@@Z       = _NOTINGAME,0x00566BF0     ; InitializeDialogEffectList
 ?ValidateEffectForDialog@EffectItemList@@QAE_NAAVEffectItem@@@Z     = _NOTINGAME,0x00567300     ; ValidateEffectForDialog
 ?ValidateEffectListForDialog@EffectItemList@@QAEXPAUHWND__@@@Z      = _NOTINGAME,0x00568330     ; ValidateEffectListForDialog
 ?GetEffectDisplayInfo@EffectItemList@@SGXPAX@Z                      = _NOTINGAME,0x00567670     ; GetEffectDisplayInfo
