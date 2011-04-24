@@ -157,9 +157,9 @@ public:
     IMPORT void                 RemoveEffect(const EffectItem* item); // remove item & update hostile count. Does NOT delete item.
     IMPORT void                 AddEffect(EffectItem* item); // append item to end & update hostile count.
     IMPORT void                 ClearEffects(); // delete all items & nodes.  WARNING: Does NOT zero hostile count (probably a bug) 
-    IMPORT EffectItem*          GetEffectByIndex(SInt32 index); // get item by position 
+    IMPORT EffectItem*          GetEffectByIndex(SInt32 index) const; // get item by position 
     #ifdef OBLIVION
-    IMPORT UInt8                GetIndexOfEffect(EffectItem* item);
+    IMPORT UInt8                GetIndexOfEffect(const EffectItem* item) const;
     #endif
     
     // methods - aggregate properties

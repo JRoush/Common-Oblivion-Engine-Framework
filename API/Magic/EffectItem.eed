@@ -81,8 +81,8 @@ EXPORTS ;{ ; EffectItemList
 ?RemoveEffect@EffectItemList@@QAEXPBVEffectItem@@@Z         = 0x00414BC0,0x00566F50     ; RemoveEffect
 ?AddEffect@EffectItemList@@QAEXPAVEffectItem@@@Z            = 0x00414B90,0x00566F20     ; AddEffect
 ?ClearEffects@EffectItemList@@QAEXXZ                        = 0x00414C70,0x005670F0     ; ClearEffects
-?GetEffectByIndex@EffectItemList@@QAEPAVEffectItem@@J@Z     = 0x00414B10,0x00566EA0     ; GetEffectByIndex
-?GetIndexOfEffect@EffectItemList@@QAEEPAVEffectItem@@@Z     = 0x00414D50,_NOTINCS__     ; GetIndexOfEffect
+?GetEffectByIndex@EffectItemList@@QBEPAVEffectItem@@J@Z     = 0x00414B10,0x00566EA0     ; GetEffectByIndex
+?GetIndexOfEffect@EffectItemList@@QBEEPBVEffectItem@@@Z     = 0x00414D50,_NOTINCS__     ; GetIndexOfEffect
 ?CompareEffectsTo@EffectItemList@@QAE_NABV1@@Z              = 0x00414A70,0x00566E00     ; CompareEffectsTo
 ?CopyEffectsFrom@EffectItemList@@QAEXABV1@@Z                = 0x00414DC0,0x005673D0     ; CopyEffectsFrom
 ?SaveEffects@EffectItemList@@QAEXXZ                         = 0x00414A20,0x00566DA0     ; SaveEffects
