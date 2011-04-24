@@ -248,6 +248,10 @@
 
 // EffectItemList
 #define IDC_EILS_EFFECTLIST                 2069 // SYSLISTVIEW32
+#define IDR_EILS_POPUPMENU                   248 // MENU
+#define IDM_EILS_NEW                         249 // MENUITEM
+#define IDM_EILS_EDIT                        250 // MENUITEM
+#define IDM_EILS_DELETE                      251 // MENUITEM
 
 // EnchantmentItem
 #define IDD_ENCH                             166 // DIALOG
