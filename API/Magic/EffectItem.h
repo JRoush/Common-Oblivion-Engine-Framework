@@ -200,6 +200,7 @@ public:
                                 // editorid of parent form is used only when printing error messages
     // methods - CD dialog
     #ifndef OBLIVION
+    static const LRESULT kUpdateAggregateValues = 99999;  // result value returned to force update of aggregate magicka, school, etc.
     IMPORT bool                 EffectListDlgMsgCallback(HWND dialog, int uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result); //
                                 // non-static method for handling events that require access to members
     IMPORT void                 PopulateDialogEffectList(HWND listView); // clears & populates listview control with effect items
