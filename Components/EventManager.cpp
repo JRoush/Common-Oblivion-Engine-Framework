@@ -284,6 +284,98 @@ Event& EventManager::DataHandler_AddForm = DataHandler_AddForm::eventT;
 
 #ifndef OBLIVION
 
+namespace CS_LoadMenuA
+{
+    // Patch addresses
+    memaddr Patch       (0x0       ,0x009244E8);    // entry in User32.dll import table
+    // global objects
+    UInt8   overwrittenData[0x4] = {{0}};   // buffer for storing original contents of patch address
+    // event object
+    struct EventT : public Event
+    {        
+        // handler methods
+        static HMENU __stdcall Call(HINSTANCE hInstance, LPCSTR lpMenuName);
+        static void Hndl();
+        // virtual interface
+        virtual const char* Name() {return "CS_LoadMenuA";}
+        virtual void Attach() 
+        {
+            _MESSAGE("Attached Event");
+            memcpy(overwrittenData,Patch,sizeof(overwrittenData));
+            Patch.WriteData32((UInt32)memaddr::GetPointerToMember(&EventT::Call));
+        }
+        virtual void Detach() 
+        {
+            _MESSAGE("Detached Event");
+            Patch.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+        }
+    } eventT;      
+    // handler
+    HMENU EventT::Call(HINSTANCE hInstance, LPCSTR lpMenuName)
+    {
+        HMENU menu = 0;
+        for (EventT::CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            if (menu = ((EventManager::CS_LoadMenuA_f)func)(hInstance,lpMenuName))
+            {
+                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",eventT.Name(),hInstance,lpMenuName,func);
+                break;
+            }
+        }
+        if (menu) return menu;
+        else return LoadMenuA(hInstance,lpMenuName);
+    }
+ }
+Event& EventManager::CS_LoadMenuA = CS_LoadMenuA::eventT;
+
+namespace CS_CreateDialogParamA
+{
+    // Patch addresses
+    memaddr Patch       (0x0       ,0x009243FC);    // entry in User32.dll import table
+    // global objects
+    UInt8   overwrittenData[0x4] = {{0}};   // buffer for storing original contents of patch address
+    // event object
+    struct EventT : public Event
+    {        
+        // handler methods
+        static HWND __stdcall Call(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+        static void Hndl();
+        // virtual interface
+        virtual const char* Name() {return "CS_CreateDialogParamA";}
+        virtual void Attach() 
+        {
+            _MESSAGE("Attached Event");
+            memcpy(overwrittenData,Patch,sizeof(overwrittenData));
+            Patch.WriteData32((UInt32)memaddr::GetPointerToMember(&EventT::Call));
+        }
+        virtual void Detach() 
+        {
+            _MESSAGE("Detached Event");
+            Patch.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+        }
+    } eventT;      
+    // handler
+    HWND EventT::Call(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam)
+    {
+        HWND dialog = 0;
+        for (EventT::CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end();)
+        {
+            void* func = *it;
+            it++;
+            if (dialog = ((EventManager::CS_CreateDialogParamA_f)func)(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam))
+            {
+                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",eventT.Name(),hInstance,lpTemplateName,func);
+                break;
+            }
+        }
+        if (dialog) return dialog;
+        else return CreateDialogParamA(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
+    }
+ }
+Event& EventManager::CS_CreateDialogParamA = CS_CreateDialogParamA::eventT;
+
 namespace CSMainWindow_WMCommand
 {
     // Patch addresses
@@ -322,7 +414,7 @@ namespace CSMainWindow_WMCommand
             it++;
             if (((EventManager::CSMainWindow_WMCommand_f)func)(wparam,lparam) == 0)
             {
-                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",Name(),wparam,lparam,*it);
+                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",Name(),wparam,lparam,func);
                 handled = true;
             }
         }
@@ -411,7 +503,7 @@ namespace CSObjectWindow_CompareObject
             it++;
             if (((EventManager::CSObjectWindow_CompareObject_f)func)(formA,formB,columnID,result))
             {
-                _VMESSAGE("Event '%s' (%p,%p,%i) handled by <%p>",Name(),formA,formB,columnID,*it);
+                _VMESSAGE("Event '%s' (%p,%p,%i) handled by <%p>",Name(),formA,formB,columnID,func);
                 handled = true;
             }
         }
@@ -504,7 +596,7 @@ namespace CSObjectWindow_GetObjectDispInfo
             it++;
             if (((EventManager::CSObjectWindow_GetObjectDispInfo_f)func)(displayInfo))
             {
-                _VMESSAGE("Event '%s' (%p) handled by <%p>",Name(),displayInfo,*it);
+                _VMESSAGE("Event '%s' (%p) handled by <%p>",Name(),displayInfo,func);
                 handled = true;
             }
         }

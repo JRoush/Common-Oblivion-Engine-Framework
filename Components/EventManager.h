@@ -50,6 +50,20 @@ public:
 
     #ifndef OBLIVION
 
+    static Event& CS_LoadMenuA;
+    typedef HMENU (*CS_LoadMenuA_f)(HINSTANCE hInstance, LPCSTR lpMenuName);
+    // Intercepts all calls to User32::LoadMenu
+    // the first registered callback to return a valid (non-null) handle takes precedence;
+    // any remaining callbacks are not invoked.  if no callbacks return a valid value, the
+    // call is passed to the user32 function as normal.
+
+    static Event& CS_CreateDialogParamA;
+    typedef HWND (*CS_CreateDialogParamA_f)(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+    // Intercepts all calls to User32::CreateDialogParam
+    // the first registered callback to return a valid (non-null) handle takes precedence;
+    // any remaining callbacks are not invoked.  if no callbacks return a valid value, the
+    // call is passed to the user32 function as normal.
+
     static Event&   CSMainWindow_WMCommand;
     typedef LRESULT (*CSMainWindow_WMCommand_f)(WPARAM wparam, LPARAM lparam);
     // Intercepts WM_COMMAND messages sent to main CS window
