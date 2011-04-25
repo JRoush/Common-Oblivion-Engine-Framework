@@ -64,8 +64,8 @@ public:
     //     /*018/024*/ MagicItem.TESFullName
     //     /*024/030*/ MagicItem.EffectItemList
     MEMBER /*034/10C*/ UInt32           enchType; // from Magic::CastTypes
-    MEMBER /*038/110*/ SInt32           baseCost; // base magicka / charge cost for non-autocalc
-    MEMBER /*03C/114*/ SInt32           cost;
+    MEMBER /*038/110*/ SInt32           charge;   // base available charge for non-autocalc
+    MEMBER /*03C/114*/ SInt32           baseCost; // base magicka / charge cost for non-autocalc
     MEMBER /*040/118*/ UInt8            enchFlags;
     MEMBER /*041/119*/ UInt8            enchPad041[3]; // saved & loaded, but not initialized
 
@@ -102,6 +102,11 @@ public:
     IMPORT /*000/000*/ virtual float        GetMagickaCost(const Actor* caster);
     #else
     IMPORT /*000/000*/ virtual SInt32       GetMagickaCost(const Actor* caster);
+    #endif
+
+    // methods - filter effect
+    #ifndef OBLIVION
+    IMPORT void         InitializeFilterEffect();  // sets allowed range flags and filter function based on ench type
     #endif
 
     // constructor
@@ -172,6 +177,17 @@ public:
     IMPORT /*000/000*/ virtual SInt32       GetMagickaCost(const Actor* caster);
     #endif
     IMPORT /*008/008*/ virtual UInt32       GetMasteryLevel();
+
+    // methods - filter effect
+    #ifndef OBLIVION
+    IMPORT void         InitializeFilterEffect(); // sets allowed range flags based on spell type
+    #endif
+
+    // methods - CS dialog management
+    #ifndef OBLIVION
+    IMPORT void         PopulateComboWithSpellTypes(HWND comboBox);
+    IMPORT void         PopulateComboWithMasteryLevels(HWND comboBox);
+    #endif
 
     // constructor
     IMPORT SpellItem();

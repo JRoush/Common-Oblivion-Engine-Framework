@@ -47,6 +47,7 @@ EXPORTS ;{ ; EnchantmentItem
 ?GetMagickaCost@EnchantmentItem@@UAEJPBVActor@@@Z   = _NOTINGAME,0x0056CAC0     ; GetMagickaCost
 ?GetMagickaCost@EnchantmentItem@@UAEMPBVActor@@@Z   = 0x004190A0,_NOTINCS__     ; GetMagickaCost
 ; methods
+?InitializeFilterEffect@EnchantmentItem@@QAEXXZ     = _NOTINGAME,0x0056D010     ; InitializeFilterEffect
 ??0EnchantmentItem@@QAE@XZ                          = 0x00419570,0x0056D3E0     ; EnchantmentItem
 ;}
 
@@ -79,5 +80,8 @@ EXPORTS ;{ ; SpellItem
 ?GetMagickaCost@SpellItem@@UAEMPBVActor@@@Z     = 0x0041D320,_NOTINCS__     ; GetMagickaCost
 ?GetMasteryLevel@SpellItem@@UAEKXZ              = 0x0041D3C0,0x0056F3D0     ; GetMasteryLevel
 ; methods
-??0SpellItem@@QAE@XZ                            = 0x0041D420,0x0056FD20     ; SpellItem
+?InitializeFilterEffect@SpellItem@@QAEXXZ                       = _NOTINGAME,0x0056F730     ; InitializeFilterEffect
+?PopulateComboWithSpellTypes@SpellItem@@QAEXPAUHWND__@@@Z       = _NOTINGAME,0x0056F400     ; PopulateComboWithSpellTypes
+?PopulateComboWithMasteryLevels@SpellItem@@QAEXPAUHWND__@@@Z    = _NOTINGAME,0x0056F480     ; PopulateComboWithMasteryLevels
+??0SpellItem@@QAE@XZ                                            = 0x0041D420,0x0056FD20     ; SpellItem
 ;}

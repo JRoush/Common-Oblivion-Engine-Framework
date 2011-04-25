@@ -25,7 +25,7 @@
         start:  Found in spell list during loading, a call to AddSpell script command, 
                 or melee strike on the player by a carrier
         -> Actor::AddSpell 
-        -> AddAbility 
+        -> AddDisease
         -> ApplyActiveMagicItem 
             ->  CreateActiveEffect
 
