@@ -1,7 +1,7 @@
 NAME Oblivion.exe, TESConstructionSet.exe
 BASE = 0x400000, 0x400000
 
-EXPORTS ;{ ; AVCollection
+EXPORTS ;{ ; Mechanics
 ; methods
 ?LuckModifiedSkill@Mechanics@@SAMJJ@Z               = 0x00547B90,0x0057D240 ; LuckModifiedSkill
 ?FatigueFactor@Mechanics@@SAMM@Z                    = 0x00547F00,0x0057D470 ; FatigueFactor

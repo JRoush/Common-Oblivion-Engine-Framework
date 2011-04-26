@@ -154,7 +154,7 @@ public:
     //     /*00/00*/ void**         vtbl;
     MEMBER /*04/04*/ BSStringT      texturePath; // 
     #ifndef OBLIVION
-    MEMBER /*--/0C*/ UInt32         unkTexture0C; // cached image?
+    MEMBER /*--/0C*/ UInt32         unkTexture0C; // cached image? struct {UInt32 unkA; UInt32 unkB; void* privateObj;}
     MEMBER /*--/10*/ UInt32         texturePathDlgItem; // Dialog Control ID for texture path control
     MEMBER /*--/14*/ UInt32         textureImageDlgItem; // Dialog Control ID for texture image control
     #endif
@@ -182,8 +182,8 @@ public:
     IMPORT /*014/03C*/ virtual const char*  BaseTexturePath();  // returns base path from 'Oblivion\Data' in game, from 'Oblivion' in CS
     #ifndef OBLIVION   
     IMPORT /*---/040*/ virtual const char*  NoTextureText();   // text to display when texture is empty
-    IMPORT /*---/044*/ virtual void         SetTextureImageInDlg(char* FullPath); //
-                                            // sets texture display control to image. path relative to 'Oblivion\Data'
+    IMPORT /*---/044*/ virtual void         SetTextureImageInDlg(char* FullPath); // actually "BuildDisplayObject"
+                                            // allocates & constructs the object pointed to by member 0x0C
     #endif
 
     // methods
