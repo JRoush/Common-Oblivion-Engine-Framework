@@ -1,5 +1,6 @@
 /* 
     Setting is a common base for game settings, ini settings, etc.  Basically just name+value pairs.
+
     GameSetting is the class for all generic variables used in the game mechanics, e.g. "fActorLuckSkillMult"
     GameSetting derives directly from setting in the game, but also from TESForm in the CS, so it has an unusual definition
 */
@@ -7,14 +8,11 @@
 
 // base classes
 #include "API/TES/MemoryHeap.h"
+#include "API/NiTypes/NiTArray.h"
 #include "API/TESForms/TESForm.h"   // TESFormIDListView
 
 class IMPORTCLASS Setting
 {// size 08/08
-/*
-    Partial:
-    -   Type enumeration
-*/
 public:
 
     enum SettingTypes {
@@ -25,8 +23,8 @@ public:
         kSetting_UnsignedInt    = 0x4,  // 'u' size 4
         kSetting_Float          = 0x5,  // 'f' size 4
         kSetting_String         = 0x6,  // 'S'/'s' size indet. See note below^^
-        kSetting_r              = 0x7,  // 'r' size 4
-        kSetting_a              = 0x8,  // 'a' size 4
+        kSetting_RGB            = 0x7,  // 'r' size 4. alpha byte set to 255 (?)
+        kSetting_RGBA           = 0x8,  // 'a' size 4
         kSetting__MAX           = 0x9
     };
 
@@ -40,8 +38,14 @@ public:
         UInt32      u;
         float       f;
         const char* s;
-        UInt32      r;
-        UInt32      a;
+        struct
+        {
+            // alpha is least sig. byte, *opposite* standard windows order
+            UInt8   alpha;
+            UInt8   blue;
+            UInt8   green;
+            UInt8   red;
+        } rgba;
     };
 
     // members
@@ -51,6 +55,8 @@ public:
     // methods
     IMPORT void             SetStringValue(const char* newValue); // only for string settings.  See note below^^        
     IMPORT static UInt32    GetTypeFromName(const char* settingName); // parse first character in name to get type code
+    IMPORT UInt32           GetValueSize(); // size of value in bytes.  determines string length for string settings
+    IMPORT void             GetFormattedValue(NiTArray<char*>& outputArray); // builds a dynamically allocated string description & appends to array
 
     // ^^ Note on string settings: the prefix 's' is for string settings with statically allocated name + value, used to initialize the setting.
     // The prefix 'S' is for string settings with name+value space allocated from the heap by SetStringValue.  Calling SetStringValue will
@@ -69,6 +75,7 @@ public:
     // use FormHeap for class new & delete
     USEFORMHEAP
 };
+
 
 #ifdef OBLIVION
 
@@ -94,10 +101,6 @@ public:
 
 class IMPORTCLASS GameSetting : public TESFormIDListView, public Setting
 {// size 08/2C
-/*
-    Todo:
-    -   CS dialog template & control ID constants
-*/
 public:
     
     // members
@@ -129,34 +132,3 @@ public:
 };
 
 #endif
-
-/*
-class GameSettingsCollection
-{// size 120/120  
-public:
-    GameSettingsCollection();
-    ~GameSettingsCollection();
-    typedef NiTStringPointerMap<Setting*> GmstMapT;     // should be NiTCaseInsensitiveStringMap
-    // members
-    //void*             vtbl;                   // 000/000
-    UInt32              unk04[(0x108-0x004)/4]; // 004/004
-    TESFile*            loadFile;               // 108/108  seems to be cached ptr to modfile for current load?
-    GmstMapT            settingsMap;            // 10C/10C  
-    // virtual methods
-    virtual void        AddSetting(Setting* setting);               // 000/000
-    virtual void        RemoveSetting(Setting* setting);            // 004/004
-    virtual UInt32      Unk008(UInt32 arg0);                        // 008/008
-    virtual bool        Unk00C(UInt32 arg0);                        // 00C/00C  does nothing, returns false
-    virtual void        LoadSetting(GameSetting* gmst);             // 010/010  loads setting from file cached in loadfile
-    virtual bool        ValidFile(UInt32 arg0);                     // 014/014  returns true if loadFile is non null
-    virtual bool        ClearFile();                                // 018/018  nulls out loadFile, returns true
-    virtual bool        Unk01C();                                   // 01C/01C  does nothing if no valid file
-    virtual bool        Unk020();                                   // 020/020  does nothing if no valid file
-    virtual bool        Load(TESFile* file, const char* editorID);  // 024/024  sets loadFile, looks up existing gmst, calls LoadSetting()
-    // methods
-    static void         Initialize();
-};
-
-// the one and only instance of GameSettingsCollection
-extern GameSettingsCollection*  g_GMSTCollection;
-*/

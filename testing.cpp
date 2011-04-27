@@ -41,6 +41,7 @@
 //#include "API/NiTypes/NiTList.h"
 //#include "API/NiTypes/NiTMap.h"
 //#include "API/Settings/Settings.h"
+//#include "API/Settings/SettingCollection.h"
 //#include "API/TES/DynamicCast.h"
 //#include "API/TES/Mechanics.h"
 //#include "API/TES/MemoryHeap.h"

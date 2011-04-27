@@ -262,7 +262,7 @@
 #define IDC_ENCH_ENCHANTMENTCOSTLABEL       1670 // STATIC
 
 // SpellItem
-#define IDD_SPEL                            279 // DIALOG
+#define IDD_SPEL                             279 // DIALOG
 #define IDC_SPEL_PCSTARTSPELL               1007 // BUTTON
 #define IDC_SPEL_SPELLCOST                  1295 // EDIT
 #define IDC_SPEL_AUTOCALC                   1006 // BUTTON
@@ -291,6 +291,11 @@
 #define IDC_ALCH_POTIONVALUE                1084 // EDIT
 #define IDC_ALCH_POISON                     2091 // STATIC
 #define IDC_ALCH_EDIBLE                     1684 // BUTTON
+
+//--------------------------------------- Game Settings  -----------------------------------------
+#define IDD_GMST                             170 // DIALOG
+#define IDC_GMST_NUMERICVALUE               2068 // EDIT
+#define IDC_GMST_STRINGVALUE                1000 // EDIT
 
 //------------------------------------- String Input Dialog --------------------------------------
 #define IDD_STRINGINPUT                      174 // DIALOG

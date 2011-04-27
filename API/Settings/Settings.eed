@@ -2,8 +2,10 @@ NAME Oblivion.exe, TESConstructionSet.exe
 BASE = 0x400000, 0x400000
 
 EXPORTS ;{ ; Setting
-?SetStringValue@Setting@@QAEXPBD@Z      = 0x004A7980,0x004C6780     ; SetStringValue
-?GetTypeFromName@Setting@@SAKPBD@Z      = 0x004A78D0,0x004C66D0     ; GetTypeFromName
+?SetStringValue@Setting@@QAEXPBD@Z                      = 0x004A7980,0x004C6780     ; SetStringValue
+?GetTypeFromName@Setting@@SAKPBD@Z                      = 0x004A78D0,0x004C66D0     ; GetTypeFromName
+?GetValueSize@Setting@@QAEKXZ                           = 0x004A7A80,0x004C6640     ; GetValueSize
+?GetFormattedValue@Setting@@QAEXAAV?$NiTArray@PAD@@@Z   = 0x004A7B10,0x004C6880     ; GetFormattedValue
 ;}
 
 EXPORTS ;{ ; GameSetting
@@ -26,4 +28,3 @@ EXPORTS ;{ ; GameSetting
 ??0GameSetting@@QAE@PBD0@Z      = 0x00419A70,0x0044F790     ; GameSetting
 ??1GameSetting@@QAE@XZ          = 0x004055E0,_NOTINCS__     ; ~GameSetting
 ;}
-

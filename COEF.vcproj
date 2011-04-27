@@ -475,6 +475,14 @@
 				Name="Settings"
 				>
 				<File
+					RelativePath=".\API\Settings\SettingCollection.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Settings\SettingCollection.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\Settings\Settings.eed"
 					>
 				</File>
