@@ -6,7 +6,7 @@ EXPORTS ;{ ; TESForm
 ?formTypeList@TESForm@@2PAUFormTypeInfo@1@A                                                     = 0x00B05E00,0x009EDE28     ; formTypeList
 ?formIDMap@TESForm@@2V?$NiTPointerMap@KPAVTESForm@@@@A                                          = 0x00B0613C,0x009EE164     ; formIDMap
 ?activeFileFormList@TESForm@@2V?$NiTLargeArray@PAVTESForm@@@@A                                  = 0x00B0614C,0x009EE174     ; activeFileFormList
-?editorIDMap@TESForm@@2V?$NiTStringMap@PAVTESForm@@@@A                                          = _NOTINGAME,0x009EE18C     ; editorIDMap
+?editorIDMap@TESForm@@2V?$BSTCaseInsensitiveStringMap@PAVTESForm@@@@A                           = _NOTINGAME,0x009EE18C     ; editorIDMap
 ?formReferenceMap@TESForm@@2V?$NiTPointerMap@PAVTESForm@@PAV?$BSSimpleList@PAVTESForm@@@@@@A    = _NOTINGAME,0x009EE1A0     ; formReferenceMap
 ;} 
 ;{ ; TESForm - BaseFormComponent virtual methods

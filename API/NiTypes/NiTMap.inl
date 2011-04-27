@@ -398,6 +398,9 @@ template <class TPARENT, class TVAL>
 inline bool NiTStringTemplateMap<TPARENT,TVAL>::IsKeysEqual(const char* pcKey1, const char* pcKey2) const
 {
     return strcmp(pcKey1, pcKey2) == 0;
+    // NOTE - this implementation uses the intended case sensitive string comparison
+    // However, Bethesda's code uses a case-insensitive comparison (see associated notes in NiTMap.h).
+    // This version is more correct, however it may in rare cases not agree with the Bethesda code.
 }
 //---------------------------------------------------------------------------
 

@@ -17,6 +17,7 @@
 #include "API/TESForms/BaseFormComponent.h"  // BaseFormComponent
 #include "API/BSTypes/BSSimpleList.h"
 #include "API/BSTypes/BSStringT.h"
+#include "API/BSTypes/BSTCaseInsensitiveStringMap.h"
 #include "API/NiTypes/NiTMap.h"
 #include "API/NiTypes/NiTArray.h"
 
@@ -320,8 +321,7 @@ public:
             // actually NiTMapBase< NiTPointerAllocator<unsigned int>, unsigned int, TESForm* >
     IMPORT static NiTLargeArray<TESForm*>           activeFileFormList; // list of forms modified by active file
     #ifndef OBLIVION
-    IMPORT static NiTStringMap<TESForm*>            editorIDMap;  // maps editorIDs to form pointers
-            // acutally NiTMapBase< class DFALL< TESForm* >, const char*, TESForm* >.  key comparison appears to be case-insensitive 
+    IMPORT static BSTCaseInsensitiveStringMap<TESForm*>         editorIDMap;  // maps editorIDs to form pointers
     IMPORT static NiTPointerMap<TESForm*,FormReferenceList*>    formReferenceMap; // maps form pointers to list of referencing forms
             // actually NiTMapBase< NiTPointerAllocator<unsigned int>, TESForm*, BSSimpleList< TESForm* >* >
     #endif

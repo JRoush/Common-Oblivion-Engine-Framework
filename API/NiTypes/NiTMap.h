@@ -154,6 +154,11 @@ protected:  bool m_bCopy;       // 10
 public:     virtual                     ~NiTStringTemplateMap();                                                        // 000     
 protected:  virtual UInt32              KeyToHashIndex(const char* key) const;                                          // 004
             virtual bool                IsKeysEqual(const char* key1, const char* key2) const;                          // 008
+                                        // NOTE: Bethesda used a case-insesnitive string comparison for this field, even though the default
+                                        // hash function is case sensitive.  This violates the core invariant of hash tables - that key equality
+                                        // implies hash equality.  As a result, some parts of the key space will theoretically overlap.
+                                        // In practice with a hash table of reasonable size, however, this doesn't seem to be a problem.  
+                                        // For correctness, this definition uses the intended case sensitive comparator.
             virtual void                SetValue(NiTMapItem<const char*, TVAL>* pkItem, const char* pcKey, TVAL val);   // 00C
             virtual void                ClearValue(NiTMapItem<const char*, TVAL>* pkItem);                              // 010
 

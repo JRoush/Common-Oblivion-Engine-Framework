@@ -15,6 +15,7 @@
 //#include "API/Actors/TESActorBase.h"
 //#include "API/BSTypes/BSSimpleList.h"
 //#include "API/BSTypes/BSStringT.h"
+//#include "API/BSTypes/BSTCaseInsensitiveStringMap.h"
 //#include "API/CSDialogs/TESStringInputDialog.h"
 //#include "API/CSDialogs/TESDialog.h"
 //#include "API/CSDialogs/DialogExtraData.h"

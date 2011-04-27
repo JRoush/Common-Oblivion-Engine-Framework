@@ -170,6 +170,14 @@
 					RelativePath=".\API\BSTypes\BSStringT.h"
 					>
 				</File>
+				<File
+					RelativePath=".\API\BSTypes\BSTCaseInsensitiveStringMap.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\BSTypes\BSTCaseInsensitiveStringMap.inl"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="NiTypes"
