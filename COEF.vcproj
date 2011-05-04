@@ -155,6 +155,14 @@
 				Name="BSTypes"
 				>
 				<File
+					RelativePath=".\API\BSTypes\BSFile.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\BSTypes\BSFile.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\BSTypes\BSSimpleList.h"
 					>
 				</File>
@@ -182,6 +190,22 @@
 			<Filter
 				Name="NiTypes"
 				>
+				<File
+					RelativePath=".\API\NiTypes\NiBinaryStream.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\NiTypes\NiBinaryStream.h"
+					>
+				</File>
+				<File
+					RelativePath=".\API\NiTypes\NiFile.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\NiTypes\NiFile.h"
+					>
+				</File>
 				<File
 					RelativePath=".\API\NiTypes\NiTArray.h"
 					>

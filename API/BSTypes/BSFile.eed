@@ -1,0 +1,24 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; BSFile
+; virtual methods
+??1BSFile@@UAE@XZ                   = 0x00430670,0x00467220     ; ~BSFile
+?SetEndianSwap@BSFile@@UAEX_N@Z     = 0x004307F0,0x00467330     ; SetEndianSwap
+?Seek@BSFile@@UAE_NHH@Z             = 0x0042FF80,0x00466F10     ; Seek
+?GetFileSize@BSFile@@UBEKXZ         = 0x00430010,0x00467010     ; GetFileSize
+?BuildFormattedStatusArray@BSFile@@UAEXAAV?$NiTArray@PAD@@@Z    = 0x00430BA0,0x004679B0     ; BuildFormattedStatusArray
+?OpenFile@BSFile@@UAE_N_N0@Z                                    = 0x0042FE80,0x00466DD0     ; OpenFile
+?GetFileSizeDirect@BSFile@@UAEKXZ                               = 0x00430240,0x00466FA0     ; GetFileSizeDirect
+?ReadString@BSFile@@UAEKAAVBSStringT@@K@Z                       = 0x00430700,0x004677D0     ; ReadString
+?ReadStringW@BSFile@@UAEKAAVBSStringT@@K@Z                      = 0x00430AB0,0x004678C0     ; ReadStringW
+?ReadLine@BSFile@@UAEKPADKG@Z                                   = 0x004308E0,0x00467420     ; ReadLine
+?WriteString@BSFile@@UAEKAAVBSStringT@@@Z                       = 0x00430880,0x004673C0     ; WriteString
+?WriteStringW@BSFile@@UAEKAAVBSStringT@@@Z                      = 0x00430820,0x00467360     ; WriteStringW
+?FileExists@BSFile@@UAE_NXZ                                     = 0x004300D0,0x00467130     ; FileExists
+?DirectRead@BSFile@@UAEKPAXK@Z                                  = 0x004302B0,0x00467290     ; DirectRead
+?DirectWrite@BSFile@@UAEKPBXK@Z                                 = 0x00430030,0x00467030     ; DirectWrite
+; methods
+?Flush@BSFile@@QAE_NXZ              = 0x004303B0,0x00467150     ; Flush
+??0BSFile@@QAE@PBDKK_N@Z            = 0x00430970,0x004676A0     ; BSFile
+;}

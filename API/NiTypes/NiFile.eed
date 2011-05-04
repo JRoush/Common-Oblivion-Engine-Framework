@@ -1,0 +1,19 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; NiFile
+; virtual methods
+??1NiFile@@UAE@XZ                   = 0x00747DE0,0x008684C0     ; ~NiFile
+??BNiFile@@UBE_NXZ                  = 0x007481C0,0x008688A0     ; operator bool
+?SetEndianSwap@NiFile@@UAEX_N@Z     = 0x007480D0,0x008687B0     ; SetEndianSwap
+?Seek@NiFile@@UAE_NHH@Z             = 0x00747E20,0x00868500     ; Seek
+?GetFileSize@NiFile@@UBEKXZ         = 0x00747D80,0x00868460     ; GetFileSize
+; methods
+?GetFile@NiFile@@SAPAV1@PBDKK@Z     = 0x00748100,0x008687E0     ; GetFile
+?CanAccess@NiFile@@SA_NPBDK@Z       = 0x00748160,0x00868840     ; CanAccess
+?DirectRead@NiFile@@QAEKPAXK@Z      = 0x00747E80,0x00868560     ; DirectRead
+?DirectWrite@NiFile@@QAEKPBXK@Z     = 0x00747F40,0x00868620     ; DirectRWrite
+?Flush@NiFile@@QAE_NXZ              = 0x00747D30,0x00868410     ; Flush
+??0NiFile@@QAE@PBDKK@Z              = 0x00747C70,0x00868350     ; NiFile
+;}
+

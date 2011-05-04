@@ -1,0 +1,8 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; NiBinaryStream
+??1NiBinaryStream@@UAE@XZ                   = 0x00748240,0x00868920     ; ~NiBinaryStream
+?DoByteSwap@NiBinaryStream@@SAXPAXKPAKK@Z   = 0x00748260,0x00868940     ; DoByteSwap
+??0NiBinaryStream@@QAE@XZ                   = 0x00748220,0x00868900     ; NiBinaryStream
+;}
