@@ -7,11 +7,10 @@
 #include "API/TES/MemoryHeap.h"
 #include "API/BSTypes/BSStringT.h"
 #include "API/BSTypes/BSSimpleList.h"
-#include "API/TESForms/TESForm.h"   // TrackingData
+#include "API/TESForms/TESForm.h"   // TESForm, TrackingData
 
 // argument classes
 class   BSFile;  
-class   TESForm;    // TESForms/TESForm.h
 
 class IMPORTCLASS ChunkInfo
 {// size 08/08 (NOTE: 06 for non-record chunks on disk, see below)
@@ -37,7 +36,7 @@ public:
     enum RecordFlags
     {
         // not sure what flags are specific to forms, references, or records, and what is shared
-        kRecordFlags__FormFlags                = 0x000A8EE0, // flag bits copied froms fors for form records
+        kRecordFlags__FormFlags                = 0x000A8EE0, // flag bits copied from forms for form records
         kRecordFlags__FileFlags                = 0xFF000091, // flag bits copied from files for TES4 records  
         kRecordFlags_Ignored            = /*0C*/ 0x00001000, // record is ignored during loading
         kRecordFlags_Compressed         = /*12*/ 0x00040000, // record data is compressed using ZLib.  Note that group records cannot be compressed
@@ -57,6 +56,10 @@ public:
 
 class IMPORTCLASS TESFile
 {// size 420
+/*
+    Partial:
+    -   members
+*/
 public:
 
     static const UInt32 kMAX_PATH = 260; // i.e. windows constant MAX_PATH
