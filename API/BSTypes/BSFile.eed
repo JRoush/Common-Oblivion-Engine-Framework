@@ -5,7 +5,7 @@ EXPORTS ;{ ; BSFile
 ; virtual methods
 ??1BSFile@@UAE@XZ                   = 0x00430670,0x00467220     ; ~BSFile
 ?SetEndianSwap@BSFile@@UAEX_N@Z     = 0x004307F0,0x00467330     ; SetEndianSwap
-?Seek@BSFile@@UAE_NHH@Z             = 0x0042FF80,0x00466F10     ; Seek
+?Seek@BSFile@@UAEXHH@Z              = 0x0042FF80,0x00466F10     ; Seek
 ?GetFileSize@BSFile@@UBEKXZ         = 0x00430010,0x00467010     ; GetFileSize
 ?BuildFormattedStatusArray@BSFile@@UAEXAAV?$NiTArray@PAD@@@Z    = 0x00430BA0,0x004679B0     ; BuildFormattedStatusArray
 ?OpenFile@BSFile@@UAE_N_N0@Z                                    = 0x0042FE80,0x00466DD0     ; OpenFile

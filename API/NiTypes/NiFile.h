@@ -38,7 +38,7 @@ public:
     IMPORT /*008*/ virtual void         SetEndianSwap(bool bDoSwap);
 
     // additional virtual methods
-    IMPORT /*00C*/ virtual bool         Seek(int offset, int origin); // set current read/write position, same args as fseek()
+    IMPORT /*00C*/ virtual void         Seek(int offset, int origin); // set current read/write position, same args as fseek()
     IMPORT /*010*/ virtual UInt32       GetFileSize() const;
 
     // methods

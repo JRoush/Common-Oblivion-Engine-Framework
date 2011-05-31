@@ -35,7 +35,7 @@ public:
     // virtual method overrides
     IMPORT /*000*/ virtual              ~BSFile();
     IMPORT /*008*/ virtual void         SetEndianSwap(bool bDoSwap);
-    IMPORT /*00C*/ virtual bool         Seek(int offset, int origin);
+    IMPORT /*00C*/ virtual void         Seek(int offset, int origin);
     IMPORT /*010*/ virtual UInt32       GetFileSize() const; // uses cached size
 
     // additional virtual methods

@@ -170,7 +170,7 @@ public:
                             // returns false on failure, usually indicating the end of file
     IMPORT UInt8            GetRecordType(); // returns type of current record, zero for invalid or no record
     IMPORT UInt32           JumpToBeginningOfRecord(); // move first chunk in current record, returns chunk type  
-    IMPORT void*            GetDecompressedRecordData(); // decompresses the record if necessary, and returns a pointer to the decompressed data 
+    IMPORT void             LoadCompressedRecordData(); // decompresses the record if necessary, and caches pointer to the decompressed data 
     // methods - loading chunks
     IMPORT bool             GetChunkData(void* buffer, UInt32 size); // loads data from current chunk into buffer. returns false on failure.                            
                             // number of bytes copied is stored in fetchedChunkDataSize. buffer must be large enough accept *entire* chunk, or a 

@@ -24,7 +24,7 @@ EXPORTS ;{ ; TESFile
 ?JumpToBeginningOfRecord@TESFile@@QAEKXZ                = 0x00451160,0x004880E0     ; JumpToBeginningOfRecord
 ?PushGroupInfo@TESFile@@QAEXAAVRecordInfo@@@Z           = 0x0044FF50,0x00486DA0     ; PushGroupInfo
 ?PopGroupInfo@TESFile@@QAEXXZ                           = 0x0044FFA0,0x00486DF0     ; PopGroupInfo
-?GetDecompressedRecordData@TESFile@@QAEPAXXZ            = 0x00450550,0x00487780     ; GetDecompressedRecordData
+?LoadCompressedRecordData@TESFile@@QAEXXZ               = 0x00450550,0x00486F40     ; LoadCompressedRecordData
 ;}
 ;{ ; methods - loading chunks
 ?GetChunkData@TESFile@@QAE_NPAXK@Z                      = 0x00450C20,0x004879D0     ; GetChunkData
