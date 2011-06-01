@@ -129,20 +129,22 @@ protected:
     Shortcut macros - 
     Print output to the specified channel, using the local function name as the source.
     Require that the global variable 'gLog' be declared, and may not work with non-microsoft compilers.
-    The 'Optimizer' macro causes the result of the function call to be cached in a static "guard" variable,
-    so that if the print fails once it will never be called again.  This greatly reduces the overhead of 
-    embedded debugging output, but it basically means that the log rules can't be changed once loaded.  
-    To disable the guards and let the print function call to proceed every time, delete everything after
-    the comment in the OPTIMIZER_CHECK macro below.
+    By default the result of the function call to be cached in a static "guard" variable, so that if the 
+    print fails once it will never be called again.  This greatly reduces the overhead of embedded 
+    debugging output, but it basically means that the log rules can't be changed once loaded.  
+    To disable the guards and let the print function call to proceed every time, define the OUTPUTLOG_NO_OPTIMIZER
+    macro in your project before including this header.
 */
-#define OPTIMIZER_CHECK /* optional: delete everything after this comment */ if (static int __optguard__ = 1) __optguard__ = 
+#ifndef OUTPUTLOG_NO_OPTIMIZER
+#define OUTPUTLOG_OPTIMIZER /* optional: delete everything after this comment */ if (static int __optguard__ = 1) __optguard__ = 
+#endif
 extern OutputLog& gLog;
-#define _FATALERROR(format, ...) OPTIMIZER_CHECK gLog.PrintF(OutputLog::kChannel_FatalError,__FUNCTION__,format,## __VA_ARGS__)
-#define _ERROR(format, ...) OPTIMIZER_CHECK gLog.PrintF(OutputLog::kChannel_Error,__FUNCTION__,format,## __VA_ARGS__)
-#define _WARNING(format, ...) OPTIMIZER_CHECK gLog.PrintF(OutputLog::kChannel_Warning,__FUNCTION__,format,## __VA_ARGS__)
-#define _MESSAGE(format, ...) OPTIMIZER_CHECK gLog.PrintF(OutputLog::kChannel_Message,__FUNCTION__,format,## __VA_ARGS__)
-#define _VMESSAGE(format, ...) OPTIMIZER_CHECK gLog.PrintF(OutputLog::kChannel_VerboseMessage,__FUNCTION__,format,## __VA_ARGS__)
-#define _DMESSAGE(format, ...) OPTIMIZER_CHECK gLog.PrintF(OutputLog::kChannel_DebugMessage,__FUNCTION__,format,## __VA_ARGS__)
+#define _FATALERROR(format, ...) OUTPUTLOG_OPTIMIZER gLog.PrintF(OutputLog::kChannel_FatalError,__FUNCTION__,format,## __VA_ARGS__)
+#define _ERROR(format, ...) OUTPUTLOG_OPTIMIZER gLog.PrintF(OutputLog::kChannel_Error,__FUNCTION__,format,## __VA_ARGS__)
+#define _WARNING(format, ...) OUTPUTLOG_OPTIMIZER gLog.PrintF(OutputLog::kChannel_Warning,__FUNCTION__,format,## __VA_ARGS__)
+#define _MESSAGE(format, ...) OUTPUTLOG_OPTIMIZER gLog.PrintF(OutputLog::kChannel_Message,__FUNCTION__,format,## __VA_ARGS__)
+#define _VMESSAGE(format, ...) OUTPUTLOG_OPTIMIZER gLog.PrintF(OutputLog::kChannel_VerboseMessage,__FUNCTION__,format,## __VA_ARGS__)
+#define _DMESSAGE(format, ...) OUTPUTLOG_OPTIMIZER gLog.PrintF(OutputLog::kChannel_DebugMessage,__FUNCTION__,format,## __VA_ARGS__)
 
 // RuleBasedTarget - an output target that uses a list of rules to filter output by source+channel
 class RuleBasedTarget : public OutputTarget
