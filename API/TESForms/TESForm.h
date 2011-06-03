@@ -291,6 +291,7 @@ public:
     #ifndef OBLIVION
     IMPORT bool                 SetEditorID(const char* newEditorID); // this is a virtual method in the game
     IMPORT static TESForm*      LookupByEditorID(const char* editorID);
+    IMPORT static bool          SanitizeEditorIDString(char* editorID); // strips out non-alphanumeric characters.  returns true if string was changed.
     #endif
     // methods - CS reference tracking
     #ifndef OBLIVION

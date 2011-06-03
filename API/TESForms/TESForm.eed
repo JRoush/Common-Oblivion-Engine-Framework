@@ -73,6 +73,7 @@ EXPORTS ;{ ; TESForm
 ?IsFormIDBuiltin@TESForm@@SA_NK@Z                                   = 0x0046ABD0,0x00494D10     ; IsFormIDBuiltin
 ?LookupByEditorID@TESForm@@SAPAV1@PBD@Z                             = _NOTINGAME,0x00495F20     ; LookupByEditorID
 ?SetEditorID@TESForm@@QAE_NPBD@Z                                    = _NOTINGAME,0x00497670     ; SetEditorID - this is a virtual method in game
+?SanitizeEditorIDString@TESForm@@SA_NPAD@Z                          = _NOTINGAME,0x004954D0     ; SanitizeEditorIDString
 ?GetCrossReferenceList@TESForm@@QAEPAV?$BSSimpleList@PAVTESForm@@@@_N@Z = _NOTINGAME,0x00496380     ; GetCrossReferenceList
 ?GetCrossReferenceCount@TESForm@@QAEKXZ                                 = _NOTINGAME,0x00496520     ; GetCrossReferenceCount
 ?AddCrossReference@TESForm@@QAEXPAV1@@Z                                 = _NOTINGAME,0x00496430     ; AddCrossReference
