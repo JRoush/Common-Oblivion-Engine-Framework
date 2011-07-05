@@ -17,7 +17,7 @@ bool TESFileFormats::ResolveModValue(UInt32& value, TESFile& file, UInt32 resolu
     {
         // returns invalid code on failure      
         if (value < 0x80000000) return true;   // code is not dynamic
-        UInt32 fmid = value << 0x18;    // create a dummy formid
+        UInt32 fmid = (value << 0x18) | 0xFFFFFF;    // create a dummy formid
         if (!TESForm::ResolveFormID(fmid,file))  return false; // failed to resolve
         value = (value & 0xFFFFFF00) | (fmid >> 0x18);
         return true;
