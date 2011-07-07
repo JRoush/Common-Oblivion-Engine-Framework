@@ -115,8 +115,9 @@ public:
     IMPORT static bool      LoadForm(TESForm& form, TESFile& file); // Parses a form record into a form object, using TESForm::LoadForm() method
                             // returns false if form could not be loaded
     #ifndef OBLIVION
-    IMPORT bool             SaveFile(const char* filename, bool arg1); // calls SaveFormRecord() all forms in TESForm::activeFileFormList
-                            // Creates the file & sets as active file if necessary.  returns false if save failed    
+    IMPORT bool             SaveFile(const char* filename, bool saveAsESM); // calls SaveFormRecord() all forms in TESForm::activeFileFormList
+                            // Creates the file & sets as active file if necessary.  returns false if save failed
+                            // if saveAsESM is true, saves all loaded forms regardless of their "Active" status (decoded by shadeMe)
     #endif
     IMPORT void             SaveForm(TESForm& form, bool arg1); // serializes form to active file using TESForm::SaveForm()    
     
