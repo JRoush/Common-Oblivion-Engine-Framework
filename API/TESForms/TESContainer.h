@@ -27,7 +27,7 @@ class   TESObjectARMO;
 class   TESObjectCLOT;
 class   TESObjectWEAP;
 
-class TESContainer : public BaseFormComponent
+class IMPORTCLASS TESContainer : public BaseFormComponent
 {// size 010/010
 public:
 

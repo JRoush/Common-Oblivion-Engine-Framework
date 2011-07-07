@@ -15,7 +15,7 @@
 // argument classes
 class   TESCombatStyle;
 
-class TESActorBase : public TESBoundAnimObject, public TESActorBaseData, public TESContainer, public TESSpellList, public TESAIForm,
+class IMPORTCLASS TESActorBase : public TESBoundAnimObject, public TESActorBaseData, public TESContainer, public TESSpellList, public TESAIForm,
                     public TESHealthForm, public TESAttributes, public TESAnimation, public TESFullName, public TESModel, public TESScriptableForm
 {// size 0E4/118
 public:
