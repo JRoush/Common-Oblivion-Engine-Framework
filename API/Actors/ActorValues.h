@@ -1,8 +1,8 @@
 /* 
     'ActorValues' is a generic container class used to group the various global data and functions related 
-    to actor values.  As such, it has only static members and methods.  These may actually be part of
-    the Actor class or some other class, but they are grouped independently here so that we don't have to
-    include Actor.h every time we need a simple constant definition.
+    to actor values.  As such, it has only static members and methods.  These are actually drawn from a number
+    of classes (Actor, TESSkill, etc.), but they are grouped independently here so that we don't have to
+    include those more complex headers every time we need a simple constant definition.
 
     AVCollection is used to collectively process actor values from several actor form components
     Appears in Process & Actor objects.  Bethesda may have used another name for this object.
@@ -142,7 +142,7 @@ public:
     enum ActorValueModifiers
     {
         kAVModifier_Max         = 0x0, // stored in MiddleLow Process
-        kAVModifier_Offset      = 0x1, // stored in Actor Ref
+        kAVModifier_Script      = 0x1, // stored in Actor Ref
         kAVModifier_Damage      = 0x2, // stored in Low Process
     };
 
@@ -159,6 +159,17 @@ public:
     IMPORT static GameSetting*  skillMasteryNames[kMastery__MAX]; // 'sSkillLevel***'
     IMPORT static const char*   SkillMasteryName(UInt32 masteryLevel);
 
+    // Skill Specializations
+    enum SkillSpecializations
+    {
+        kSpecialization_Combat		= 0x0,
+		kSpecialization_Magic		= 0x1,
+		kSpecialization_Stealth	    = 0x2,
+		kSpecialization__MAX        = 0x3,
+    };
+    IMPORT static GameSetting*  skillSpecializationNames[kSpecialization__MAX]; // 'sSpecName***'
+    IMPORT static const char*   SkillSpecializationName(UInt32 specialization);
+    
 };
 
 #ifdef OBLIVION

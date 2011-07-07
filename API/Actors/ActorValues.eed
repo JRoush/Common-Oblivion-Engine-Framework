@@ -3,6 +3,7 @@ BASE = 0x400000, 0x400000
 
 EXPORTS ;{ ; ActorValues
 ; static data
+?skillSpecializationNames@ActorValues@@2PAPAVGameSetting@@A = 0x00B10D90,0x009F07FC     ; skillSpecializationNames
 ?skillMasteryNames@ActorValues@@2PAPAVGameSetting@@A        = 0x00B12B38,0x009EC0FC     ; skillMasteryNames
 ?actorValueExtraNames@ActorValues@@2PAPBDA                  = 0x00B12908,0x009EBEA0     ; actorValueExtraNames
 ?actorValueIconPaths@ActorValues@@2PAPAVGameSetting@@A      = 0x00B12880,0x009EBE18     ; actorValueIconPaths
@@ -13,6 +14,7 @@ EXPORTS ;{ ; ActorValues
 ?ActorValueDescription@ActorValues@@SAPBDK@Z    = 0x00565CF0,_NOTINCS__     ; ActorValueDescription
 ?ActorValueIconPath@ActorValues@@SAPBDK@Z       = 0x00565D10,_NOTINCS__     ; ActorValueIconPath
 ?SkillMasteryName@ActorValues@@SAPBDK@Z         = 0x0056A340,0x00455EC0     ; SkillMasteryName
+?SkillSpecializationName@ActorValues@@SAPBDK@Z  = 0x0052E7E0,0x004EC1C0     ; ActorValues::SkillSpecializationName
 ;}
 
 EXPORTS ;{ ; AVCollection
