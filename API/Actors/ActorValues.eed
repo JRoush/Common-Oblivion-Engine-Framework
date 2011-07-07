@@ -13,6 +13,8 @@ EXPORTS ;{ ; ActorValues
 ?ActorValueName@ActorValues@@SAPBDK@Z           = 0x00565CC0,0x0044F570     ; ActorValueName
 ?ActorValueDescription@ActorValues@@SAPBDK@Z    = 0x00565CF0,_NOTINCS__     ; ActorValueDescription
 ?ActorValueIconPath@ActorValues@@SAPBDK@Z       = 0x00565D10,_NOTINCS__     ; ActorValueIconPath
+?AVCodeFromGroupSubcode@ActorValues@@SAKKK@Z    = 0x00565BE0,0x0044F5A0     ; AVCodeFromGroupSubcode
+?GroupSubcodeFromAVCode@ActorValues@@SAKKK@Z    = 0x00565C50,0x0044F610     ; GroupSubcodeFromAVCode
 ?SkillMasteryName@ActorValues@@SAPBDK@Z         = 0x0056A340,0x00455EC0     ; SkillMasteryName
 ?SkillSpecializationName@ActorValues@@SAPBDK@Z  = 0x0052E7E0,0x004EC1C0     ; ActorValues::SkillSpecializationName
 ;}

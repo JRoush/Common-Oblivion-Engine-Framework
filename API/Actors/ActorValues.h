@@ -137,6 +137,8 @@ public:
         kAVGroup_Combat             = 0x6,  // 0x2A - ????  not sure of name or purpose
         kAVGroup__MAX               = 0x7,  
     };
+    IMPORT static UInt32        AVCodeFromGroupSubcode(UInt32 avGroup, UInt32 groupSubcode);    // convert from group code (e.g. skill code) to avCode
+    IMPORT static UInt32        GroupSubcodeFromAVCode(UInt32 avGroup, UInt32 avCode); // convert from avCode to group code (e.g. skill code)
 
     // ActorValues - modifiers
     enum ActorValueModifiers
