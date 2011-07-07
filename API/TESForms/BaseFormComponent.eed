@@ -31,6 +31,7 @@ EXPORTS ;{ ; TESDescription
 ?GetDescription@TESDescription@@UAEPBDPAVTESForm@@K@Z               = 0x0046A710,0x00493680     ; GetDescription
 ; methods
 ?SaveComponent@TESDescription@@QAEXXZ                   = 0x0046A700,0x00493B40     ; SaveComponent
+?SaveComponent@TESDescription@@SAXAAV1@K@Z              = 0x0046A440,0x004934B0     ; SaveComponent (static)
 ?LoadComponent@TESDescription@@SAXAAV1@AAVTESFile@@@Z   = 0x0046A390,0x00493B50     ; LoadComponent
 ??0TESDescription@@QAE@XZ                               = 0x0046A400,0x00493F80     ; TESDescription()
 ;}

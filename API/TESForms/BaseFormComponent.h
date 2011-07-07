@@ -134,7 +134,8 @@ public:
                                             // Game - Loads description into cache from disk. CS - returns string ptr from desc member (ignores args)
 
     // methods
-    IMPORT void                 SaveComponent(); // serialize to active file buffer
+    IMPORT void                 SaveComponent(); // serialize to active file buffer (calls static save method with default 'DESC' chunk type)
+    IMPORT static void          SaveComponent(TESDescription& desc, UInt32 chunkType);  // serialize to active file buffer
     IMPORT static void          LoadComponent(TESDescription& desc, TESFile& file);  // deserialize from file buffer
 
     // constructor
