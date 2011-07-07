@@ -462,6 +462,14 @@
 					RelativePath=".\API\Actors\TESActorBase.h"
 					>
 				</File>
+				<File
+					RelativePath=".\API\Actors\TESSkill.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Actors\TESSkill.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="ExtraData"

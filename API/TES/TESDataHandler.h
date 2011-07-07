@@ -10,6 +10,7 @@
 #include "API/TES/MemoryHeap.h"
 #include "API/BSTypes/BSSimpleList.h"
 #include "API/NiTypes/NiTArray.h"
+#include "API/Actors/TESSkill.h"    // Unlike other form classes, TESSkills are statically allocated by data handler
 
 // argument classes
 class   Vector3;            // NiVector3?  currently defined in Utilities/ITypes.h
@@ -51,16 +52,6 @@ class   TESObjectCONT;
 class   TESObjectDOOR;
 class   TESObjectREFR;      // TESForms/TESObjectREFR.h
 class   ContainerExtraData; // TESForms/TESContainer.h
-
-// 'faked' base: TESSkill
-class TESSkill
-{// size 60/A0
-    #ifdef OBLIVION
-    UInt8   unk[0x60];
-    #else
-    UInt8   unk[0xA0];
-    #endif
-};
 
 class IMPORTCLASS TESDataHandler
 {// size 0CE0/1220
@@ -130,8 +121,10 @@ public:
     IMPORT void             SaveForm(TESForm& form, bool arg1); // serializes form to active file using TESForm::SaveForm()    
     
     // members - misc
+    IMPORT static TESForm*  CreateForm(UInt8 formType); // form 'Factory' - creates a new form by type, for supported types
     IMPORT bool             AddFormToHandler(TESForm* form); // Adds form to handler.  Returns false for form types not handled
     IMPORT UInt32           ReserveNextUnusedFormID(); // gets next formID, and marks it as used    
+    IMPORT TESSkill*        GetSkillByCode(UInt32 skillCode); // gets skill by code (performs bounds checks)
     IMPORT bool             Clear(); // destroys all objects managed by the data handler.  always returns true
     IMPORT void             CreateBuiltinObjects(); // (re)create built-in forms & objects managed by the data handler
     IMPORT TESObjectREFR*   PlaceObjectRef(TESObject* baseObject, Vector3& position, Vector3& rotation, 

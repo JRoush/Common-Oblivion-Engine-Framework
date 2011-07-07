@@ -310,7 +310,6 @@ public:
     IMPORT bool                 CompareAllComponentsTo(TESForm& compareTo); // compares components
     // methods - misc
     IMPORT static const char*   GetFormTypeName(UInt8 formType);
-    IMPORT static TESForm*      Create(UInt8 formType); // form 'Factory' - creates a new form by type, for supported types
     IMPORT void                 MakeTemporary(); // removes from formID map, editorID map, active file list, etc. and sets temporary flag
 
     // constructor  

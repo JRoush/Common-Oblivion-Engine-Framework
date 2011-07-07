@@ -1,0 +1,21 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESSkill
+; virtual methods
+??1TESSkill@@UAE@XZ                                         = 0x0052E660,0x004EC950     ; ~TESSkill
+?InitializeAllComponents@TESSkill@@UAEXXZ                   = 0x0052EB70,0x004EC940     ; InitializeAllComponents
+?LoadForm@TESSkill@@UAE_NAAVTESFile@@@Z                     = 0x0052E840,0x004EC290     ; LoadForm
+?SaveFormChunks@TESSkill@@UAEXXZ                            = 0x0052E6E0,0x004EC200     ; SaveFormChunks
+?CopyFrom@TESSkill@@UAEXAAVTESForm@@@Z                      = 0x0052E760,0x004EC3E0     ; CopyFrom
+?CompareTo@TESSkill@@UAE_NAAVTESForm@@@Z                    = 0x0052E990,0x004EC460     ; CompareTo
+?DialogMessageCallback@TESSkill@@UAE_NPAUHWND__@@IIJAAJ@Z   = _NOTINGAME,0x004EC560     ; DialogMessageCallback
+?SetInDialog@TESSkill@@UAEXPAUHWND__@@@Z                    = _NOTINGAME,0x004EC5D0     ; SetInDialog
+?GetFromDialog@TESSkill@@UAEXPAUHWND__@@@Z                  = _NOTINGAME,0x004EC790     ; GetFromDialog
+?CleanupDialog@TESSkill@@UAEXPAUHWND__@@@Z                  = _NOTINGAME,0x004EC8A0     ; CleanupDialog
+; methods
+?GetMasteryDescription@TESSkill@@QAEPBDK@Z  = 0x0052EAB0,_NOTINCS__     ; GetMasteryDescription
+??0TESSkill@@QAE@XZ                         = 0x0052EB80,0x004ECA00     ; TESSkill
+?ClearTESSkill@TESSkill@@QAEXXZ             = 0x0052EAF0,0x004EC8E0     ; ClearTESSkill
+;}
+

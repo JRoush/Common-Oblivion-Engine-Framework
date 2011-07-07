@@ -37,8 +37,10 @@ EXPORTS ;{ ; TESDataHandler
 ?LoadForm@TESDataHandler@@SA_NAAVTESForm@@AAVTESFile@@@Z    = 0x00447050,0x004790C0     ; LoadForm
 ?SaveFile@TESDataHandler@@QAE_NPBD_N@Z                      = _NOTINGAME,0x0047E9B0     ; SaveFile
 ?SaveForm@TESDataHandler@@QAEXAAVTESForm@@_N@Z              = 0x004470B0,0x00479120     ; SaveForm
+?CreateForm@TESDataHandler@@SAPAVTESForm@@E@Z               = 0x00447DF0,0x004793F0     ; CreateForm
 ?AddFormToHandler@TESDataHandler@@QAE_NPAVTESForm@@@Z       = 0x0044D950,0x004818F0     ; AddFormToHandler
 ?ReserveNextUnusedFormID@TESDataHandler@@QAEKXZ             = 0x00448D40,0x0047C580     ; ReserveNextUnusedFormID
+?GetSkillByCode@TESDataHandler@@QAEPAVTESSkill@@K@Z         = 0x00446AF0,0x004792B0     ; GetSkillByCode
 ?Clear@TESDataHandler@@QAE_NXZ                              = 0x004492E0,0x0047AA60     ; Clear
 ?CreateBuiltinObjects@TESDataHandler@@QAEXXZ                = 0x0044AC20,0x0047F520     ; CreateBuiltinObjects
 ?PlaceObjectRef@TESDataHandler@@QAEPAVTESObjectREFR@@PAVTESObject@@AAVVector3@@1PAVTESObjectCELL@@PAVTESWorldSpace@@PAV2@@Z = 0x0044A7D0,0x0047A060     ; PlaceObjectRef
