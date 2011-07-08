@@ -1,6 +1,8 @@
 /*
     TESObjectCELL describes a physical location in the game world, tracking the scenegraph information(?)
     and all objects (TESObjectREFRs) inside it.
+
+    Credits: shadeMe, for decoding the LightingData object.
 */
 #pragma once
 
@@ -29,6 +31,7 @@ class IMPORTCLASS TESObjectCELL : public TESForm, public TESMemContextForm, publ
 public:
 
     typedef BSSimpleList<TESObjectREFR*>    ObjectREFRList;
+    typedef UInt32 RGBA;        // for 24-bit colors - TODO - move this to ITypes.h?
 
     enum ModifiedFlags
     {
@@ -53,11 +56,32 @@ public:
         kCellFlags_BehaveLikeExterior   = /*07*/ 0x80,
     };
 
+    // 8
     struct CellCoordinates // what is the actual type for this?
     {
-        SInt32    x;
-        SInt32    y;
+        MEMBER /*00*/ SInt32       x;
+        MEMBER /*04*/ SInt32       y;
     };
+
+    // 24
+    struct LightingData
+    {
+        MEMBER /*00*/ RGBA         ambient;
+        MEMBER /*04*/ RGBA         directional;
+        MEMBER /*08*/ RGBA         fog;
+        MEMBER /*0C*/ float        fogNear;
+        MEMBER /*10*/ float        fogFar;
+        MEMBER /*14*/ UInt32       rotXY;
+        MEMBER /*18*/ UInt32       rotZ;
+        MEMBER /*1C*/ float        directionalFade;
+        MEMBER /*20*/ float        fogClipDistance;
+    };
+
+    union CellData
+    {
+        CellCoordinates*     coords;     // if exterior
+        LightingData*        lighting;   // if interior
+    }; 
 
     // members
     //     /*00/00*/ TESForm           
@@ -68,7 +92,7 @@ public:
     MEMBER /*26/32*/ UInt8              cellFlags26;
     MEMBER /*27/33*/ UInt8              pad27;
     MEMBER /*28/34*/ ExtraDataList      extraData; // includes ExtraEditorID in game
-    MEMBER /*3C/48*/ CellCoordinates*   coords;
+    MEMBER /*3C/48*/ CellData           cellData;
     MEMBER /*40/4C*/ TESObjectLAND*     land;
     MEMBER /*44/50*/ TESPathGrid*       pathGrid;
     MEMBER /*48/54*/ ObjectREFRList     objectList;
