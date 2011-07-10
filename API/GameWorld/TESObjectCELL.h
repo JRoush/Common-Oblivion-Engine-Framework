@@ -33,6 +33,12 @@ public:
     typedef BSSimpleList<TESObjectREFR*>    ObjectREFRList;
     typedef UInt32 RGBA;        // for 24-bit colors - TODO - move this to ITypes.h?
 
+    enum FormFlags
+    {
+        kFormFlags_OffLimits            = /*11*/ 0x00020000,
+        kFormFlags_CantWait             = /*13*/ 0x00080000,
+    };
+
     enum ModifiedFlags
     {
         kModified_DetachTime        = /*1B*/ 0x08000000, // only present if version >= 0x5A

@@ -16,6 +16,7 @@ class   NiNode;
 class   ActorAnimData;  // TODO: need to decode ActorAnimData
 class   MagicCaster;    // Magic/MagicCaster.h
 class   MagicTarget;    // Magic/MagicTarget.h
+class   TESTopic;
 
 class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
 {// size 58/60
@@ -26,6 +27,14 @@ class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, publ
     -   Overrides for undecoded virtual functions (be sure to update these if the base definition changes)
 */
 public:
+
+    enum FormFlags
+    {        
+        kFormFlags_TurnOffFire          = /*07*/ 0x00000080,   // light sources only
+        kFormFlags_CastShadows          = /*09*/ 0x00000200,   // light sources only
+        kFormFlags_Disabled             = /*0B*/ 0x00000800,   
+        kFormFlags_VisibleWhenDistant   = /*0F*/ 0x00008000,
+    };
     
     enum ModifiedFlags
     {// some of these may be specific to derived classes, and should be moved there
@@ -107,12 +116,13 @@ public:
    
     // TESObjectREFR virtual methods
     #ifdef OBLIVION
-    _NOUSE /*0DC/---*/ virtual float            UnkRefr0DC(UInt32 arg0, UInt32 arg1, UInt32 arg2, UInt32 arg3, UInt32 arg4);
+    _NOUSE /*0DC/---*/ virtual float            UnkRefr0DC(TESTopic& topic, TESObjectREFR* speaker, bool arg2, bool arg3, UInt32 arg4); // Say?
+                                                // Invoked by Say command when target is not an actor.  Returns number of seconds required to speak lines.
     #endif
-    _NOUSE /*0E0/124*/ virtual bool             UnkRefr0E0();
-    _NOUSE /*0E4/128*/ virtual void             UnkRefr0E4(bool newValue);
+    IMPORT /*0E0/124*/ virtual bool             GetCastsShadows();
+    IMPORT /*0E4/128*/ virtual void             SetCastsShadows(bool castsShadows);
     #ifdef OBLIVION
-    _NOUSE /*0E8/---*/ virtual bool             UnkRefr0E8(); 
+    INLINE /*0E8/---*/ virtual bool             IsProjectile() { return false; } // returns true for arrows and magic projectiles
     #endif
     IMPORT /*0EC/12C*/ virtual float            GetScale();
     IMPORT /*0F0/130*/ virtual Vector3          GetInitialRotation(); // 
@@ -121,23 +131,28 @@ public:
                                                 // actually 'Vector3& GetInitialPosition(Vector3& temp)', but the compiler handles the temp 
     IMPORT /*0F8/138*/ virtual void             MoveInitialPosition(Vector3 position); // moves starting position to specified coords
                                                 // or current position if coords are (0,0,0)
-    _NOUSE /*0FC/13C*/ virtual bool             UnkRefr0FC(); 
-    _NOUSE /*100/140*/ virtual void             RemoveItem(TESForm* toRemove, void* extraList, UInt32 arg2, UInt32 arg3, UInt32 arg4, 
-                                                    TESObjectREFR* destRef, UInt32 arg6, UInt32 arg7, UInt32 arg8, UInt8 arg9); // 
-                                                // unk2 quantity?  need to decode remaining arguments
-    _NOUSE /*104/144*/ virtual void             UnkRefr104(UInt32 arg0, UInt32 arg1, UInt32 arg2); 
-    _NOUSE /*108/148*/ virtual bool             UnkRefr108(UInt32 arg0, UInt32 arg1, UInt32 arg2, UInt32 arg3); 
-    _NOUSE /*10C/14C*/ virtual UInt8            UnkRefr10C(UInt32 arg0, UInt32 arg1, UInt32 arg2); 
+    IMPORT /*0FC/13C*/ virtual bool             UpdateLights(); // updates flicker effects for refs that are light sources.  not sure what return value means
+    IMPORT /*100/140*/ virtual bool             RemoveItem(TESForm* toRemove, ExtraDataList* entryExtra, SInt32 count, // which form and subgroup                                                   
+                                                    bool useContainerOwnership = false, // copies this container owner to transfered items w/o an owner
+                                                    bool drop = false, // items dropped in game world, rather than transfered or destroyed
+                                                    TESObjectREFR* destRef = 0, // target container for transfer
+                                                    Vector3* destPosition = 0, Vector3* destRotation = 0, // coordinates for drop (default is near this ref)
+                                                    bool arg8 = true, // unk?
+                                                    bool useExistingEntryExtra = false); // use of existing entry ExtraDataList if entryExtra == 0
+    IMPORT /*104/144*/ virtual void             RemoveItemByType(UInt32 formType, bool useContainerOwnership, SInt32 count); // remove forms of specified type
+    IMPORT /*108/148*/ virtual bool             EquipItem(TESForm* toEquip, SInt32 count, ExtraDataList* entryExtra, bool noUnequip); // 
+                                                // noUnequip has same effect as argument to script command
+    IMPORT /*10C/14C*/ virtual bool             UnequipItem(TESForm* toEquip, SInt32 count, ExtraDataList* entryExtra);
     _NOUSE /*110/150*/ virtual void             UnkRefr110(UInt32 arg0, UInt32 arg1); 
     #ifdef OBLIVION
-    IMPORT /*114/---*/ virtual void             AddItem(TESForm* item, ExtraDataList* itemExtraData, UInt32 count); // add item to container ref
+    IMPORT /*114/---*/ virtual void             AddItem(TESForm* item, ExtraDataList* entryExtra, UInt32 count); // add item to container ref
     _NOUSE /*118/---*/ virtual void             UnkRefr118(); 
     _NOUSE /*11C/---*/ virtual void             UnkRefr11C(UInt32 arg0); 
     IMPORT /*120/---*/ virtual MagicCaster*     GetMagicCaster();
     IMPORT /*124/---*/ virtual MagicTarget*     GetMagicTarget();
     #endif
-    _NOUSE /*128/154*/ virtual TESForm*         UnkRefr128(); // used as possible alternative to base form*
-    _NOUSE /*12C/158*/ virtual void             UnkRefr12C(UInt32 arg0); 
+    INLINE /*128/154*/ virtual TESForm*         GetTemplateForm() { return 0; } // template forms for refs spawned by LevCreature lists
+    INLINE /*12C/158*/ virtual void             SetTemplateForm(TESForm* templateForm) {} 
     _NOUSE /*130/15C*/ virtual UInt32           UnkRefr130(UInt32 arg0); 
     _NOUSE /*134/160*/ virtual UInt32           UnkRefr134(UInt32 arg0); 
     _NOUSE /*138/164*/ virtual UInt32           UnkRefr138(UInt32 arg0); 
@@ -149,8 +164,8 @@ public:
     IMPORT /*150/17C*/ virtual void             Set3D(NiNode* niNode); // ?
     IMPORT /*154/180*/ virtual NiNode*          GetNiNode();
     _NOUSE /*158/184*/ virtual Vector3          UnkRefr158(); 
-    _NOUSE /*15C/188*/ virtual Vector3          UnkRefr15C(); 
-    _NOUSE /*160/18C*/ virtual void             UnkRefr160(); // returns AnimData* ?
+    _NOUSE /*15C/188*/ virtual Vector3          UnkRefr15C(UInt32 arg0); 
+    IMPORT /*160/18C*/ virtual void             UpdateNiNode(); // updates lights, animations.
     _NOUSE /*164/190*/ virtual ActorAnimData*   GetAnimationData();
     _NOUSE /*168/194*/ virtual void*            UnkRefr168(); // returns some kind of ExtraData
     _NOUSE /*16C/198*/ virtual void             UnkRefr16C(UInt32 arg0); 
@@ -161,14 +176,13 @@ public:
     _NOUSE /*17C/---*/ virtual void             UnkRefr17C(UInt32 arg0); 
     _NOUSE /*180/---*/ virtual void             UnkRefr180(UInt32 arg0);
     _NOUSE /*184/---*/ virtual void             UnkRefr184(bool arg0); 
-    INLINE /*188/---*/ virtual bool             IsMobileObject() {return false;} // ? 
-                                                // hard to confirm, since all children of TESObjectREFR are also children of MobileObect
+    #endif
+    INLINE /*188/1A8*/ virtual bool             IsMobileObject() {return false;} // hard to confirm, since all children of TESObjectREFR are MobileObjects
+    #ifdef OBLIVION
     _NOUSE /*18C/---*/ virtual UInt32           UnkRefr18C(); // returns 0 for REFR, mobile obj, returns process.Unk36C() for actor, 
                                                 // which returns 0 for low-midlow proc and sign-extended process.Unk11D for midhigh-high proc
                                                 // some kind of enum value
     INLINE /*190/---*/ virtual bool             IsActor() {return false;} 
-    #else
-    _NOUSE /*---/1A8*/ virtual bool             UnkRefr1A8(); // could be IsMobileObject, or IsActor, or neither.  called during destruction
     #endif
     IMPORT /*194/1AC*/ virtual void             ChangeCell(TESObjectCELL* newCell); 
     IMPORT /*198/1B0*/ virtual bool             IsDead(bool arg0); // arg0 = count deathstate 6 as dead, for actors.  ignored for base class

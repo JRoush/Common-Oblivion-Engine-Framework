@@ -129,18 +129,14 @@ public:
         //kFormFlags_Loaded             = /*02*/ 0x00000004,   // ?? (from OBSE ModEntry defininition)
         kFormFlags_Linked               = /*03*/ 0x00000008,   // set after formids have been resolved into TESForm*
         kFormFlags_Deleted              = /*05*/ 0x00000020,   // set on deletion, not saved in CS or savegame
-        kFormFlags_BorderRegion         = /*06*/ 0x00000040,   // ?? (from TES4Edit)
-        kFormFlags_TurnOffFire          = /*07*/ 0x00000080,   // ?? (from TES4Edit)
-        kFormFlags_CastShadows          = /*09*/ 0x00000200,   // ?? (from TES4Edit)
         kFormFlags_QuestItem            = /*0A*/ 0x00000400,   // aka Persistent Reference for TESObjectREFR
-        kFormFlags_Disabled             = /*0B*/ 0x00000800,   // (TESObjectREFR)
         kFormFlags_Ignored              = /*0C*/ 0x00001000,   // (records)
         kFormFlags_Temporary            = /*0E*/ 0x00004000,   // not saved in CS, probably game as well
-        kFormFlags_VisibleWhenDistant   = /*0F*/ 0x00008000,   // ?? (from TES4Edit)
-        kFormFlags_OffLimits            = /*11*/ 0x00020000,   // (TESObjectCELL)
         kFormFlags_Compressed           = /*12*/ 0x00040000,   // (records)
-        kFormFlags_CantWait             = /*13*/ 0x00080000,   // (TESObjectCELL)
-        kFormFlags_IgnoresFriendlyHits  = /*14*/ 0x00100000,
+
+        // TODO - move these to the appropriate form class:
+        //kFormFlags_Dangerous          = /*11*/ 0x00020000,   // TESObjectACTV
+        //kFormFlags_BorderRegion       = /*06*/ 0x00000040,   // TESRegion
     };
 
     enum ModifiedFlags

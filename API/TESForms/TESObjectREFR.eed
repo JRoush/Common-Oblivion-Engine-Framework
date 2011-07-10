@@ -40,16 +40,24 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetFromDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00540280     ; GetFromDialog
 ?CleanupDialog@TESObjectREFR@@UAEXPAUHWND__@@@Z                             = _NOTINGAME,0x00549AC0     ; CleanupDialog
 ; TESObjectREFR virtual methods
+?GetCastsShadows@TESObjectREFR@@UAE_NXZ                 = 0x004D6EF0,0x0053F010     ; GetCastsShadows
+?SetCastsShadows@TESObjectREFR@@UAEX_N@Z                = 0x004DB360,0x00542230     ; SetCastsShadows
 ?GetScale@TESObjectREFR@@UAEMXZ                         = 0x004D7260,0x0053F180     ; GetScale
 ?GetInitialRotation@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8210,0x00540190     ; GetInitialRotation
 ?GetInitialPosition@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8230,0x005401B0     ; GetInitialPosition
 ?MoveInitialPosition@TESObjectREFR@@UAEXVVector3@@@Z    = 0x004DD1A0,0x00543240     ; MoveInitialPosition
-?AddItem@TESObjectREFR@@UAEXPAVTESForm@@PAVExtraDataList@@K@Z   = 0x004DDCF0,_NOTINCS__     ; TESObjectREFR::AddItem
-?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ            = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
-?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ            = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
+?UpdateLights@TESObjectREFR@@UAE_NXZ                    = 0x004D8050,0x00540120     ; UpdateLights
+?RemoveItem@TESObjectREFR@@UAE_NPAVTESForm@@PAVExtraDataList@@J_N2PAV1@PAVVector3@@422@Z    = 0x004D8760,0x00541480     ; RemoveItem
+?RemoveItemByType@TESObjectREFR@@UAEXK_NJ@Z                                                 = 0x004D87E0,0x00541500     ; RemoveItemByType
+?EquipItem@TESObjectREFR@@UAE_NPAVTESForm@@JPAVExtraDataList@@_N@Z                          = 0x004D86D0,0x00541400     ; EquipItem
+?UnequipItem@TESObjectREFR@@UAE_NPAVTESForm@@JPAVExtraDataList@@@Z                          = 0x004D8810,0x00541530     ; UnequipItem
+?AddItem@TESObjectREFR@@UAEXPAVTESForm@@PAVExtraDataList@@K@Z                               = 0x004DDCF0,_NOTINCS__     ; AddItem
+?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ                                        = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
+?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ                                        = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
 ?GenerateNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ         = 0x004E4080,0x0054AF30     ; GenerateNiNode
 ?Set3D@TESObjectREFR@@UAEXPAVNiNode@@@Z                 = 0x004E0F80,0x0054B5B0     ; Set3D
 ?GetNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ              = 0x00422DE0,0x00542950     ; GetNiNode
+?UpdateNiNode@TESObjectREFR@@UAEXXZ                     = 0x004E3F30,0x00548EE0     ; UpdateNiNode
 ?GetBaseForm@TESObjectREFR@@UAEPAVTESForm@@XZ           = 0x004D9B40,0x00541930     ; GetBaseForm
 ?GetPosition@TESObjectREFR@@UAEAAVVector3@@XZ           = 0x004C8D00,0x00541940     ; GetPosition
 ?ChangeCell@TESObjectREFR@@UAEXPAVTESObjectCELL@@@Z     = 0x004D8AA0,0x00541680     ; ChangeCell

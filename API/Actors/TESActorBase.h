@@ -20,6 +20,11 @@ class IMPORTCLASS TESActorBase : public TESBoundAnimObject, public TESActorBaseD
 {// size 0E4/118
 public:
 
+    enum FormFlags
+    {
+        kFormFlags_IsDead               = /*13*/ 0x00080000,   // for placed corpses (deprecated? can't be changed in CS)
+    };
+
     enum ModifiedFlags
     {
 		kModified_AVModifiers       = 0x10000000,
