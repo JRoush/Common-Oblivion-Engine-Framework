@@ -267,7 +267,7 @@ class IMPORTCLASS LightEffect : public ActiveEffect
 public:
 
     // members
-    //     /*00*/ ValueModifierEffect
+    //     /*00*/ ActiveEffect
     MEMBER /*3C*/ NiRefObject*          unkLight3C; // NiNode*?
 
     // ActiveEffect virtual methods   

@@ -1,8 +1,6 @@
 /* 
     DataHandler class and it's main global instance
     Default manager for forms in Oblivion
-
-    TODO: layout real definition for TESSkill
 */
 #pragma once
 
