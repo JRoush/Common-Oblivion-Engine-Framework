@@ -108,9 +108,9 @@ public:
         kExtra_MerchantContainer            = 0x44,
         //Unknown                           = 0x45,
         kExtra_PersuasionPercent            = 0x46, // Game only
-        kExtra_CannotWear                   = 0x47,
+        kExtra_CannotWear                   = 0x47, // Marks equipment that can't be unequipped
         kExtra_Poison                       = 0x48,
-        //Unknown                           = 0x49,
+        kExtra_MagicLight                   = 0x49, // Game only, uses ExtraLight class, applied by Light magic effect
         kExtra_LastFinishedSequence         = 0x4A, // Game only
         kExtra_SavedMovementData            = 0x4B, // Game only
         kExtra_NorthRotation                = 0x4C, // Game only
