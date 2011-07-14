@@ -57,6 +57,7 @@
 //#include "API/TESForms/TESAIForm.h"
 //#include "API/TESForms/TESAnimation.h"
 //#include "API/TESForms/TESActorBaseData.h"
+//#define TESFORM_MINIMAL_DEPENDENCIES
 //#include "API/TESForms/TESForm.h"
 //#include "API/TESForms/TESObject.h"
 //#include "API/TESForms/TESObjectREFR.h"

@@ -5,9 +5,9 @@
 
 // base classes
 #include "API/NiTypes/NiFile.h"
-#include "API/NiTypes/NiTArray.h"
 
 // argument classes
+template <class TVAL> class NiTArray;   // NiTypes/NiTArray.h
 class   BSStringT;  // BSTypes/BSStringT.h
 
 class IMPORTCLASS BSFile : public NiFile

@@ -8,8 +8,10 @@
 
 // base classes
 #include "API/TES/MemoryHeap.h"
-#include "API/NiTypes/NiTArray.h"
 #include "API/TESForms/TESForm.h"   // TESFormIDListView
+
+// argument classes
+template <class TVAL> class NiTArray;
 
 class IMPORTCLASS Setting
 {// size 08/08

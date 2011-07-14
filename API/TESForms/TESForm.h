@@ -10,6 +10,12 @@
     The notation is admittedly akward, a result of choosing names before a clear picture of the system emerged.
     Form and Cross references are tracked individually through a global table.  Object refs are not tracked individually, but
     every instance of TESBoundObject does maintain a cell-by-cell count.
+
+    NOTE on dependencies:
+    TESForm has several container objects (formID map, editorID map, etc) that implement NetImmerse and Bethesda container classes.
+    By default, the headers for these classes are included here so that the member objects can be used noramlly.
+    The TESFORM_MINIMAL_DEPENDENCIES macro can be defined to prevent this (eliminating TESForm.h dependency on BSTCaseInsensitiveStringMap.h, 
+    NiTMap.h, and NiTArray.h).  This will also prevent the container objects from being defined, so use this macro with due care.    
 */
 #pragma once
 
@@ -17,14 +23,17 @@
 #include "API/TESForms/BaseFormComponent.h"  // BaseFormComponent
 #include "API/BSTypes/BSSimpleList.h"
 #include "API/BSTypes/BSStringT.h"
+#ifndef TESFORM_MINIMAL_DEPENDENCIES
 #include "API/BSTypes/BSTCaseInsensitiveStringMap.h"
 #include "API/NiTypes/NiTMap.h"
 #include "API/NiTypes/NiTArray.h"
+#endif
 
 // argument classes
 class   TESFile;        // TESFiles/TESFile.h
 class   RecordInfo;     // TESFiles/TESFile.h
 class   TESObjectREFR;  // TESForms/TESObjectREFR.h
+template <class TKEY, class TVAL> class NiTMap; // NiTypes/NiTMap.h
 
 struct TrackingData 
 {// size 04/04
@@ -313,6 +322,7 @@ public:
 
     // global static objects    
     IMPORT static FormTypeInfo                      formTypeList[kFormType__MAX]; // list of form types, with short names & chunk types
+    #ifndef TESFORM_MINIMAL_DEPENDENCIES
     IMPORT static NiTPointerMap<UInt32,TESForm*>    formIDMap; // maps formIDs to form pointers
             // actually NiTMapBase< NiTPointerAllocator<unsigned int>, unsigned int, TESForm* >
     IMPORT static NiTLargeArray<TESForm*>           activeFileFormList; // list of forms modified by active file
@@ -320,6 +330,7 @@ public:
     IMPORT static BSTCaseInsensitiveStringMap<TESForm*>         editorIDMap;  // maps editorIDs to form pointers
     IMPORT static NiTPointerMap<TESForm*,FormReferenceList*>    formReferenceMap; // maps form pointers to list of referencing forms
             // actually NiTMapBase< NiTPointerAllocator<unsigned int>, TESForm*, BSSimpleList< TESForm* >* >
+    #endif
     #endif
 };
 

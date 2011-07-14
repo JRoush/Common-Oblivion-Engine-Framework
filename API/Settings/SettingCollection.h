@@ -14,13 +14,13 @@
 
 // base classes
 #include "API/TES/MemoryHeap.h"
-#include "API/NiTypes/NiTArray.h"
 #include "API/BSTypes/BSSimpleList.h"
 #include "API/BSTypes/BSTCaseInsensitiveStringMap.h"
 
 // argument classes
 class   Setting;    // Settings/Settings.h
 class   TESFile;    // TESFiles/TESFile.h
+template <class TVAL> class NiTArray;   // NiTypes/NiTArray.h
 
 class IMPORTCLASS SettingCollection // actually SettingCollection<Setting*>
 {// size 10C
