@@ -11,11 +11,13 @@
 #include "API/GameWorld/TESObjectCELL.h" // TESChildCell
 
 // argument classes
-class   Vector3;        // NiVector3?  currently defined in Utilities/ITypes.h
+class   Vector3;                // probably NiVector3.  currently defined in Utilities/ITypes.h
 class   NiNode;
-class   ActorAnimData;  // TODO: need to decode ActorAnimData
-class   MagicCaster;    // Magic/MagicCaster.h
-class   MagicTarget;    // Magic/MagicTarget.h
+class   BSFaceGenNiNode;
+class   ActorAnimData;          // TODO: need to decode ActorAnimData
+class   BSFaceGenAnimationData;
+class   MagicCaster;            // Magic/MagicCaster.h
+class   MagicTarget;            // Magic/MagicTarget.h
 class   TESTopic;
 
 class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
@@ -30,10 +32,12 @@ public:
 
     enum FormFlags
     {        
-        kFormFlags_TurnOffFire          = /*07*/ 0x00000080,   // light sources only
-        kFormFlags_CastShadows          = /*09*/ 0x00000200,   // light sources only
+        kFormFlags_TurnOffFire          = /*07*/ 0x00000080,    // light sources only
+        kFormFlags_CastShadows          = /*09*/ 0x00000200,    // light sources only
         kFormFlags_Disabled             = /*0B*/ 0x00000800,   
+        kFormFlags_Harvested            = /*0D*/ 0x00002000,    // flora only
         kFormFlags_VisibleWhenDistant   = /*0F*/ 0x00008000,
+        //kFormFlags_Unk13              = /*13*/ 0x00080000,    // HasNiNode ?
     };
     
     enum ModifiedFlags
@@ -50,6 +54,16 @@ public:
         kModified_DoorExtraTeleport     = /*14*/ 0x00100000, // CHANGE_DOOR_EXTRA_TELEPORT
         kModified_Animation             = /*19*/ 0x02000000, // CHANGE_REFR_ANIMATION - (only if not Actor?)
         kModified_Inventory             = /*1B*/ 0x08000000, // CHANGE_REFR_INVENTORY - see 0048BA40
+    };
+
+    enum ActorSittingStates // TODO - move to some other file (HighProcess? Actor?)
+    {
+        kSittingState_None              = 0x0,  // not sitting
+        kSittingState_LoadingIdle       = 0x1,  
+        kSittingState_PreparingToSit_A  = 0x2,  // transition not sitting - > sitting
+        kSittingState_PreparingToSit_B  = 0x3,  // TODO - how is this different from PreparingToSit_A?
+        kSittingState_Sitting           = 0x4,
+        kSittingState_PreparingToStand  = 0x5   // transition sitting -> not sitting
     };
 
     // members
@@ -91,7 +105,7 @@ public:
     IMPORT /*070/074*/ virtual UInt8            GetFormType();
     IMPORT /*074/078*/ virtual void             GetDebugDescription(BSStringT& output);
     IMPORT /*078/07C*/ virtual bool             IsQuestItem();
-    _NOUSE /*088/08C*/ virtual bool             UnkForm088();
+    IMPORT /*088/08C*/ virtual bool             IsDangerous();
     IMPORT /*08C/090*/ virtual void             SetDeleted(bool deleted);
     IMPORT /*090/094*/ virtual void             SetFromActiveFile(bool fromActiveFile);
     INLINE /*094/098*/ virtual void             SetQuestItem(bool questItem) {return;} // does nothing for TESObjectREFR
@@ -153,11 +167,11 @@ public:
     #endif
     INLINE /*128/154*/ virtual TESForm*         GetTemplateForm() { return 0; } // template forms for refs spawned by LevCreature lists
     INLINE /*12C/158*/ virtual void             SetTemplateForm(TESForm* templateForm) {} 
-    _NOUSE /*130/15C*/ virtual UInt32           UnkRefr130(UInt32 arg0); 
-    _NOUSE /*134/160*/ virtual UInt32           UnkRefr134(UInt32 arg0); 
-    _NOUSE /*138/164*/ virtual UInt32           UnkRefr138(UInt32 arg0); 
-    _NOUSE /*13C/168*/ virtual UInt32           UnkRefr13C(UInt32 arg0); 
-    _NOUSE /*140/16C*/ virtual bool             UnkRefr140();
+    IMPORT /*130/15C*/ virtual BSFaceGenNiNode* GetFaceGenNiNodeBiped(NiNode* arg0 = 0); // argument seems to be ignored for all four FaceGen methods
+    IMPORT /*134/160*/ virtual BSFaceGenNiNode* GetFaceGenNiNodeSkinned(NiNode* arg0 = 0);
+    IMPORT /*138/164*/ virtual BSFaceGenNiNode* GetFaceGenNiNode(NiNode* arg0 = 0);  // returns GetBSFaceGenNiNodeSkinned().
+    IMPORT /*13C/168*/ virtual BSFaceGenAnimationData*  GetFaceGenAnimationData(NiNode* arg0 = 0); // extracts anim data from GetFaceGenNiNode().
+    IMPORT /*140/16C*/ virtual bool             MoveToGroundLevel(); // returns false on failure, e.g. if ref is in interior cell
     _NOUSE /*144/170*/ virtual bool             UnkRefr144(); 
     _NOUSE /*148/174*/ virtual UInt8            UnkRefr148(); // inits animation-related data, and more
     IMPORT /*14C/178*/ virtual NiNode*          GenerateNiNode(); // ?
@@ -179,15 +193,15 @@ public:
     #endif
     INLINE /*188/1A8*/ virtual bool             IsMobileObject() {return false;} // hard to confirm, since all children of TESObjectREFR are MobileObjects
     #ifdef OBLIVION
-    _NOUSE /*18C/---*/ virtual UInt32           UnkRefr18C(); // returns 0 for REFR, mobile obj, returns process.Unk36C() for actor, 
-                                                // which returns 0 for low-midlow proc and sign-extended process.Unk11D for midhigh-high proc
-                                                // some kind of enum value
+    INLINE /*18C/---*/ virtual UInt32           GetSittingState() {return 0;} // see ActorSittingStates enum
     INLINE /*190/---*/ virtual bool             IsActor() {return false;} 
     #endif
     IMPORT /*194/1AC*/ virtual void             ChangeCell(TESObjectCELL* newCell); 
     IMPORT /*198/1B0*/ virtual bool             IsDead(bool arg0); // arg0 = count deathstate 6 as dead, for actors.  ignored for base class
     INLINE /*19C/1B4*/ virtual bool             HasFatigue() {return false;} // always false for base class
     INLINE /*1A0/1B4*/ virtual bool             IsParalyzed() {return false;} // always false for base class
+
+    // methods
 
     // constructor
     IMPORT TESObjectREFR();

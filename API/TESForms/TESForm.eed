@@ -39,6 +39,8 @@ EXPORTS ;{ ; TESForm
 ?GetFormType@TESForm@@UAEEXZ                                = 0x00412970,0x00449E00     ; GetFormType
 ?GetDebugDescription@TESForm@@UAEXAAVBSStringT@@@Z          = 0x0046C700,0x00498190     ; GetDebugDescription
 ?IsQuestItem@TESForm@@UAE_NXZ                               = 0x004D7030,0x0053F0C0     ; IsQuestItem
+?IsOffLimits@TESForm@@UAE_NXZ                               = 0x004CA690,0x00449E30     ; IsOffLimits
+?IsDangerous@TESForm@@UAE_NXZ                               = 0x004CA690,0x00449E30     ; IsDangerous
 ?SetDeleted@TESForm@@UAEX_N@Z                               = 0x0046A9E0,0x004987D0     ; SetDeleted
 ?SetFromActiveFile@TESForm@@UAEX_N@Z                        = 0x0046C640,0x00497BE0     ; SetFromActiveFile
 ?SetQuestItem@TESForm@@UAEX_N@Z                             = 0x0046AA80,0x00494BA0     ; SetQuestItem

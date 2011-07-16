@@ -23,6 +23,7 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetFormType@TESObjectREFR@@UAEEXZ                                          = 0x004D6EA0,0x0053EFC0     ; GetFormType
 ?GetDebugDescription@TESObjectREFR@@UAEXAAVBSStringT@@@Z                    = 0x004DF6A0,0x00548590     ; GetDebugDescription
 ?IsQuestItem@TESObjectREFR@@UAE_NXZ                                         = 0x004D9B10,0x00541900     ; IsQuestItem
+?IsDangerous@TESObjectREFR@@UAE_NXZ                                         = 0x004D65E0,0x0053F020     ; IsDangerous
 ?SetDeleted@TESObjectREFR@@UAEX_N@Z                                         = 0x004D65D0,0x005421C0     ; SetDeleted
 ?SetFromActiveFile@TESObjectREFR@@UAEX_N@Z                                  = 0x004D6DB0,0x0053EE90     ; SetFromActiveFile
 ?CopyFrom@TESObjectREFR@@UAEXAAVTESForm@@@Z                                 = 0x004DF1A0,0x00545000     ; CopyFrom
@@ -54,14 +55,19 @@ EXPORTS ;{ ; TESObjectREFR
 ?AddItem@TESObjectREFR@@UAEXPAVTESForm@@PAVExtraDataList@@K@Z                               = 0x004DDCF0,_NOTINCS__     ; AddItem
 ?GetMagicCaster@TESObjectREFR@@UAEPAVMagicCaster@@XZ                                        = 0x004D8BC0,_NOTINCS__     ; GetMagicCaster
 ?GetMagicTarget@TESObjectREFR@@UAEPAVMagicTarget@@XZ                                        = 0x004D8C80,_NOTINCS__     ; GetMagicTarget
-?GenerateNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ         = 0x004E4080,0x0054AF30     ; GenerateNiNode
-?Set3D@TESObjectREFR@@UAEXPAVNiNode@@@Z                 = 0x004E0F80,0x0054B5B0     ; Set3D
-?GetNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ              = 0x00422DE0,0x00542950     ; GetNiNode
-?UpdateNiNode@TESObjectREFR@@UAEXXZ                     = 0x004E3F30,0x00548EE0     ; UpdateNiNode
-?GetBaseForm@TESObjectREFR@@UAEPAVTESForm@@XZ           = 0x004D9B40,0x00541930     ; GetBaseForm
-?GetPosition@TESObjectREFR@@UAEAAVVector3@@XZ           = 0x004C8D00,0x00541940     ; GetPosition
-?ChangeCell@TESObjectREFR@@UAEXPAVTESObjectCELL@@@Z     = 0x004D8AA0,0x00541680     ; ChangeCell
-?IsDead@TESObjectREFR@@UAE_N_N@Z                        = 0x004D7DD0,0x00543010     ; IsDead
+?GetFaceGenNiNodeBiped@TESObjectREFR@@UAEPAVBSFaceGenNiNode@@PAVNiNode@@@Z                  = 0x004DDF90,0x00544440     ; GetFaceGenNiNodeBiped
+?GetFaceGenNiNodeSkinned@TESObjectREFR@@UAEPAVBSFaceGenNiNode@@PAVNiNode@@@Z                = 0x004DDFD0,0x00544470     ; GetFaceGenNiNodeSkinned
+?GetFaceGenNiNode@TESObjectREFR@@UAEPAVBSFaceGenNiNode@@PAVNiNode@@@Z                       = 0x004D66A0,0x005416F0     ; GetFaceGenNiNode
+?GetFaceGenAnimationData@TESObjectREFR@@UAEPAVBSFaceGenAnimationData@@PAVNiNode@@@Z         = 0x004D66B0,0x00541700     ; GetFaceGenAnimationData
+?MoveToGroundLevel@TESObjectREFR@@UAE_NXZ                   = 0x004D8EA0,0x005444A0     ; MoveToGroundLevel
+?GenerateNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ             = 0x004E4080,0x0054AF30     ; GenerateNiNode
+?Set3D@TESObjectREFR@@UAEXPAVNiNode@@@Z                     = 0x004E0F80,0x0054B5B0     ; Set3D
+?GetNiNode@TESObjectREFR@@UAEPAVNiNode@@XZ                  = 0x00422DE0,0x00542950     ; GetNiNode
+?UpdateNiNode@TESObjectREFR@@UAEXXZ                         = 0x004E3F30,0x00548EE0     ; UpdateNiNode
+?GetBaseForm@TESObjectREFR@@UAEPAVTESForm@@XZ               = 0x004D9B40,0x00541930     ; GetBaseForm
+?GetPosition@TESObjectREFR@@UAEAAVVector3@@XZ               = 0x004C8D00,0x00541940     ; GetPosition
+?ChangeCell@TESObjectREFR@@UAEXPAVTESObjectCELL@@@Z         = 0x004D8AA0,0x00541680     ; ChangeCell
+?IsDead@TESObjectREFR@@UAE_N_N@Z                            = 0x004D7DD0,0x00543010     ; IsDead
 ; methods
 ??0TESObjectREFR@@QAE@XZ    = 0x004D9A70,0x00541870     ; TESObjectREFR
 ;}

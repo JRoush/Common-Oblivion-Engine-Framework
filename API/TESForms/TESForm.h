@@ -225,8 +225,8 @@ public:
     IMPORT /*078/07C*/ virtual bool         IsQuestItem(); // Quest item status only (not persistent ref); refs will return flag of their base form
     _NOUSE /*07C/080*/ virtual bool         UnkForm07C() {return false;} // gets flag (1<<6), "BorderRegion"
     _NOUSE /*080/084*/ virtual bool         UnkForm080() {return false;} // gets flag (1<<16)
-    _NOUSE /*084/088*/ virtual bool         UnkForm084() {return false;} // gets flag (1<<17), "OffLimits/Dangerous"
-    _NOUSE /*088/08C*/ virtual bool         UnkForm088() {return false;} // gets flag (1<<17), "OffLimits/Dangerous", identical to UnkForm84()
+    IMPORT /*084/088*/ virtual bool         IsOffLimits();
+    IMPORT /*088/08C*/ virtual bool         IsDangerous();
     IMPORT /*08C/090*/ virtual void         SetDeleted(bool deleted); // changes deleted flag, plus additional bookeeping
     IMPORT /*090/094*/ virtual void         SetFromActiveFile(bool fromActiveFile); // add/remove form entry from active mod/save file
     IMPORT /*094/098*/ virtual void         SetQuestItem(bool questItem);
