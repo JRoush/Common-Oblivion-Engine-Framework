@@ -211,7 +211,7 @@ public:
                             // e.g. 'MGEF' -> 0xC, see TESForm::FormTypes for complete enumeration
 
     // constructor, destructor
-    IMPORT TESFile();
+    IMPORT TESFile(const char* filePath, const char* fileName, UInt32 mode);
     IMPORT ~TESFile();
 
     // use FormHeap for class new & delete

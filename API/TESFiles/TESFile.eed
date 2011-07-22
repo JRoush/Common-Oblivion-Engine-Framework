@@ -53,7 +53,7 @@ EXPORTS ;{ ; TESFile
 ;}
 ;{ ; methods - general
 ?RecordTypeFromChunkType@TESFile@@SAEK@Z                = 0x0046AF70,0x00495A60     ; RecordTypeFromChunkType
-??0TESFile@@QAE@XZ                                      = 0x00451DA0,0x00489590     ; TESFile
+??0TESFile@@QAE@PBD0K@Z                                 = 0x00451DA0,0x00489590     ; TESFile
 ??1TESFile@@QAE@XZ                                      = 0x00450AE0,0x00487E60     ; ~TESFile
 ;}
 ;}
