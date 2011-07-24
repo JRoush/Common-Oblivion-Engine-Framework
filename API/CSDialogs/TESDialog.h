@@ -67,6 +67,7 @@ public:
         MEMBER /*00*/ UInt8     formType; // see TESForm::FormTypes
         MEMBER /*01*/ UInt8     pad01[3]; 
         MEMBER /*04*/ TESForm*  form; // form object to be edited by the dialog
+        MEMBER /*08*/ UInt32    unk08; // never initialize or accessed
         // use FormHeap for class new & delete
         USEFORMHEAP
     };
