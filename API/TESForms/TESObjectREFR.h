@@ -27,6 +27,7 @@ class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, publ
     -   virtual methods
     Notes:
     -   Overrides for undecoded virtual functions (be sure to update these if the base definition changes)
+    -   NOUSE virtual methods are defined as stubs here so that the compiler will not object to derived classes
 */
 public:
 
@@ -114,7 +115,7 @@ public:
     IMPORT /*030/054*/ virtual bool             LessThanGroup(const RecordInfo& groupRecord);
     IMPORT /*034/058*/ virtual bool             LessThan(TESForm& form);
     IMPORT /*038/05C*/ virtual TESForm*         Clone(bool autoEditorID, NiTMap<TESForm*,TESForm*>* cloneMap);
-    _NOUSE /*03C/060*/ virtual void             UnkForm03C(UInt32 arg0);
+    _NOUSE /*03C/060*/ virtual void             UnkForm03C(UInt32 arg0) {return;}
     #ifdef OBLIVION
     IMPORT /*04C/---*/ virtual UInt16           ModifiedFormSize(UInt32 modifiedMask);
     IMPORT /*050/---*/ virtual void             SaveModifiedForm(UInt32 modifiedMask);
@@ -137,12 +138,12 @@ public:
     IMPORT /*0C0/0C4*/ virtual void             CreateGroupRecord(RecordInfo& newGroupRecord, RecordInfo& currentGroupRecord);
     IMPORT /*0D4/0C8*/ virtual const char*      GetEditorID();
     #ifndef OBLIVION
-    _NOUSE /*---/0D4*/ virtual bool             UnkForm0D4();
+    _NOUSE /*---/0D4*/ virtual bool             UnkForm0D4() {return 0;}
     IMPORT /*---/0F0*/ virtual void             BuildFormRefList(BSSimpleList<TESForm*>* formRefs);
     IMPORT /*---/0F4*/ virtual void             RemoveFormReference(TESForm& referencedForm);
     IMPORT /*---/0F8*/ virtual bool             FormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
     IMPORT /*---/0FC*/ virtual void             GetRevisionUnmatchedFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
-    _NOUSE /*---/100*/ virtual bool             UnkForm100(UInt32 arg0);
+    _NOUSE /*---/100*/ virtual bool             UnkForm100(UInt32 arg0) {return 0;}
     IMPORT /*---/104*/ virtual bool             UpdateUsageInfo();
     IMPORT /*---/10C*/ virtual bool             DialogMessageCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);
     IMPORT /*---/114*/ virtual void             SetInDialog(HWND dialog);
@@ -152,7 +153,7 @@ public:
    
     // TESObjectREFR virtual methods
     #ifdef OBLIVION
-    _NOUSE /*0DC/---*/ virtual float            UnkRefr0DC(TESTopic& topic, TESObjectREFR* speaker, bool arg2, bool arg3, UInt32 arg4); // Say?
+    _NOUSE /*0DC/---*/ virtual float            UnkRefr0DC(TESTopic& topic, TESObjectREFR* speaker, bool arg2, bool arg3, UInt32 arg4) {return 0;} // Say?
                                                 // Invoked by Say command when target is not an actor.  Returns number of seconds required to speak lines.
     #endif
     IMPORT /*0E0/124*/ virtual bool             GetCastsShadows();
@@ -179,11 +180,11 @@ public:
     IMPORT /*108/148*/ virtual bool             EquipItem(TESForm* toEquip, SInt32 count, ExtraDataList* entryExtra, bool noUnequip); // 
                                                 // noUnequip has same effect as argument to script command
     IMPORT /*10C/14C*/ virtual bool             UnequipItem(TESForm* toEquip, SInt32 count, ExtraDataList* entryExtra);
-    _NOUSE /*110/150*/ virtual void             UnkRefr110(UInt32 arg0, UInt32 arg1); 
+    _NOUSE /*110/150*/ virtual void             UnkRefr110(UInt32 arg0, UInt32 arg1) {return;} 
     #ifdef OBLIVION
     IMPORT /*114/---*/ virtual void             AddItem(TESForm* item, ExtraDataList* entryExtra, UInt32 count); // add item to container ref
-    _NOUSE /*118/---*/ virtual void             UnkRefr118(); 
-    _NOUSE /*11C/---*/ virtual void             UnkRefr11C(UInt32 arg0); 
+    _NOUSE /*118/---*/ virtual void             UnkRefr118() {return;} 
+    _NOUSE /*11C/---*/ virtual void             UnkRefr11C(UInt32 arg0) {return;} 
     IMPORT /*120/---*/ virtual MagicCaster*     GetMagicCaster();
     IMPORT /*124/---*/ virtual MagicTarget*     GetMagicTarget();
     #endif
@@ -194,24 +195,24 @@ public:
     IMPORT /*138/164*/ virtual BSFaceGenNiNode* GetFaceGenNiNode(NiNode* arg0 = 0);  // returns GetBSFaceGenNiNodeSkinned().
     IMPORT /*13C/168*/ virtual BSFaceGenAnimationData*  GetFaceGenAnimationData(NiNode* arg0 = 0); // extracts anim data from GetFaceGenNiNode().
     IMPORT /*140/16C*/ virtual bool             MoveToGroundLevel(); // returns false on failure, e.g. if ref is in interior cell
-    _NOUSE /*144/170*/ virtual bool             UnkRefr144(); 
-    _NOUSE /*148/174*/ virtual UInt8            UnkRefr148(); // inits animation-related data, and more
+    _NOUSE /*144/170*/ virtual bool             UnkRefr144() {return 0;} 
+    _NOUSE /*148/174*/ virtual UInt8            UnkRefr148() {return 0;} // inits animation-related data, and more
     IMPORT /*14C/178*/ virtual NiNode*          GenerateNiNode(); // ?
     IMPORT /*150/17C*/ virtual void             Set3D(NiNode* niNode); // ?
     IMPORT /*154/180*/ virtual NiNode*          GetNiNode();
-    _NOUSE /*158/184*/ virtual Vector3          UnkRefr158(); 
-    _NOUSE /*15C/188*/ virtual Vector3          UnkRefr15C(UInt32 arg0); 
+    _NOUSE /*158/184*/ virtual Vector3          UnkRefr158() {return Vector3();} 
+    _NOUSE /*15C/188*/ virtual Vector3          UnkRefr15C(UInt32 arg0) {return Vector3();} 
     IMPORT /*160/18C*/ virtual void             UpdateNiNode(); // updates lights, animations.
-    _NOUSE /*164/190*/ virtual ActorAnimData*   GetAnimationData();
-    _NOUSE /*168/194*/ virtual void*            UnkRefr168(); // returns some kind of ExtraData
-    _NOUSE /*16C/198*/ virtual void             UnkRefr16C(UInt32 arg0); 
+    _NOUSE /*164/190*/ virtual ActorAnimData*   GetAnimationData() {return 0;}
+    _NOUSE /*168/194*/ virtual void*            UnkRefr168() {return 0;} // returns some kind of ExtraData
+    _NOUSE /*16C/198*/ virtual void             UnkRefr16C(UInt32 arg0) {return;} 
     IMPORT /*170/19C*/ virtual TESForm*         GetBaseForm();
     IMPORT /*174/1A0*/ virtual Vector3&         GetPosition();
-    _NOUSE /*178/1A4*/ virtual void             UnkRefr178(bool arg0); 
+    _NOUSE /*178/1A4*/ virtual void             UnkRefr178(bool arg0) {return;} 
     #ifdef OBLIVION
-    _NOUSE /*17C/---*/ virtual void             UnkRefr17C(UInt32 arg0); 
-    _NOUSE /*180/---*/ virtual void             UnkRefr180(UInt32 arg0);
-    _NOUSE /*184/---*/ virtual void             UnkRefr184(bool arg0); 
+    _NOUSE /*17C/---*/ virtual void             UnkRefr17C(UInt32 arg0) {return;} 
+    _NOUSE /*180/---*/ virtual void             UnkRefr180(UInt32 arg0) {return;}
+    _NOUSE /*184/---*/ virtual void             UnkRefr184(bool arg0) {return;} 
     #endif
     INLINE /*188/1A8*/ virtual bool             IsMobileObject() {return false;} // hard to confirm, since all children of TESObjectREFR are MobileObjects
     #ifdef OBLIVION

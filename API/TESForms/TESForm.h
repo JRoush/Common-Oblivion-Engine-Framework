@@ -51,6 +51,8 @@ class IMPORTCLASS TESForm : public BaseFormComponent
 /*
     Partial:
     -   virtual methods
+    Notes:
+    -   NOUSE virtual methodsa are defined as stubs here so that the compiler will not object to derived classes
 */
 public:
 
