@@ -61,6 +61,7 @@
 //#include "API/TESForms/TESForm.h"
 //#include "API/TESForms/TESObject.h"
 //#include "API/TESForms/TESObjectREFR.h"
+//#include "API/TESForms/MobileObject.h"
 
 // testfunc
 void testfunc()

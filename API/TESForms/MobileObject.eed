@@ -1,0 +1,22 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; MobileObject
+; TESForm virtual methods
+??1MobileObject@@UAE@XZ                             = 0x00659F90,_NOTINCS__     ; ~MobileObject
+?ModifiedFormSize@MobileObject@@UAEGK@Z             = 0x00659BE0,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@MobileObject@@UAEXK@Z             = 0x00659C30,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@MobileObject@@UAEXKK@Z            = 0x00659C90,_NOTINCS__     ; LoadModifiedForm
+?LinkModifiedForm@MobileObject@@UAEXKK@Z            = 0x0065A780,_NOTINCS__     ; LinkModifiedForm
+?PostLinkModifiedForm@MobileObject@@UAEXKK@Z        = 0x0065BA90,_NOTINCS__     ; PostLinkModifiedForm
+?PreLoadModifiedForm@MobileObject@@UAEXK@Z          = 0x0065A7F0,_NOTINCS__     ; PreLoadModifiedForm
+?SetDeleted@MobileObject@@UAEX_N@Z                  = 0x0065AA60,_NOTINCS__     ; SetDeleted
+; TESObjectREFR virtual methods
+?GenerateNiNode@MobileObject@@UAEPAVNiNode@@XZ      = 0x00659F30,_NOTINCS__     ; GenerateNiNode
+?ChangeCell@MobileObject@@UAEXPAVTESObjectCELL@@@Z  = 0x0065A330,_NOTINCS__     ; ChangeCell
+; Mobile Object virtual methods
+?GetZRotation@MobileObject@@UAEMXZ      = 0x0065ABB0,_NOTINCS__     ; GetZRotation
+?GetJumpScale@MobileObject@@UAEMXZ      = 0x00607990,_NOTINCS__     ; GetJumpScale
+; Mobile Object methods
+??0MobileObject@@QAE@XZ                 = 0x00659990,_NOTINCS__     ; MobileObject
+;}
