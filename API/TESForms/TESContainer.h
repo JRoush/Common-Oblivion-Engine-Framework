@@ -120,6 +120,7 @@ public:
 class IMPORTCLASS ContainerExtraData
 { // size 10
 public:  
+
     class EntryExtraData;
     typedef BSSimpleList<EntryExtraData*> EntryDataListT;  
 
@@ -142,6 +143,14 @@ public:
     class EntryExtraData
     {// size 0C
     public:
+        
+        enum ModifiedFlags
+        {
+            kModified_ContainerEntry        = /*05*/ 0x00000020, // Common 'Modified' flag for all container entry properties:
+                                                                 // Count,Health,Uses,TimeLeft,Charge,Soul,Scale,Ownership,Global,Rank,Worn,WornLeft,CannotWear,
+                                                                 // BoundArmor,Script, LeveledItem, ReferencePointer,Poison,StartingWorldOrCell,QuickKey
+        };
+
         typedef BSSimpleList<ExtraDataList*> FormDataTableT;
 
         // members        

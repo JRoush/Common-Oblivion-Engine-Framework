@@ -33,27 +33,49 @@ public:
     enum FormFlags
     {        
         kFormFlags_TurnOffFire          = /*07*/ 0x00000080,    // light sources only
+        //kFormFlags_Unk08              = /*08*/ 0x00000100,
         kFormFlags_CastShadows          = /*09*/ 0x00000200,    // light sources only
         kFormFlags_Disabled             = /*0B*/ 0x00000800,   
         kFormFlags_Harvested            = /*0D*/ 0x00002000,    // flora only
         kFormFlags_VisibleWhenDistant   = /*0F*/ 0x00008000,
+        //kFormFlags_Unk12              = /*12*/ 0x00080000,    // used by Process methods
         //kFormFlags_Unk13              = /*13*/ 0x00080000,    // HasNiNode ?
+        //kFormFlags_Unk14              = /*14*/ 0x00100000,    // used in GenerateNiNode.  set with Unk16
+        //kFormFlags_Unk15              = /*15*/ 0x00200000,    // cleared at end of LinkForm
+        //kFormFlags_Unk16              = /*16*/ 0x00400000,    // set with Unk14
     };
     
     enum ModifiedFlags
-    {// some of these may be specific to derived classes, and should be moved there
-        kModified_ParentCell            = /*02*/ 0x00000004, 
-        kModified_HavokMove             = /*03*/ 0x00000008, // CHANGE_REFR_HAVOK_MOVE
-        kModified_Scale                 = /*04*/ 0x00000010, // CHANGE_REFR_SCALE        
-        kModified_ExtraOwner            = /*07*/ 0x00000080, // CHANGE_OBJECT_EXTRA_OWNER
-        kModified_MapMarkerFlags        = /*0A*/ 0x00000400, // CHANGE_MAPMARKER_EXTRA_FLAGS
-        kModified_HadHavokMoveFlag      = /*0B*/ 0x00000800, // CHANGEFLAG_REFR_HAD_HAVOK_MOVE_FLAG - ?
-        kModified_IsEmpty               = /*10*/ 0x00010000, // CHANGE_OBJECT_EMPTY - no data? (only if not Actor?)        
-        kModified_DoorOpenDefaultState  = /*12*/ 0x00040000, // CHANGE_DOOR_OPEN_DEFAULT_STATE
-        kModified_DoorOpenState         = /*13*/ 0x00080000, // CHANGE_DOOR_OPEN_STATE        
-        kModified_DoorExtraTeleport     = /*14*/ 0x00100000, // CHANGE_DOOR_EXTRA_TELEPORT
-        kModified_Animation             = /*19*/ 0x02000000, // CHANGE_REFR_ANIMATION - (only if not Actor?)
-        kModified_Inventory             = /*1B*/ 0x08000000, // CHANGE_REFR_INVENTORY - see 0048BA40
+    {
+        kModified_ParentCell            = /*02*/ 0x00000004, // not saved (redundant to refr list of parent cell)
+        kModified_HavokMove             = /*03*/ 0x00000008,
+        kModified_Scale                 = /*04*/ 0x00000010,
+        kModified_Lock                  = /*06*/ 0x00000040, // Doors
+        kModified_CrimeGold             = /*07*/ 0x00000080, // player ref only?
+        kModified_Ownership             = /*07*/ 0x00000080,
+        kModified_Global                = /*08*/ 0x00000100,
+        kModified_Rank                  = /*09*/ 0x00000200,
+        kModified_MapMarker             = /*0A*/ 0x00000400,
+        kModified_HadHavokMoveFlag      = /*0B*/ 0x00000800, // ?
+        kModified_PersuasionPercent     = /*0C*/ 0x00001000,
+        kModified_InvestmentGold        = /*0D*/ 0x00002000,
+        kModified_OblivionEntry         = /*0E*/ 0x00004000,
+        kModified_IsEmpty               = /*10*/ 0x00010000, // for non-actors, specifically flora
+        kModified_TrespassPackage       = /*12*/ 0x00040000,        
+        kModified_OpenDefaultState      = /*12*/ 0x00040000, // Doors
+        kModified_OpenState             = /*13*/ 0x00080000, // Doors
+        kModified_Teleport              = /*14*/ 0x00100000, // Doors
+        kModified_NonActorMagicCaster   = /*15*/ 0x00200000,
+        kModified_NonActorMagicTarget   = /*15*/ 0x00200000,
+        kModified_UsedMarkers           = /*16*/ 0x00400000, // Furniture
+        kModified_SavedMovementData     = /*18*/ 0x01000000,
+        kModified_Animation             = /*19*/ 0x02000000, // ExtraLastFinishedSequence + other anim data (?)
+        kModified_Script                = /*1A*/ 0x04000000,
+        kModified_Inventory             = /*1B*/ 0x08000000,
+        kModified_LeveledCreature       = /*1C*/ 0x10000000,
+        // Properties without modified flags (saved if present in ExtraDataList):
+        //  Package, Ghost, RunOncePacks, PackageStartLocation, ExtraFollower, PersistentCell, ItemDropper,
+        //  FriendHitList, HeadingTarget, InfoGeneralTopic, HasNoRumors, HaggleAmount
     };
 
     enum ActorSittingStates // TODO - move to some other file (HighProcess? Actor?)
@@ -70,7 +92,7 @@ public:
     //     /*00/00*/ TESForm          
     //     /*18/24*/ TESChildCell
     //     /*1C/28*/ TESMemContextForm - empty, no members
-    MEMBER /*1C/28*/ TESForm*           baseForm;
+    MEMBER /*1C/28*/ TESForm*           baseForm;   // actually, a TESBoundObject*
     MEMBER /*20/2C*/ Vector3            rotation;
     MEMBER /*2C/38*/ Vector3            position;
     MEMBER /*38/44*/ float              scale;

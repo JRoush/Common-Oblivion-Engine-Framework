@@ -41,12 +41,12 @@ public:
 
     enum ModifiedFlags
     {
-        kModified_DetachTime        = /*1B*/ 0x08000000, // only present if version >= 0x5A
-        kModified_CellFlags         = /*03*/ 0x00000008, // CHANGE_CELL_FLAGS
-        kModified_SeenData          = /*1C*/ 0x10000000, // CHANGE_CELL_SEENDATA
-        kModified_FullName          = /*04*/ 0x00000010, // CHANGE_CELL_FULLNAME
-        kModified_Ownership         = /*05*/ 0x00000020, // CHANGE_CELL_OWNERSHIP
-        kModified_Pathgrid          = /*18*/ 0x01000000, // CHANGE_CELL_PATHGRID_MODIFIED
+        kModified_CellFlags         = /*03*/ 0x00000008,
+        kModified_FullName          = /*04*/ 0x00000010,
+        kModified_Ownership         = /*05*/ 0x00000020,
+        kModified_Pathgrid          = /*18*/ 0x01000000,
+        kModified_DetachTime        = /*1B*/ 0x08000000,
+        kModified_SeenData          = /*1C*/ 0x10000000,
     };
 
     enum CellFlags
