@@ -10,7 +10,7 @@
 #include "API/TESForms/TESForm.h"   // TESForm, TrackingData
 
 // argument classes
-class   BSFile;  
+class   BSFile;  // BSTypes/BSFile.h
 
 class IMPORTCLASS ChunkInfo
 {// size 08/08 (NOTE: 06 for non-record chunks on disk, see below)
