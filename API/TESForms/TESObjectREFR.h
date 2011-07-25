@@ -48,32 +48,37 @@ public:
     
     enum ModifiedFlags
     {
-        kModified_ParentCell            = /*02*/ 0x00000004, // not saved (redundant to refr list of parent cell)
+        kModified_RefCreated            = /*01*/ 0x00000002, // For refrs that are dynamically generated
+        kModified_Moved                 = /*02*/ 0x00000004,
         kModified_HavokMove             = /*03*/ 0x00000008,
         kModified_Scale                 = /*04*/ 0x00000010,
+        kModified_AllExtra              = /*05*/ 0x00000020, // All extra properties for inventory item refs (see ContainerExtraData::EntryExtraData::ModifiedFlags)
         kModified_Lock                  = /*06*/ 0x00000040, // Doors
         kModified_CrimeGold             = /*07*/ 0x00000080, // player ref only?
         kModified_Ownership             = /*07*/ 0x00000080,
         kModified_Global                = /*08*/ 0x00000100,
         kModified_Rank                  = /*09*/ 0x00000200,
-        kModified_MapMarker             = /*0A*/ 0x00000400,
+        kModified_MapMarker             = /*0A*/ 0x00000400, // MapMarkers
         kModified_HadHavokMoveFlag      = /*0B*/ 0x00000800, // ?
         kModified_PersuasionPercent     = /*0C*/ 0x00001000,
         kModified_InvestmentGold        = /*0D*/ 0x00002000,
         kModified_OblivionEntry         = /*0E*/ 0x00004000,
         kModified_IsEmpty               = /*10*/ 0x00010000, // for non-actors, specifically flora
-        kModified_TrespassPackage       = /*12*/ 0x00040000,        
+        kModified_DroppedItem           = /*11*/ 0x00020000, // For inventory items dropped by actor refs (i.e. on death)
+        kModified_TrespassPackage       = /*12*/ 0x00040000, // (Character refrs only? move to Character.h?)        
         kModified_OpenDefaultState      = /*12*/ 0x00040000, // Doors
         kModified_OpenState             = /*13*/ 0x00080000, // Doors
         kModified_Teleport              = /*14*/ 0x00100000, // Doors
-        kModified_NonActorMagicCaster   = /*15*/ 0x00200000,
-        kModified_NonActorMagicTarget   = /*15*/ 0x00200000,
-        kModified_UsedMarkers           = /*16*/ 0x00400000, // Furniture
+        kModified_MagicData             = /*15*/ 0x00200000, // NonActorMagicTarget/NonActorMagicCaster
+        kModified_FurnitureMarkers      = /*16*/ 0x00400000, // Furniture
         kModified_SavedMovementData     = /*18*/ 0x01000000,
         kModified_Animation             = /*19*/ 0x02000000, // ExtraLastFinishedSequence + other anim data (?)
         kModified_Script                = /*1A*/ 0x04000000,
         kModified_Inventory             = /*1B*/ 0x08000000,
         kModified_LeveledCreature       = /*1C*/ 0x10000000,
+        kModified_HighProcess           = /*1D*/ 0x20000000, // (Character refrs only? move to Character.h?)
+        kModified_DisabledState         = /*1E*/ 0x40000000,
+        kModified_CellChanged           = /*1F*/ 0x80000000,
         // Properties without modified flags (saved if present in ExtraDataList):
         //  Package, Ghost, RunOncePacks, PackageStartLocation, ExtraFollower, PersistentCell, ItemDropper,
         //  FriendHitList, HeadingTarget, InfoGeneralTopic, HasNoRumors, HaggleAmount

@@ -41,10 +41,13 @@ public:
 
     enum ModifiedFlags
     {
+        kModified_CellCreated01     = /*01*/ 0x00000002, // For cells that are dynamically generated.  both flags appear for 'Cell Created' change records
+        kModified_CellCreated02     = /*02*/ 0x00000004,
         kModified_CellFlags         = /*03*/ 0x00000008,
         kModified_FullName          = /*04*/ 0x00000010,
         kModified_Ownership         = /*05*/ 0x00000020,
         kModified_Pathgrid          = /*18*/ 0x01000000,
+        kModified_Unk1A             = /*1A*/ 0x04000000, // Seems to be set only for exterior cells
         kModified_DetachTime        = /*1B*/ 0x08000000,
         kModified_SeenData          = /*1C*/ 0x10000000,
     };
