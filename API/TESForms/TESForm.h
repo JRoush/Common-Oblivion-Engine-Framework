@@ -284,13 +284,22 @@ public:
     IMPORT /*---/120*/ virtual const char*  GetSubtypeName(); // text for 'Type' field in Object Window
     #endif
 
-    // methods - serialization
+    // methods - serialization to/from TESFiles
     IMPORT TESFile*             GetOverrideFile(int index); // returns last override if index > #overrides or -1
     IMPORT void                 InitializeFormRecord(); // initializes a RecordInfo structure for the form and allocates a global buffer
                                 // In the CS, also saves EDID chunk if editorID is a non-empty string
     IMPORT static void          PutFormRecordChunkData(UInt32 chunkType, void* buffer, UInt32 size); // appends chunk to form record buffer                      
     IMPORT void                 FinalizeFormRecord(); // finalizes the form record buffer
     IMPORT static bool          ResolveFormID(UInt32& formID, TESFile& file); // resolves a formid from a TESFile
+
+    // methods - serialization to/from TESSaveLoadGame
+    #ifdef OBLIVION
+    IMPORT void                 SaveDataToCurrentSaveGame(void* buffer, UInt32 size); // These four methods map directly to the corresponding
+    IMPORT void                 LoadDataFromCurrentSaveGame(void* buffer, UInt32 size); // methods on TESSaveLoadGame
+    IMPORT void                 SaveFormIDToCurrentSaveGame(UInt32& formIDs, UInt32 size = 4);
+    IMPORT void                 LoadFormIDFromCurrentSaveGame(UInt32& formIDs, UInt32 size = 4);
+    #endif
+
     // methods - formID, editorID
     IMPORT void                 SetFormID(UInt32 newFormID, bool arg2 = true); // arg2=true to reserve formid from datahandler ?
     IMPORT static TESForm*      LookupByFormID(UInt32 formID);
@@ -300,6 +309,7 @@ public:
     IMPORT static TESForm*      LookupByEditorID(const char* editorID);
     IMPORT static bool          SanitizeEditorIDString(char* editorID); // strips out non-alphanumeric characters.  returns true if string was changed.
     #endif
+
     // methods - CS reference tracking
     #ifndef OBLIVION
     IMPORT FormReferenceList*   GetCrossReferenceList(bool create); // if 'create', then an empty list will be created if none is found
@@ -308,6 +318,7 @@ public:
     IMPORT void                 RemoveCrossReference(TESForm* referencingForm);
     IMPORT void                 ClearCrossReferenceList();
     #endif
+
     // methods - batch handling of select, very simple base form components
     IMPORT void                 SaveGenericComponents(void* extraDataBuffer, UInt16 extraDataSize); //
                                 // Saves components and the specified extra data                                              
@@ -315,6 +326,7 @@ public:
                                 // Saves components and the any stored extra data
     IMPORT void                 CopyAllComponentsFrom(TESForm& form); // copies components
     IMPORT bool                 CompareAllComponentsTo(TESForm& compareTo); // compares components
+
     // methods - misc
     IMPORT static const char*   GetFormTypeName(UInt8 formType);
     IMPORT void                 MakeTemporary(); // removes from formID map, editorID map, active file list, etc. and sets temporary flag

@@ -70,6 +70,10 @@ EXPORTS ;{ ; TESForm
 ?PutFormRecordChunkData@TESForm@@SAXKPAXK@Z                         = 0x0046AE40,0x00494FE0     ; PutFormRecordChunkData
 ?FinalizeFormRecord@TESForm@@QAEXXZ                                 = 0x0046B9F0,0x00494FC0     ; FinalizeFormRecord
 ?ResolveFormID@TESForm@@SA_NAAKAAVTESFile@@@Z                       = 0x0046BB20,0x00495410     ; ResolveFormID
+?SaveDataToCurrentSaveGame@TESForm@@QAEXPAXK@Z                      = 0x0046AC70,_NOTINCS__     ; SaveDataToCurrentSaveGame
+?LoadDataFromCurrentSaveGame@TESForm@@QAEXPAXK@Z                    = 0x0046AC80,_NOTINCS__     ; LoadDataFromCurrentSaveGame
+?SaveFormIDToCurrentSaveGame@TESForm@@QAEXAAKK@Z                    = 0x0046AC90,_NOTINCS__     ; SaveFormIDToCurrentSaveGame
+?LoadFormIDFromCurrentSaveGame@TESForm@@QAEXAAKK@Z                  = 0x0046ACA0,_NOTINCS__     ; LoadFormIDFromCurrentSaveGame
 ?SetFormID@TESForm@@QAEXK_N@Z                                       = 0x0046C300,0x00497E50     ; SetFormID
 ?LookupByFormID@TESForm@@SAPAV1@K@Z                                 = 0x0046B250,0x00495EF0     ; LookupByFormID
 ?IsFormIDBuiltin@TESForm@@SA_NK@Z                                   = 0x0046ABD0,0x00494D10     ; IsFormIDBuiltin
