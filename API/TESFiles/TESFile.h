@@ -117,7 +117,7 @@ public:
     MEMBER /*01C*/ char                 fileName[kMAX_PATH]; 
     MEMBER /*120*/ char                 filePath[kMAX_PATH]; // relative to "Oblivion\"
     MEMBER /*224*/ void*                unkFile224; // simple object, no destructor
-    MEMBER /*228*/ UInt32               unkFile228; // init to 0x2800
+    MEMBER /*228*/ UInt32               bufferSize; // buffer size used when opening BSFile.  init to 0x2800
     MEMBER /*22C*/ UInt32               unkFile22C;
     MEMBER /*230*/ UInt32               unkFile230;
     MEMBER /*234*/ UInt32               unkFile234;
@@ -168,6 +168,7 @@ public:
     IMPORT void             InitializeFormFromRecord(TESForm& form); // set form type, id, etc. from current record header info
     IMPORT bool             GetNextRecord(bool skipIgnoredRecords); // advances file pointer to next record & reads header.  
                             // returns false on failure, usually indicating the end of file
+    IMPORT bool             JumpToRecord(UInt32 fileOffet); // moves file pointer to specified offset in file & reads record header.  returns false on failure.
     IMPORT UInt8            GetRecordType(); // returns type of current record, zero for invalid or no record
     IMPORT UInt32           JumpToBeginningOfRecord(); // move first chunk in current record, returns chunk type  
     IMPORT void             LoadCompressedRecordData(); // decompresses the record if necessary, and caches pointer to the decompressed data 

@@ -20,6 +20,7 @@ EXPORTS ;{ ; TESFile
 ;{ ; methods - loading records
 ?InitializeFormFromRecord@TESFile@@QAEXAAVTESForm@@@Z   = 0x00451210,0x00488180     ; InitializeFormFromRecord
 ?GetNextRecord@TESFile@@QAE_N_N@Z                       = 0x004518B0,0x004890A0     ; GetNextRecord
+?JumpToRecord@TESFile@@QAE_NK@Z                         = 0x00451460,0x00488290     ; JumpToRecord
 ?GetRecordType@TESFile@@QAEEXZ                          = 0x004511C0,0x00488130     ; GetRecordType
 ?JumpToBeginningOfRecord@TESFile@@QAEKXZ                = 0x00451160,0x004880E0     ; JumpToBeginningOfRecord
 ?PushGroupInfo@TESFile@@QAEXAAVRecordInfo@@@Z           = 0x0044FF50,0x00486DA0     ; PushGroupInfo
