@@ -22,7 +22,7 @@ public:
     //     /*000*/ NiFile
     MEMBER /*028*/ UInt32       unk28;
     MEMBER /*02C*/ UInt32       unk2C;
-    MEMBER /*030*/ UInt32       unk30;  // init to -1
+    MEMBER /*030*/ UInt32       unk30;  // init to -1. if not -1, used as position instead of bsPos
     MEMBER /*034*/ UInt32       unk34;
     MEMBER /*038*/ UInt32       unk38;
     MEMBER /*03C*/ char         fileName[0x104];
