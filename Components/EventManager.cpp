@@ -289,7 +289,8 @@ namespace CS_LoadMenuA
     // Patch addresses
     memaddr Patch       (0x0       ,0x009244E8);    // entry in User32.dll import table
     // global objects
-    UInt8   overwrittenData[0x4] = {{0}};   // buffer for storing original contents of patch address
+    typedef HMENU (__stdcall *LoadMenuT)(HINSTANCE hInstance, LPCSTR lpMenuName);
+    LoadMenuT   overwrittenProc = 0; // buffer for storing original contents of patch address
     // event object
     struct EventT : public Event
     {        
@@ -301,13 +302,13 @@ namespace CS_LoadMenuA
         virtual void Attach() 
         {
             _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Patch,sizeof(overwrittenData));
+            memcpy(&overwrittenProc,Patch,sizeof(overwrittenProc));
             Patch.WriteData32((UInt32)memaddr::GetPointerToMember(&EventT::Call));
         }
         virtual void Detach() 
         {
             _MESSAGE("Detached Event");
-            Patch.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+            Patch.WriteDataBuf(&overwrittenProc,sizeof(overwrittenProc));
         }
     } eventT;      
     // handler
@@ -325,7 +326,7 @@ namespace CS_LoadMenuA
             }
         }
         if (menu) return menu;
-        else return LoadMenuA(hInstance,lpMenuName);
+        else return overwrittenProc(hInstance,lpMenuName);
     }
  }
 Event& EventManager::CS_LoadMenuA = CS_LoadMenuA::eventT;
@@ -335,7 +336,8 @@ namespace CS_CreateDialogParamA
     // Patch addresses
     memaddr Patch       (0x0       ,0x009243FC);    // entry in User32.dll import table
     // global objects
-    UInt8   overwrittenData[0x4] = {{0}};   // buffer for storing original contents of patch address
+    typedef HWND (__stdcall *CreateDialogParamT)(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+    CreateDialogParamT   overwrittenProc = 0; // buffer for storing original contents of patch address
     // event object
     struct EventT : public Event
     {        
@@ -347,13 +349,13 @@ namespace CS_CreateDialogParamA
         virtual void Attach() 
         {
             _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Patch,sizeof(overwrittenData));
+            memcpy(&overwrittenProc,Patch,sizeof(overwrittenProc));
             Patch.WriteData32((UInt32)memaddr::GetPointerToMember(&EventT::Call));
         }
         virtual void Detach() 
         {
             _MESSAGE("Detached Event");
-            Patch.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+            Patch.WriteDataBuf(&overwrittenProc,sizeof(overwrittenProc));
         }
     } eventT;      
     // handler
@@ -371,7 +373,7 @@ namespace CS_CreateDialogParamA
             }
         }
         if (dialog) return dialog;
-        else return CreateDialogParamA(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
+        else return overwrittenProc(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
     }
  }
 Event& EventManager::CS_CreateDialogParamA = CS_CreateDialogParamA::eventT;
