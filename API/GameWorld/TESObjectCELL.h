@@ -47,7 +47,8 @@ public:
         kModified_FullName          = /*04*/ 0x00000010,
         kModified_Ownership         = /*05*/ 0x00000020,
         kModified_Pathgrid          = /*18*/ 0x01000000,
-        kModified_Unk1A             = /*1A*/ 0x04000000, // Seems to be set only for exterior cells
+        kModified_Unk19             = /*19*/ 0x02000000, // Seems to be set only for exterior cells w/ coordinate magnitudes > 0x80
+        kModified_Unk1A             = /*1A*/ 0x04000000, // Seems to be set only for exterior cells w/ coordinate magnitudes < 0x80
         kModified_DetachTime        = /*1B*/ 0x08000000,
         kModified_SeenData          = /*1C*/ 0x10000000,
     };

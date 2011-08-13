@@ -11,6 +11,7 @@
 
 // argument classes
 class   BSFile;  // BSTypes/BSFile.h
+template <class TKEY, class TVAL> class NiTPointerMap;  // NiTypes/NiTMap.h
 
 class IMPORTCLASS ChunkInfo
 {// size 08/08 (NOTE: 06 for non-record chunks on disk, see below)
@@ -98,7 +99,7 @@ public:
     };
     typedef BSSimpleList<MasterFileData*> MasterDataList;
     typedef BSSimpleList<const char*> MasterNameList;
-
+    // Group record struct
     class IMPORTCLASS GroupInfo : public RecordInfo
     {// size 18/18
         //     /*00*/ RecordInfo    // for group records, the size includes the 14 bytes of the header
@@ -106,10 +107,12 @@ public:
     };
     typedef BSSimpleList<GroupInfo*> GroupList;
 
+    typedef NiTPointerMap< UInt32, TESFile* > ChildThreadFileMapT;
+
     // members
     MEMBER /*000*/ UInt32               errorState;
-    MEMBER /*004*/ UInt32               unkFile004;
-    MEMBER /*008*/ UInt32               unkFile008;
+    MEMBER /*004*/ TESFile*             ghostFileParent; // for ghost files, the parent TESFile* from the main thread
+    MEMBER /*008*/ ChildThreadFileMapT* childThreadGhostFiles; // read-only duplicate files mapped by threadID for child threads
     MEMBER /*00C*/ BSFile*              unkFile00C; // temp file for backups?
     MEMBER /*010*/ BSFile*              bsFile; // used for actual read from / write to disk operations
     MEMBER /*014*/ UInt32               unkFile014;
