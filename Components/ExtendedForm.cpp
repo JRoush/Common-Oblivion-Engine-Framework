@@ -296,9 +296,9 @@ void InitializeExtendedForms()
     GetFormTypeFromChunkType_Hook.WriteRelJump(&GetFormTypeFromChunkType);
 
     // hook TESDataHandler::AddForm, Clear, and CreateDefaultForms
-    EventManager::RegisterEventCallback(EventManager::DataHandler_AddForm,&TESDataHandler_AddForm_Hndl);
-    EventManager::RegisterEventCallback(EventManager::DataHandler_Clear,&TESDataHandler_Clear_Hndl);
-    EventManager::RegisterEventCallback(EventManager::DataHandler_CreateDefaults,&TESDataHandler_CreateBuiltins_Hndl);
+    EventManager::DataHandler::AddForm_.RegisterCallback(&TESDataHandler_AddForm_Hndl);
+    EventManager::DataHandler::Clear.RegisterCallback(&TESDataHandler_Clear_Hndl);
+    EventManager::DataHandler::CreateDefaults.RegisterCallback(&TESDataHandler_CreateBuiltins_Hndl);
 
     // patch TESDataHandler::LoadFormRecord to create,load, & add to DH for out-of-bounds forms
     TESDataHandler_LoadFormRecord_Patch.WriteData32(TESDataHandler_LoadFormRecord_PatchVal);   // new relative jump offset

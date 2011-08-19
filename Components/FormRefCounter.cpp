@@ -37,7 +37,7 @@ public:
             // construct a new ref table
             refTable = new RefTableT(1000);
             // register event to destroy table when data handler is cleared
-            EventManager::RegisterEventCallback(EventManager::DataHandler_Clear,&FormRefCounter::ClearAllReferences);
+            EventManager::DataHandler::Clear.RegisterCallback(&FormRefCounter::ClearAllReferences);
         }
         return *refTable;
     }
@@ -175,7 +175,7 @@ public:
         delete refTable;
         refTable = 0;
         // unregister cleanup event
-        EventManager::UnregisterEventCallback(EventManager::DataHandler_Clear,&FormRefCounter::ClearAllReferences);
+        EventManager::DataHandler::Clear.UnregisterCallback(&FormRefCounter::ClearAllReferences);
         // clear cached search results
         lastKey = 0;
         lastListHead = 0;

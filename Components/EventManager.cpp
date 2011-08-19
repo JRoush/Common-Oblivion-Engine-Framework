@@ -6,12 +6,99 @@
 #include <list>
 
 //----------------------------- Event Interface -------------------------------------
-// an abstract interface for event objects
-struct Event
+struct Callback
 {
-    // callback list
-    typedef std::list<void*> CallbackListT;
+    void*   pFunc;
+    SInt32  priority;
+
+    Callback(void* pFunc, SInt32 priority) : pFunc(pFunc), priority(priority) {}
+    bool operator < (const Callback& rhs) const { return priority < rhs.priority; }
+};
+
+class EventEx : public EventManager::Event
+{
+public:  
+    
+    typedef std::list<Callback> CallbackListT;
+
+    // constructor, destructor
+    EventEx(memaddr patchOffset, UInt8 patchSize, const char* name) : hook(patchOffset), patchSize(patchSize), overwrittenData(0), name(name) {}
+    virtual ~EventEx() { if (overwrittenData) delete overwrittenData; }    
+
+    // virtual methods
+    virtual const char*     Name()
+    {
+        return name;
+    }
+    virtual bool            RegisterCallback(void* callback, SInt32 priority = 0)
+    {
+        // validate callback
+        if (!callback)
+        {
+            _ERROR("Register callback for event '%s' failed: null callback pointer",Name());
+            return false;
+        }
+
+        // determine insert position in list
+        CallbackListT::iterator insertPos = callbacks.end(); 
+        for(CallbackListT::iterator pos = callbacks.begin(); pos != callbacks.end(); pos++)
+        {
+            if (pos->pFunc == callback) 
+            {
+                _ERROR("Register callback for event '%s' failed: callback already registered w/ priority %i",Name(),pos->priority);
+                return false; // callback already present in list
+            }
+            if (insertPos == callbacks.end() && priority < pos->priority) insertPos = pos; // insert before first callback with greater value
+        }
+
+        // register callback
+        if (callbacks.empty()) Attach();  // attach event before adding first callback
+        callbacks.insert(insertPos,Callback(callback,priority));
+        _DMESSAGE("Registered callback <%p> w/ priority %i for event '%s'",callback,priority,Name());
+
+        return true;
+    }
+    virtual bool            UnregisterCallback(void* callback)
+    {
+        // find callback in list
+        bool found = false;
+        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end(); )
+        {
+            if (it->pFunc == callback)
+            {
+                CallbackListT::iterator toDelete = it;
+                it++;
+                _DMESSAGE("Unregistered callback <%p> w/ priority %i for event '%s'",callback,toDelete->priority,Name());
+                callbacks.erase(toDelete);
+                found = true;
+            }
+            else it++;
+        }        
+        if (callbacks.empty()) Detach(); // detach event after removing last callback
+        return found;
+    }
+    virtual void            Attach() 
+    {
+        _MESSAGE("Attached Event %s", Name());
+        if (patchSize && (overwrittenData == 0)) 
+        {
+            overwrittenData = new UInt8[patchSize];
+            memcpy(overwrittenData,hook,patchSize);
+        }
+        // NOTE: Each subclass must override this method, call this base method, then perform the actual patch operation
+    }
+    virtual void            Detach() 
+    {
+        _MESSAGE("Detached Event %s", Name());
+        if (patchSize && overwrittenData) hook.WriteDataBuf(overwrittenData,patchSize);
+    }
+       
+    // members
     CallbackListT   callbacks;
+    memaddr         hook;
+    UInt8           patchSize;
+    void*           overwrittenData;
+    const char*     name;
 
     // wrappers to avoid issues with possible exceptions in naked handler functions
     CallbackListT::iterator begin() throw ()
@@ -19,57 +106,50 @@ struct Event
         try { return callbacks.begin(); }
         catch (...) { _ERROR(""); }
     } 
-    CallbackListT::iterator     end()   
+    CallbackListT::iterator end()   
     {
         try { return callbacks.end(); }
         catch (...) { _ERROR(""); }
     }
 
-    // virtual methods
-    virtual const char*     Name() = 0;     // event name, for debugging output
-    virtual void            Attach() = 0;   // write hooks/patches to implement event callbacks
-    virtual void            Detach() = 0;   // undo hooks/patches to restore original code
 };
 
-//----------------------------- Individual Events -------------------------------------
-namespace DataHandler_CreateDefaults
+//----------------------------- DataHandler Events -------------------------------------
+namespace _DataHandler_
 {
-    // Patch addresses
+
+namespace CreateDefaults
+{
+    // Patch data
     memaddr Hook        (0x0044CC6F,0x00480FC6);    // just before creation of formid 0x15F
     memaddr RetnA       (0x0044CC74,0x00480FCB);
-    // global objects
-    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen      = 5;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        void Call();
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "DataHandler_CreateDefaults";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"DataHandler.CreateDefaults") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+        // event handler
+        static void Hndl();
+        void EventT::Call()
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+            _DMESSAGE("");
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+            {
+                EventManager::DataHandler::CreateDefaults_f func = (EventManager::DataHandler::CreateDefaults_f)it->pFunc;
+                it++;
+                func();
+            }
         }
-    } eventT;      
-    // handler
-    void EventT::Call()
-    {
-        _DMESSAGE("");
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            ((EventManager::DataHandler_CreateDefaults_f)func)();
-        }
-    }
+    } eventT; 
+
+    // hook handler   
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -91,45 +171,38 @@ namespace DataHandler_CreateDefaults
         }
     }
 }
-Event& EventManager::DataHandler_CreateDefaults = DataHandler_CreateDefaults::eventT;
 
-namespace DataHandler_PostCreateDefaults
+namespace PostCreateDefaults
 {
-    // Patch addresses
+    // Patch data
     memaddr Hook        (0x0044CD71,0x00481067);    // very end of Creation method, on final retn instruction
-    // global objects
-    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen      = 5;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        void Call();
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "DataHandler_PostCreateDefaults";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"DataHandler.PostCreateDefaults") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+        // event handler
+        static void Hndl();
+        void EventT::Call()
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+            _DMESSAGE("");
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+            {
+                EventManager::DataHandler::PostCreateDefaults_f func = (EventManager::DataHandler::PostCreateDefaults_f)it->pFunc;
+                it++;
+                func();
+            }
         }
-    } eventT;      
-    // handler
-    void EventT::Call()
-    {
-        _DMESSAGE("");
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            ((EventManager::DataHandler_PostCreateDefaults_f)func)();
-        }
-    }
+    } eventT; 
+
+    // hook handler   
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -150,46 +223,39 @@ namespace DataHandler_PostCreateDefaults
         }
     }
 }
-Event& EventManager::DataHandler_PostCreateDefaults = DataHandler_PostCreateDefaults::eventT;
 
-namespace DataHandler_Clear
+namespace Clear
 {
-    // Patch addresses
+    // Patch data
     memaddr Hook                (0x00449A98,0x0047B0B2);    // just before leak checking on formid map
     memaddr RetnA               (0x00449A9E,0x0047B0B8);
-    // global objects
-    UInt8   overwrittenData[0x6] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen              = 5;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        void Call();
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "DataHandler_Clear";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"DataHandler.Clear") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+        // event handler
+        static void Hndl();
+        void EventT::Call()
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
+            _DMESSAGE("");
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+            {
+                EventManager::DataHandler::Clear_f func = (EventManager::DataHandler::Clear_f)it->pFunc;
+                it++;
+                func();
+            }
         }
-    } eventT;      
-    // handler
-    void EventT::Call()
-    {
-        _DMESSAGE("");
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            ((EventManager::DataHandler_Clear_f)func)();
-        }
-    }
+    } eventT;  
+
+    // hook handler
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -212,51 +278,46 @@ namespace DataHandler_Clear
         }
     }
 }
-Event& EventManager::DataHandler_Clear = DataHandler_Clear::eventT;
 
-namespace DataHandler_AddForm
+namespace AddForm_
 {
-    // Patch addresses
+    // Patch data
     memaddr Hook                (0x0044D955,0x004818F5);    // just before leak checking on formid map
     memaddr RetnA               (0x0044D95A,0x004818FA);
-    // global objects
-    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen              = 5;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        bool Call(TESForm* form);
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "DataHandler_AddForm";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"DataHandler.AddForm") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+
+        // event handler
+        static void Hndl();
+        bool Call(TESForm* form)
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
-        }
-    } eventT;      
-    // handler
-    bool EventT::Call(TESForm* form)
-    {
-        bool handled = false;
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            if (((EventManager::DataHandler_AddForm_f)func)(form))
+            _VMESSAGE("Form %p <memaddr=%p>",form ? form->formID : 0, form);
+            bool handled = false;
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
             {
-                _VMESSAGE("Event '%s' <%p> handled by <%p>",Name(),form,func);
-                handled = true;
+                EventManager::DataHandler::AddForm_f func = (EventManager::DataHandler::AddForm_f)it->pFunc;
+                it++;
+                if (func(form))
+                {
+                    _DMESSAGE("Form %p <memaddr=%p> was barred from the DataHandler by callback <%p>",form ? form->formID : 0, form,func);
+                    handled = true;
+                }
             }
+            return handled;
         }
-        return handled;
-    }
+    } eventT;  
+
+    // handler
     void _declspec(naked) EventT::Hndl()
     {
         __asm
@@ -280,148 +341,139 @@ namespace DataHandler_AddForm
         }
     }
 }
-Event& EventManager::DataHandler_AddForm = DataHandler_AddForm::eventT;
 
+} // end of namespace _DataHandler_
+EventManager::Event& EventManager::DataHandler::CreateDefaults = _DataHandler_::CreateDefaults::eventT;
+EventManager::Event& EventManager::DataHandler::PostCreateDefaults = _DataHandler_::PostCreateDefaults::eventT;
+EventManager::Event& EventManager::DataHandler::Clear = _DataHandler_::Clear::eventT;
+EventManager::Event& EventManager::DataHandler::AddForm_ = _DataHandler_::AddForm_::eventT;
+
+//----------------------------- CS Window Events -------------------------------------
 #ifndef OBLIVION
-
-namespace CS_LoadMenuA
+namespace _CSWindows_
 {
-    // Patch addresses
+
+namespace LoadMenu_
+{
+    // Patch data
     memaddr Patch       (0x0       ,0x009244E8);    // entry in User32.dll import table
-    // global objects
-    typedef HMENU (__stdcall *LoadMenuT)(HINSTANCE hInstance, LPCSTR lpMenuName);
-    LoadMenuT   overwrittenProc = 0; // buffer for storing original contents of patch address
+    UInt8 patchLen      = 4;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        static HMENU __stdcall Call(HINSTANCE hInstance, LPCSTR lpMenuName);
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "CS_LoadMenuA";}
+        // method overrides
+        EventT() : EventEx(Patch,patchLen ,"CSWindows.LoadMenu") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(&overwrittenProc,Patch,sizeof(overwrittenProc));
+            EventEx::Attach();
             Patch.WriteData32((UInt32)memaddr::GetPointerToMember(&EventT::Call));
         }
-        virtual void Detach() 
-        {
-            _MESSAGE("Detached Event");
-            Patch.WriteDataBuf(&overwrittenProc,sizeof(overwrittenProc));
-        }
-    } eventT;      
-    // handler
+        // event handler
+        static HMENU __stdcall Call(HINSTANCE hInstance, LPCSTR lpMenuName);
+    } eventT; 
+
+    // event handler
     HMENU EventT::Call(HINSTANCE hInstance, LPCSTR lpMenuName)
     {
-        HMENU menu = 0;
+        _VMESSAGE("Menu (%p:%p)",hInstance,lpMenuName);
+        HMENU overrideMenu = 0;
         for (EventT::CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end();)
         {
-            void* func = *it;
+            EventManager::CSWindows::LoadMenuA_f func = (EventManager::CSWindows::LoadMenuA_f)it->pFunc;
             it++;
-            if (menu = ((EventManager::CS_LoadMenuA_f)func)(hInstance,lpMenuName))
+            if (HMENU menu = func(hInstance,lpMenuName))
             {
-                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",eventT.Name(),hInstance,lpMenuName,func);
-                break;
+                _DMESSAGE("Menu (%p:%p) overloaded to (%p) by callback <%p>",hInstance,lpMenuName,menu,func);
+                overrideMenu = menu;
             }
         }
-        if (menu) return menu;
-        else return overwrittenProc(hInstance,lpMenuName);
+        if (overrideMenu) return overrideMenu;
+        typedef HMENU (__stdcall *LoadMenuT)(HINSTANCE hInstance, LPCSTR lpMenuName);
+        return ((LoadMenuT)eventT.overwrittenData)(hInstance,lpMenuName);
     }
- }
-Event& EventManager::CS_LoadMenuA = CS_LoadMenuA::eventT;
+}
 
-namespace CS_CreateDialogParamA
+namespace CreateDialogParam_
 {
-    // Patch addresses
+    // Patch data
     memaddr Patch       (0x0       ,0x009243FC);    // entry in User32.dll import table
-    // global objects
-    typedef HWND (__stdcall *CreateDialogParamT)(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
-    CreateDialogParamT   overwrittenProc = 0; // buffer for storing original contents of patch address
+    UInt8 patchLen      = 4;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        static HWND __stdcall Call(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "CS_CreateDialogParamA";}
+        // method overrides
+        EventT() : EventEx(Patch,patchLen ,"CSWindows.CreateDialogParam") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(&overwrittenProc,Patch,sizeof(overwrittenProc));
+            EventEx::Attach();
             Patch.WriteData32((UInt32)memaddr::GetPointerToMember(&EventT::Call));
         }
-        virtual void Detach() 
-        {
-            _MESSAGE("Detached Event");
-            Patch.WriteDataBuf(&overwrittenProc,sizeof(overwrittenProc));
-        }
-    } eventT;      
-    // handler
+        // event handler
+        static HWND __stdcall Call(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+    } eventT; 
+
+    // event handler
     HWND EventT::Call(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam)
     {
-        HWND dialog = 0;
+        _VMESSAGE("Dialog (%p:%p, proc=%p, param=%p)",hInstance,lpTemplateName,lpDialogFunc,dwInitParam);
+        HWND overrideDialog = 0;
         for (EventT::CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end();)
         {
-            void* func = *it;
+            EventManager::CSWindows::CreateDialogParamA_f func = (EventManager::CSWindows::CreateDialogParamA_f)it->pFunc;
             it++;
-            if (dialog = ((EventManager::CS_CreateDialogParamA_f)func)(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam))
+            if (HWND dialog = func(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam))
             {
-                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",eventT.Name(),hInstance,lpTemplateName,func);
-                break;
+                _DMESSAGE("Dialog (%p:%p, proc=%p, param=%p) overloaded to (%p) by callback <%p>",hInstance,lpTemplateName,lpDialogFunc,dwInitParam,dialog,func);
+                overrideDialog = dialog;
             }
         }
-        if (dialog) return dialog;
-        else return overwrittenProc(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam);
+        if (overrideDialog) return overrideDialog; // return override value
+        typedef HWND (__stdcall *CreateDialogParamT)(HINSTANCE hInstance, LPCSTR lpTemplateName, HWND hWndParent, DLGPROC lpDialogFunc, LPARAM dwInitParam);
+        return ((CreateDialogParamT)*(void**)eventT.overwrittenData)(hInstance,lpTemplateName,hWndParent,lpDialogFunc,dwInitParam); // invoke original function
     }
  }
-Event& EventManager::CS_CreateDialogParamA = CS_CreateDialogParamA::eventT;
 
-namespace CSMainWindow_WMCommand
+namespace MainW_WMCommand
 {
-    // Patch addresses
+    // Patch data
     memaddr Hook        (0x0       ,0x00419568);    // just before source control switch
     memaddr RetnA       (0x0       ,0x0041956D);    // normal execution path for unhandled event
     memaddr RetnB       (0x0       ,0x0041A94C);    // terminal execution path for handled event
-    // global objects
-    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen      = 5;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        bool Call(WPARAM wparam, LPARAM lparam);
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "CSMainWindow_WMCommand";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"CSWindows.MainWindow.WMCommand") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+        // event handler
+        static void Hndl();
+        bool Call(WPARAM wparam, LPARAM lparam)
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
-        }
-    } eventT;      
-    // handler
-    bool EventT::Call(WPARAM wparam, LPARAM lparam)
-    {
-        bool handled = false;
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            if (((EventManager::CSMainWindow_WMCommand_f)func)(wparam,lparam) == 0)
+            _VMESSAGE("WM_Command (wparam=%p,lparam=%p)",wparam,lparam);
+            bool handled = false;
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
             {
-                _VMESSAGE("Event '%s' (%p,%p) handled by <%p>",Name(),wparam,lparam,func);
-                handled = true;
+                EventManager::CSWindows::MainW_WMCommand_f func = (EventManager::CSWindows::MainW_WMCommand_f)it->pFunc;
+                it++;
+                if (func(wparam,lparam) == 0)
+                {
+                    _DMESSAGE("WM_Command (wparam=%p,lparam=%p) handled by <%p>",wparam,lparam,func);
+                    handled = true;
+                }
             }
+            return handled;
         }
-        return handled;
-    }
+    } eventT;
+     
+    // hook handler
     void _declspec(naked) EventT::Hndl()
     {
         WPARAM  wparam;
@@ -452,7 +504,6 @@ namespace CSMainWindow_WMCommand
         else
         {
             // event was not handled, continue normal execution
-            _VMESSAGE("Event '%s' (%p,%p) not handled",eventT.Name(),wparam,lparam);
             __asm   
             {
                 // epilog
@@ -465,52 +516,46 @@ namespace CSMainWindow_WMCommand
         }
     }
 }
-Event& EventManager::CSMainWindow_WMCommand = CSMainWindow_WMCommand::eventT;
 
-namespace CSObjectWindow_CompareObject
+namespace ObjectW_CompareObject
 {
-    // Patch addresses
+    // Patch data
     memaddr Hook        (0x0       ,0x00415D1D);    // just before source control switch
     memaddr RetnA       (0x0       ,0x00415D27);    // normal execution path
     memaddr RetnB       (0x0       ,0x00416A48);    // terminal execution path, if valid result returned
-    // global objects
-    UInt8   overwrittenData[0xB] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen      = 0xB;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        bool Call(TESForm* formA, TESForm* formB, UInt32 columnID, int& result);   
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "CSObjectWindow_CompareObject";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"CSWindows.ObjectWindow.CompareObject") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+        // event handler
+        static void Hndl();
+        bool Call(TESForm* formA, TESForm* formB, UInt32 columnID, int& result)
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
-        }
-    } eventT;      
-    // handler
-    bool EventT::Call(TESForm* formA, TESForm* formB, UInt32 columnID, int& result)
-    {
-        bool handled = false;
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            if (((EventManager::CSObjectWindow_CompareObject_f)func)(formA,formB,columnID,result))
+            _VMESSAGE("Sort on (formA=%p,formB=%p,col=%i)",formA,formB,columnID);
+            bool handled = false;
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
             {
-                _VMESSAGE("Event '%s' (%p,%p,%i) handled by <%p>",Name(),formA,formB,columnID,func);
-                handled = true;
+                EventManager::CSWindows::ObjectW_CompareObject_f func = (EventManager::CSWindows::ObjectW_CompareObject_f)it->pFunc;
+                it++;
+                if (func(formA,formB,columnID,result))
+                {
+                    _DMESSAGE("Custom sort on (formA=%p,formB=%p,col=%i) by callback <%p>",formA,formB,columnID,func);
+                    handled = true;
+                }
             }
+            return handled;
         }
-        return handled;
-    }
+    } eventT;
+    
+    // hook handler
     void _declspec(naked) EventT::Hndl()
     {
         TESForm*    formA;
@@ -544,7 +589,6 @@ namespace CSObjectWindow_CompareObject
         else
         {
             // event was not handled, continue normal execution
-            _VMESSAGE("Event '%s' (%p,%p,%i) not handled",eventT.Name(),formA,formB,colIndx);
             *result = 1;
             __asm   
             {
@@ -558,52 +602,47 @@ namespace CSObjectWindow_CompareObject
         }
     }
 }
-Event& EventManager::CSObjectWindow_CompareObject = CSObjectWindow_CompareObject::eventT;
 
-namespace CSObjectWindow_GetObjectDispInfo
+namespace ObjectW_GetObjectDispInfo
 {
-    // Patch addresses
+    // Patch data
     memaddr Hook        (0x0       ,0x00414E9C);    // just before source control switch
     memaddr RetnA       (0x0       ,0x00414EA1);    // normal execution path
     memaddr RetnB       (0x0       ,0x00415B45);    // terminal execution path, if valid result returned
-    // global objects
-    UInt8   overwrittenData[0x5] = {{0}};   // buffer for storing original contents of patch address
+    UInt8 patchLen      = 0x5;
+
     // event object
-    struct EventT : public Event
+    struct EventT : public EventEx
     {        
-        // handler methods
-        bool Call(void* displayInfo);   
-        static void Hndl();
-        // virtual interface
-        virtual const char* Name() {return "CSObjectWindow_GetObjectDispInfo";}
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"CSWindows.ObjectWindow.GetObjectDispInfo") {}
         virtual void Attach() 
         {
-            _MESSAGE("Attached Event");
-            memcpy(overwrittenData,Hook,sizeof(overwrittenData));
+            EventEx::Attach();
             Hook.WriteRelJump(&Hndl);
         }
-        virtual void Detach() 
+        // event handler
+        static void Hndl();
+        bool Call(void* displayInfo)
         {
-            _MESSAGE("Detached Event");
-            Hook.WriteDataBuf(overwrittenData,sizeof(overwrittenData));
-        }
-    } eventT;      
-    // handler
-    bool EventT::Call(void* displayInfo)
-    {
-        bool handled = false;
-        for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
-        {
-            void* func = *it;
-            it++;
-            if (((EventManager::CSObjectWindow_GetObjectDispInfo_f)func)(displayInfo))
+            _VMESSAGE("GetDispInfo <%p>",displayInfo);
+            bool handled = false;
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
             {
-                _VMESSAGE("Event '%s' (%p) handled by <%p>",Name(),displayInfo,func);
-                handled = true;
+                EventManager::CSWindows::ObjectW_GetObjectDispInfo_f func = (EventManager::CSWindows::ObjectW_GetObjectDispInfo_f)it->pFunc;
+                it++;
+                if (func(displayInfo))
+                {
+                    _DMESSAGE("DisplayInfo provided for <%p> by callback <%p>",displayInfo,func);
+                    handled = true;
+                }
             }
+            return handled;
         }
-        return handled;
-    }
+    } eventT;
+    
+    // hook handler
+    
     void _declspec(naked) EventT::Hndl()
     {
         void*       displayInfo;
@@ -630,7 +669,6 @@ namespace CSObjectWindow_GetObjectDispInfo
         else
         {
             // event was not handled, continue normal execution
-            _VMESSAGE("Event '%s' (%p) not handled",eventT.Name(),displayInfo);
             __asm   
             {
                 // epilog
@@ -644,38 +682,51 @@ namespace CSObjectWindow_GetObjectDispInfo
         }
     }
 }
-Event& EventManager::CSObjectWindow_GetObjectDispInfo = CSObjectWindow_GetObjectDispInfo::eventT;
 
+namespace InitializeWindows
+{
+    // Patch data
+    memaddr Hook        (0x0       ,0x0041CF40);    // call to CS InitializeWindows() method in main()
+    UInt8 patchLen      = 5;
+
+    // event object
+    struct EventT : public EventEx
+    {        
+        // method overrides
+        EventT() : EventEx(Hook,patchLen ,"CSWindows.InitializeWindows") {}
+        virtual void Attach() 
+        {
+            EventEx::Attach();
+            Hook.WriteRelCall(&Hndl);
+        }
+        // event handler
+        static void Hndl()
+        {
+            // invoke CS InitializeWindows() method
+            UInt32 origAddr = Hook._addr + 5 + *(UInt32*)((UInt32)eventT.overwrittenData + 1); 
+            typedef void (*FuncT)(void);
+            ((FuncT)origAddr)();
+
+            // run callbacks
+            _DMESSAGE("");
+            for (CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end();)
+            {
+                EventManager::CSWindows::InitializeWindows_f func = (EventManager::CSWindows::InitializeWindows_f)it->pFunc;
+                it++;
+                
+                _DMESSAGE("Invoking callback <%p> ...",func);
+                func();
+            }
+        }
+    } eventT; 
+}
+
+}   // end of namespace _CSWindows_
+EventManager::Event& EventManager::CSWindows::LoadMenuA = _CSWindows_::LoadMenu_::eventT;
+EventManager::Event& EventManager::CSWindows::CreateDialogParamA = _CSWindows_::CreateDialogParam_::eventT;
+EventManager::Event& EventManager::CSWindows::MainW_WMCommand = _CSWindows_::MainW_WMCommand::eventT;
+EventManager::Event& EventManager::CSWindows::ObjectW_CompareObject = _CSWindows_::ObjectW_CompareObject::eventT;
+EventManager::Event& EventManager::CSWindows::ObjectW_GetObjectDispInfo = _CSWindows_::ObjectW_GetObjectDispInfo::eventT;
+EventManager::Event& EventManager::CSWindows::InitializeWindows = _CSWindows_::InitializeWindows::eventT;
 #endif
-//----------------------------- Event Manager -------------------------------------
-bool EventManager::RegisterEventCallback(Event& eventT, void* callback)
-{
-    // validate callback
-    if (!callback)
-    {
-        _ERROR("Register callback for event '%s' failed: null callback pointer",eventT.Name());
-        return false;
-    }
 
-    // register callback
-    if (eventT.callbacks.empty()) eventT.Attach();  // attach event before adding first callback
-    eventT.callbacks.push_back(callback);
-    _DMESSAGE("Registered callback <%p> for event '%s'",callback,eventT.Name());
-
-    return true;
-}
-bool EventManager::UnregisterEventCallback(Event& eventT, void* callback)
-{
-    // find callback in list
-    for (Event::CallbackListT::iterator it = eventT.callbacks.begin(); it != eventT.callbacks.end(); it++)
-    {
-        if (*it != callback) continue;
-        // callback found
-        eventT.callbacks.erase(it);
-        if (eventT.callbacks.empty()) eventT.Detach(); // detach event after removing last callback
-        _DMESSAGE("Unegistered callback <%p> for event '%s'",callback,eventT.Name());
-        return true;
-    }
-    // callback not found in list
-    return false;
-}
