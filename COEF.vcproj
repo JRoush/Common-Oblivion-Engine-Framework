@@ -602,6 +602,10 @@
 					RelativePath=".\API\Items\TESObjectMISC.h"
 					>
 				</File>
+				<File
+					RelativePath=".\API\Items\TESObjectWEAP.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter

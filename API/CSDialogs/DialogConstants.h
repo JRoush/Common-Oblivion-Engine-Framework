@@ -76,6 +76,10 @@
 // TESSpellList
 #define IDC_SPLO_SPELLLIST          1485 // SYSLISTVIEW32
 
+// TESEnchantableForm
+#define IDC_ENAM_ENCHANTMENT        1091 // COMBOBOX
+#define IDC_ENAM_CHARGE             1053 // EDIT
+
 // TESAIForm
 #define IDC_AIFM_OPENAIDIALOG       1205 // BUTTON
 

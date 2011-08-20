@@ -15,12 +15,13 @@
 #include "API/BSTypes/BSStringT.h"
 
 // argument classes
-class   TESFile;
+class   TESFile;    // TESFiles/TESFile.h
 class   TESForm;    // TESForms/TESForm.h
 class   NiNode;
 struct  FULL_HASH;  // Useage unknown - struct {void* unk00; void* unk04; void* unk08;}
 class   Script;
-class   SpellItem;
+class   SpellItem;  // Magic/MagicItemForm.h
+class   EnchantmentItem; // Magic/MagicItemForm.h
 class   TESLevSpell;
 
 class IMPORTCLASS BaseFormComponent
@@ -622,4 +623,45 @@ public:
     // constructor, destructor
     IMPORT TESSpellList();
     IMPORT ~TESSpellList(); // WARNING - does not clear lists, will cause memory leaks unless ClearSpellLists() is called first (bug?)
+};
+
+class IMPORTCLASS TESEnchantableForm : public BaseFormComponent
+{// size 10/10
+public:
+
+	// members
+	//     /*00/00*/ void**             vtbl;
+	MEMBER /*04/04*/ EnchantmentItem*   enchantment;
+	MEMBER /*08/08*/ UInt16             enchantmentCharge; // only valid for weapons
+	MEMBER /*0A/0A*/ UInt16             enchantmentPad0A;
+	MEMBER /*0C/0C*/ UInt32             castingType; // init by derived class's InitializeAllComponents().  see Magic::CastTypes
+
+    // virtual methods:
+    IMPORT /*000/000*/ virtual void         InitializeComponent();
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const;
+    #ifndef OBLIVION
+    IMPORT /*---/010*/ virtual void         BuildComponentFormRefList(BSSimpleList<TESForm*>* formRefs);
+    IMPORT /*---/014*/ virtual void         RemoveComponentFormRef(TESForm& referencedForm);
+    IMPORT /*---/018*/ virtual bool         ComponentFormRefRevisionsMatch(BSSimpleList<TESForm*>* checkinList);
+    IMPORT /*---/01C*/ virtual void         GetRevisionUnmatchedComponentFormRefs(BSSimpleList<TESForm*>* checkinList, BSStringT& output);
+    IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);
+    IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);
+    IMPORT /*---/02C*/ virtual void         GetComponentFromDlg(HWND dialog);
+    #endif
+
+    // additional virtual methods
+    IMPORT /*010/034*/ virtual UInt32       GetCastingType();
+
+    // methods
+    IMPORT static EnchantmentItem*  GetEnchantmentForForm(const TESForm* form); // dynamic cast form into TESEnchantableForm. returns 0 on failure
+    IMPORT static UInt16            GetEnchantmentChargeForForm(const TESForm* form); // dynamic cast form into TESEnchantableForm. returns 0 on failure
+    IMPORT void                     SaveComponent(); // serialize to active file buffer.  
+    //                              Note there is no corresponding standalone LoadComponent() method, it appearntly 
+    //                              was written directly into the TESForm::LoadForm() method of derived classes.
+    IMPORT void                     LinkComponent(TESForm& parentForm); // resolve formid into EnchantmentItem* and validate for parent form
+
+    // constructor, destructor
+    IMPORT TESEnchantableForm();
+    INLINE ~TESEnchantableForm() {} // stub, inlined by game/CS
 };
