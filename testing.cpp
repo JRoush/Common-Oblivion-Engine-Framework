@@ -27,6 +27,7 @@
 //#include "API/ExtraData/BSExtraData.h"
 //#include "API/ExtraData/ExtraDataList.h"
 //#include "API/GameWorld/TESObjectCELL.h"
+//#include "API/Items/TESObjectMISC.h"
 //#include "API/Magic/Magic.h"
 //#include "API/Magic/EffectSetting.h"
 //#include "API/Magic/EffectItem.h"

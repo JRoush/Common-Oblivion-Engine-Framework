@@ -1,0 +1,15 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObjectMISC
+??1TESObjectMISC@@UAE@XZ                        = 0x004B9770,0x0051AAA0     ; ~TESObjectMISC
+?LoadForm@TESObjectMISC@@UAE_NAAVTESFile@@@Z    = 0x004B9600,0x0051A850     ; LoadForm
+?SaveFormChunks@TESObjectMISC@@UAEXXZ           = 0x004B94F0,0x0051A9D0     ; SaveFormChunks
+?ModifiedFormSize@TESObjectMISC@@UAEGK@Z        = 0x004B4560,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESObjectMISC@@UAEXK@Z        = 0x004B95B0,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESObjectMISC@@UAEXKK@Z       = 0x004B95D0,_NOTINCS__     ; LoadModifiedForm
+?LinkForm@TESObjectMISC@@UAEXXZ                 = 0x004B4590,0x00515C80     ; LinkForm
+?CopyFrom@TESObjectMISC@@UAEXAAVTESForm@@@Z     = 0x004B9540,0x0051AA30     ; CopyFrom
+?CompareTo@TESObjectMISC@@UAE_NAAVTESForm@@@Z   = 0x004B9570,0x0051AA60     ; CompareTo
+??0TESObjectMISC@@QAE@XZ                        = 0x004B9860,0x0051ABA0     ; TESObjectMISC
+;}

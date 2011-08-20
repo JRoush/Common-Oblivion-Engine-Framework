@@ -591,6 +591,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Items"
+				>
+				<File
+					RelativePath=".\API\Items\TESObjectMisc.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Items\TESObjectMISC.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Utilities"
