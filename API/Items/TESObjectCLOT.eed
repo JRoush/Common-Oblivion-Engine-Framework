@@ -1,0 +1,19 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObjectCLOT
+; virtual methods
+??1TESObjectCLOT@@UAE@XZ                        = 0x004B5CB0,0x00518270     ; ~TESObjectCLOT
+?InitializeAllComponents@TESObjectCLOT@@UAEXXZ  = 0x004B5C40,0x00517C70     ; InitializeAllComponents
+?LoadForm@TESObjectCLOT@@UAE_NAAVTESFile@@@Z    = 0x004B5DB0,0x00517DB0     ; LoadForm
+?SaveFormChunks@TESObjectCLOT@@UAEXXZ           = 0x004B5B30,0x00517CE0     ; SaveFormChunks
+?ModifiedFormSize@TESObjectCLOT@@UAEGK@Z        = 0x004B5BE0,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESObjectCLOT@@UAEXK@Z        = 0x004B4B50,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESObjectCLOT@@UAEXKK@Z       = 0x004B5C10,_NOTINCS__     ; LoadModifiedForm
+?LinkForm@TESObjectCLOT@@UAEXXZ                 = 0x004B5C60,0x00517C90     ; LinkForm
+?CopyFrom@TESObjectCLOT@@UAEXAAVTESForm@@@Z     = 0x004B5B70,0x00517D20     ; CopyFrom
+?CompareTo@TESObjectCLOT@@UAE_NAAVTESForm@@@Z   = 0x004B5BA0,0x00517D50     ; CompareTo
+?GetObjectWindowTreePath@TESObjectCLOT@@UAEXAAVBSStringT@@@Z    = _NOTINGAME,0x00518160     ; GetObjectWindowTreePath
+; methods
+??0TESObjectCLOT@@QAE@XZ        = 0x004B6150,0x00518350     ; TESObjectCLOT
+;}
