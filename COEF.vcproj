@@ -595,6 +595,14 @@
 				Name="Items"
 				>
 				<File
+					RelativePath=".\API\Items\TESObjectARMO.eed"
+					>
+				</File>
+				<File
+					RelativePath=".\API\Items\TESObjectARMO.h"
+					>
+				</File>
+				<File
 					RelativePath=".\API\Items\TESObjectMISC.eed"
 					>
 				</File>

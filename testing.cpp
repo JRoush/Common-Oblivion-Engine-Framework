@@ -29,6 +29,7 @@
 //#include "API/GameWorld/TESObjectCELL.h"
 //#include "API/Items/TESObjectMISC.h"
 //#include "API/Items/TESObjectWEAP.h"
+//#include "API/Items/TESObjectARMO.h"
 //#include "API/Magic/Magic.h"
 //#include "API/Magic/EffectSetting.h"
 //#include "API/Magic/EffectItem.h"

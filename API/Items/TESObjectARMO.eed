@@ -1,0 +1,23 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObjectARMO
+; virtual methods
+??1TESObjectARMO@@UAE@XZ                        = 0x004B4C90,0x00516B40     ; ~TESObjectARMO
+?InitializeAllComponents@TESObjectARMO@@UAEXXZ  = 0x004B4C00,0x005162B0     ; InitializeAllComponents
+?LoadForm@TESObjectARMO@@UAE_NAAVTESFile@@@Z    = 0x004B4D90,0x00516670     ; LoadForm
+?SaveFormChunks@TESObjectARMO@@UAEXXZ           = 0x004B4A30,0x00516320     ; SaveFormChunks
+?ModifiedFormSize@TESObjectARMO@@UAEGK@Z        = 0x004B5BE0,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESObjectARMO@@UAEXK@Z        = 0x004B4B50,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESObjectARMO@@UAEXKK@Z       = 0x004B5C10,_NOTINCS__     ; LoadModifiedForm
+?LinkForm@TESObjectARMO@@UAEXXZ                 = 0x004B4C20,0x005162D0     ; LinkForm
+?CopyFrom@TESObjectARMO@@UAEXAAVTESForm@@@Z     = 0x004B4A70,0x00516370     ; CopyFrom
+?CompareTo@TESObjectARMO@@UAE_NAAVTESForm@@@Z   = 0x004B4AC0,0x005163C0     ; CompareTo
+?GetObjectWindowTreePath@TESObjectARMO@@UAEXAAVBSStringT@@@Z    = _NOTINGAME,0x00516A30     ; GetObjectWindowTreePath
+?SetInDialog@TESObjectARMO@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x00516450     ; SetInDialog
+?GetFromDialog@TESObjectARMO@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00516530     ; GetFromDialog
+; methods
+?GetArmorSkillAVCode@TESObjectARMO@@QAEKXZ      = 0x004B4C80,0x005165D0     ; GetArmorSkillAVCode
+?IsHeavyArmor@TESObjectARMO@@QAE_NXZ            = 0x004B4C70,0x005165C0     ; IsHeavyArmor
+??0TESObjectARMO@@QAE@XZ        = 0x004B5140,0x00516C40     ; TESObjectARMO
+;}
