@@ -629,12 +629,12 @@ class IMPORTCLASS TESEnchantableForm : public BaseFormComponent
 {// size 10/10
 public:
 
-	// members
-	//     /*00/00*/ void**             vtbl;
-	MEMBER /*04/04*/ EnchantmentItem*   enchantment;
-	MEMBER /*08/08*/ UInt16             enchantmentCharge; // only valid for weapons
-	MEMBER /*0A/0A*/ UInt16             enchantmentPad0A;
-	MEMBER /*0C/0C*/ UInt32             castingType; // init by derived class's InitializeAllComponents().  see Magic::CastTypes
+    // members
+    //     /*00/00*/ void**             vtbl;
+    MEMBER /*04/04*/ EnchantmentItem*   enchantment;
+    MEMBER /*08/08*/ UInt16             enchantmentCharge; // only valid for weapons
+    MEMBER /*0A/0A*/ UInt16             enchantmentPad0A;
+    MEMBER /*0C/0C*/ UInt32             castingType; // init by derived class's InitializeAllComponents().  see Magic::CastTypes
 
     // virtual methods:
     IMPORT /*000/000*/ virtual void         InitializeComponent();
@@ -657,11 +657,127 @@ public:
     IMPORT static EnchantmentItem*  GetEnchantmentForForm(const TESForm* form); // dynamic cast form into TESEnchantableForm. returns 0 on failure
     IMPORT static UInt16            GetEnchantmentChargeForForm(const TESForm* form); // dynamic cast form into TESEnchantableForm. returns 0 on failure
     IMPORT void                     SaveComponent(); // serialize to active file buffer.  
-    //                              Note there is no corresponding standalone LoadComponent() method, it appearntly 
+    //                              Note there is no corresponding standalone LoadComponent() method, it apparently 
     //                              was written directly into the TESForm::LoadForm() method of derived classes.
     IMPORT void                     LinkComponent(TESForm& parentForm); // resolve formid into EnchantmentItem* and validate for parent form
 
     // constructor, destructor
     IMPORT TESEnchantableForm();
     INLINE ~TESEnchantableForm() {} // stub, inlined by game/CS
+};
+
+class TESBipedModelForm : public BaseFormComponent
+{// size 80/C8
+public:
+
+    enum Genders
+    {   
+        kGender_Male        = 0x0,
+        kGender_Female      = 0x1,
+        kGender__MAX
+    };
+
+    enum SlotIndexes
+    {
+        kSlotIndex_Head             = 0x00,
+        kSlotIndex_Hair             = 0x01,
+        kSlotIndex_UpperBody        = 0x02,
+        kSlotIndex_LowerBody        = 0x03,
+        kSlotIndex_Hand             = 0x04,
+        kSlotIndex_Foot             = 0x05,
+        kSlotIndex_RightRing        = 0x06,
+        kSlotIndex_LeftRing         = 0x07,
+        kSlotIndex_Amulet           = 0x08,
+        kSlotIndex_Weapon           = 0x09,
+        kSlotIndex_BackWeapon       = 0x0A,
+        kSlotIndex_SideWeapon       = 0x0B,
+        kSlotIndex_Quiver           = 0x0C,
+        kSlotIndex_Shield           = 0x0D,
+        kSlotIndex_Torch            = 0x0E,
+        kSlotIndex_Tail             = 0x0F,
+        kSlotIndex__MAX
+    };
+
+    enum SlotMasks
+    {
+        kSlotMask_Head              = /*00*/ 0x0001,
+        kSlotMask_Hair              = /*01*/ 0x0002,
+        kSlotMask_UpperBody         = /*02*/ 0x0004,
+        kSlotMask_LowerBody         = /*03*/ 0x0008,
+        kSlotMask_Hand              = /*04*/ 0x0010,
+        kSlotMask_Foot              = /*05*/ 0x0020,
+        kSlotMask_RightRing         = /*06*/ 0x0040,
+        kSlotMask_LeftRing          = /*07*/ 0x0080,
+        kSlotMask_Amulet            = /*08*/ 0x0100,
+        kSlotMask_Weapon            = /*09*/ 0x0200,
+        kSlotMask_BackWeapon        = /*0A*/ 0x0400,
+        kSlotMask_SideWeapon        = /*0B*/ 0x0800,
+        kSlotMask_Quiver            = /*0C*/ 0x1000,
+        kSlotMask_Shield            = /*0D*/ 0x2000,
+        kSlotMask_Torch             = /*0E*/ 0x4000,
+        kSlotMask_Tail              = /*0F*/ 0x8000,
+    };
+
+    enum BipedModelFlags
+    {
+        kBipedModelFlag_HidesRings      = /*00*/ 0x0001,
+        kBipedModelFlag_HidesAmulets    = /*01*/ 0x0002,
+        kBipedModelFlag_Unk02           = /*02*/ 0x0004,
+        kBipedModelFlag_Unk03           = /*03*/ 0x0008,
+        kBipedModelFlag_Unk04           = /*04*/ 0x0010,
+        kBipedModelFlag_Unk05           = /*05*/ 0x0020,
+        kBipedModelFlag_NotPlayable     = /*06*/ 0x0040,
+        kBipedModelFlag_HeavyArmor      = /*07*/ 0x0080,
+        kBipedModelFlag_Unk08           = /*08*/ 0x0100
+    };
+
+    // members
+    //     /*00/00*/ void**         vtbl;
+    MEMBER /*04/04*/ UInt16         bipedSlotMask;
+    MEMBER /*06/06*/ UInt8          bipedModelFlags;
+    MEMBER /*07/07*/ UInt8          pad07;
+    MEMBER /*08/08*/ TESModel       bipedModel[kGender__MAX];
+    MEMBER /*38/50*/ TESModel       worldModel[kGender__MAX];
+    MEMBER /*68/98*/ TESIcon        bipedIcon[kGender__MAX];
+
+    // virtual methods:
+    IMPORT /*000/000*/ virtual void         InitializeComponent();
+    IMPORT /*004/004*/ virtual void         ClearComponentReferences();
+    IMPORT /*008/008*/ virtual void         CopyComponentFrom(const BaseFormComponent& source);
+    IMPORT /*00C/00C*/ virtual bool         CompareComponentTo(const BaseFormComponent& compareTo) const;
+    #ifndef OBLIVION
+    IMPORT /*---/020*/ virtual bool         ComponentDlgMsgCallback(HWND dialog, UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& result);              
+    IMPORT /*---/024*/ virtual bool         IsComponentDlgValid(HWND dialog);
+    IMPORT /*---/028*/ virtual void         SetComponentInDlg(HWND dialog);
+    IMPORT /*---/02C*/ virtual void         GetComponentFromDlg(HWND dialog);
+    IMPORT /*---/030*/ virtual void         ComponentDlgCleanup(HWND dialog);
+    #endif
+
+    // methods - flags & slots
+    IMPORT bool             HasBipedSlotOverlap(TESBipedModelForm& otherBipedModel);
+    IMPORT bool             CoversBipedSlot(UInt32 slotIndex, bool headCantCoverHair = false);
+    IMPORT void             SetCoversBipedSlot(UInt32 slotIndex, bool covers);
+    IMPORT bool             IsPlayable();
+    #ifndef OBLIVION
+    IMPORT void             SetIsPlayable(bool playable); // apparently never used in the game code
+    #endif
+
+    // methods - models & icons
+    IMPORT TESModel&        GetBipedModel(UInt32 gender);
+    IMPORT const char*      GetBipedModelPath(UInt32 gender);
+    IMPORT void             SetBipedModelPath(UInt32 gender, const char* path);
+    IMPORT TESModel&        GetWorldModel(UInt32 gender);
+    IMPORT const char*      GetWorldModelPath(UInt32 gender);
+    IMPORT void             SetWorldModelPath(UInt32 gender, const char* path);
+    IMPORT const char*      GetBipedIconPath(UInt32 gender);
+
+    // methods - serialization
+    IMPORT void             SaveComponent();   // serialize to active file buffer  
+    //                      Note there is no corresponding standalone LoadComponent() method, it apparently 
+    //                      was written directly into the TESForm::LoadForm() method of derived classes.
+
+    // constructor, destructor
+    IMPORT TESBipedModelForm();
+    IMPORT ~TESBipedModelForm();
+
 };

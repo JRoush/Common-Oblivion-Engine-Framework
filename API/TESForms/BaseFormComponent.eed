@@ -254,3 +254,33 @@ EXPORTS ;{ ; TESEnchantableForm
 ?LinkComponent@TESEnchantableForm@@QAEXAAVTESForm@@@Z   = 0x0046A880,0x004943C0     ; LinkComponent
 ??0TESEnchantableForm@@QAE@XZ                           = 0x0046A790,0x004943B0     ; TESEnchantableForm
 ;}    
+
+EXPORTS ;{ ; TESBipedModelForm
+; virtual methods
+?InitializeComponent@TESBipedModelForm@@UAEXXZ                          = 0x00468CC0,0x0048FE30     ; InitializeComponent
+?ClearComponentReferences@TESBipedModelForm@@UAEXXZ                     = 0x00468D10,0x0048FED0     ; ClearComponentReferences
+?CopyComponentFrom@TESBipedModelForm@@UAEXABVBaseFormComponent@@@Z      = 0x00468DF0,0x0048FFD0     ; CopyComponentFrom
+?CompareComponentTo@TESBipedModelForm@@UBE_NABVBaseFormComponent@@@Z    = 0x00468E80,0x00490070     ; CompareComponentTo
+?ComponentDlgMsgCallback@TESBipedModelForm@@UAE_NPAUHWND__@@IIJAAJ@Z    = _NOTINGAME,0x00491030     ; ComponentDlgMsgCallback
+?IsComponentDlgValid@TESBipedModelForm@@UAE_NPAUHWND__@@@Z              = _NOTINGAME,0x00490330     ; IsComponentDlgValid
+?SetComponentInDlg@TESBipedModelForm@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x00490450     ; SetComponentInDlg
+?GetComponentFromDlg@TESBipedModelForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x00490560     ; GetComponentFromDlg
+?ComponentDlgCleanup@TESBipedModelForm@@UAEXPAUHWND__@@@Z               = _NOTINGAME,0x00490650     ; ComponentDlgCleanup
+; methods
+?HasBipedSlotOverlap@TESBipedModelForm@@QAE_NAAV1@@Z                    = 0x00468FD0,0x004901D0     ; HasBipedSlotOverlap
+?CoversBipedSlot@TESBipedModelForm@@QAE_NK_N@Z                          = 0x00468FF0,0x004901F0     ; CoversBipedSlot
+?SetCoversBipedSlot@TESBipedModelForm@@QAEXK_N@Z                        = 0x00469020,0x00490220     ; SetCoversBipedSlot
+?IsPlayable@TESBipedModelForm@@QAE_NXZ                                  = 0x00469080,0x00490290     ; IsPlayable
+?SetIsPlayable@TESBipedModelForm@@QAEX_N@Z                              = _NOTINGAME,0x004902A0     ; SetIsPlayable
+?GetBipedModel@TESBipedModelForm@@QAEAAVTESModel@@K@Z                   = 0x00469290,0x00490800     ; GetBipedModel
+?GetBipedModelPath@TESBipedModelForm@@QAEPBDK@Z                         = 0x00469330,0x004908A0     ; GetBipedModelPath
+?SetBipedModelPath@TESBipedModelForm@@QAEXKPBD@Z                        = 0x004690B0,0x00490310     ; SetBipedModelPath
+?GetWorldModel@TESBipedModelForm@@QAEAAVTESModel@@K@Z                   = 0x00469240,0x004907B0     ; GetWorldModel
+?GetWorldModelPath@TESBipedModelForm@@QAEPBDK@Z                         = 0x004692E0,0x00490850     ; GetWorldModelPath
+?SetWorldModelPath@TESBipedModelForm@@QAEXKPBD@Z                        = 0x00469090,0x004902F0     ; SetWorldModelPath
+?GetBipedIconPath@TESBipedModelForm@@QAEPBDK@Z                          = 0x00469380,0x004908F0     ; GetBipedIconPath
+?SaveComponent@TESBipedModelForm@@QAEXXZ                                = 0x00468D60,0x0048FF30     ; SaveComponent
+??0TESBipedModelForm@@QAE@XZ    = 0x004690D0,0x00490690     ; TESBipedModelForm
+??1TESBipedModelForm@@QAE@XZ    = 0x004B4B70,0x005165E0     ; ~TESBipedModelForm
+; methods
+;}                         
