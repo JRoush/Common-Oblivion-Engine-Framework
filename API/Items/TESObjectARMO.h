@@ -1,5 +1,5 @@
 /* 
-    TESObjectWEAP is a base form for weapon items.
+    TESObjectARMO is a base form for armor items.
 */
 #pragma once
 
@@ -48,7 +48,7 @@ public:
     // No TESFullName, TESScriptableForm, TESEnchantableForm, TESWeightForm, TESHealthForm, or TESBipedModelForm virtual method overrides
 
     // TESValueForm virtual method overrides
-    // These methods are all thunks to the corresponding methods in the TESObjectWEAP.TESForm vtbl
+    // These methods are all thunks to the corresponding methods in the TESObjectARMO.TESForm vtbl
     #ifdef OBLIVION  
     INLINE /*010/---*/ virtual UInt16       ModifiedComponentSize(UInt32 modifiedMask) {return TESObjectARMO::ModifiedFormSize(modifiedMask);}
     INLINE /*014/---*/ virtual void         SaveModifiedComponent(UInt32 modifiedMask) {TESObjectARMO::SaveModifiedForm(modifiedMask);}
