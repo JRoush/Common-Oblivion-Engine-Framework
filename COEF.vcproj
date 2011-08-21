@@ -603,6 +603,10 @@
 					>
 				</File>
 				<File
+					RelativePath=".\API\Items\TESObjectWEAP.eed"
+					>
+				</File>
+				<File
 					RelativePath=".\API\Items\TESObjectWEAP.h"
 					>
 				</File>
