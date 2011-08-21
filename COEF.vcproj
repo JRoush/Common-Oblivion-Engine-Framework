@@ -595,7 +595,7 @@
 				Name="Items"
 				>
 				<File
-					RelativePath=".\API\Items\TESObjectMisc.eed"
+					RelativePath=".\API\Items\TESObjectMISC.eed"
 					>
 				</File>
 				<File

@@ -1,0 +1,25 @@
+NAME Oblivion.exe, TESConstructionSet.exe
+BASE = 0x400000, 0x400000
+
+EXPORTS ;{ ; TESObjectWEAP
+; virtual methods
+??1TESObjectWEAP@@UAE@XZ                        = 0x004BB4B0,0x0051D960     ; ~TESObjectWEAP
+?InitializeAllComponents@TESObjectWEAP@@UAEXXZ  = 0x004BB0F0,0x0051D270     ; InitializeAllComponents
+?LoadForm@TESObjectWEAP@@UAE_NAAVTESFile@@@Z    = 0x004BB150,0x0051D2D0     ; LoadForm
+?SaveFormChunks@TESObjectWEAP@@UAEXXZ           = 0x004BB000,0x0051D4E0     ; SaveFormChunks
+?ModifiedFormSize@TESObjectWEAP@@UAEGK@Z        = 0x004BB070,_NOTINCS__     ; ModifiedFormSize
+?SaveModifiedForm@TESObjectWEAP@@UAEXK@Z        = 0x004BB0A0,_NOTINCS__     ; SaveModifiedForm
+?LoadModifiedForm@TESObjectWEAP@@UAEXKK@Z       = 0x004BB0C0,_NOTINCS__     ; LoadModifiedForm
+?LinkForm@TESObjectWEAP@@UAEXXZ                 = 0x004BB120,0x0051D2A0     ; LinkForm
+?CopyFrom@TESObjectWEAP@@UAEXAAVTESForm@@@Z     = 0x004BB350,0x0051D550     ; CopyFrom
+?CompareTo@TESObjectWEAP@@UAE_NAAVTESForm@@@Z   = 0x004BB3C0,0x0051D5C0     ; CompareTo
+?DialogMessageCallback@TESObjectWEAP@@UAE_NPAUHWND__@@IIJAAJ@Z  = _NOTINGAME,0x0051D8B0     ; DialogMessageCallback
+?SetInDialog@TESObjectWEAP@@UAEXPAUHWND__@@@Z                   = _NOTINGAME,0x0051D710     ; SetInDialog
+?GetFromDialog@TESObjectWEAP@@UAEXPAUHWND__@@@Z                 = _NOTINGAME,0x0051D810     ; GetFromDialog
+?GetSubtypeName@TESObjectWEAP@@UAEPBDXZ                         = _NOTINGAME,0x0051DA90     ; GetSubtypeName
+?GetCastingType@TESObjectWEAP@@UAEKXZ           = 0x004BB4A0,0x0051D6B0     ; GetCastingType
+; methods
+?GetWeaponSkillAVCode@TESObjectWEAP@@QAEKXZ     = 0x004BB060,0x0051D6A0     ; GetWeaponSkillAVCode
+?PopulateComboWithWeaponTypes@TESObjectWEAP@@QAEXPAUHWND__@@@Z  = _NOTINGAME,0x0051D6C0     ; PopulateComboWithWeaponTypes
+??0TESObjectWEAP@@QAE@XZ        = 0x004BB610,0x0051DAB0     ; TESObjectWEAP
+;}
