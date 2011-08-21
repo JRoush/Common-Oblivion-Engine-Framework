@@ -13,15 +13,15 @@ class IMPORTCLASS TESObjectMISC : public TESBoundObject, public TESFullName, pub
 {// size 70/BC
 public:
 
-	// members
-	//     /*00/00*/ TESBoundObject
-	//     /*24/58*/ TESFullName
-	//     /*30/64*/ TESModel
-	//	   /*48/88*/ TESIcon
-	//	   /*54/A0*/ TESScriptableForm
-	//	   /*60/AC*/ TESValueForm
-	//	   /*68/B4*/ TESWeightForm
-	// no additional members
+    // members
+    //     /*00/00*/ TESBoundObject
+    //     /*24/58*/ TESFullName
+    //     /*30/64*/ TESModel
+    //     /*48/88*/ TESIcon
+    //     /*54/A0*/ TESScriptableForm
+    //     /*60/AC*/ TESValueForm
+    //     /*68/B4*/ TESWeightForm
+    // no additional members
 
     // TESForm virtual method overrides
     IMPORT /*010/034*/ virtual              ~TESObjectMISC();

@@ -13,39 +13,39 @@ class IMPORTCLASS TESObjectWEAP : public TESBoundObject, public TESFullName, pub
 {// size A0/EC
 public:
 
-	enum WeaponTypes
-	{
-		kWeaponType_BladeOneHand		= 0x0,
-		kWeaponType_BladeTwoHand        = 0x1,
-		kWeaponType_BluntOneHand        = 0x2,
-		kWeaponType_BluntTwoHand        = 0x3,
-		kWeaponType_Staff               = 0x4,
-		kWeaponType_Bow                 = 0x5,
-		kWeaponType__MAX
-	};
+    enum WeaponTypes
+    {
+        kWeaponType_BladeOneHand        = 0x0,
+        kWeaponType_BladeTwoHand        = 0x1,
+        kWeaponType_BluntOneHand        = 0x2,
+        kWeaponType_BluntTwoHand        = 0x3,
+        kWeaponType_Staff               = 0x4,
+        kWeaponType_Bow                 = 0x5,
+        kWeaponType__MAX
+    };
 
-	enum WeaponFlags
-	{
-		kWeaponFlags_IgnoreNormalWeaponResistance		= /*00*/ 0x01,
-	};
+    enum WeaponFlags
+    {
+        kWeaponFlags_IgnoreNormalWeaponResistance       = /*00*/ 0x01,
+    };
 
-	// members
-	//     /*00/00*/ TESBoundObject
-	//     /*24/58*/ TESFullName
-	//     /*30/64*/ TESModel
-	//	   /*48/88*/ TESIcon
-	//	   /*54/A0*/ TESScriptableForm
-	//	   /*60/AC*/ TESEnchantableForm
-	//	   /*70/BC*/ TESValueForm
-	//	   /*78/C4*/ TESWeightForm
-	//	   /*80/CC*/ TESHealthForm
-	//	   /*88/D4*/ TESAttackDamageForm
-	MEMBER /*90/DC*/ UInt8      weaponType;
-	MEMBER /*91/DD*/ UInt8      pad91[3];
-	MEMBER /*94/E0*/ float      weaponSpeed;
-	MEMBER /*98/E4*/ float      weaponReach;
-	MEMBER /*9C/E8*/ UInt8      weaponFlags;
-	MEMBER /*9D/E9*/ UInt8      pad9D[3];
+    // members
+    //     /*00/00*/ TESBoundObject
+    //     /*24/58*/ TESFullName
+    //     /*30/64*/ TESModel
+    //     /*48/88*/ TESIcon
+    //     /*54/A0*/ TESScriptableForm
+    //     /*60/AC*/ TESEnchantableForm
+    //     /*70/BC*/ TESValueForm
+    //     /*78/C4*/ TESWeightForm
+    //     /*80/CC*/ TESHealthForm
+    //     /*88/D4*/ TESAttackDamageForm
+    MEMBER /*90/DC*/ UInt8      weaponType;
+    MEMBER /*91/DD*/ UInt8      pad91[3];
+    MEMBER /*94/E0*/ float      weaponSpeed;
+    MEMBER /*98/E4*/ float      weaponReach;
+    MEMBER /*9C/E8*/ UInt8      weaponFlags;
+    MEMBER /*9D/E9*/ UInt8      pad9D[3];
 
     // TESForm virtual method overrides
     IMPORT /*010/034*/ virtual              ~TESObjectWEAP();
