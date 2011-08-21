@@ -666,7 +666,7 @@ public:
     INLINE ~TESEnchantableForm() {} // stub, inlined by game/CS
 };
 
-class TESBipedModelForm : public BaseFormComponent
+class IMPORTCLASS TESBipedModelForm : public BaseFormComponent
 {// size 80/C8
 public:
 
