@@ -730,3 +730,67 @@ EventManager::Event& EventManager::CSWindows::ObjectW_GetObjectDispInfo = _CSWin
 EventManager::Event& EventManager::CSWindows::InitializeWindows = _CSWindows_::InitializeWindows::eventT;
 #endif
 
+#ifdef OBLIVION
+namespace _GameWorld_
+{
+
+namespace EvaluateContainer
+{
+    // Patch data
+    memaddr Hook                (0x00488573,0x0);    // entry in User32.dll import table
+    memaddr RetnA               (0x00488578,0x0);
+    UInt8 patchLen              = 5;
+
+    // event object
+    struct EventT : public EventEx
+    {        
+        // method overrides
+        EventT() : EventEx(Hook,patchLen,"GameWorld.EvaluateContainer") {}
+        virtual void Attach() 
+        {
+            EventEx::Attach();
+            Hook.WriteRelJump(&Hndl);
+        }
+
+        // event handler
+        static void Hndl();
+        void Call(ContainerExtraData* container, UInt32 level)
+        {
+            if (!container) return;
+            _VMESSAGE("Container (memaddr=<%p>) reset at level %i",container,level);
+            for (CallbackListT::iterator it = callbacks.begin(); it != callbacks.end();)
+            {
+                EventManager::GameWorld::EvaluateContainer_f func = (EventManager::GameWorld::EvaluateContainer_f)it->pFunc;
+                it++;
+                func(container,level);
+            }
+        }
+    } eventT; 
+
+    // handler
+    void _declspec(naked) EventT::Hndl()
+    {
+        __asm
+        {
+            // overwritten code
+            push    eax
+            push    [esp + 0x18]    // level
+            push    [esp + 0x20]    // container
+            // call event handler
+            mov     ecx, offset eventT // set this* pointer
+            call    EventT::Call
+            // return
+            pop     eax
+            pop     ecx
+            pop     edi
+            pop     esi
+            pop     ebp
+            pop     ebx
+            jmp     [RetnA._addr]
+        }
+    }
+}
+
+}   // end of namespace _GameWorld_
+EventManager::Event& EventManager::GameWorld::EvaluateContainer = _GameWorld_::EvaluateContainer::eventT;
+#endif

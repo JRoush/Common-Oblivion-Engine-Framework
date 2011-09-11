@@ -20,6 +20,7 @@
 
 // argument classes
 class   TESForm;    // TESForms/TESForm.h
+class   ContainerExtraData; // TESForms/TESContainer.h
 
 class COMPONENT_EXPORT EventManager
 {
@@ -64,7 +65,6 @@ public:
     #ifndef OBLIVION
     struct COMPONENT_EXPORT CSWindows
     {
-
         static Event&   LoadMenuA;
         typedef HMENU (*LoadMenuA_f)(HINSTANCE hInstance, LPCSTR lpMenuName);
         // Intercepts all calls to User32::LoadMenu
@@ -103,4 +103,20 @@ public:
 
     };
     #endif
+    
+    #ifdef OBLIVION
+    struct COMPONENT_EXPORT GameWorld
+    {
+        static Event&   EvaluateContainer;
+        typedef void (*EvaluateContainer_f)(ContainerExtraData* container, UInt32 level);
+        // Occurs every time the contents of a container are re-evaluated.  
+        // This includes when the parent cell is loaded, when the container ref is placed, 
+        // when the ref is reset (for respawning containers), and when the container level 
+        // is changed (for actor containers). 
+        // The execution of this event does *NOT* imply that the contents have been reset or
+        // changed in any way, only that they *might* have been.
+
+    };
+    #endif
+
 };
