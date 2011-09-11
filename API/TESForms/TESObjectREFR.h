@@ -11,6 +11,7 @@
 #include "API/GameWorld/TESObjectCELL.h" // TESChildCell
 
 // argument classes
+class   TESBoundObject;         // TESForms/TESObject.h
 class   Vector3;                // probably NiVector3.  currently defined in Utilities/ITypes.h
 class   NiNode;
 class   BSFaceGenNiNode;
@@ -19,6 +20,7 @@ class   BSFaceGenAnimationData;
 class   MagicCaster;            // Magic/MagicCaster.h
 class   MagicTarget;            // Magic/MagicTarget.h
 class   TESTopic;
+class   TESContainer;           // TESForms/TESContainer.h
 
 class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
 {// size 58/60
@@ -98,7 +100,7 @@ public:
     //     /*00/00*/ TESForm          
     //     /*18/24*/ TESChildCell
     //     /*1C/28*/ TESMemContextForm - empty, no members
-    MEMBER /*1C/28*/ TESForm*           baseForm;   // actually, a TESBoundObject*
+    MEMBER /*1C/28*/ TESBoundObject*    baseForm;
     MEMBER /*20/2C*/ Vector3            rotation;
     MEMBER /*2C/38*/ Vector3            position;
     MEMBER /*38/44*/ float              scale;
@@ -217,7 +219,7 @@ public:
     #ifdef OBLIVION
     _NOUSE /*17C/---*/ virtual void             UnkRefr17C(UInt32 arg0) {return;} 
     _NOUSE /*180/---*/ virtual void             UnkRefr180(UInt32 arg0) {return;}
-    _NOUSE /*184/---*/ virtual void             UnkRefr184(bool arg0) {return;} 
+    _NOUSE /*184/---*/ virtual void             UnkRefr184(bool arg0) {return;} // OnReset() ?  arg0 is [not] ref respawns
     #endif
     INLINE /*188/1A8*/ virtual bool             IsMobileObject() {return false;} // hard to confirm, since all children of TESObjectREFR are MobileObjects
     #ifdef OBLIVION
@@ -229,7 +231,8 @@ public:
     INLINE /*19C/1B4*/ virtual bool             HasFatigue() {return false;} // always false for base class
     INLINE /*1A0/1B4*/ virtual bool             IsParalyzed() {return false;} // always false for base class
 
-    // methods
+    // methods - container
+    IMPORT TESContainer*                GetContainer(); // fast retrieval of base form container, if it has one
 
     // constructor
     IMPORT TESObjectREFR();

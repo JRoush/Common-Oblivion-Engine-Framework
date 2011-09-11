@@ -69,5 +69,6 @@ EXPORTS ;{ ; TESObjectREFR
 ?ChangeCell@TESObjectREFR@@UAEXPAVTESObjectCELL@@@Z         = 0x004D8AA0,0x00541680     ; ChangeCell
 ?IsDead@TESObjectREFR@@UAE_N_N@Z                            = 0x004D7DD0,0x00543010     ; IsDead
 ; methods
+?GetContainer@TESObjectREFR@@QAEPAVTESContainer@@XZ         = 0x004D6D40,0x0053EE20     ; GetContainer
 ??0TESObjectREFR@@QAE@XZ    = 0x004D9A70,0x00541870     ; TESObjectREFR
 ;}
