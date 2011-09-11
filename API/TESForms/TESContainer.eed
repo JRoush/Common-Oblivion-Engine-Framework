@@ -44,6 +44,7 @@ EXPORTS ;{ ; ExtraContainerChanges
 ;}    
 
 EXPORTS ;{ ; ContainerExtraData
+?GetForRef@ContainerExtraData@@SAPAV1@AAVTESObjectREFR@@PAVTESContainer@@@Z = 0x00485E00,0x004B0850     ; GetForRef
 ??0ContainerExtraData@@QAE@PAVTESObjectREFR@@@Z             = 0x00485D50,0x004B07A0     ; ContainerExtraData
 ??1ContainerExtraData@@QAE@XZ                               = 0x004894D0,0x004B1480     ; ~ContainerExtraData
 ;}   

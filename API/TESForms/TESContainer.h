@@ -126,15 +126,18 @@ public:
 
     // members        
     MEMBER /*00*/ EntryDataListT*   entryDataList;  // initialized to empty list by constructor
-    MEMBER /*04*/ TESObjectREFR*    owner;          // for actors, this doubles as a pointer to parent ref
+    MEMBER /*04*/ TESObjectREFR*    parent;         // container ref to which this extra data belongs
 	MEMBER /*08*/ float			    encumberance;	// cached total weight of contents (includes perks), -1 if needs to be recalculated
 	MEMBER /*0C*/ float			    armorWeight;	// cached total weight of equipped armor (includes perks), -1 if needs to be recalculated
 
     // methods
 
-    // constructor, destructor
+    // constructor, destructor, creation
+    IMPORT static ContainerExtraData*   GetForRef(TESObjectREFR& ref, TESContainer* refContainer = 0); //
+                                        //  returns existing ContainerExtraData if one is already attached to the ref, otherwise
+                                        //  creates & attaches a new one refContainer is the result of TESObjectREFR::GetContainer()
     IMPORT ContainerExtraData(TESObjectREFR* owner);
-    IMPORT ~ContainerExtraData();    // marks owner ref as modified
+    IMPORT ~ContainerExtraData();  // marks owner ref as modified
 
     // use form heap
     USEFORMHEAP
@@ -159,13 +162,13 @@ public:
         MEMBER /*08*/ TESForm*          form;
 
         // methods
-        IMPORT void             ClearFormDataTable();   // destroy all ExtraDataLists in table, along with their contents.  Doesn't destroy table iteself.
-        IMPORT void             DestroyFormDataTable(); // destroy table, but without destroying the ExtraDataLists it contains
+        IMPORT void                 ClearFormDataTable();   // destroy all ExtraDataLists in table, along with their contents.  Doesn't destroy table iteself.
+        IMPORT void                 DestroyFormDataTable(); // destroy table, but without destroying the ExtraDataLists it contains
 
         // constructor, destructor
         IMPORT EntryExtraData(TESForm* form, SInt32 count);
-        INLINE ~EntryExtraData() {ClearFormDataTable(); DestroyFormDataTable();}    // either completely inlined, or DestroyFormDataTable() is the
-                                                    // actual dtor and it was the programmer's responsibility to ensure the table was cleared properly
+        INLINE ~EntryExtraData() {ClearFormDataTable(); DestroyFormDataTable();} // either completely inlined, or DestroyFormDataTable() is the
+                                    // actual dtor and it was the programmer's responsibility to ensure the table was cleared properly
         
         // use form heap
         USEFORMHEAP
