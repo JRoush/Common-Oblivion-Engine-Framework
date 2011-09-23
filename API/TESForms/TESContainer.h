@@ -127,7 +127,7 @@ public:
     // members        
     MEMBER /*00*/ EntryDataListT*   entryDataList;  // initialized to empty list by constructor
     MEMBER /*04*/ TESObjectREFR*    parent;         // container ref to which this extra data belongs
-	MEMBER /*08*/ float			    encumberance;	// cached total weight of contents (includes perks), -1 if needs to be recalculated
+	MEMBER /*08*/ float			    totalWeight;	// cached total weight of contents (includes perks), -1 if needs to be recalculated
 	MEMBER /*0C*/ float			    armorWeight;	// cached total weight of equipped armor (includes perks), -1 if needs to be recalculated
 
     // methods
