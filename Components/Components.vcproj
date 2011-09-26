@@ -355,14 +355,6 @@
 			>
 		</File>
 		<File
-			RelativePath=".\ExtendedResolution.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\ExtendedResolution.h"
-			>
-		</File>
-		<File
 			RelativePath=".\FormRefCounter.cpp"
 			>
 		</File>

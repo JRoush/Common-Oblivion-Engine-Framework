@@ -57,12 +57,9 @@ protected:
     UInt16      fileCode;
 };
 
-class COMPONENT_EXPORT ResClass
+template <typename ValueT> class COMPONENT_EXPORT ResClass
 {
 public:
-
-    // value type def
-    typedef UInt32 ValueT;
 
     // constructor, destructor
     static void* operator new (size_t size); 
