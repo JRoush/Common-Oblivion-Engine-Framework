@@ -65,6 +65,9 @@ public:
     // change the prefix from 's' to 'S' automatically.  Do NOT use 'S' to initialize setting names.
 
     // constructor, destructor - apparently completely inlined into ctor, dtor of derived classes
+    // NOTE: Settings names are intended to be *hard-coded strings*.  The setting object does not make a seperate copy of the name,
+    // it just stores the raw const char* pointer.  If dynamically generating the names, make sure to use a separate, permanent buffer
+    // for each setting.
     INLINE Setting(const char* nName, bool nValue) : name(nName) {value.b = nValue;}
     INLINE Setting(const char* nName, char nValue) : name(nName) {value.c = nValue;}
     INLINE Setting(const char* nName, UInt8 nValue) : name(nName) {value.h = nValue;}
