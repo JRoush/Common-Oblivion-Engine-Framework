@@ -53,8 +53,9 @@ public:
 
     // no additional virtual methods, no vmethod overrides
 
-    // methods
-        // ...
+    // ExtraHealth methods
+    IMPORT void             SetExtraHealth(float health);
+    IMPORT float            GetExtraHealth(); // returns -1.0 if no ExtraHealth data is stored
 
     // constructor
     IMPORT ExtraDataList();

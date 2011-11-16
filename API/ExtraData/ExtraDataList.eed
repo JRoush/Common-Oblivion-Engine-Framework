@@ -13,5 +13,7 @@ EXPORTS ;{ ; BaseExtraList
 ;}
 
 EXPORTS ;{ ; ExtraDataList
-??0ExtraDataList@@QAE@XZ        = 0x00422EE0,0x0045D190     ; ExtraDataList::ExtraDataList
+?SetExtraHealth@ExtraDataList@@QAEXM@Z          = 0x0041ECB0,0x0045BC40     ; SetExtraHealth
+?GetExtraHealth@ExtraDataList@@QAEMXZ           = 0x0041E810,0x0045B8D0     ; GetExtraHealth
+??0ExtraDataList@@QAE@XZ        = 0x00422EE0,0x0045D190     ; ExtraDataList
 ;}
