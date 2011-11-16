@@ -176,13 +176,14 @@ public:
     IMPORT /*0F8/138*/ virtual void             MoveInitialPosition(Vector3 position); // moves starting position to specified coords
                                                 // or current position if coords are (0,0,0)
     IMPORT /*0FC/13C*/ virtual bool             UpdateLights(); // updates flicker effects for refs that are light sources.  not sure what return value means
-    IMPORT /*100/140*/ virtual bool             RemoveItem(TESForm* toRemove, ExtraDataList* entryExtra, SInt32 count, // which form and subgroup                                                   
+    IMPORT /*100/140*/ virtual TESObjectREFR*   RemoveItem(TESForm* toRemove, ExtraDataList* entryExtra, SInt32 count, // which form and subgroup                                                   
                                                     bool useContainerOwnership = false, // copies this container owner to transfered items w/o an owner
                                                     bool drop = false, // items dropped in game world, rather than transfered or destroyed
                                                     TESObjectREFR* destRef = 0, // target container for transfer
                                                     Vector3* destPosition = 0, Vector3* destRotation = 0, // coordinates for drop (default is near this ref)
                                                     bool arg8 = true, // unk?
-                                                    bool useExistingEntryExtra = false); // use of existing entry ExtraDataList if entryExtra == 0
+                                                    bool useExistingEntryExtra = false // use of existing entry ExtraDataList if entryExtra == 0
+                                                ); // returns dropped item ref, if dropped
     IMPORT /*104/144*/ virtual void             RemoveItemByType(UInt32 formType, bool useContainerOwnership, SInt32 count); // remove forms of specified type
     IMPORT /*108/148*/ virtual bool             EquipItem(TESForm* toEquip, SInt32 count, ExtraDataList* entryExtra, bool noUnequip); // 
                                                 // noUnequip has same effect as argument to script command

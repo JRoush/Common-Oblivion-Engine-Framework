@@ -48,7 +48,7 @@ EXPORTS ;{ ; TESObjectREFR
 ?GetInitialPosition@TESObjectREFR@@UAE?AVVector3@@XZ    = 0x004D8230,0x005401B0     ; GetInitialPosition
 ?MoveInitialPosition@TESObjectREFR@@UAEXVVector3@@@Z    = 0x004DD1A0,0x00543240     ; MoveInitialPosition
 ?UpdateLights@TESObjectREFR@@UAE_NXZ                    = 0x004D8050,0x00540120     ; UpdateLights
-?RemoveItem@TESObjectREFR@@UAE_NPAVTESForm@@PAVExtraDataList@@J_N2PAV1@PAVVector3@@422@Z    = 0x004D8760,0x00541480     ; RemoveItem
+?RemoveItem@TESObjectREFR@@UAEPAV1@PAVTESForm@@PAVExtraDataList@@J_N2PAV1@PAVVector3@@422@Z = 0x004D8760,0x00541480     ; RemoveItem
 ?RemoveItemByType@TESObjectREFR@@UAEXK_NJ@Z                                                 = 0x004D87E0,0x00541500     ; RemoveItemByType
 ?EquipItem@TESObjectREFR@@UAE_NPAVTESForm@@JPAVExtraDataList@@_N@Z                          = 0x004D86D0,0x00541400     ; EquipItem
 ?UnequipItem@TESObjectREFR@@UAE_NPAVTESForm@@JPAVExtraDataList@@@Z                          = 0x004D8810,0x00541530     ; UnequipItem
