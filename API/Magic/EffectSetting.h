@@ -44,7 +44,7 @@ public:
                                         // builds a filtered list from map, using EffectSetting::Filter() with the supplied args
                                         // If sort is true, list is sorted from least to greatest using Comparator()
     IMPORT static void                  Add(UInt32 mgefCode, const char* name, UInt32 school, float baseCost, UInt32 param, 
-                                                UInt32 mgefFlags, UInt32 resistAV, UInt16 numCounters, .../*counter effect codes*/) DNAME() //
+                                                UInt32 mgefFlags, UInt32 resistAV, UInt16 numCounters, .../*counter effect codes*/); //
                                         // Allocate & initialize a new effect setting (copy arguments), and add to map
     IMPORT static void                  AddAll(); // adds all built-in magic effects to map, with default parameters
     IMPORT static void                  Reset(); // clears map & re-add all built-in effects
