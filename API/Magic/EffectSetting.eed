@@ -14,7 +14,7 @@ EXPORTS ;{ ; EffectSettingCollection
 ?LookupByCode@EffectSettingCollection@@SAPAVEffectSetting@@K@Z              = 0x00416870,0x0056A880     ; LookupByCode
 ?LookupByCodeString@EffectSettingCollection@@SAPAVEffectSetting@@PBD@Z      = 0x004168A0,0x0056A8B0     ; LookupByCodeString
 ?Comparator@EffectSettingCollection@@SAHAAVEffectSetting@@0@Z               = 0x00417040,0x0056A900     ; Comparator
-?Add@EffectSettingCollection@@SAPAVEffectSetting@@KPBDKMKKKGZZ              = 0x00417220,0x0056AC40     ; Add
+?Add@EffectSettingCollection@@SAXKPBDKMKKKGZZ                               = 0x00417220,0x0056AC40     ; Add
 ?AddAll@EffectSettingCollection@@SAXXZ                                      = 0x004170B0,0x0056AED0     ; AddAll
 ?Reset@EffectSettingCollection@@SAXXZ                                       = 0x00418E50,0x0056C900     ; Reset
 ;}
