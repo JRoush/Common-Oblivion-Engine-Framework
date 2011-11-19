@@ -148,7 +148,7 @@ public:
     MEMBER /*54/80*/ void*              filterParam; // not saved. passed to filterFunc if it's called during Filter()
     MEMBER /*58/84*/ UInt32             mgefFlags;
     MEMBER /*5C/88*/ float              baseCost;
-    MEMBER /*60/8C*/ UInt32             mgefParam;
+    MEMBER /*60/8C*/ UInt32             mgefParam; // the avCode, summoned form ID, or nothing, depending on the state if the "Use" flags
     MEMBER /*64/90*/ UInt32             school;
     MEMBER /*68/94*/ UInt32             resistAV; // an actor value i.e. kActorVal_ResistFire
     MEMBER /*6C/98*/ UInt16             numCounters; // count of counter effects, is size of counterArray
