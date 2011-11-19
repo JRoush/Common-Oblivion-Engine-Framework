@@ -102,7 +102,7 @@ public:
     MEMBER /*CD6/1216*/ UInt8                               unkCD6;     // set after data handler is constructed
     MEMBER /*CD7/1217*/ UInt8                               unkCD7;     // set after files in LO have been opened, cleared after files have been loaded
     MEMBER /*CD8/1218*/ TESRegionDataManager*               regionDataManager;
-    MEMBER /*CDC/121C*/ ContainerExtraData*                 unkCDC; 
+    MEMBER /*CDC/121C*/ ContainerExtraData*                 unkCDC;     // used to hold conglomerate inventories, e.g. for merchants during bartering
 
     // methods - serilaization
     IMPORT bool             LoadFile(TESFile& file, bool arg1); // Deserializes file, loading all records with LoadFormRecord()
