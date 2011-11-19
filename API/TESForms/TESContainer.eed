@@ -37,20 +37,20 @@ EXPORTS ;{ ; TESContainer
 ??0TESContainer@@QAE@XZ     = 0x00469690,0x00491CD0     ; TESContainer
 ??1TESContainer@@QAE@XZ     = 0x0046A010,0x00492BD0     ; ~TESContainer
 ;}  
+ 
+EXPORTS ;{ ; EntryExtraData
+?ClearFormDataTable@ContainerExtraEntry@@QAEXXZ       = 0x004845A0,0x004B0390     ; ClearFormDataTable
+?DestroyFormDataTable@ContainerExtraEntry@@QAEXXZ     = 0x00484470,0x004B0360     ; DestroyFormDataTable
+??0ContainerExtraEntry@@QAE@PAVTESForm@@J@Z           = 0x00484420,0x004B0310     ; EntryExtraData
+;}     
+
+EXPORTS ;{ ; ContainerExtraData
+?GetForRef@ContainerExtraData@@SAAAV1@AAVTESObjectREFR@@PAVTESContainer@@@Z = 0x00485E00,0x004B0850     ; GetForRef
+??0ContainerExtraData@@QAE@PAVTESObjectREFR@@@Z             = 0x00485D50,0x004B07A0     ; ContainerExtraData
+??1ContainerExtraData@@QAE@XZ                               = 0x004894D0,0x004B1480     ; ~ContainerExtraData
+;} 
 
 EXPORTS ;{ ; ExtraContainerChanges
 ??1ExtraContainerChanges@@UAE@XZ                            = 0x00429D70,0x00461990     ; ~ExtraContainerChanges
 ??0ExtraContainerChanges@@QAE@PAVContainerExtraData@@@Z     = 0x00429D50,0x00460A60     ; ExtraContainerChanges
-;}    
-
-EXPORTS ;{ ; ContainerExtraData
-?GetForRef@ContainerExtraData@@SAPAV1@AAVTESObjectREFR@@PAVTESContainer@@@Z = 0x00485E00,0x004B0850     ; GetForRef
-??0ContainerExtraData@@QAE@PAVTESObjectREFR@@@Z             = 0x00485D50,0x004B07A0     ; ContainerExtraData
-??1ContainerExtraData@@QAE@XZ                               = 0x004894D0,0x004B1480     ; ~ContainerExtraData
-;}   
-
-EXPORTS ;{ ; EntryExtraData
-?ClearFormDataTable@EntryExtraData@ContainerExtraData@@QAEXXZ       = 0x004845A0,0x004B0390     ; ClearFormDataTable
-?DestroyFormDataTable@EntryExtraData@ContainerExtraData@@QAEXXZ     = 0x00484470,0x004B0360     ; DestroyFormDataTable
-??0EntryExtraData@ContainerExtraData@@QAE@PAVTESForm@@J@Z           = 0x00484420,0x004B0310     ; EntryExtraData
 ;}                                    

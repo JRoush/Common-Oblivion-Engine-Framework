@@ -2,6 +2,8 @@
     TESObjectREFR is the parent for all 'instances' of base forms in the game world
     While each ref is a distinct form, it also points back to the 'base' form that it instantiates
     Refs store local data like position, size, flags, etc.
+
+    Credits:  Kyoma for decoding some of the inventory methods
 */
 #pragma once
 
@@ -21,6 +23,8 @@ class   MagicCaster;            // Magic/MagicCaster.h
 class   MagicTarget;            // Magic/MagicTarget.h
 class   TESTopic;
 class   TESContainer;           // TESForms/TESContainer.h
+class   ContainerExtraEntry;    // TESForms/TESContainer.h
+typedef ContainerExtraEntry ContainerItemInstance;
 
 class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
 {// size 58/60
@@ -234,6 +238,16 @@ public:
 
     // methods - container
     IMPORT TESContainer*                GetContainer(); // fast retrieval of base form container, if it has one
+    #ifdef OBLIVION
+    IMPORT const ContainerItemInstance* GetItemInstance(UInt32 index, bool useGlobalInventory = false); // returns inventory items by index
+                                        // a single item form may have multiple entries (and indicies) if it varies substantially in it's extra data
+                                        // return object is orphaned, see notes on "instances" in TESForms/TESContainer.h
+                                        // pass useGlobalInventory=true to use global inventory stored on data handler rather than current refr inventory
+    IMPORT UInt32                       GetTotalItemInstanceCount(bool useGlobalInventory = false); // returns total number of unique item instances in inventory
+                                        // See notes on "instances" in TESForms/TESContainer.h
+                                        // return value is guaranteed to be an upper bound on valid item indicies.
+                                        // pass useGlobalInventory=true to use global inventory stored on data handler rather than current refr inventory
+    #endif
 
     // constructor
     IMPORT TESObjectREFR();

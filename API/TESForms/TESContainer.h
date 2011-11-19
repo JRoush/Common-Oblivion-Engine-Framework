@@ -7,9 +7,35 @@
 
     ContainerExtraData is an auxiliary class, used to track additional information and changes
     to content.  Where TESContainer is associated with form classes, ContainerExtraData is 
-    stored in the ExtraDataList of individual references.  It stores a list of form/count pairs,
-    and also one or more ExtraDataLists for each contained form.
+    stored in the ExtraDataList of individual references.  It stores changes to the base inventory,
+    as a list of ContainerExtraEntrys.
     NOTE - ContainerExtraData is not a polymorphic class, the name was chosen arbitrarily.
+
+    ContainerExtraEntry stores a form and a value indicating the total *change* in count from the base
+    inventory.  The entry may have multiple "instances" of the item form, e.g. for variations in charge 
+    or durability.  Each instance with extra data has it's own ExtraDataList in the entry's extra data table.  
+    The number of items represented by the ExtraDataList is stored in it's ExtraCount value, or is implicitly 1
+    if no ExtraCount is present.  If the entry represents items with no extra data, these collectively count as 
+    an "instance".
+
+    Example:
+
+    -   TESContainer:
+            -   5 x TESObjectWEAP (00000123)
+    -   ContainerExtraData:
+            -   ContainerExtraEntry with -1 x TESObjectWEAP (00000123)
+                -   ExtraDataList { ExtraCount = 2, ExtraOwner = TESNPC (0000089A) }
+                -   ExtraDataList { ExtraHealth = 15.0 }
+
+    This container currently has a total of 4 of the weapon item (5 in the base container, -1 in the change entry).
+    These four items are split into three "instances".  The first instance is two items that are owned by some NPC character 
+    (rather than the container owner).  The second instance is a single item with an altered durability of 15.0.  
+    The last instance is a single item with no extra data.
+
+    ContainerItemInstance* (a typedef for ContainerExtraEntry*) is often used to pass/store one or more instances from an inventory.
+    Unless otherwise stated, these objects are *dynamically created partial copies* of the underlying "real" ContainerExtraEntrys.
+    It is the user's responsibility to delete such objects when done with them.  They should also be treated as *read-only*.  
+    Any desired changes should be made with the methods of the parent ContainerExtraData.
 */
 #pragma once
 
@@ -117,12 +143,51 @@ public:
     IMPORT ~TESContainer();
 };
 
+// ContainerExtraEntry class
+class ContainerExtraEntry
+{// size 0C
+/*
+    NOTE:
+    ContainerExtraEntry* is often the return value of "GetItem"-type methods.  
+    Unless otherwise stated, the returned object is *created dynamically* and orphaned by the method, making it the caller's 
+    responsibility to delete it when done.  These objects are *not* the real Entries, they are simplified copies.  
+    They should be treated as *read-only*.  In particular, do NOT attempt to add to, remove from, or clear the formDataTable.
+    Any desired changes should be made through the methods of the parent ContainerExtraData, TESObjectREFR, Actor, etc.
+*/
+public:
+    
+    enum ModifiedFlags
+    {
+        kModified_ContainerEntry        = /*05*/ 0x00000020, // Common 'Modified' flag for all container entry properties:
+                                                             // Count,Health,Uses,TimeLeft,Charge,Soul,Scale,Ownership,Global,Rank,Worn,WornLeft,CannotWear,
+                                                             // BoundArmor,Script, LeveledItem, ReferencePointer,Poison,StartingWorldOrCell,QuickKey
+    };
+
+    typedef BSSimpleList<ExtraDataList*> FormDataTableT;
+
+    // members        
+    MEMBER /*00*/ FormDataTableT*   formDataTable;    // initialized to empty list by constructor.
+    MEMBER /*04*/ SInt32            count;  // cumulative with count in base container
+    MEMBER /*08*/ TESForm*          form;
+
+    // methods
+    IMPORT void                 ClearFormDataTable();   // destroy all ExtraDataLists in table, along with their contents.  Doesn't destroy table iteself.
+    IMPORT void                 DestroyFormDataTable(); // destroy table, but without destroying the ExtraDataLists it contains
+
+    // constructor, destructor
+    IMPORT ContainerExtraEntry(TESForm* form, SInt32 count);
+    INLINE ~ContainerExtraEntry() {DestroyFormDataTable();} // probably completely inlined.  DOES NOT DESTROY EXTRADATALISTS.  This is the responsibility
+                                                            // of the owner, almost always the parent ContainerExtraData.
+
+    // use form heap
+    USEFORMHEAP
+};
+typedef ContainerExtraEntry ContainerItemInstance; // purely for aesthetics, to differentiate "instances" from true entries.  see notes above.
+
 class IMPORTCLASS ContainerExtraData
 { // size 10
 public:  
-
-    class EntryExtraData;
-    typedef BSSimpleList<EntryExtraData*> EntryDataListT;  
+    typedef BSSimpleList<ContainerExtraEntry*> EntryDataListT;  
 
     // members        
     MEMBER /*00*/ EntryDataListT*   entryDataList;  // initialized to empty list by constructor
@@ -133,46 +198,14 @@ public:
     // methods
 
     // constructor, destructor, creation
-    IMPORT static ContainerExtraData*   GetForRef(TESObjectREFR& ref, TESContainer* refContainer = 0); //
-                                        //  returns existing ContainerExtraData if one is already attached to the ref, otherwise
-                                        //  creates & attaches a new one refContainer is the result of TESObjectREFR::GetContainer()
+    IMPORT static ContainerExtraData&   GetForRef(TESObjectREFR& ref, TESContainer* refContainer = 0); // returns existing ContainerExtraData 
+                                        // if one is already attached to the ref, otherwise creates & attaches a new one.  
+                                        // refContainer is the result of TESObjectREFR::GetContainer(), and is not used.
     IMPORT ContainerExtraData(TESObjectREFR* owner);
     IMPORT ~ContainerExtraData();  // marks owner ref as modified
 
     // use form heap
-    USEFORMHEAP
-
-    // EntryExtraData subclass
-    class EntryExtraData
-    {// size 0C
-    public:
-        
-        enum ModifiedFlags
-        {
-            kModified_ContainerEntry        = /*05*/ 0x00000020, // Common 'Modified' flag for all container entry properties:
-                                                                 // Count,Health,Uses,TimeLeft,Charge,Soul,Scale,Ownership,Global,Rank,Worn,WornLeft,CannotWear,
-                                                                 // BoundArmor,Script, LeveledItem, ReferencePointer,Poison,StartingWorldOrCell,QuickKey
-        };
-
-        typedef BSSimpleList<ExtraDataList*> FormDataTableT;
-
-        // members        
-        MEMBER /*00*/ FormDataTableT*   formDataTable;    // initialized to empty list by constructor
-        MEMBER /*04*/ SInt32            count;  // cumulative with count in base container
-        MEMBER /*08*/ TESForm*          form;
-
-        // methods
-        IMPORT void                 ClearFormDataTable();   // destroy all ExtraDataLists in table, along with their contents.  Doesn't destroy table iteself.
-        IMPORT void                 DestroyFormDataTable(); // destroy table, but without destroying the ExtraDataLists it contains
-
-        // constructor, destructor
-        IMPORT EntryExtraData(TESForm* form, SInt32 count);
-        INLINE ~EntryExtraData() {ClearFormDataTable(); DestroyFormDataTable();} // either completely inlined, or DestroyFormDataTable() is the
-                                    // actual dtor and it was the programmer's responsibility to ensure the table was cleared properly
-        
-        // use form heap
-        USEFORMHEAP
-    };
+    USEFORMHEAP    
 };
 
 class IMPORTCLASS ExtraContainerChanges : public BSExtraData
