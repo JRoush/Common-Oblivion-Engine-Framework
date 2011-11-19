@@ -9,7 +9,10 @@
     to content.  Where TESContainer is associated with form classes, ContainerExtraData is 
     stored in the ExtraDataList of individual references.  It stores changes to the base inventory,
     as a list of ContainerExtraEntrys.
-    NOTE - ContainerExtraData is not a polymorphic class, the name was chosen arbitrarily.
+    The various ContainerExtraData methods automatically incorporate the base container of the parent ref.
+    This means that, for example, ContainerExtraData::GetItemCount() returns the total count, including
+    any items in the base inventory.
+    The name "ContainerExtraData" was chosen arbitrarily.
 
     ContainerExtraEntry stores a form and a value indicating the total *change* in count from the base
     inventory.  The entry may have multiple "instances" of the item form, e.g. for variations in charge 
@@ -32,7 +35,7 @@
     (rather than the container owner).  The second instance is a single item with an altered durability of 15.0.  
     The last instance is a single item with no extra data.
 
-    ContainerItemInstance* (a typedef for ContainerExtraEntry*) is often used to pass/store one or more instances from an inventory.
+    ContentInstance* (a typedef for ContainerExtraEntry*) is often used to pass/store one or more instances from an inventory.
     Unless otherwise stated, these objects are *dynamically created partial copies* of the underlying "real" ContainerExtraEntrys.
     It is the user's responsibility to delete such objects when done with them.  They should also be treated as *read-only*.  
     Any desired changes should be made with the methods of the parent ContainerExtraData.
@@ -182,7 +185,7 @@ public:
     // use form heap
     USEFORMHEAP
 };
-typedef ContainerExtraEntry ContainerItemInstance; // purely for aesthetics, to differentiate "instances" from true entries.  see notes above.
+typedef ContainerExtraEntry ContentInstance; // purely for aesthetics, to differentiate "instances" from true entries.  see notes above.
 
 class IMPORTCLASS ContainerExtraData
 { // size 10

@@ -24,7 +24,7 @@ class   MagicTarget;            // Magic/MagicTarget.h
 class   TESTopic;
 class   TESContainer;           // TESForms/TESContainer.h
 class   ContainerExtraEntry;    // TESForms/TESContainer.h
-typedef ContainerExtraEntry ContainerItemInstance;
+typedef ContainerExtraEntry ContentInstance;
 
 class IMPORTCLASS TESObjectREFR : public TESForm, public TESMemContextForm, public TESChildCell
 {// size 58/60
@@ -239,7 +239,7 @@ public:
     // methods - container
     IMPORT TESContainer*                GetContainer(); // fast retrieval of base form container, if it has one
     #ifdef OBLIVION
-    IMPORT const ContainerItemInstance* GetItemInstance(UInt32 index, bool useGlobalInventory = false); // returns inventory items by index
+    IMPORT const ContentInstance*       GetItemInstance(UInt32 index, bool useGlobalInventory = false); // returns inventory items by index
                                         // a single item form may have multiple entries (and indicies) if it varies substantially in it's extra data
                                         // return object is orphaned, see notes on "instances" in TESForms/TESContainer.h
                                         // pass useGlobalInventory=true to use global inventory stored on data handler rather than current refr inventory
