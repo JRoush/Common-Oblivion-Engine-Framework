@@ -13,7 +13,9 @@ EXPORTS ;{ ; BaseExtraList
 ;}
 
 EXPORTS ;{ ; ExtraDataList
-?SetExtraHealth@ExtraDataList@@QAEXM@Z          = 0x0041ECB0,0x0045BC40     ; SetExtraHealth
-?GetExtraHealth@ExtraDataList@@QAEMXZ           = 0x0041E810,0x0045B8D0     ; GetExtraHealth
+?SetXCount@ExtraDataList@@QAEXF@Z               = 0x004238A0,0x0045E2A0     ; SetXCount
+?GetXCount@ExtraDataList@@QAEFXZ                = 0x0041E860,0x0045B910     ; GetXCount
+?SetXHealth@ExtraDataList@@QAEXM@Z              = 0x0041ECB0,0x0045BC40     ; SetXHealth
+?GetXHealth@ExtraDataList@@QAEMXZ               = 0x0041E810,0x0045B8D0     ; GetXHealth
 ??0ExtraDataList@@QAE@XZ        = 0x00422EE0,0x0045D190     ; ExtraDataList
 ;}

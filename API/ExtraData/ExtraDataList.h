@@ -53,9 +53,12 @@ public:
 
     // no additional virtual methods, no vmethod overrides
 
-    // ExtraHealth methods
-    IMPORT void             SetExtraHealth(float health);
-    IMPORT float            GetExtraHealth(); // returns -1.0 if no ExtraHealth data is stored
+    // ExtraCount
+    IMPORT void             SetXCount(SInt16 count);
+    IMPORT SInt16           GetXCount(); // returns 1 if no ExtraCount data is stored
+    // ExtraHealth
+    IMPORT void             SetXHealth(float health);
+    IMPORT float            GetXHealth(); // returns -1.0 if no ExtraHealth data is stored
 
     // constructor
     IMPORT ExtraDataList();
