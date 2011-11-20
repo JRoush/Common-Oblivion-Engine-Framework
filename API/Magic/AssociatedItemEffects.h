@@ -16,6 +16,7 @@
 class   TESForm;
 class   Actor;
 class   Vector3;    // NiVector3?  currently defined in Utilities/ITypes.h
+class   ContainerExtraEntry;    // TESForms/TESContainer.h
 
 class IMPORTCLASS AssociatedItemEffect : public ActiveEffect
 {// size 3C
@@ -80,7 +81,7 @@ public:
 
     // members
     //     /*00*/ AssociatedItemEffect
-    MEMBER /*3C*/ UInt32                unkBdit3C;
+    MEMBER /*3C*/ ContainerExtraEntry*  boundItem; // this is an honest-to-god ContainerExtraEntry, not a shallow copy from target inventory.
     MEMBER /*40*/ UInt32                unkBdit40;
     MEMBER /*44*/ UInt32                unkBdit44;
     MEMBER /*48*/ UInt32                unkBdit48;
