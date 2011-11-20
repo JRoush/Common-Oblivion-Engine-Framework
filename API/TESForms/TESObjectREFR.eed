@@ -70,6 +70,7 @@ EXPORTS ;{ ; TESObjectREFR
 ?IsDead@TESObjectREFR@@UAE_N_N@Z                            = 0x004D7DD0,0x00543010     ; IsDead
 ; methods
 ?GetContainer@TESObjectREFR@@QAEPAVTESContainer@@XZ                 = 0x004D6D40,0x0053EE20     ; GetContainer
+?GetItemCount@TESObjectREFR@@QAEJAAVTESForm@@@Z                     = 0x005E0F00,_NOTINCS__     ; GetItemCount
 ?GetItemInstance@TESObjectREFR@@QAEPBVContainerExtraEntry@@K_N@Z    = 0x004D88F0,_NOTINCS__     ; GetItemInstance
 ?GetTotalItemInstanceCount@TESObjectREFR@@QAEK_N@Z                  = 0x004D8950,_NOTINCS__     ; GetTotalItemInstanceCount
 ??0TESObjectREFR@@QAE@XZ    = 0x004D9A70,0x00541870     ; TESObjectREFR
