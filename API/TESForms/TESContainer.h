@@ -39,6 +39,8 @@
     Unless otherwise stated, these objects are *dynamically created partial copies* of the underlying "real" ContainerExtraEntrys.
     It is the user's responsibility to delete such objects when done with them.  They should also be treated as *read-only*.  
     Any desired changes should be made with the methods of the parent ContainerExtraData.
+
+    Credit: Kyoma, for helping correct the original definition of ContainerExtraEntry
 */
 #pragma once
 
