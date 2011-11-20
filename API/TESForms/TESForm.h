@@ -330,6 +330,7 @@ public:
     // methods - misc
     IMPORT static const char*   GetFormTypeName(UInt8 formType);
     IMPORT void                 MakeTemporary(); // removes from formID map, editorID map, active file list, etc. and sets temporary flag
+    INLINE BSStringT            GetDebugDesc() { BSStringT desc; GetDebugDescription(desc); return desc; } // not in engine, purely here for convenience
 
     // constructor  
     IMPORT TESForm();
