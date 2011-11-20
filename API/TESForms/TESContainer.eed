@@ -45,9 +45,21 @@ EXPORTS ;{ ; EntryExtraData
 ;}     
 
 EXPORTS ;{ ; ContainerExtraData
-?GetForRef@ContainerExtraData@@SAAAV1@AAVTESObjectREFR@@PAVTESContainer@@@Z = 0x00485E00,0x004B0850     ; GetForRef
-??0ContainerExtraData@@QAE@PAVTESObjectREFR@@@Z             = 0x00485D50,0x004B07A0     ; ContainerExtraData
-??1ContainerExtraData@@QAE@XZ                               = 0x004894D0,0x004B1480     ; ~ContainerExtraData
+?AddContent@ContainerExtraData@@QAEXAAVTESForm@@PAVExtraDataList@@J@Z                                               = 0x0048F7C0,_NOTINCS__     ; AddContent
+?RemoveContent@ContainerExtraData@@QAEPAVTESObjectREFR@@PAV2@AAVTESForm@@PAVExtraDataList@@J_N30PAVVector3@@433@Z   = 0x0048FBC0,_NOTINCS__     ; RemoveContent
+?EquipContent@ContainerExtraData@@QAEXAAVTESForm@@JAAVActor@@PAVExtraDataList@@_N3@Z                                = 0x00489C30,_NOTINCS__     ; EquipContent
+?UnequipContent@ContainerExtraData@@QAE_NAA_NAAVTESForm@@JAAVActor@@PAVExtraDataList@@_N4@Z                         = 0x0048A540,_NOTINCS__     ; UnequipContent
+?UnequipAll@ContainerExtraData@@QAEX_N@Z                                                                            = 0x00486030,_NOTINCS__     ; UnequipAll
+?GetContentCount@ContainerExtraData@@QAEJAAVTESForm@@@Z                                                             = 0x004869C0,_NOTINCS__     ; GetContentCount
+?GetContentWeight@ContainerExtraData@@QAEMXZ                                                                        = 0x00487E40,_NOTINCS__     ; GetContentWeight
+?GetWornArmorWeight@ContainerExtraData@@QAEMAAVActor@@@Z                                                            = 0x00488280,_NOTINCS__     ; GetWornArmorWeight
+?GetInstanceCount@ContainerExtraData@@QAEKXZ                                                                        = 0x0048D6C0,_NOTINCS__     ; GetInstanceCount
+?GetInstance@ContainerExtraData@@QAEPBVContainerExtraEntry@@K@Z                                                     = 0x00486A40,_NOTINCS__     ; GetInstance
+?GetEquippedInstance@ContainerExtraData@@QAEPBVContainerExtraEntry@@K_N@Z                                           = 0x00486790,_NOTINCS__     ; GetEquippedInstance
+?GetBestApparatusInstance@ContainerExtraData@@QAEPBVContainerExtraEntry@@K@Z                                        = 0x00486330,_NOTINCS__     ; GetBestApparatusInstance
+?GetForRef@ContainerExtraData@@SAAAV1@AAVTESObjectREFR@@PAVTESContainer@@@Z     = 0x00485E00,0x004B0850     ; GetForRef
+??0ContainerExtraData@@QAE@PAVTESObjectREFR@@@Z                                 = 0x00485D50,0x004B07A0     ; ContainerExtraData
+??1ContainerExtraData@@QAE@XZ                                                   = 0x004894D0,0x004B1480     ; ~ContainerExtraData
 ;} 
 
 EXPORTS ;{ ; ExtraContainerChanges

@@ -51,6 +51,7 @@
 // argument classes
 class   TESForm;        // TESForms/TESForm.h
 class   TESObjectREFR;  // TESForms/TESObjectREFR.h
+class   Actor;          // Actors/Actor.h
 class   TESActorBase;   // Actors/TESActorBase.h
 class   TESObjectARMO;
 class   TESObjectCLOT;
@@ -198,7 +199,42 @@ public:
 	MEMBER /*08*/ float			    totalWeight;	// cached total weight of contents (includes perks), -1 if needs to be recalculated
 	MEMBER /*0C*/ float			    armorWeight;	// cached total weight of equipped armor (includes perks), -1 if needs to be recalculated
 
-    // methods
+    // methods - manipulate contents
+    #ifdef OBLIVION
+    IMPORT void                         AddContent(TESForm& form, ExtraDataList* contentExtraData, SInt32 count); // add instance to container
+                                        // NOTE: container adopts ExtraDataList, and may immediately destroy it if it duplicates one already present
+    IMPORT TESObjectREFR*               RemoveContent(TESObjectREFR* dropRef, // "self" ref for OnDrop script blocks, origin of dropped item placement
+                                            TESForm& form, ExtraDataList* entryExtra, SInt32 count, // instance & count to remove                                              
+                                            bool useContainerOwnership = false, // copies this container owner to transfered items w/o an owner
+                                            bool drop = false, // items dropped in game world, rather than transfered or destroyed
+                                            TESObjectREFR* destRef = 0, // target container for transfer
+                                            Vector3* destPosition = 0, Vector3* destRotation = 0, // coordinates for drop (default is near onDropThisRef)
+                                            bool arg8 = true, // unk?
+                                            bool useExistingEntryExtra = false // transfer existing entry ExtraDataList if entryExtra == 0
+                                        ); // returns dropped item, if dropped
+    IMPORT void                         EquipContent(TESForm& form, SInt32 count, Actor& parent, ExtraDataList* entryExtra, 
+                                                    bool wornLeft = false, bool cantUnequip = false); //
+                                        // parent actor needed to update relevant behavior
+                                        // wornLeft applies ExtraWornLeft instead of ExtraWorn (only used for rings)
+    IMPORT bool                         UnequipContent(bool& itemFound, TESForm& form, SInt32 count, Actor& parent, ExtraDataList* entryExtra, 
+                                                    bool wornLeft = false, bool arg6 = false); // 
+                                        // parent actor needed to update relevant behavior.  arg6 is not used.
+                                        // ExtraDataList will be destroyed (merging with another in the container), in which case method returns false.
+    IMPORT void                         UnequipAll(bool respectNoUnequipFlag = false);
+    #endif
+
+    // methods - evaluate contents
+    #ifdef OBLIVION                                         
+    IMPORT SInt32                       GetContentCount(TESForm& form); // returns 1 if an entry is present for item and base count = entry count = 0.
+    IMPORT float                        GetContentWeight(); // returns cached value if >= 0.0, otherwise recalculates
+    IMPORT float                        GetWornArmorWeight(Actor& parent); // returns cached value if >= 0.0, otherwise recalculates.  
+                                        // parent actor used for perk calc
+    IMPORT UInt32                       GetInstanceCount(); // total number of unique item instances in inventory
+    IMPORT const ContentInstance*       GetInstance(UInt32 index); // get content instance by index.  
+                                        // instances may share an index if they have identical apperances in the inventory menu
+    IMPORT const ContentInstance*       GetEquippedInstance(UInt32 slotIndex, bool armorOnly = false);
+    IMPORT const ContentInstance*       GetBestApparatusInstance(UInt32 apparatusType); // returns single highest quality apparatus of specified type
+    #endif
 
     // constructor, destructor, creation
     IMPORT static ContainerExtraData&   GetForRef(TESObjectREFR& ref, TESContainer* refContainer = 0); // returns existing ContainerExtraData 
